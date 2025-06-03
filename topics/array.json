@@ -1,0 +1,15 @@
+{
+  "topic": "Array",
+  "problems": [
+    {
+      "id": "two-sum",
+      "name": "Two Sum - LeetCode",
+      "url": "https://leetcode.com/problems/two-sum/"
+    },
+    {
+      "id": "kadane",
+      "name": "Kadane's Algorithm - GFG",
+      "url": "https://practice.geeksforgeeks.org/problems/kadanes-algorithm/"
+    }
+  ]
+}
