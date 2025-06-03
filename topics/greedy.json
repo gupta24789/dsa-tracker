@@ -1,0 +1,68 @@
+{
+  "topic": "Greedy Algo",
+  "problems": [
+    {
+      "name": "Assign Cookies",
+      "url": "https://leetcode.com/problems/assign-cookies/"
+    },
+    {
+      "name": "Fractional Knapsack Problem",
+      "url": "https://www.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1"
+    },
+    {
+      "name": "Greedy algorithm to find minimum number of coins",
+      "url": "https://www.geeksforgeeks.org/problems/-minimum-number-of-coins4426/1"
+    },
+    {
+      "name": "Lemonade Change",
+      "url": "https://leetcode.com/problems/lemonade-change/"
+    },
+    {
+      "name": "Valid Paranthesis Checker",
+      "url": "https://leetcode.com/problems/valid-parenthesis-string/"
+    },
+    {
+      "name": "N meetings in one room",
+      "url": "https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1"
+    },
+    {
+      "name": "Jump Game",
+      "url": "https://leetcode.com/problems/jump-game/"
+    },
+    {
+      "name": "Jump Game 2",
+      "url": "https://leetcode.com/problems/jump-game-ii/"
+    },
+    {
+      "name": "Minimum number of platforms required for a railway",
+      "url": "https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1"
+    },
+    {
+      "name": "Job sequencing Problem",
+      "url": "https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1"
+    },
+    {
+      "name": "Candy",
+      "url": "https://leetcode.com/problems/candy/"
+    },
+    {
+      "name": "Program for Shortest Job First (or SJF) CPU Scheduling",
+      "url": "https://www.geeksforgeeks.org/program-for-shortest-job-first-or-sjf-cpu-scheduling-set-1-non-preemptive/"
+    },
+    {
+      "name": "Program for Least Recently Used (LRU) Page Replacement Algorithm",
+      "url": "https://www.geeksforgeeks.org/program-for-least-recently-used-lru-page-replacement-algorithm/"
+    },
+    {
+      "name": "Insert Interval",
+      "url": "https://leetcode.com/problems/insert-interval/"
+    },
+    {
+      "name": "Merge Intervals",
+      "url": "https://leetcode.com/problems/merge-intervals/"
+    },
+    {
+      "name": "Non-overlapping Intervals",
+      "url": "https://leetcode.com/problems/non-overlapping-intervals/"
+    }
+]}

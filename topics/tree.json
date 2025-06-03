@@ -1,0 +1,204 @@
+{
+  "topic": "Binary Tree & BST",
+  "problems": [
+    {
+      "name": "Preorder Traversal of Binary Tree",
+      "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/"
+    },
+    {
+      "name": "Inorder Traversal of Binary Tree",
+      "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/"
+    },
+    {
+      "name": "Post-order Traversal of Binary Tree",
+      "url": "https://leetcode.com/problems/binary-tree-postorder-traversal/"
+    },
+    {
+      "name": "Level order Traversal / Level order traversal in spiral form",
+      "url": "https://leetcode.com/problems/binary-tree-level-order-traversal/"
+    },
+    {
+      "name": "Iterative Preorder Traversal of Binary Tree",
+      "url": "https://leetcode.com/problems/binary-tree-preorder-traversal/"
+    },
+    {
+      "name": "Iterative Inorder Traversal of Binary Tree",
+      "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/"
+    },
+    {
+      "name": "Post-order Traversal of Binary Tree using 2 stack",
+      "url": "https://leetcode.com/problems/binary-tree-postorder-traversal/"
+    },
+    {
+      "name": "Post-order Traversal of Binary Tree using 1 stack",
+      "url": "https://leetcode.com/problems/binary-tree-postorder-traversal/"
+    },
+    {
+      "name": "Preorder, Inorder, and Postorder Traversal in one Traversal",
+      "url": "https://www.geeksforgeeks.org/preorder-postorder-and-inorder-traversal-of-a-binary-tree-using-a-single-stack/"
+    },
+    {
+      "name": "Height of a Binary Tree",
+      "url": "https://leetcode.com/problems/maximum-depth-of-binary-tree/"
+    },
+    {
+      "name": "Check if the Binary tree is height-balanced or not",
+      "url": "https://leetcode.com/problems/balanced-binary-tree/"
+    },
+    {
+      "name": "Diameter of Binary Tree",
+      "url": "https://leetcode.com/problems/diameter-of-binary-tree/"
+    },
+    {
+      "name": "Maximum path sum",
+      "url": "https://leetcode.com/problems/binary-tree-maximum-path-sum/"
+    },
+    {
+      "name": "Check if two trees are identical or not",
+      "url": "https://leetcode.com/problems/same-tree/"
+    },
+    {
+      "name": "Zig Zag Traversal of Binary Tree",
+      "url": "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/"
+    },
+    {
+      "name": "Boundary Traversal of Binary Tree",
+      "url": "https://leetcode.com/problems/boundary-of-binary-tree/"
+    },
+    {
+      "name": "Vertical Order Traversal of Binary Tree",
+      "url": "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/"
+    },
+    {
+      "name": "Top View of Binary Tree",
+      "url": "https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1"
+    },
+    {
+      "name": "Bottom View of Binary Tree",
+      "url": "https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1"
+    },
+    {
+      "name": "Right/Left View of Binary Tree",
+      "url": "https://leetcode.com/problems/binary-tree-right-side-view/"
+    },
+    {
+      "name": "Symmetric Binary Tree",
+      "url": "https://leetcode.com/problems/symmetric-tree/"
+    },
+    {
+      "name": "Root to Node Path in Binary Tree",
+      "url": "https://www.geeksforgeeks.org/print-path-root-given-node-binary-tree/"
+    },
+    {
+      "name": "LCA in Binary Tree",
+      "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/"
+    },
+    {
+      "name": "Maximum width of a Binary Tree",
+      "url": "https://leetcode.com/problems/maximum-width-of-binary-tree/"
+    },
+    {
+      "name": "Check for Children Sum Property",
+      "url": "https://www.geeksforgeeks.org/problems/children-sum-parent/1"
+    },
+    {
+      "name": "Print all the Nodes at a distance of K in a Binary Tree",
+      "url": "https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/"
+    },
+    {
+      "name": "Minimum time taken to BURN the Binary Tree from a Node",
+      "url": "https://www.geeksforgeeks.org/problems/burning-tree/1"
+    },
+    {
+      "name": "Count total Nodes in a COMPLETE Binary Tree",
+      "url": "https://leetcode.com/problems/count-complete-tree-nodes/"
+    },
+    {
+      "name": "https://leetcode.com/problems/count-complete-tree-nodes/",
+      "url": "https://www.geeksforgeeks.org/problems/unique-binary-tree-requirements/1"
+    },
+    {
+      "name": "Construct Binary Tree from inorder and preorder",
+      "url": "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/"
+    },
+     {
+      "name": "Construct the Binary Tree from Postorder and Inorder Traversal",
+      "url": "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/"
+    },
+     {
+      "name": "Serialize and deserialize Binary Tree",
+      "url": "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/"
+    },
+     {
+      "name": "Morris Preorder Traversal of a Binary Tree",
+      "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/"
+    },
+     {
+      "name": "Morris Inorder Traversal of a Binary Tree",
+      "url": "https://leetcode.com/problems/binary-tree-inorder-traversal/"
+    },
+     {
+      "name": "Flatten Binary Tree to LinkedList",
+      "url": "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/"
+    },
+     {
+      "name": "Search in a Binary Search Tree",
+      "url": "https://leetcode.com/problems/search-in-a-binary-search-tree/"
+    },
+     {
+      "name": "https://leetcode.com/problems/search-in-a-binary-search-tree/",
+      "url": "https://www.geeksforgeeks.org/problems/minimum-element-in-bst/1"
+    },
+     {
+      "name": "Ceil in a Binary Search Tree",
+      "url": "https://www.geeksforgeeks.org/problems/implementing-ceil-in-bst/1"
+    },
+    {
+      "name": "Floor in a Binary Search Tree",
+      "url": "https://www.geeksforgeeks.org/problems/floor-in-bst/1"
+    },
+    {
+      "name": "Insert a given Node in Binary Search Tree",
+      "url": "https://leetcode.com/problems/insert-into-a-binary-search-tree/"
+    },
+    {
+      "name": "Delete a Node in Binary Search Tree",
+      "url": "https://leetcode.com/problems/delete-node-in-a-bst/"
+    },
+    {
+      "name": "Find K-th smallest/largest element in BST",
+      "url": "https://leetcode.com/problems/kth-smallest-element-in-a-bst/"
+    },
+    {
+      "name": "Check if a tree is a BST or BT",
+      "url": "https://leetcode.com/problems/validate-binary-search-tree/"
+    },
+    {
+      "name": "LCA in Binary Search Tree",
+      "url": "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"
+    },
+    {
+      "name": "Construct a BST from a preorder traversal",
+      "url": "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/"
+    },
+    {
+      "name": "Inorder Successor/Predecessor in BST",
+      "url": "https://leetcode.com/problems/inorder-successor-in-bst/"
+    },
+    {
+      "name": "Merge 2 BST's",
+      "url": "https://leetcode.com/problems/binary-search-tree-iterator/"
+    },
+    {
+      "name": "Two Sum In BST | Check if there exists a pair with Sum K",
+      "url": "https://leetcode.com/problems/two-sum-iv-input-is-a-bst/"
+    },
+    {
+      "name": "Recover BST | Correct BST with two nodes swapped",
+      "url": "https://leetcode.com/problems/recover-binary-search-tree/"
+    },
+    {
+      "name": "Largest BST in Binary Tree",
+      "url": "https://www.geeksforgeeks.org/problems/largest-bst/1"
+    }
+]}

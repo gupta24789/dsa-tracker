@@ -2,11 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>DSA Practice Tracker</title>
+  <title>Tracker</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>📚 DSA Tracker</h1>
+
+  <h1>Tracker</h1>
+
+  <!-- ✅ Topic filter dropdown -->
+  <label for="topicFilter"><strong>Filter by Topic:</strong></label>
+  <select id="topicFilter">
+    <option value="all">All Topics</option>
+  </select>
+
+  <!-- ✅ Where problems will be rendered -->
   <div id="content">Loading topics...</div>
 
   <script src="js/main.js"></script>

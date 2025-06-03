@@ -1,0 +1,72 @@
+{
+  "topic": "Bits Manipulation",
+  "problems": [
+    {
+      "name": "Check if the i-th bit is set or not",
+      "url": "https://www.geeksforgeeks.org/problems/check-whether-k-th-bit-is-set-or-not-1587115620/1"
+    },
+    {
+      "name": "Check if a number is odd or not",
+      "url": "https://www.geeksforgeeks.org/problems/odd-or-even3618/1"
+    },
+    {
+      "name": "Check if a number is power of 2 or not",
+      "url": "https://www.geeksforgeeks.org/problems/power-of-2-1587115620/1"
+    },
+    {
+      "name": "Count the number of set bits",
+      "url": "https://www.geeksforgeeks.org/problems/set-bits0143/1"
+    },
+    {
+      "name": "Set/Unset the rightmost unset bit",
+      "url": "https://www.geeksforgeeks.org/problems/set-the-rightmost-unset-bit4436/1"
+    },
+    {
+      "name": "Swap two numbers",
+      "url": "https://www.geeksforgeeks.org/problems/swap-two-numbers3844/1"
+    },
+    {
+      "name": "Divide two integers without using multiplication, division and mod operator",
+      "url": "https://leetcode.com/problems/divide-two-integers/"
+    },
+    {
+      "name": "Count number of bits to be flipped to convert A to B",
+      "url": "https://leetcode.com/problems/minimum-bit-flips-to-convert-number/"
+    },
+    {
+      "name": "Find the number that appears odd number of times",
+      "url": "https://leetcode.com/problems/single-number/"
+    },
+    {
+      "name": "Power Set",
+      "url": "https://leetcode.com/problems/subsets/"
+    },
+    {
+      "name": "Find xor of numbers from L to R",
+      "url": "https://www.geeksforgeeks.org/problems/find-xor-of-numbers-from-l-to-r/1"
+    },
+    {
+      "name": "Find the two numbers appearing odd number of times",
+      "url": "https://www.geeksforgeeks.org/problems/two-numbers-with-odd-occurrences5846/1"
+    },
+    {
+      "name": "Print Prime Factors of a Number",
+      "url": "https://www.geeksforgeeks.org/problems/prime-factors5052/1"
+    },
+    {
+      "name": "All Divisors of a Number",
+      "url": "https://www.geeksforgeeks.org/problems/all-divisors-of-a-number/1"
+    },
+    {
+      "name": "Sieve of Eratosthenes",
+      "url": "https://www.geeksforgeeks.org/problems/sieve-of-eratosthenes5242/1"
+    },
+    {
+      "name": "Find Prime Factorisation of a Number using Sieve",
+      "url": "https://www.geeksforgeeks.org/problems/prime-factors5052/1"
+    },
+    {
+      "name": "Power(n, x)",
+      "url": "https://leetcode.com/problems/powx-n/"
+    }
+]}

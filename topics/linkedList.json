@@ -1,0 +1,93 @@
+{
+  "topic": "Linked List",
+  "problems": [
+    {
+      "name": "Middle of a LinkedList [TortoiseHare Method]",
+      "url": "https://leetcode.com/problems/middle-of-the-linked-list/"
+    },
+    {
+      "name": "Reverse a LinkedList [Iterative]",
+      "url": "https://leetcode.com/problems/reverse-linked-list/"
+    },
+    {
+      "name": "Reverse a LL [Recursive]",
+      "url": "https://leetcode.com/problems/reverse-linked-list/"
+    },
+    {
+      "name": "Detect a loop in LL",
+      "url": "https://leetcode.com/problems/linked-list-cycle/"
+    },
+    {
+      "name": "Find the starting point in LL",
+      "url": "https://leetcode.com/problems/linked-list-cycle-ii/"
+    },
+    {
+      "name": "Length of Loop in LL",
+      "url": "https://www.geeksforgeeks.org/problems/find-length-of-loop/1"
+    },
+    {
+      "name": "Check if LL is palindrome or not",
+      "url": "https://leetcode.com/problems/palindrome-linked-list/"
+    },
+    {
+      "name": "Segrregate odd and even nodes in LL",
+      "url": "https://leetcode.com/problems/odd-even-linked-list/"
+    },
+    {
+      "name": "Remove Nth node from the back of the LL",
+      "url": "https://leetcode.com/problems/remove-nth-node-from-end-of-list/"
+    },
+    {
+      "name": "Delete the middle node of LL",
+      "url": "https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/description/"
+    },
+    {
+      "name": "Sort LL",
+      "url": "https://leetcode.com/problems/sort-list/"
+    },
+    {
+      "name": "Sort a LL of 0's 1's and 2's by changing links",
+      "url": "https://www.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1"
+    },
+    {
+      "name": "Find the intersection point of Y LL",
+      "url": "https://leetcode.com/problems/intersection-of-two-linked-lists/"
+    },
+    {
+      "name": "Add 1 to a number represented by LL",
+      "url": "https://www.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-linked-list/1"
+    },
+    {
+      "name": "Add 2 numbers in LL",
+      "url": "https://leetcode.com/problems/add-two-numbers/"
+    },
+    {
+      "name": "Delete all occurrences of a key in DLL",
+      "url": "https://www.geeksforgeeks.org/problems/delete-all-occurrences-of-a-given-key-in-a-doubly-linked-list/1"
+    },
+    {
+      "name": "Find pairs with given sum in DLL",
+      "url": "https://www.geeksforgeeks.org/problems/find-pairs-with-given-sum-in-doubly-linked-list/1"
+    },
+    {
+      "name": "Remove duplicates from sorted DLL",
+      "url": "https://www.geeksforgeeks.org/problems/remove-duplicates-from-a-sorted-doubly-linked-list/1"
+    },
+    {
+      "name": "Reverse LL in group of given size K",
+      "url": "https://leetcode.com/problems/reverse-nodes-in-k-group/"
+    },
+    {
+      "name": "Rotate a LL",
+      "url": "https://leetcode.com/problems/rotate-list/description/"
+    },
+    {
+      "name": "Flattening of LL",
+      "url": "https://www.geeksforgeeks.org/problems/flattening-a-linked-list/1"
+    },
+    {
+      "name": "Clone a Linked List with random and next pointer",
+      "url": "https://leetcode.com/problems/copy-list-with-random-pointer/"
+    }
+    
+]}

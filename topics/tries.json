@@ -1,0 +1,28 @@
+{
+  "topic": "Tries",
+  "problems": [
+    {
+      "name": "Implement Trie - 2 (Prefix Tree)",
+      "url": "https://takeuforward.org/data-structure/implement-trie-ii/"
+    },
+    {
+      "name": "Longest String with All Prefixes",
+      "url": "https://www.geeksforgeeks.org/problems/longest-valid-word-with-all-prefixes/1"
+    },
+    {
+      "name": "Number of Distinct Substrings in a String",
+      "url": "https://www.geeksforgeeks.org/problems/count-of-distinct-substrings/1"
+    },
+    {
+      "name": "Bit PreRequisites for TRIE Problems",
+      "url": "https://takeuforward.org/trie/bit-prerequisites-for-trie-problems"
+    },
+    {
+      "name": "Maximum XOR of two numbers in an array",
+      "url": "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/"
+    },
+    {
+      "name": "Maximum XOR With an Element From Array",
+      "url": "https://leetcode.com/problems/maximum-xor-with-an-element-from-array/"
+    }
+]}

@@ -1,0 +1,192 @@
+{
+  "topic": "Graphs",
+  "problems": [
+    {
+      "name": "Number of provinces (leetcode)",
+      "url": "https://leetcode.com/problems/number-of-provinces/description/"
+    },
+    {
+      "name": "Connected Components Problem in Matrix",
+      "url": "https://www.geeksforgeeks.org/problems/connected-components-in-an-undirected-graph/1"
+    },
+    {
+      "name": "Rotten Oranges",
+      "url": "https://leetcode.com/problems/rotting-oranges/"
+    },
+    {
+      "name": "Flood fill",
+      "url": "https://leetcode.com/problems/flood-fill/"
+    },
+    {
+      "name": "Cycle Detection in unirected Graph (bfs)",
+      "url": "https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1"
+    },
+    {
+      "name": "0/1 Matrix (Bfs Problem)",
+      "url": "https://leetcode.com/problems/01-matrix/"
+    },
+    {
+      "name": "Surrounded Regions (dfs)",
+      "url": "https://leetcode.com/problems/surrounded-regions/"
+    },
+    {
+      "name": "Number of Enclaves [flood fill implementation - multisource]",
+      "url": "https://leetcode.com/problems/number-of-enclaves/"
+    },
+    {
+      "name": "Word ladder - 1",
+      "url": "https://leetcode.com/problems/word-ladder/"
+    },
+    {
+      "name": "Word ladder - 2",
+      "url": "https://leetcode.com/problems/word-ladder-ii/"
+    },
+    {
+      "name": "Number of Distinct Islands [dfs multisource]",
+      "url": "https://leetcode.com/problems/number-of-distinct-islands-ii/"
+    },
+    {
+      "name": "Bipartite Graph (DFS)",
+      "url": "https://leetcode.com/problems/is-graph-bipartite/"
+    },
+    {
+      "name": "Cycle Detection in Directed Graph (DFS)",
+      "url": "https://leetcode.com/problems/course-schedule-ii/discuss/293048/detecting-cycle-in-directed-graph-problem"
+    },
+    {
+      "name": "Topo Sort",
+      "url": "https://www.geeksforgeeks.org/problems/topological-sort/1"
+    },
+    {
+      "name": "Kahn's Algorithm",
+      "url": "https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/"
+    },
+    {
+      "name": "Cycle Detection in Directed Graph (BFS)",
+      "url": "https://www.geeksforgeeks.org/detect-cycle-in-a-directed-graph-using-bfs/"
+    },
+    {
+      "name": "Course Schedule - I",
+      "url": "https://leetcode.com/problems/course-schedule/"
+    },
+    {
+      "name": "Course Schedule - II",
+      "url": "https://leetcode.com/problems/course-schedule-ii/"
+    },
+    {
+      "name": "Find eventual safe states",
+      "url": "https://leetcode.com/problems/find-eventual-safe-states/"
+    },
+    {
+      "name": "Alien dictionary",
+      "url": "https://leetcode.com/problems/alien-dictionary/solution/"
+    },
+    {
+      "name": "Shortest Path in UG with unit weights",
+      "url": "https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1"
+    },
+    {
+      "name": "Shortest Path in DAG",
+      "url": "https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/1"
+    },
+    {
+      "name": "Djisktra's Algorithm",
+      "url": "https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1"
+    },
+    {
+      "name": "Why priority Queue is used in Djisktra's Algorithm",
+      "url": "https://www.geeksforgeeks.org/can-we-use-simple-queue-instead-of-priority-queue-to-implement-dijkstras-algorithm/"
+    },
+    {
+      "name": "Shortest path in a binary maze",
+      "url": "https://leetcode.com/problems/shortest-path-in-binary-matrix/"
+    },
+    {
+      "name": "Path with minimum effort",
+      "url": "https://leetcode.com/problems/path-with-minimum-effort/"
+    },
+    {
+      "name": "Cheapest flights within k stops",
+      "url": "https://leetcode.com/problems/cheapest-flights-within-k-stops/"
+    },
+    {
+      "name": "Network Delay time",
+      "url": "https://leetcode.com/problems/network-delay-time/"
+    },
+    {
+      "name": "Number of ways to arrive at destination",
+      "url": "https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/"
+    },
+    {
+      "name": "Minimum steps to reach end from start by performing multiplication and mod operations with array elements",
+      "url": "https://www.geeksforgeeks.org/problems/minimum-multiplications-to-reach-end/1"
+    },
+    {
+      "name": "Bellman Ford Algorithm",
+      "url": "https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1"
+    },
+    {
+      "name": "Floyd Warshal Algorithm",
+      "url": "https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1"
+    },
+    {
+      "name": "Find the city with the smallest number of neighbors in a threshold distance",
+      "url": "https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/"
+    },
+    {
+      "name": "Minimum Spanning Tree",
+      "url": "https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1"
+    },
+    {
+      "name": "Prim's Algorithm",
+      "url": "https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1"
+    },
+    {
+      "name": "Disjoint Set [Union by Rank]",
+      "url": "https://www.geeksforgeeks.org/union-by-rank-and-path-compression-in-union-find-algorithm/"
+    },
+    {
+      "name": "Disjoint Set [Union by Size]",
+      "url": "https://www.geeksforgeeks.org/introduction-to-disjoint-set-data-structure-or-union-find-algorithm/"
+    },
+    {
+      "name": "Kruskal's Algorithm",
+      "url": "https://www.geeksforgeeks.org/problems/minimum-spanning-tree-kruskals-algorithm/1"
+    },
+    {
+      "name": "Number of operations to make network connected",
+      "url": "https://leetcode.com/problems/number-of-operations-to-make-network-connected/"
+    },
+    {
+      "name": "Most stones removed with same rows or columns",
+      "url": "https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/"
+    },
+    {
+      "name": "Accounts merge",
+      "url": "https://leetcode.com/problems/accounts-merge/"
+    },
+    {
+      "name": "Number of island II",
+      "url": "https://leetcode.com/problems/number-of-islands-ii/"
+    },
+    {
+      "name": "Making a Large Island",
+      "url": "https://leetcode.com/problems/making-a-large-island/"
+    },
+    {
+      "name": "Swim in rising water",
+      "url": "https://leetcode.com/problems/swim-in-rising-water/"
+    },
+    {
+      "name": "Bridges in Graph",
+      "url": "https://leetcode.com/problems/critical-connections-in-a-network/discuss/382385/find-bridges-in-a-graph"
+    },
+    {
+      "name": "Articulation Point",
+      "url": "https://www.geeksforgeeks.org/articulation-points-or-cut-vertices-in-a-graph/"
+    },
+    {
+      "name": "Kosaraju's Algorithm",
+      "url": "https://www.geeksforgeeks.org/strongly-connected-components/"
+    } 
+]}

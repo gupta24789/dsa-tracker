@@ -1,0 +1,220 @@
+{
+  "topic": "Dymanic Programming",
+  "problems": [
+    {
+      "name": "Climbing Stars",
+      "url": "https://leetcode.com/problems/climbing-stairs/"
+    },
+    {
+      "name": "Frog Jump(DP-3)",
+      "url": "https://www.geeksforgeeks.org/problems/geek-jump/1"
+    },
+    {
+      "name": "Frog Jump with k distances(DP-4)",
+      "url": "https://www.geeksforgeeks.org/problems/frogs-and-jumps--170647/1"
+    },
+    {
+      "name": "Maximum sum of non-adjacent elements (DP 5)",
+      "url": "https://leetcode.com/problems/house-robber/"
+    },
+    {
+      "name": "House Robber (DP 6)",
+      "url": "https://leetcode.com/problems/house-robber-ii/"
+    },
+    {
+      "name": "Ninja's Training (DP 7)",
+      "url": "https://www.geeksforgeeks.org/problems/geeks-training/1"
+    },
+    {
+      "name": "Grid Unique Paths : DP on Grids (DP8)",
+      "url": "https://leetcode.com/problems/unique-paths/"
+    },
+    {
+      "name": "Grid Unique Paths 2 (DP 9)",
+      "url": "https://leetcode.com/problems/unique-paths-ii/"
+    },
+    {
+      "name": "Minimum path sum in Grid (DP 10)",
+      "url": "https://leetcode.com/problems/minimum-path-sum/"
+    },
+    {
+      "name": "Minimum path sum in Triangular Grid (DP 11)",
+      "url": "https://leetcode.com/problems/triangle/"
+    },
+    {
+      "name": "Minimum/Maximum Falling Path Sum (DP-12)",
+      "url": "https://leetcode.com/problems/minimum-falling-path-sum/"
+    },
+    {
+      "name": "3-d DP : Ninja and his friends (DP-13)",
+      "url": "https://www.naukri.com/code360/problem-details/ninja-and-his-friends_3125885"
+    },
+    {
+      "name": "Subset sum equal to target (DP- 14)",
+      "url": "https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1"
+    },
+    {
+      "name": "Partition Equal Subset Sum (DP- 15)",
+      "url": "https://leetcode.com/problems/partition-equal-subset-sum/"
+    },
+    {
+      "name": "Partition Set Into 2 Subsets With Min Absolute Sum Diff (DP- 16)",
+      "url": "https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/"
+    },
+    {
+      "name": "Count Subsets with Sum K (DP - 17)",
+      "url": "https://www.geeksforgeeks.org/problems/perfect-sum-problem5633/1"
+    },
+    {
+      "name": "Count Partitions with Given Difference (DP - 18)",
+      "url": "https://www.geeksforgeeks.org/problems/partitions-with-given-difference/1"
+    },
+    {
+      "name": "Assign Cookies",
+      "url": "https://leetcode.com/problems/assign-cookies/"
+    },
+    {
+      "name": "Minimum Coins (DP - 20)",
+      "url": "https://leetcode.com/problems/coin-change/"
+    },
+    {
+      "name": "Target Sum (DP - 21)",
+      "url": "https://leetcode.com/problems/target-sum/"
+    },
+    {
+      "name": "Coin Change 2 (DP - 22)",
+      "url": "https://leetcode.com/problems/coin-change-2/"
+    },
+    {
+      "name": "Unbounded Knapsack (DP - 23)",
+      "url": "https://www.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1"
+    },
+    {
+      "name": "Rod Cutting Problem | (DP - 24)",
+      "url": "https://www.geeksforgeeks.org/problems/rod-cutting0840/1"
+    },
+    {
+      "name": "Longest Common Subsequence | (DP - 25)",
+      "url": "https://leetcode.com/problems/longest-common-subsequence/"
+    },
+    {
+      "name": "Print Longest Common Subsequence | (DP - 26)",
+      "url": "https://www.geeksforgeeks.org/printing-longest-common-subsequence/"
+    },
+    {
+      "name": "Longest Common Substring | (DP - 27)",
+      "url": "https://www.geeksforgeeks.org/problems/longest-common-substring1452/1"
+    },
+    {
+      "name": "Longest Palindromic Subsequence | (DP-28)",
+      "url": "https://leetcode.com/problems/longest-palindromic-subsequence/"
+    },
+    {
+      "name": "Minimum insertions to make string palindrome | DP-29",
+      "url": "https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/"
+    },
+    {
+      "name": "Minimum Insertions/Deletions to Convert String | (DP- 30)",
+      "url": "https://leetcode.com/problems/delete-operation-for-two-strings/"
+    },
+    {
+      "name": "Shortest Common Supersequence | (DP - 31)",
+      "url": "https://leetcode.com/problems/shortest-common-supersequence/"
+    },
+    {
+      "name": "Distinct Subsequences| (DP-32)",
+      "url": "https://leetcode.com/problems/distinct-subsequences/"
+    },
+    {
+      "name": "Edit Distance | (DP-33)",
+      "url": "https://leetcode.com/problems/edit-distance/"
+    },
+    {
+      "name": "Wildcard Matching | (DP-34)",
+      "url": "https://leetcode.com/problems/wildcard-matching/"
+    },
+    {
+      "name": "Best Time to Buy and Sell Stock |(DP-35)",
+      "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/"
+    },
+    {
+      "name": "Buy and Sell Stock - II|(DP-36)",
+      "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/"
+    },
+    {
+      "name": "Buy and Sell Stocks III|(DP-37)",
+      "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/"
+    },
+    {
+      "name": "Buy and Stock Sell IV |(DP-38)",
+      "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/"
+    },
+    {
+      "name": "Buy and Sell Stocks With Cooldown|(DP-39)",
+      "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/"
+    },
+    {
+      "name": "Buy and Sell Stocks With Transaction Fee|(DP-40)",
+      "url": "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/"
+    },
+    {
+      "name": "Longest Increasing Subsequence |(DP-41)",
+      "url": "https://leetcode.com/problems/longest-increasing-subsequence/"
+    },
+    {
+      "name": "Printing Longest Increasing Subsequence|(DP-42)",
+      "url": "https://www.geeksforgeeks.org/problems/printing-longest-increasing-subsequence/1"
+    },
+    {
+      "name": "Longest Increasing Subsequence |(DP-43)",
+      "url": "https://www.geeksforgeeks.org/problems/longest-increasing-subsequence-1587115620/1"
+    },
+    {
+      "name": "Largest Divisible Subset|(DP-44)",
+      "url": "https://leetcode.com/problems/largest-divisible-subset/"
+    },
+    {
+      "name": "Longest String Chain|(DP-45)",
+      "url": "https://leetcode.com/problems/longest-string-chain/"
+    },
+    {
+      "name": "Longest Bitonic Subsequence |(DP-46)",
+      "url": "https://www.geeksforgeeks.org/problems/longest-bitonic-subsequence0824/1"
+    },
+    {
+      "name": "Number of Longest Increasing Subsequences|(DP-47)",
+      "url": "https://leetcode.com/problems/number-of-longest-increasing-subsequence/"
+    },
+    {
+      "name": "Matrix Chain Multiplication|(DP-48)",
+      "url": "https://www.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1"
+    },
+    {
+      "name": "Minimum Cost to Cut the Stick|(DP-50)",
+      "url": "https://leetcode.com/problems/minimum-cost-to-cut-a-stick/"
+    },
+    {
+      "name": "Burst Balloons|(DP-51)",
+      "url": "https://leetcode.com/problems/burst-balloons/"
+    },
+    {
+      "name": "Evaluate Boolean Expression to True|(DP-52)",
+      "url": "https://leetcode.com/problems/parsing-a-boolean-expression/"
+    },
+    {
+      "name": "Palindrome Partitioning - II|(DP-53)",
+      "url": "https://leetcode.com/problems/palindrome-partitioning-ii/"
+    },
+    {
+      "name": "Partition Array for Maximum Sum|(DP-54)",
+      "url": "https://leetcode.com/problems/partition-array-for-maximum-sum/"
+    },
+    {
+      "name": "Maximum Rectangle Area with all 1's|(DP-55)",
+      "url": "https://leetcode.com/problems/maximal-rectangle/"
+    },
+    {
+      "name": "Count Square Submatrices with All Ones|(DP-56)",
+      "url": "https://leetcode.com/problems/count-square-submatrices-with-all-ones/"
+    }
+]}
