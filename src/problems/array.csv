@@ -1,0 +1,37 @@
+category,name,url
+medium,Largest Element in an Array,https://www.geeksforgeeks.org/problems/largest-element-in-array4009/1
+medium,Second Largest Element in an Array without sorting,https://www.geeksforgeeks.org/problems/second-largest3735/1
+medium,Check if the array is sorted,https://www.geeksforgeeks.org/problems/check-if-an-array-is-sorted0701/1
+medium,Remove duplicates from Sorted array,https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
+medium,Left rotate an array by D places,https://leetcode.com/problems/rotate-array/
+medium,Move Zeros to end,https://leetcode.com/problems/move-zeroes/
+medium,Find missing number in an array,https://leetcode.com/problems/missing-number/
+medium,Maximum Consecutive Ones,https://leetcode.com/problems/max-consecutive-ones/
+medium,"Find the number that appears once, and other numbers twice.",https://leetcode.com/problems/single-number/
+medium,Longest subarray with given sum K(positives and positive + negative),https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
+medium,2Sum Problem,https://leetcode.com/problems/two-sum/
+medium,Sort an array of 0's 1's and 2's,https://leetcode.com/problems/sort-colors/
+medium,Majority Element (>n/2 times),https://leetcode.com/problems/majority-element/
+medium,"Kadane's Algorithm, maximum subarray sum",https://leetcode.com/problems/maximum-subarray/
+medium,Print subarray with maximum subarray sum (extended version of above problem),https://www.geeksforgeeks.org/problems/maximum-sub-array5443/1
+medium,Stock Buy and Sell,https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+medium,Rearrange the array in alternating positive and negative items,https://leetcode.com/problems/rearrange-array-elements-by-sign/
+medium,Next Permutation,https://leetcode.com/problems/next-permutation/
+medium,Leaders in an Array problem,https://www.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1
+medium,Longest Consecutive Sequence in an Array,https://leetcode.com/problems/longest-consecutive-sequence/solution/
+medium,Set Matrix Zeros,https://leetcode.com/problems/set-matrix-zeroes/
+medium,Rotate Matrix by 90 degrees,https://leetcode.com/problems/rotate-image/
+medium,Print the matrix in spiral manner,https://leetcode.com/problems/rotate-image/
+medium,Count subarrays with given sum,https://leetcode.com/problems/subarray-sum-equals-k/
+medium,Pascal's Triangle,https://leetcode.com/problems/pascals-triangle/
+medium,Majority Element (n/3 times),https://leetcode.com/problems/majority-element-ii/description/
+medium,3-Sum Problem,https://leetcode.com/problems/3sum/
+medium,4-Sum Problem,https://leetcode.com/problems/4sum/
+medium,Largest Subarray with 0 Sum,https://www.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1
+medium,Count number of subarrays with given xor K,https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1
+medium,Merge Overlapping Subintervals,https://leetcode.com/problems/merge-intervals/
+medium,Merge two sorted arrays without extra space,https://leetcode.com/problems/merge-sorted-array/
+medium,Find the repeating and missing number,https://www.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
+medium,Count Inversions,https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+medium,Reverse Pairs,https://leetcode.com/problems/reverse-pairs/
+medium,Maximum Product Subarray,https://leetcode.com/problems/reverse-pairs/

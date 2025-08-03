@@ -2,22 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Tracker</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DSA Problem Tracker</title>
+  <link rel="stylesheet" href="src/style.css" />
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1>📚 DSA Problem Tracker</h1>
+      <p>Track your progress through Data Structures and Algorithms problems</p>
+    </header>
 
-  <h1>Tracker</h1>
+    <div class="stats-container">
+      <div class="stat-card">
+        <h3>Total Problems</h3>
+        <span id="totalProblems">0</span>
+      </div>
+      <div class="stat-card">
+        <h3>Completed</h3>
+        <span id="completedProblems">0</span>
+      </div>
+      <div class="stat-card">
+        <h3>Progress</h3>
+        <span id="progressPercentage">0%</span>
+      </div>
+    </div>
 
-  <!-- ✅ Topic filter dropdown -->
-  <label for="topicFilter"><strong>Filter by Topic:</strong></label>
-  <select id="topicFilter">
-    <option value="all">All Topics</option>
-  </select>
+    <div class="filter-section">
+      <label for="topicFilter"><strong>Filter by Topic:</strong></label>
+      <select id="topicFilter">
+        <option value="all">All Topics</option>
+      </select>
+    </div>
 
-  <!-- ✅ Where problems will be rendered -->
-  <div id="content">Loading topics...</div>
+    <div id="content">Loading topics...</div>
+  </div>
 
-  <script src="js/main.js"></script>
+  <script src="src/main.js"></script>
 </body>
 </html>
