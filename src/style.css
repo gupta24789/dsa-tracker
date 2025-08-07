@@ -73,6 +73,26 @@ header p {
   margin-bottom: 30px;
 }
 
+#resetButton {
+  margin-left: 10px;
+  padding: 8px 16px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+#resetButton:hover {
+  background-color: #dc2626;
+}
+
+#resetButton:active {
+  transform: scale(0.98);
+}
+
 #topicFilter {
   display: block;
   margin: 0 auto 30px auto;

@@ -138,9 +138,34 @@ document.addEventListener("DOMContentLoaded", () => {
     updateStats();
   }
 
+  const resetButton = document.getElementById("resetButton");
+
+  // Always show the reset button
+  resetButton.style.display = "inline-block";
+
   topicFilter.addEventListener("change", () => {
     const selected = topicFilter.value;
     loadAllTopics(selected);
+  });
+
+  resetButton.addEventListener("click", () => {
+    const selected = topicFilter.value;
+    let checkboxes;
+    
+    if (selected === "all") {
+      // Reset all checkboxes across all topics
+      checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    } else {
+      // Reset checkboxes only for the selected topic
+      checkboxes = document.querySelectorAll(`input[id^="${selected}-"]`);
+    }
+    
+    checkboxes.forEach(checkbox => {
+      checkbox.checked = false;
+      saveCheckboxState(checkbox.id, false);
+      checkbox.closest('.problem-card').classList.remove('completed');
+    });
+    updateStats();
   });
 
   // Run on startup
