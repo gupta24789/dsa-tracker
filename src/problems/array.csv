@@ -1,13 +1,13 @@
 category,name,url
-medium,Largest Element in an Array,https://www.geeksforgeeks.org/problems/largest-element-in-array4009/1
-medium,Second Largest Element in an Array without sorting,https://www.geeksforgeeks.org/problems/second-largest3735/1
-medium,Check if the array is sorted,https://www.geeksforgeeks.org/problems/check-if-an-array-is-sorted0701/1
-medium,Remove duplicates from Sorted array,https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
-medium,Left rotate an array by D places,https://leetcode.com/problems/rotate-array/
-medium,Move Zeros to end,https://leetcode.com/problems/move-zeroes/
-medium,Find missing number in an array,https://leetcode.com/problems/missing-number/
-medium,Maximum Consecutive Ones,https://leetcode.com/problems/max-consecutive-ones/
-medium,"Find the number that appears once, and other numbers twice.",https://leetcode.com/problems/single-number/
+easy,Largest Element in an Array,https://www.geeksforgeeks.org/problems/largest-element-in-array4009/1
+easy,Second Largest Element in an Array without sorting,https://www.geeksforgeeks.org/problems/second-largest3735/1
+easy,Check if the array is sorted,https://www.geeksforgeeks.org/problems/check-if-an-array-is-sorted0701/1
+easy,Remove duplicates from Sorted array,https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/
+easy,Left rotate an array by D places,https://leetcode.com/problems/rotate-array/
+easy,Move Zeros to end,https://leetcode.com/problems/move-zeroes/
+easy,Find missing number in an array,https://leetcode.com/problems/missing-number/
+easy,Maximum Consecutive Ones,https://leetcode.com/problems/max-consecutive-ones/
+easy,Find the number that appears once and other numbers twice,https://leetcode.com/problems/single-number/
 medium,Longest subarray with given sum K(positives and positive + negative),https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
 medium,2Sum Problem,https://leetcode.com/problems/two-sum/
 medium,Sort an array of 0's 1's and 2's,https://leetcode.com/problems/sort-colors/
