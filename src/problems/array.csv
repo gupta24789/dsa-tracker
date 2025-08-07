@@ -12,7 +12,7 @@ medium,Longest subarray with given sum K(positives and positive + negative),http
 medium,2Sum Problem,https://leetcode.com/problems/two-sum/
 medium,Sort an array of 0's 1's and 2's,https://leetcode.com/problems/sort-colors/
 medium,Majority Element (>n/2 times),https://leetcode.com/problems/majority-element/
-medium,"Kadane's Algorithm maximum subarray sum",https://leetcode.com/problems/maximum-subarray/
+medium - imp,"Kadane's Algorithm maximum subarray sum",https://leetcode.com/problems/maximum-subarray/
 medium,Print subarray with maximum subarray sum (extended version of above problem),https://www.geeksforgeeks.org/problems/maximum-sub-array5443/1
 medium,Stock Buy and Sell,https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 medium,Rearrange the array in alternating positive and negative items,https://leetcode.com/problems/rearrange-array-elements-by-sign/
@@ -32,6 +32,7 @@ medium,Count number of subarrays with given xor K,https://www.geeksforgeeks.org/
 medium,Merge Overlapping Subintervals,https://leetcode.com/problems/merge-intervals/
 medium,Merge two sorted arrays without extra space,https://leetcode.com/problems/merge-sorted-array/
 medium,Find the repeating and missing number,https://www.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
-medium,Count Inversions,https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
-medium,Reverse Pairs,https://leetcode.com/problems/reverse-pairs/
-medium,Maximum Product Subarray,https://leetcode.com/problems/reverse-pairs/
+medium,Maximum Product Subarray,https://leetcode.com/problems/maximum-product-subarray/description/
+hard,Count Inversions,https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1
+hard,Reverse Pairs,https://leetcode.com/problems/reverse-pairs/
+
