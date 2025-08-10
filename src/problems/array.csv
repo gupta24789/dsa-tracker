@@ -15,7 +15,7 @@ medium,Sort an array of 0's 1's and 2's,https://leetcode.com/problems/sort-color
 medium,Majority Element (>n/2 times),https://leetcode.com/problems/majority-element/
 medium,Majority Element (n/3 times),https://leetcode.com/problems/majority-element-ii/description/
 medium,Leaders in an Array problem,https://www.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1
-medium - imp,"Kadane's Algorithm maximum subarray sum",https://leetcode.com/problems/maximum-subarray/
+medium - imp,Kadane's Algorithm maximum subarray sum,https://leetcode.com/problems/maximum-subarray/
 medium,Print subarray with maximum subarray sum (extended version of above problem),https://www.geeksforgeeks.org/problems/maximum-sub-array5443/1
 medium - imp,Maximum Product Subarray,https://leetcode.com/problems/maximum-product-subarray/description/
 medium,Longest subarray with given sum K(positives and positive + negative),https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
@@ -25,10 +25,10 @@ medium,Count number of subarrays with given xor K,https://www.geeksforgeeks.org/
 medium,Stock Buy and Sell,https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 medium,Rearrange the array in alternating positive and negative items,https://leetcode.com/problems/rearrange-array-elements-by-sign/
 medium,Next Permutation,https://leetcode.com/problems/next-permutation/
-medium,Longest Consecutive Sequence in an Array,https://leetcode.com/problems/longest-consecutive-sequence/solution/
+medium - imp,Longest Consecutive Sequence in an Array,https://leetcode.com/problems/longest-consecutive-sequence/description/
 medium,Set Matrix Zeros,https://leetcode.com/problems/set-matrix-zeroes/
 medium,Rotate Matrix by 90 degrees,https://leetcode.com/problems/rotate-image/
-medium,Print the matrix in spiral manner,https://leetcode.com/problems/rotate-image/
+medium,Print the matrix in spiral manner,https://leetcode.com/problems/spiral-matrix/description/
 medium,Merge Overlapping Subintervals,https://leetcode.com/problems/merge-intervals/
 medium,Merge two sorted arrays without extra space,https://leetcode.com/problems/merge-sorted-array/
 medium,Find the repeating and missing number,https://www.geeksforgeeks.org/problems/find-missing-and-repeating2512/1
