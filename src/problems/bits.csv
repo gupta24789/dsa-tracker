@@ -5,7 +5,7 @@ medium,Check if a number is power of 2 or not,https://www.geeksforgeeks.org/prob
 medium,Count the number of set bits,https://www.geeksforgeeks.org/problems/set-bits0143/1
 medium,Set/Unset the rightmost unset bit,https://www.geeksforgeeks.org/problems/set-the-rightmost-unset-bit4436/1
 medium,Swap two numbers,https://www.geeksforgeeks.org/problems/swap-two-numbers3844/1
-medium,"Divide two integers without using multiplication, division and mod operator",https://leetcode.com/problems/divide-two-integers/
+medium,Divide two integers without using multiplication division and mod operator,https://leetcode.com/problems/divide-two-integers/
 medium,Count number of bits to be flipped to convert A to B,https://leetcode.com/problems/minimum-bit-flips-to-convert-number/
 medium,Find the number that appears odd number of times,https://leetcode.com/problems/single-number/
 medium,Power Set,https://leetcode.com/problems/subsets/
@@ -15,4 +15,4 @@ medium,Print Prime Factors of a Number,https://www.geeksforgeeks.org/problems/pr
 medium,All Divisors of a Number,https://www.geeksforgeeks.org/problems/all-divisors-of-a-number/1
 medium,Sieve of Eratosthenes,https://www.geeksforgeeks.org/problems/sieve-of-eratosthenes5242/1
 medium,Find Prime Factorisation of a Number using Sieve,https://www.geeksforgeeks.org/problems/prime-factors5052/1
-medium,"Power(n, x)",https://leetcode.com/problems/powx-n/
+medium,Power(n x),https://leetcode.com/problems/powx-n/

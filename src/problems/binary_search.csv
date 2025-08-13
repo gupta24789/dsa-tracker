@@ -1,14 +1,14 @@
 category,name,url
-medium,Binary Search to find X in sorted array,https://leetcode.com/problems/binary-search/
-medium,Implement Lower Bound,https://www.geeksforgeeks.org/problems/implement-lower-bound/1
-medium,Implement Upper Bound,https://www.geeksforgeeks.org/problems/implement-upper-bound/1
-medium,Search Insert Position,https://leetcode.com/problems/search-insert-position/description/
-medium,Floor/Ceil in Sorted Array,https://www.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1
+easy,Binary Search to find X in sorted array,https://leetcode.com/problems/binary-search/
+easy,Implement Lower Bound,https://www.geeksforgeeks.org/problems/implement-lower-bound/1
+easy,Implement Upper Bound,https://www.geeksforgeeks.org/problems/implement-upper-bound/1
+easy,Search Insert Position,https://leetcode.com/problems/search-insert-position/description/
+easy,Floor/Ceil in Sorted Array,https://www.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1
 medium,Find the first or last occurrence of a given number in a sorted array,https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/
 medium,Count occurrences of a number in a sorted array with duplicates,https://www.geeksforgeeks.org/problems/number-of-occurrence2259/1
-medium,Search in Rotated Sorted Array I,https://leetcode.com/problems/search-in-rotated-sorted-array/
+medium - imp,Search in Rotated Sorted Array I,https://leetcode.com/problems/search-in-rotated-sorted-array/
 medium,Search in Rotated Sorted Array II,https://leetcode.com/problems/search-in-rotated-sorted-array-ii/
-medium,Find minimum in Rotated Sorted Array,https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+medium - imp,Find minimum in Rotated Sorted Array,https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 medium,Find out how many times has an array been rotated,https://www.geeksforgeeks.org/problems/rotation4723/1
 medium,Single element in a Sorted Array,https://leetcode.com/problems/single-element-in-a-sorted-array/
 medium,Find peak element,https://leetcode.com/problems/find-peak-element/description/
@@ -23,11 +23,11 @@ medium,Aggressive Cows,https://www.geeksforgeeks.org/problems/aggressive-cows/1
 medium,Book Allocation Problem,https://www.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1
 medium,Split array - Largest Sum,https://leetcode.com/problems/split-array-largest-sum/
 medium,Painter's partition,https://www.geeksforgeeks.org/problems/the-painters-partition-problem1535/1
-medium,Minimize Max Distance to Gas Station,https://leetcode.com/problems/minimize-max-distance-to-gas-station/
-medium,Median of 2 sorted arrays,https://leetcode.com/problems/median-of-two-sorted-arrays/
+medium - imp,Median of 2 sorted arrays,https://leetcode.com/problems/median-of-two-sorted-arrays/
 medium,Kth element of 2 sorted arrays,https://www.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array1317/1
 medium,Find the row with maximum number of 1's,https://www.geeksforgeeks.org/problems/row-with-minimum-number-of-1s5430/1
 medium,Search in a 2 D matrix,https://leetcode.com/problems/search-a-2d-matrix/
 medium,Search in a row and column wise sorted matrix,https://leetcode.com/problems/search-a-2d-matrix-ii/
-medium,Find Peak Element (2D Matrix),https://leetcode.com/problems/find-a-peak-element-ii/
-medium,Matrix Median,https://www.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1
+medium - imp,Find Peak Element (2D Matrix),https://leetcode.com/problems/find-a-peak-element-ii/
+hard,Minimize Max Distance to Gas Station,https://www.geeksforgeeks.org/problems/minimize-max-distance-to-gas-station/1
+hard,Matrix Median,https://www.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1

@@ -1,6 +1,6 @@
 category,name,url
-medium,Recursive Implementation of atoi(),https://leetcode.com/problems/string-to-integer-atoi/
-medium,"Pow(x, n)",https://leetcode.com/problems/powx-n/
+medium,Recursive Implementation of atoi,https://leetcode.com/problems/string-to-integer-atoi/
+medium,Pow(x n),https://leetcode.com/problems/powx-n/
 medium,Count Good numbers,https://leetcode.com/problems/count-good-numbers/
 medium,Sort a stack using recursion,https://www.geeksforgeeks.org/problems/sort-a-stack/1
 medium,Reverse a stack using recursion,https://www.geeksforgeeks.org/problems/reverse-a-stack/1
@@ -8,18 +8,18 @@ medium,Generate all binary strings,https://www.geeksforgeeks.org/problems/genera
 medium,Generate Paranthesis,https://leetcode.com/problems/generate-parentheses/
 medium,Print all subsequences/Power Set,https://leetcode.com/problems/subsets/
 medium,Check if there exists a subsequence with sum K,https://www.geeksforgeeks.org/problems/check-if-there-exists-a-subsequence-with-sum-k/1
-medium,Count all subsequences with sum K,
+medium,Count all subsequences with sum K,https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/description/
 medium,Combination Sum,https://leetcode.com/problems/combination-sum/
 medium,Combination Sum-II,https://leetcode.com/problems/combination-sum-ii/
+medium,Combination Sum - III,https://leetcode.com/problems/combination-sum-iii/
 medium,Subset Sum-I,https://www.geeksforgeeks.org/problems/subset-sums2234/1
 medium,Subset Sum-II,https://leetcode.com/problems/subsets-ii/
-medium,Combination Sum - III,https://leetcode.com/problems/combination-sum-iii/
 medium,Letter Combinations of a Phone number,https://leetcode.com/problems/letter-combinations-of-a-phone-number/
 medium,Palindrome Partitioning,https://leetcode.com/problems/palindrome-partitioning/
 medium,Word Search,https://leetcode.com/problems/word-search/
-medium,N Queen,https://leetcode.com/problems/n-queens/
 medium,Rat in a Maze,https://www.geeksforgeeks.org/problems/rat-in-a-maze-problem/1&selectedLang=python3
 medium,Word Break,https://leetcode.com/problems/word-break/
 medium,M Coloring Problem,https://www.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1
-medium,Sudoko Solver,https://leetcode.com/problems/sudoku-solver/
-medium,Expression Add Operators,https://leetcode.com/problems/expression-add-operators/
+hard,N Queen,https://leetcode.com/problems/n-queens/
+hard,Sudoko Solver,https://leetcode.com/problems/sudoku-solver/
+hard,Expression Add Operators,https://leetcode.com/problems/expression-add-operators/
