@@ -1,10 +1,10 @@
 category,name,url
-medium,Infix to Postfix Conversion using Stack,https://www.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1
+medium,Infix to Postfix Conversion,https://www.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1
+medium,Infix To Prefix Conversion,https://www.geeksforgeeks.org/problems/infix-to-prefix-notation/1
 medium,Prefix to Infix Conversion,https://www.geeksforgeeks.org/problems/prefix-to-infix-conversion/1
+medium,Postfix to Infix Conversion,https://www.geeksforgeeks.org/problems/postfix-to-infix-conversion/1
 medium,Prefix to Postfix Conversion,https://www.geeksforgeeks.org/problems/prefix-to-postfix-conversion/1
 medium,Postfix to Prefix Conversion,https://www.geeksforgeeks.org/problems/postfix-to-prefix-conversion/1
-medium,Postfix to Infix,https://www.geeksforgeeks.org/problems/postfix-to-infix-conversion/1
-medium,Convert Infix To Prefix Notation,
 medium,Next Greater Element,https://leetcode.com/problems/next-greater-element-i/
 medium,Next Greater Element 2,https://leetcode.com/problems/next-greater-element-ii/
 medium,Next Smaller Element,https://www.geeksforgeeks.org/problems/immediate-smaller-element1142/1
