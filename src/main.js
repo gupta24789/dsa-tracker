@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const topics = [
     "array", "binary_search", "linkedList", "recursion", "bits",
-    "stack", "sliding_window_two_pointer", "heaps", "tree", "graphs",
+    "stack_and_queue", "sliding_window_two_pointer", "heaps", "tree", "graphs",
     "dp", "tries", "string", "greedy"
   ];
 
