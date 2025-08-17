@@ -29,11 +29,22 @@
     </div>
 
     <div class="filter-section">
-      <label for="topicFilter"><strong>Filter by Topic:</strong></label>
-      <select id="topicFilter">
-        <option value="all">All Topics</option>
-      </select>
-      <button id="resetButton">Reset Progress</button>
+      <div class="filter-row">
+        <label for="sectionFilter"><strong>Select Section:</strong></label>
+        <select id="sectionFilter">
+          <option value="problems">Problems</option>
+          <option value="cheat_sheet">Cheat Sheets</option>
+          <option value="patterns">Patterns</option>
+        </select>
+      </div>
+      
+      <div class="filter-row">
+        <label for="topicFilter"><strong>Filter by Topic:</strong></label>
+        <select id="topicFilter">
+          <option value="all">All Topics</option>
+        </select>
+        <button id="resetButton">Reset Progress</button>
+      </div>
     </div>
 
     <div id="content">Loading topics...</div>

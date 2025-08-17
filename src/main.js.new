@@ -47,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById('completedProblems').textContent = completedProblems;
     document.getElementById('progressPercentage').textContent = `${progressPercentage}%`;
 
+    // Update progress bar color based on completion
     const progressElement = document.getElementById('progressPercentage');
     if (progressPercentage >= 80) {
       progressElement.style.color = '#22c55e';
@@ -55,6 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       progressElement.style.color = '#ef4444';
     }
+
+    // Save the current state
+    saveSolvedProblems();
   }
 
   const topicFilter = document.getElementById("topicFilter");
@@ -66,48 +70,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchAvailableTopics(section) {
     try {
-      const timestamp = new Date().getTime(); // Add timestamp to prevent caching
-      let files = [];
-      
-      try {
-        // Try to fetch the directory listing
-        const response = await fetch(`src/${section}/?t=${timestamp}`, {
-          headers: {
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            'Pragma': 'no-cache',
-            'Expires': '0'
-          },
-          cache: 'no-store'
+      const response = await fetch(`src/${section}/`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const text = await response.text();
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(text, 'text/html');
+      const files = Array.from(doc.querySelectorAll('a'))
+        .map(a => a.href)
+        .filter(href => {
+          const extension = section === 'problems' ? '.csv' : '.md';
+          return href.endsWith(extension);
+        })
+        .map(href => {
+          const filename = href.split('/').pop();
+          return filename.replace(section === 'problems' ? '.csv' : '.md', '');
         });
-        
-        if (response.ok) {
-          const text = await response.text();
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(text, 'text/html');
-          files = Array.from(doc.querySelectorAll('a'))
-            .map(a => a.href)
-            .filter(href => {
-              const extension = section === 'problems' ? '.csv' : '.md';
-              return href.endsWith(extension);
-            })
-            .map(href => {
-              const filename = href.split('/').pop();
-              return filename.replace(section === 'problems' ? '.csv' : '.md', '');
-            });
-        }
-      } catch (err) {
-        console.warn('Failed to fetch directory listing:', err);
-      }
-
-      // If no files found and it's problems section, use the static list
-      if (files.length === 0 && section === 'problems') {
-        files = [
-          "array", "binary_search", "linkedList", "recursion", "bits",
-          "stack", "sliding_window_two_pointer", "heaps", "tree", "graphs",
-          "dp", "tries", "string", "greedy"
-        ];
-      }
-      
       availableTopics[section] = files;
       return files;
     } catch (err) {
@@ -149,15 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function loadMarkdownContent(topic) {
-    const timestamp = new Date().getTime(); // Add timestamp to prevent caching
-    const response = await fetch(`src/${currentSection}/${topic}.md?t=${timestamp}`, {
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0'
-      },
-      cache: 'no-store'
-    });
+    const response = await fetch(`src/${currentSection}/${topic}.md`);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -191,14 +162,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (currentSection === 'problems') {
         // Handle CSV files for problems section
-        const timestamp = new Date().getTime(); // Add timestamp to prevent caching
-        const response = await fetch(`src/${currentSection}/${topic}.csv?t=${timestamp}`, {
-          headers: {
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            'Pragma': 'no-cache',
-            'Expires': '0'
-          },
-          cache: 'no-store'
+        // Add cache-busting query parameter with current timestamp
+        const response = await fetch(`src/${currentSection}/${topic}.csv?t=${Date.now()}`, {
+          cache: 'no-store' // Ensures fresh content is always fetched
         });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -304,14 +270,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   resetButton.addEventListener("click", () => {
     const selected = topicFilter.value;
-    let checkboxes = document.querySelectorAll(`input[id^="${selected}-"]`);
+    let checkboxes;
+    
+    if (selected === "all") {
+      // Clear all solved problems
+      solvedProblems.clear();
+      checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    } else {
+      // Clear only problems for the selected topic
+      const problemIdsToRemove = [...solvedProblems].filter(id => id.startsWith(`${selected}-`));
+      problemIdsToRemove.forEach(id => solvedProblems.delete(id));
+      checkboxes = document.querySelectorAll(`input[id^="${selected}-"]`);
+    }
     
     checkboxes.forEach(checkbox => {
       checkbox.checked = false;
-      saveCheckboxState(checkbox.id, false);
       checkbox.closest('.problem-card').classList.remove('completed');
     });
     
+    saveSolvedProblems();
     updateStats();
   });
 

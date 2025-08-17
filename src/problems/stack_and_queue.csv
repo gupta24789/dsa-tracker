@@ -7,7 +7,7 @@ medium,Prefix to Postfix Conversion,https://www.geeksforgeeks.org/problems/prefi
 medium,Postfix to Prefix Conversion,https://www.geeksforgeeks.org/problems/postfix-to-prefix-conversion/1
 medium,Next Greater Element,https://leetcode.com/problems/next-greater-element-i/
 medium,Next Greater Element 2,https://leetcode.com/problems/next-greater-element-ii/
-medium,Previous Smaller Element,https://www.geeksforgeeks.org/problems/smaller-on-left20360700/1
+medium,Previous Smaller Element,https://www.geeksforgeeks.org/problems/smallest-number-on-left3403/1
 medium,Trapping Rainwater,https://leetcode.com/problems/trapping-rain-water/
 medium- imp,Sum of subarray minimum,https://leetcode.com/problems/sum-of-subarray-minimums/
 medium,Sum of subarray ranges,https://leetcode.com/problems/sum-of-subarray-ranges/
@@ -15,7 +15,7 @@ medium,Asteroid Collision,https://leetcode.com/problems/asteroid-collision/
 medium,Remove k Digits,https://leetcode.com/problems/remove-k-digits/
 medium,Largest rectangle in a histogram,https://leetcode.com/problems/largest-rectangle-in-histogram/
 medium,Maximal Rectangles,https://leetcode.com/problems/maximal-rectangle/
-medium,Sliding Window maximum,https://leetcode.com/problems/sliding-window-maximum/
+medium - imp,Sliding Window maximum,https://leetcode.com/problems/sliding-window-maximum/
 medium,Stock span problem,https://leetcode.com/problems/online-stock-span/
 medium,The Celebrity Problem,https://www.geeksforgeeks.org/problems/the-celebrity-problem/1
 medium - imp,LRU cache,https://leetcode.com/problems/lru-cache/
