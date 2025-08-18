@@ -3,11 +3,10 @@ medium,Maximum point you can obtain from cards,https://leetcode.com/problems/max
 medium,Longest Substring Without Repeating Characters,https://leetcode.com/problems/longest-substring-without-repeating-characters/
 medium,Max Consecutive Ones III,https://leetcode.com/problems/max-consecutive-ones-iii/
 medium,Fruit Into Baskets,https://www.geeksforgeeks.org/problems/fruit-into-baskets-1663137462/1
-medium,Longest Substring with At Most K Distinct Characters,https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
+medium,Longest Substring with At Most K Distinct Characters,https://www.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1
 medium,Number of substring containing all three characters,https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
 medium,longest repeating character replacement,https://leetcode.com/problems/longest-repeating-character-replacement/
 medium - imp,Binary subarray with sum,https://leetcode.com/problems/binary-subarrays-with-sum/
 medium,Count number of nice subarrays,https://leetcode.com/problems/count-number-of-nice-subarrays/
 hard,Subarray with k different integers,https://leetcode.com/problems/subarrays-with-k-different-integers/
 hard,Minimum Window Substring,https://leetcode.com/problems/minimum-window-substring/
-hard,Minimum Window Subsequence,https://leetcode.com/problems/minimum-window-subsequence/
