@@ -1,3 +1,0 @@
-
-## Problems Cheat Sheet
-

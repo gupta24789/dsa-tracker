@@ -14,7 +14,11 @@ body {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 header {
@@ -146,18 +150,271 @@ label[for="topicFilter"] {
 
 .topic-section {
   background: white;
-  border-radius: 12px;
-  padding: 25px;
-  margin-bottom: 25px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 16px;
+  padding: 35px;
+  margin-bottom: 30px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .topic-section h2 {
-  color: #333;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #f0f0f0;
-  font-size: 1.5rem;
+  color: #2d3748;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e2e8f0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Markdown Content Styles */
+.markdown-content {
+  line-height: 1.8;
+  color: #2d3748;
+  font-size: 16px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.markdown-content h1 {
+  font-size: 2.25em;
+  margin: 1.5em 0 0.8em;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 0.5em;
+  font-weight: 700;
+  color: #1a202c;
+  letter-spacing: -0.5px;
+}
+
+.markdown-content h2 {
+  font-size: 1.8em;
+  margin: 1.8em 0 0.8em;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.4em;
+  font-weight: 600;
+  color: #2d3748;
+  letter-spacing: -0.3px;
+}
+
+.markdown-content h3 {
+  font-size: 1.5em;
+  margin: 1.5em 0 0.8em;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.markdown-content h4 {
+  font-size: 1.25em;
+  margin: 1.2em 0 0.6em;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.markdown-content h5 {
+  font-size: 1.1em;
+  margin: 1em 0 0.5em;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.markdown-content h6 {
+  font-size: 1em;
+  margin: 1em 0 0.5em;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.markdown-content p {
+  margin: 1.2em 0;
+  line-height: 1.8;
+}
+
+.markdown-content br {
+  display: block;
+  content: "";
+  margin: 0.5em 0;
+  line-height: 1.8;
+}
+
+.markdown-content code {
+  background-color: #f7fafc;
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 0.9em;
+  color: #805ad5;
+  border: 1px solid #edf2f7;
+}
+
+.markdown-content pre {
+  background-color: #2d3748;
+  padding: 1.25rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  border: 1px solid #4a5568;
+}
+
+.markdown-content pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.95em;
+  color: #f7fafc;
+  border: none;
+  line-height: 1.6;
+}
+
+.markdown-content ul, .markdown-content ol {
+  margin: 1.2em 0;
+  padding-left: 2.5em;
+}
+
+.markdown-content li {
+  margin: 0.5em 0;
+  line-height: 1.6;
+}
+
+.markdown-content blockquote {
+  margin: 1.5em 0;
+  padding: 1em 1.5em;
+  color: #4a5568;
+  border-left: 4px solid #805ad5;
+  background-color: #f7fafc;
+  border-radius: 0 8px 8px 0;
+}
+
+.markdown-content blockquote p {
+  margin: 0.5em 0;
+}
+
+.markdown-content img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5em 0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.markdown-content p {
+  margin: 1.2em 0;
+  line-height: 1.8;
+}
+
+/* Style for dot separators */
+.markdown-content p:not(:empty) {
+  text-align: center;
+}
+
+.markdown-content p:contains("• • • • • • • •") {
+  color: #805ad5;
+  letter-spacing: 8px;
+  margin: 2em 0;
+  font-size: 1.2em;
+  opacity: 0.7;
+  text-align: center;
+}
+
+.markdown-content table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  margin: 1.5em 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.markdown-content table th {
+  background-color: #f7fafc;
+  font-weight: 600;
+  color: #2d3748;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-bottom: 2px solid #cbd5e0;
+}
+
+.markdown-content table td {
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.markdown-content table tr {
+  background-color: #fff;
+  transition: background-color 0.2s ease;
+}
+
+.markdown-content table tr:nth-child(2n) {
+  background-color: #f7fafc;
+}
+
+.markdown-content table tr:hover {
+  background-color: #edf2f7;
+}
+
+.markdown-content a {
+  color: #805ad5;
+  text-decoration: none;
+  border-bottom: 1px dotted #805ad5;
+  transition: all 0.2s ease;
+}
+
+.markdown-content a:hover {
+  color: #6b46c1;
+  border-bottom: 1px solid #6b46c1;
+}
+
+.markdown-content strong {
+  font-weight: 600;
+  color: #1a202c;
+}
+
+.markdown-content em {
+  font-style: italic;
+  color: #4a5568;
+}
+
+.markdown-content .custom-hr {
+  text-align: center;
+  margin: 2em 0;
+  height: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.markdown-content .custom-hr span {
+  display: inline-block;
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #805ad5,
+    transparent
+  );
+  position: relative;
+}
+
+.markdown-content .custom-hr span::before,
+.markdown-content .custom-hr span::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #805ad5;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.markdown-content .custom-hr span::before {
+  left: -10px;
+}
+
+.markdown-content .custom-hr span::after {
+  right: -10px;
 }
 
 .problems-container {
@@ -403,4 +660,10 @@ label[for="topicFilter"] {
 
 .problem-card.completed {
   animation: complete 0.3s ease;
+}
+
+.markdown-content hr {
+  border: none;
+  border-top: 2px solid #e2e8f0; /* light gray line */
+  margin: 2em 0;                 /* spacing above and below */
 }

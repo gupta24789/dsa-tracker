@@ -161,22 +161,47 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const markdownText = await response.text();
+    let markdownText = await response.text();
     const contentDiv = document.createElement("div");
     contentDiv.className = "markdown-content";
     
-    // Add simple markdown-to-HTML conversion
-    const htmlContent = markdownText
-      .replace(/^# (.*$)/gm, '<h1>$1</h1>')
-      .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-      .replace(/^### (.*$)/gm, '<h3>$1</h3>')
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
-      .replace(/`([^`]+)`/g, '<code>$1</code>')
-      .split('\n').join('<br>');
+    // Preprocess markdown text to handle horizontal rules
+    markdownText = markdownText.replace(/^[\s]*---[\s]*$/gm, '\n\n---\n\n');
     
-    contentDiv.innerHTML = htmlContent;
+    // Configure marked options with custom renderer
+    const renderer = new marked.Renderer();
+    
+    // Custom renderer for horizontal rules
+    renderer.hr = function() {
+      return '<div class="custom-hr"><span></span></div>';
+    };
+
+    marked.setOptions({
+      renderer: renderer,
+      highlight: function(code, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+          return hljs.highlight(code, { language: lang }).value;
+        }
+        return hljs.highlightAuto(code).value;
+      },
+      breaks: true,
+      gfm: true,
+      headerIds: true,
+      xhtml: true,
+      pedantic: false,
+      mangle: false,
+      headerPrefix: 'section-',
+      smartLists: true,
+      smartypants: true
+    });
+
+    // Use marked.js for proper markdown rendering
+    contentDiv.innerHTML = marked.parse(markdownText);
+    
+    // Initialize syntax highlighting
+    contentDiv.querySelectorAll('pre code').forEach(block => {
+      hljs.highlightElement(block);
+    });
     return contentDiv;
   }
 
