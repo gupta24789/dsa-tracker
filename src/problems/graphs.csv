@@ -26,8 +26,9 @@ medium,Djisktra's Algorithm (priority queue|set|print shortest path),https://www
 medium,Shortest path in a binary maze,https://leetcode.com/problems/shortest-path-in-binary-matrix/
 medium,Path with minimum effort,https://leetcode.com/problems/path-with-minimum-effort/
 medium,Cheapest flights within k stops,https://leetcode.com/problems/cheapest-flights-within-k-stops/
-medium,Minimum Multiplications to reach End,https://www.geeksforgeeks.org/problems/minimum-multiplications-to-reach-end/1
+medium,Network Delay time,https://leetcode.com/problems/network-delay-time/
 medium,Number of ways to arrive at destination,https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/
+medium,Minimum Multiplications to reach End,https://www.geeksforgeeks.org/problems/minimum-multiplications-to-reach-end/1
 medium,Bellman Ford Algorithm,https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1
 medium,Floyd Warshal Algorithm,https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1
 medium,Find the city with the smallest number of neighbors in a threshold distance,https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/
@@ -35,12 +36,11 @@ medium,Minimum Spanning Tree,https://www.geeksforgeeks.org/problems/minimum-span
 medium,Prim's Algorithm,https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
 medium,Kruskal's Algorithm,https://www.geeksforgeeks.org/problems/minimum-spanning-tree-kruskals-algorithm/1
 medium,Number of operations to make network connected,https://leetcode.com/problems/number-of-operations-to-make-network-connected/
+medium,Most stones removed with same rows or columns,https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
 medium,Accounts merge,https://leetcode.com/problems/accounts-merge/
 medium,Number of island II,https://www.geeksforgeeks.org/problems/number-of-islands/1
 medium,Making a Large Island,https://leetcode.com/problems/making-a-large-island/
-medium,Most stones removed with same rows or columns,https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
-medium,Kosaraju's Algorithm,https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
-medium,Bridges in Graph,https://leetcode.com/problems/critical-connections-in-a-network/discuss/382385/find-bridges-in-a-graph
-medium,Articulation Point,https://www.geeksforgeeks.org/problems/articulation-point2616/1
-medium,Network Delay time,https://leetcode.com/problems/network-delay-time/
 medium,Swim in rising water,https://leetcode.com/problems/swim-in-rising-water/
+medium,Bridges in Graph,https://leetcode.com/problems/critical-connections-in-a-network/discuss/382385/find-bridges-in-a-graph
+hard,Articulation Point,https://www.geeksforgeeks.org/problems/articulation-point2616/1
+medium,Kosaraju's Algorithm,https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
