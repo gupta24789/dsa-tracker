@@ -1,24 +1,24 @@
 category,name,url
-medium,Minimum number of bracket reversals needed to make an expression balanced,https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/
-medium,Count and say,https://leetcode.com/problems/count-and-say/
-medium,Rabin Karp,https://leetcode.com/problems/repeated-string-match/discuss/416144/Rabin-Karp-algorithm-C%2B%2B-implementation
-medium,Z-Function,https://leetcode.com/problems/implement-strstr/
-medium,KMP algo / LPS(pi) array,https://leetcode.com/problems/implement-strstr/
-medium,Shortest Palindrome,https://leetcode.com/problems/shortest-palindrome/
-medium,Longest happy prefix,https://leetcode.com/problems/longest-happy-prefix/
-medium,Count palindromic subsequence in given string,https://www.geeksforgeeks.org/problems/count-palindromic-subsequences/1
-medium,Remove outermost Paranthesis,https://leetcode.com/problems/remove-outermost-parentheses/
+new,Remove outermost Paranthesis,https://leetcode.com/problems/remove-outermost-parentheses/
 medium,Reverse words in a given string / Palindrome Check,https://leetcode.com/problems/reverse-words-in-a-string/
 medium,Largest odd number in a string,https://leetcode.com/problems/largest-odd-number-in-string/
 medium,Longest Common Prefix,https://leetcode.com/problems/longest-common-prefix/
 medium,Isomorphic String,https://leetcode.com/problems/isomorphic-strings/
 medium,check whether one string is a rotation of another,https://leetcode.com/problems/rotate-string/
-medium,Check if two strings are anagram of each other,https://leetcode.com/problems/valid-anagram/description/
+new,Check if two strings are anagram of each other,https://leetcode.com/problems/valid-anagram/description/
 medium,Sort Characters by frequency,https://leetcode.com/problems/sort-characters-by-frequency/
 medium,Maximum Nesting Depth of Paranthesis,https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/
 medium,Roman Number to Integer and vice versa,https://leetcode.com/problems/roman-to-integer/
 medium,Implement Atoi,https://leetcode.com/problems/string-to-integer-atoi/
 medium,Count Number of Substrings,https://www.geeksforgeeks.org/number-substrings-string/
-medium,Longest Palindromic Substring[Do it without DP],https://leetcode.com/problems/longest-palindromic-substring/
+new,Longest Palindromic Substring,https://leetcode.com/problems/longest-palindromic-substring/
 medium,Sum of Beauty of all substring,https://leetcode.com/problems/sum-of-beauty-of-all-substrings/
 medium,Reverse Every Word in A String,https://leetcode.com/problems/reverse-words-in-a-string/
+medium,Minimum number of bracket reversals needed to make an expression balanced,https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/
+medium,Count and say,https://leetcode.com/problems/count-and-say/
+new,Rabin Karp,https://leetcode.com/problems/repeated-string-match/discuss/416144/Rabin-Karp-algorithm-C%2B%2B-implementation
+medium,Z-Function,https://leetcode.com/problems/implement-strstr/
+medium,KMP algo / LPS(pi) array,https://leetcode.com/problems/implement-strstr/
+medium,Shortest Palindrome,https://leetcode.com/problems/shortest-palindrome/
+medium,Longest happy prefix,https://leetcode.com/problems/longest-happy-prefix/
+medium,Count palindromic subsequence in given string,https://www.geeksforgeeks.org/problems/count-palindromic-subsequences/1

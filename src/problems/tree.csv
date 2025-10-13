@@ -1,5 +1,5 @@
 category,name,url
-medium,Preorder Traversal of Binary Tree,https://leetcode.com/problems/binary-tree-preorder-traversal/
+new,Preorder Traversal of Binary Tree,https://leetcode.com/problems/binary-tree-preorder-traversal/
 medium,Inorder Traversal of Binary Tree,https://leetcode.com/problems/binary-tree-inorder-traversal/
 medium,Post-order Traversal of Binary Tree,https://leetcode.com/problems/binary-tree-postorder-traversal/
 medium,Level order Traversal / Level order traversal in spiral form,https://leetcode.com/problems/binary-tree-level-order-traversal/
@@ -7,7 +7,10 @@ medium,Iterative Preorder Traversal of Binary Tree,https://leetcode.com/problems
 medium,Iterative Inorder Traversal of Binary Tree,https://leetcode.com/problems/binary-tree-inorder-traversal/
 medium,Post-order Traversal of Binary Tree using 2 stack,https://leetcode.com/problems/binary-tree-postorder-traversal/
 medium,Post-order Traversal of Binary Tree using 1 stack,https://leetcode.com/problems/binary-tree-postorder-traversal/
-medium,Height of a Binary Tree,https://leetcode.com/problems/maximum-depth-of-binary-tree/
+new,Height of a Binary Tree,https://leetcode.com/problems/maximum-depth-of-binary-tree/
+medium,Bottom View of Binary Tree,https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1
+medium,Right/Left View of Binary Tree,https://leetcode.com/problems/binary-tree-right-side-view/
+medium,Symmetric Binary Tree,https://leetcode.com/problems/symmetric-tree/
 medium,Check if the Binary tree is height-balanced or not,https://leetcode.com/problems/balanced-binary-tree/
 medium,Diameter of Binary Tree,https://leetcode.com/problems/diameter-of-binary-tree/
 medium,Maximum path sum,https://leetcode.com/problems/binary-tree-maximum-path-sum/
@@ -16,10 +19,12 @@ medium,Zig Zag Traversal of Binary Tree,https://leetcode.com/problems/binary-tre
 medium,Boundary Traversal of Binary Tree,https://www.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1
 medium,Vertical Order Traversal of Binary Tree,https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/
 medium,Top View of Binary Tree,https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1
-medium,Bottom View of Binary Tree,https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1
-medium,Right/Left View of Binary Tree,https://leetcode.com/problems/binary-tree-right-side-view/
-medium,Symmetric Binary Tree,https://leetcode.com/problems/symmetric-tree/
-medium,Root to Node Path in Binary Tree,https://www.geeksforgeeks.org/problems/root-to-leaf-paths/1
+new,Root to Node Path in Binary Tree,https://www.geeksforgeeks.org/problems/root-to-leaf-paths/1
+medium,Construct the Binary Tree from Postorder and Inorder Traversal,https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
+medium,Serialize and deserialize Binary Tree,https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
+medium,Morris Preorder Traversal of a Binary Tree,https://leetcode.com/problems/binary-tree-inorder-traversal/
+medium,Morris Inorder Traversal of a Binary Tree,https://leetcode.com/problems/binary-tree-inorder-traversal/
+medium,Flatten Binary Tree to LinkedList,https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
 medium,LCA in Binary Tree,https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 medium,Maximum width of a Binary Tree,https://leetcode.com/problems/maximum-width-of-binary-tree/
 medium,Check for Children Sum Property,https://www.geeksforgeeks.org/problems/children-sum-parent/1
@@ -28,14 +33,13 @@ medium,Minimum time taken to BURN the Binary Tree from a Node,https://www.geeksf
 medium,Count total Nodes in a COMPLETE Binary Tree,https://leetcode.com/problems/count-complete-tree-nodes/
 medium,unique binary tree,https://www.geeksforgeeks.org/problems/unique-binary-tree-requirements/1
 medium,Construct Binary Tree from inorder and preorder,https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
-medium,Construct the Binary Tree from Postorder and Inorder Traversal,https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
-medium,Serialize and deserialize Binary Tree,https://leetcode.com/problems/serialize-and-deserialize-binary-tree/
-medium,Morris Preorder Traversal of a Binary Tree,https://leetcode.com/problems/binary-tree-inorder-traversal/
-medium,Morris Inorder Traversal of a Binary Tree,https://leetcode.com/problems/binary-tree-inorder-traversal/
-medium,Flatten Binary Tree to LinkedList,https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
-medium,Search in a Binary Search Tree,https://leetcode.com/problems/search-in-a-binary-search-tree/
-medium,Minimum element in BST,https://www.geeksforgeeks.org/problems/minimum-element-in-bst/1
+new,Search in a Binary Search Tree,https://leetcode.com/problems/search-in-a-binary-search-tree/
+medium,Minimum/Maximum element in BST,https://www.geeksforgeeks.org/problems/minimum-element-in-bst/1
 medium,Ceil in a Binary Search Tree,https://www.geeksforgeeks.org/problems/implementing-ceil-in-bst/1
+medium,Merge 2 BST's,https://leetcode.com/problems/binary-search-tree-iterator/
+medium,Two Sum In BST | Check if there exists a pair with Sum K,https://leetcode.com/problems/two-sum-iv-input-is-a-bst/
+medium,Recover BST | Correct BST with two nodes swapped,https://leetcode.com/problems/recover-binary-search-tree/
+medium,Largest BST in Binary Tree,https://www.geeksforgeeks.org/problems/largest-bst/1
 medium,Floor in a Binary Search Tree,https://www.geeksforgeeks.org/problems/floor-in-bst/1
 medium,Insert a given Node in Binary Search Tree,https://leetcode.com/problems/insert-into-a-binary-search-tree/
 medium,Delete a Node in Binary Search Tree,https://leetcode.com/problems/delete-node-in-a-bst/
@@ -44,7 +48,3 @@ medium,Check if a tree is a BST or BT,https://leetcode.com/problems/validate-bin
 medium,LCA in Binary Search Tree,https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 medium,Construct a BST from a preorder traversal,https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/
 medium,Inorder Successor/Predecessor in BST,https://www.geeksforgeeks.org/problems/predecessor-and-successor/1
-medium,Merge 2 BST's,https://leetcode.com/problems/binary-search-tree-iterator/
-medium,Two Sum In BST | Check if there exists a pair with Sum K,https://leetcode.com/problems/two-sum-iv-input-is-a-bst/
-medium,Recover BST | Correct BST with two nodes swapped,https://leetcode.com/problems/recover-binary-search-tree/
-medium,Largest BST in Binary Tree,https://www.geeksforgeeks.org/problems/largest-bst/1

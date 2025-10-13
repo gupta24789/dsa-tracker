@@ -1,28 +1,26 @@
 category,name,url
-medium,Number of provinces(bfs|dfs),https://leetcode.com/problems/number-of-provinces/description/
-medium,Number of Island | Connected Components,https://www.geeksforgeeks.org/problems/connected-components-in-an-undirected-graph/1
-medium,Flood fill,https://leetcode.com/problems/flood-fill/
+new,Number of provinces (BFS|DFS),https://leetcode.com/problems/number-of-provinces/description/
+medium,Number of Island | Connected Components (BFS|DFS),https://www.geeksforgeeks.org/problems/connected-components-in-an-undirected-graph/1
 medium,Rotten Oranges,https://leetcode.com/problems/rotting-oranges/
-medium,Detech cycle in unirected Graph using,https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
-medium,Distance of nearest cell having 0/1,https://leetcode.com/problems/01-matrix/
+medium,Flood fill,https://leetcode.com/problems/flood-fill/
+medium,Detech cycle in unirected Graph (BFS|DFS),https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
+medium,0/1 Matrix,https://leetcode.com/problems/01-matrix/
 medium,Surrounded Regions,https://leetcode.com/problems/surrounded-regions/
 medium,Number of Enclaves,https://leetcode.com/problems/number-of-enclaves/
+medium,Word ladder - 1,https://leetcode.com/problems/word-ladder/
+medium,Word ladder - 2,https://leetcode.com/problems/word-ladder-ii/
 medium,Number of Distinct Islands,https://leetcode.com/problems/number-of-distinct-islands-ii/
 medium,Bipartite Graph (bfs|dfs),https://leetcode.com/problems/is-graph-bipartite/
-medium,Topo Sort,https://www.geeksforgeeks.org/problems/topological-sort/1
+new,Topo Sort,https://www.geeksforgeeks.org/problems/topological-sort/1
 medium,Kahn's Algorithm,https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/
-medium,Find eventual safe states (dfs|bfs|topo sort),https://leetcode.com/problems/find-eventual-safe-states/description/
 medium,Detect Cycle in Directed Graph (bfs|dfs|topo sort),https://leetcode.com/problems/course-schedule-ii/discuss/293048/detecting-cycle-in-directed-graph-problem
 medium,Course Schedule - I,https://leetcode.com/problems/course-schedule/
 medium,Course Schedule - II,https://leetcode.com/problems/course-schedule-ii/
+medium,Find eventual safe states (dfs|bfs|topo sort),https://leetcode.com/problems/find-eventual-safe-states/description/
 medium,Alien dictionary,https://www.geeksforgeeks.org/problems/alien-dictionary/1
+new,Djisktra's Algorithm (priority queue|set|print shortest path),https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
 medium,Shortest Path in directed acylic graph,https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/1
 medium,Shortest Path in directed graph with unit weights,https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1
-medium,Word ladder - 1,https://leetcode.com/problems/word-ladder/
-medium,Word ladder - 2,https://leetcode.com/problems/word-ladder-ii/
-medium,Disjoint Set [Union by Rank| Union by Size],https://www.geeksforgeeks.org/problems/disjoint-set-union-find/1
-medium,Number of provinces(disjoint set),https://leetcode.com/problems/number-of-provinces/description/
-medium,Djisktra's Algorithm (priority queue|set|print shortest path),https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
 medium,Shortest path in a binary maze,https://leetcode.com/problems/shortest-path-in-binary-matrix/
 medium,Path with minimum effort,https://leetcode.com/problems/path-with-minimum-effort/
 medium,Cheapest flights within k stops,https://leetcode.com/problems/cheapest-flights-within-k-stops/
@@ -32,8 +30,10 @@ medium,Minimum Multiplications to reach End,https://www.geeksforgeeks.org/proble
 medium,Bellman Ford Algorithm,https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1
 medium,Floyd Warshal Algorithm,https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1
 medium,Find the city with the smallest number of neighbors in a threshold distance,https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/
-medium,Minimum Spanning Tree,https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
+new,Minimum Spanning Tree,https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
 medium,Prim's Algorithm,https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
+medium,Disjoint Set [Union by Rank| Union by Size],https://www.geeksforgeeks.org/problems/disjoint-set-union-find/1
+medium,Number of provinces(disjoint set),https://leetcode.com/problems/number-of-provinces/description/
 medium,Kruskal's Algorithm,https://www.geeksforgeeks.org/problems/minimum-spanning-tree-kruskals-algorithm/1
 medium,Number of operations to make network connected,https://leetcode.com/problems/number-of-operations-to-make-network-connected/
 medium,Most stones removed with same rows or columns,https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
@@ -41,6 +41,6 @@ medium,Accounts merge,https://leetcode.com/problems/accounts-merge/
 medium,Number of island II,https://www.geeksforgeeks.org/problems/number-of-islands/1
 medium,Making a Large Island,https://leetcode.com/problems/making-a-large-island/
 medium,Swim in rising water,https://leetcode.com/problems/swim-in-rising-water/
-medium,Bridges in Graph,https://leetcode.com/problems/critical-connections-in-a-network/discuss/382385/find-bridges-in-a-graph
+new,Bridges in Graph,https://leetcode.com/problems/critical-connections-in-a-network/discuss/382385/find-bridges-in-a-graph
 hard,Articulation Point,https://www.geeksforgeeks.org/problems/articulation-point2616/1
 medium,Kosaraju's Algorithm,https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1

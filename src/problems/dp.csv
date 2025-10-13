@@ -1,28 +1,27 @@
 category,name,url
-medium,Climbing Stars,https://leetcode.com/problems/climbing-stairs/
+new,Climbing Stars,https://leetcode.com/problems/climbing-stairs/
 medium,Frog Jump(DP-3),https://www.geeksforgeeks.org/problems/geek-jump/1
-medium,Frog Jump with k distances(DP-4),https://www.geeksforgeeks.org/problems/frogs-and-jumps--170647/1
-medium,Maximum sum of non-adjacent elements (DP 5),https://leetcode.com/problems/house-robber/
-medium,House Robber (DP 6),https://leetcode.com/problems/house-robber-ii/
-medium,Ninja's Training (DP 7),https://www.geeksforgeeks.org/problems/geeks-training/1
+medium,House Robber (DP 5),https://leetcode.com/problems/house-robber/
+medium,House Robber II (DP 6),https://leetcode.com/problems/house-robber-ii/
+new,Ninja's Training (DP 7),https://www.geeksforgeeks.org/problems/geeks-training/1
 medium,Grid Unique Paths : DP on Grids (DP8),https://leetcode.com/problems/unique-paths/
 medium,Grid Unique Paths 2 (DP 9),https://leetcode.com/problems/unique-paths-ii/
 medium,Minimum path sum in Grid (DP 10),https://leetcode.com/problems/minimum-path-sum/
 medium,Minimum path sum in Triangular Grid (DP 11),https://leetcode.com/problems/triangle/
 medium,Minimum/Maximum Falling Path Sum (DP-12),https://leetcode.com/problems/minimum-falling-path-sum/
 medium,3-d DP : Ninja and his friends (DP-13),https://leetcode.com/problems/cherry-pickup/description/
-medium,Subset sum equal to target (DP- 14),https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1
+new,Subset sum equal to target (DP- 14),https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1
+medium,Unbounded Knapsack (DP - 23),https://www.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1
+medium,Rod Cutting Problem | (DP - 24),https://www.geeksforgeeks.org/problems/rod-cutting0840/1
 medium,Partition Equal Subset Sum (DP- 15),https://leetcode.com/problems/partition-equal-subset-sum/
 medium,Partition Set Into 2 Subsets With Min Absolute Sum Diff (DP- 16),https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/
 medium,Count Subsets with Sum K (DP - 17),https://www.geeksforgeeks.org/problems/perfect-sum-problem5633/1
 medium,Count Partitions with Given Difference (DP - 18),https://www.geeksforgeeks.org/problems/partitions-with-given-difference/1
-medium,Assign Cookies,https://leetcode.com/problems/assign-cookies/
 medium,Minimum Coins (DP - 20),https://leetcode.com/problems/coin-change/
 medium,Target Sum (DP - 21),https://leetcode.com/problems/target-sum/
 medium,Coin Change 2 (DP - 22),https://leetcode.com/problems/coin-change-2/
-medium,Unbounded Knapsack (DP - 23),https://www.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1
-medium,Rod Cutting Problem | (DP - 24),https://www.geeksforgeeks.org/problems/rod-cutting0840/1
-medium,Longest Common Subsequence | (DP - 25),https://leetcode.com/problems/longest-common-subsequence/
+new,Longest Common Subsequence | (DP - 25),https://leetcode.com/problems/longest-common-subsequence/
+medium,Wildcard Matching | (DP-34),https://leetcode.com/problems/wildcard-matching/
 medium,Print Longest Common Subsequence | (DP - 26),https://www.geeksforgeeks.org/problems/print-all-lcs-sequences3413/1
 medium,Longest Common Substring | (DP - 27),https://www.geeksforgeeks.org/problems/longest-common-substring1452/1
 medium,Longest Palindromic Subsequence | (DP-28),https://leetcode.com/problems/longest-palindromic-subsequence/
@@ -31,25 +30,24 @@ medium,Minimum Insertions/Deletions to Convert String | (DP- 30),https://leetcod
 medium,Shortest Common Supersequence | (DP - 31),https://leetcode.com/problems/shortest-common-supersequence/
 medium,Distinct Subsequences| (DP-32),https://leetcode.com/problems/distinct-subsequences/
 medium,Edit Distance | (DP-33),https://leetcode.com/problems/edit-distance/
-medium,Wildcard Matching | (DP-34),https://leetcode.com/problems/wildcard-matching/
-medium,Best Time to Buy and Sell Stock |(DP-35),https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+new,Best Time to Buy and Sell Stock |(DP-35),https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 medium,Buy and Sell Stock - II|(DP-36),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
 medium,Buy and Sell Stocks III|(DP-37),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
 medium,Buy and Stock Sell IV |(DP-38),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
 medium,Buy and Sell Stocks With Cooldown|(DP-39),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
 medium,Buy and Sell Stocks With Transaction Fee|(DP-40),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
-medium,Longest Increasing Subsequence |(DP-41),https://leetcode.com/problems/longest-increasing-subsequence/
+new,Longest Increasing Subsequence |(DP-41),https://leetcode.com/problems/longest-increasing-subsequence/
 medium,Printing Longest Increasing Subsequence|(DP-42),https://www.geeksforgeeks.org/problems/printing-longest-increasing-subsequence/1
 medium,Longest Increasing Subsequence |(DP-43),https://www.geeksforgeeks.org/problems/longest-increasing-subsequence-1587115620/1
 medium,Largest Divisible Subset|(DP-44),https://leetcode.com/problems/largest-divisible-subset/
 medium,Longest String Chain|(DP-45),https://leetcode.com/problems/longest-string-chain/
 medium,Longest Bitonic Subsequence |(DP-46),https://www.geeksforgeeks.org/problems/longest-bitonic-subsequence0824/1
 medium,Number of Longest Increasing Subsequences|(DP-47),https://leetcode.com/problems/number-of-longest-increasing-subsequence/
-medium,Matrix Chain Multiplication|(DP-48),https://www.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1
+new,Matrix Chain Multiplication|(DP-48),https://www.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1
 medium,Minimum Cost to Cut the Stick|(DP-50),https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
 medium,Burst Balloons|(DP-51),https://leetcode.com/problems/burst-balloons/
 medium,Evaluate Boolean Expression to True|(DP-52),https://leetcode.com/problems/parsing-a-boolean-expression/
 medium,Palindrome Partitioning - II|(DP-53),https://leetcode.com/problems/palindrome-partitioning-ii/
 medium,Partition Array for Maximum Sum|(DP-54),https://leetcode.com/problems/partition-array-for-maximum-sum/
-medium,Maximum Rectangle Area with all 1's|(DP-55),https://leetcode.com/problems/maximal-rectangle/
+new,Maximum Rectangle Area with all 1's|(DP-55),https://leetcode.com/problems/maximal-rectangle/
 medium,Count Square Submatrices with All Ones|(DP-56),https://leetcode.com/problems/count-square-submatrices-with-all-ones/
