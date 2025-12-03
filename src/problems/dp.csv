@@ -1,53 +1,53 @@
-category,name,url
-new,Climbing Stars,https://leetcode.com/problems/climbing-stairs/
-medium,Frog Jump(DP-3),https://www.geeksforgeeks.org/problems/geek-jump/1
-medium,House Robber (DP 5),https://leetcode.com/problems/house-robber/
-medium,House Robber II (DP 6),https://leetcode.com/problems/house-robber-ii/
-new,Ninja's Training (DP 7),https://www.geeksforgeeks.org/problems/geeks-training/1
-medium,Grid Unique Paths : DP on Grids (DP8),https://leetcode.com/problems/unique-paths/
-medium,Grid Unique Paths 2 (DP 9),https://leetcode.com/problems/unique-paths-ii/
-medium,Minimum path sum in Grid (DP 10),https://leetcode.com/problems/minimum-path-sum/
-medium,Minimum path sum in Triangular Grid (DP 11),https://leetcode.com/problems/triangle/
-medium,Minimum/Maximum Falling Path Sum (DP-12),https://leetcode.com/problems/minimum-falling-path-sum/
-medium,3-d DP : Ninja and his friends (DP-13),https://leetcode.com/problems/cherry-pickup/description/
-new,Subset sum equal to target (DP- 14),https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1
-medium,Unbounded Knapsack (DP - 23),https://www.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1
-medium,Rod Cutting Problem | (DP - 24),https://www.geeksforgeeks.org/problems/rod-cutting0840/1
-medium,Partition Equal Subset Sum (DP- 15),https://leetcode.com/problems/partition-equal-subset-sum/
-medium,Partition Set Into 2 Subsets With Min Absolute Sum Diff (DP- 16),https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/
-medium,Count Subsets with Sum K (DP - 17),https://www.geeksforgeeks.org/problems/perfect-sum-problem5633/1
-medium,Count Partitions with Given Difference (DP - 18),https://www.geeksforgeeks.org/problems/partitions-with-given-difference/1
-medium,Minimum Coins (DP - 20),https://leetcode.com/problems/coin-change/
-medium,Target Sum (DP - 21),https://leetcode.com/problems/target-sum/
-medium,Coin Change 2 (DP - 22),https://leetcode.com/problems/coin-change-2/
-new,Longest Common Subsequence | (DP - 25),https://leetcode.com/problems/longest-common-subsequence/
-medium,Wildcard Matching | (DP-34),https://leetcode.com/problems/wildcard-matching/
-medium,Print Longest Common Subsequence | (DP - 26),https://www.geeksforgeeks.org/problems/print-all-lcs-sequences3413/1
-medium,Longest Common Substring | (DP - 27),https://www.geeksforgeeks.org/problems/longest-common-substring1452/1
-medium,Longest Palindromic Subsequence | (DP-28),https://leetcode.com/problems/longest-palindromic-subsequence/
-medium,Minimum insertions to make string palindrome | DP-29,https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
-medium,Minimum Insertions/Deletions to Convert String | (DP- 30),https://leetcode.com/problems/delete-operation-for-two-strings/
-medium,Shortest Common Supersequence | (DP - 31),https://leetcode.com/problems/shortest-common-supersequence/
-medium,Distinct Subsequences| (DP-32),https://leetcode.com/problems/distinct-subsequences/
-medium,Edit Distance | (DP-33),https://leetcode.com/problems/edit-distance/
-new,Best Time to Buy and Sell Stock |(DP-35),https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
-medium,Buy and Sell Stock - II|(DP-36),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
-medium,Buy and Sell Stocks III|(DP-37),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
-medium,Buy and Stock Sell IV |(DP-38),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
-medium,Buy and Sell Stocks With Cooldown|(DP-39),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
-medium,Buy and Sell Stocks With Transaction Fee|(DP-40),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
-new,Longest Increasing Subsequence |(DP-41),https://leetcode.com/problems/longest-increasing-subsequence/
-medium,Printing Longest Increasing Subsequence|(DP-42),https://www.geeksforgeeks.org/problems/printing-longest-increasing-subsequence/1
-medium,Longest Increasing Subsequence |(DP-43),https://www.geeksforgeeks.org/problems/longest-increasing-subsequence-1587115620/1
-medium,Largest Divisible Subset|(DP-44),https://leetcode.com/problems/largest-divisible-subset/
-medium,Longest String Chain|(DP-45),https://leetcode.com/problems/longest-string-chain/
-medium,Longest Bitonic Subsequence |(DP-46),https://www.geeksforgeeks.org/problems/longest-bitonic-subsequence0824/1
-medium,Number of Longest Increasing Subsequences|(DP-47),https://leetcode.com/problems/number-of-longest-increasing-subsequence/
-new,Matrix Chain Multiplication|(DP-48),https://www.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1
-medium,Minimum Cost to Cut the Stick|(DP-50),https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
-medium,Burst Balloons|(DP-51),https://leetcode.com/problems/burst-balloons/
-medium,Evaluate Boolean Expression to True|(DP-52),https://leetcode.com/problems/parsing-a-boolean-expression/
-medium,Palindrome Partitioning - II|(DP-53),https://leetcode.com/problems/palindrome-partitioning-ii/
-medium,Partition Array for Maximum Sum|(DP-54),https://leetcode.com/problems/partition-array-for-maximum-sum/
-new,Maximum Rectangle Area with all 1's|(DP-55),https://leetcode.com/problems/maximal-rectangle/
-medium,Count Square Submatrices with All Ones|(DP-56),https://leetcode.com/problems/count-square-submatrices-with-all-ones/
+category,pattern,name,complexity,url
+new,1D DP,Climbing Stars,TC: O(n) | SC: O(n),https://leetcode.com/problems/climbing-stairs/
+medium,1D DP,Frog Jump(DP-3),TC: O(n) | SC: O(n),https://www.geeksforgeeks.org/problems/geek-jump/1
+medium,1D DP,House Robber (DP 5),TC: O(n) | SC: O(n),https://leetcode.com/problems/house-robber/
+medium,1D DP,House Robber II (DP 6),TC: O(n) | SC: O(n),https://leetcode.com/problems/house-robber-ii/
+medium,1D DP,Partition Array for Maximum Sum|(DP-54),TC: O(n) | SC: O(1),https://leetcode.com/problems/partition-array-for-maximum-sum/
+new,2D DP,Ninja's Training (DP 7),TC: O(n) | SC: O(n),https://www.geeksforgeeks.org/problems/geeks-training/1
+medium,2D DP,Grid Unique Paths : DP on Grids (DP8),TC: O(m×n) | SC: O(m×n),https://leetcode.com/problems/unique-paths/
+medium,2D DP,Grid Unique Paths 2 (DP 9),TC: O(m×n) | SC: O(m×n),https://leetcode.com/problems/unique-paths-ii/
+medium,2D DP,Minimum path sum in Grid (DP 10),TC: O(m×n) | SC: O(m×n),https://leetcode.com/problems/minimum-path-sum/
+medium,2D DP,Minimum path sum in Triangular Grid (DP 11),TC: O(n²) | SC: O(n²),https://leetcode.com/problems/triangle/
+medium,2D DP,Minimum/Maximum Falling Path Sum (DP-12),TC: O(m×n) | SC: O(m×n),https://leetcode.com/problems/minimum-falling-path-sum/
+new,2D DP,Maximum Rectangle Area with all 1's|(DP-55),TC: O(n) | SC: O(1),https://leetcode.com/problems/maximal-rectangle/
+medium,2D DP,Count Square Submatrices with All Ones|(DP-56),TC: O(n) | SC: O(1),https://leetcode.com/problems/count-square-submatrices-with-all-ones/
+medium,3D DP,3-d DP : Ninja and his friends (DP-13),TC: O(m×n×k) | SC: O(m×n×k),https://leetcode.com/problems/cherry-pickup/description/
+new,Knapsack,Subset sum equal to target (DP- 14),TC: O(n×s) | SC: O(n×s),https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1
+medium,Knapsack,Unbounded Knapsack (DP - 23),TC: O(n×W) | SC: O(n×W),https://www.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1
+medium,Knapsack,Rod Cutting Problem | (DP - 24),TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/rod-cutting0840/1
+medium,Knapsack,Partition Equal Subset Sum (DP- 15),TC: O(n×s) | SC: O(n×s),https://leetcode.com/problems/partition-equal-subset-sum/
+medium,Knapsack,Partition Set Into 2 Subsets With Min Absolute Sum Diff (DP- 16),TC: O(n×s) | SC: O(n×s),https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/
+medium,Knapsack,Count Subsets with Sum K (DP - 17),TC: O(n×s) | SC: O(n×s),https://www.geeksforgeeks.org/problems/perfect-sum-problem5633/1
+medium,Knapsack,Count Partitions with Given Difference (DP - 18),TC: O(n×s) | SC: O(n×s),https://www.geeksforgeeks.org/problems/partitions-with-given-difference/1
+medium,Knapsack,Target Sum (DP - 21),TC: O(n×s) | SC: O(n×s),https://leetcode.com/problems/target-sum/
+medium,Unbounded Knapsack,Minimum Coins (DP - 20),TC: O(n×W) | SC: O(n×W),https://leetcode.com/problems/coin-change/
+medium,Unbounded Knapsack,Coin Change 2 (DP - 22),TC: O(n×W) | SC: O(n×W),https://leetcode.com/problems/coin-change-2/
+new,String DP,Longest Common Subsequence | (DP - 25),TC: O(n) | SC: O(1),https://leetcode.com/problems/longest-common-subsequence/
+medium,String DP,Wildcard Matching | (DP-34),TC: O(n) | SC: O(1),https://leetcode.com/problems/wildcard-matching/
+medium,String DP,Print Longest Common Subsequence | (DP - 26),TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/print-all-lcs-sequences3413/1
+medium,String DP,Longest Common Substring | (DP - 27),TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/longest-common-substring1452/1
+medium,String DP,Longest Palindromic Subsequence | (DP-28),TC: O(n) | SC: O(1),https://leetcode.com/problems/longest-palindromic-subsequence/
+medium,String DP,Minimum insertions to make string palindrome | DP-29,TC: O(n) | SC: O(1),https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
+medium,String DP,Minimum Insertions/Deletions to Convert String | (DP- 30),TC: O(n) | SC: O(1),https://leetcode.com/problems/delete-operation-for-two-strings/
+medium,String DP,Shortest Common Supersequence | (DP - 31),TC: O(n) | SC: O(1),https://leetcode.com/problems/shortest-common-supersequence/
+medium,String DP,Distinct Subsequences| (DP-32),TC: O(n) | SC: O(1),https://leetcode.com/problems/distinct-subsequences/
+medium,String DP,Edit Distance | (DP-33),TC: O(n) | SC: O(1),https://leetcode.com/problems/edit-distance/
+new,Stock DP,Best Time to Buy and Sell Stock |(DP-35),TC: O(n) | SC: O(1),https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+medium,Stock DP,Buy and Sell Stock - II|(DP-36),TC: O(n) | SC: O(1),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+medium,Stock DP,Buy and Sell Stocks III|(DP-37),TC: O(n) | SC: O(1),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/
+medium,Stock DP,Buy and Stock Sell IV |(DP-38),TC: O(n) | SC: O(1),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/
+medium,Stock DP,Buy and Sell Stocks With Cooldown|(DP-39),TC: O(n) | SC: O(1),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+medium,Stock DP,Buy and Sell Stocks With Transaction Fee|(DP-40),TC: O(n) | SC: O(1),https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
+new,Subsequence DP,Longest Increasing Subsequence |(DP-41),TC: O(n) | SC: O(1),https://leetcode.com/problems/longest-increasing-subsequence/
+medium,Subsequence DP,Printing Longest Increasing Subsequence|(DP-42),TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/printing-longest-increasing-subsequence/1
+medium,Subsequence DP,Longest Increasing Subsequence |(DP-43),TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/longest-increasing-subsequence-1587115620/1
+medium,Subsequence DP,Largest Divisible Subset|(DP-44),TC: O(n) | SC: O(1),https://leetcode.com/problems/largest-divisible-subset/
+medium,Subsequence DP,Longest String Chain|(DP-45),TC: O(n) | SC: O(1),https://leetcode.com/problems/longest-string-chain/
+medium,Subsequence DP,Longest Bitonic Subsequence |(DP-46),TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/longest-bitonic-subsequence0824/1
+medium,Subsequence DP,Number of Longest Increasing Subsequences|(DP-47),TC: O(n) | SC: O(1),https://leetcode.com/problems/number-of-longest-increasing-subsequence/
+new,Interval DP,Matrix Chain Multiplication|(DP-48),TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1
+medium,Interval DP,Minimum Cost to Cut the Stick|(DP-50),TC: O(n) | SC: O(1),https://leetcode.com/problems/minimum-cost-to-cut-a-stick/
+medium,Interval DP,Burst Balloons|(DP-51),TC: O(n) | SC: O(1),https://leetcode.com/problems/burst-balloons/
+medium,Interval DP,Evaluate Boolean Expression to True|(DP-52),TC: O(n) | SC: O(1),https://leetcode.com/problems/parsing-a-boolean-expression/
+medium,Interval DP,Palindrome Partitioning - II|(DP-53),TC: O(n) | SC: O(1),https://leetcode.com/problems/palindrome-partitioning-ii/

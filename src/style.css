@@ -443,6 +443,56 @@ label[for="topicFilter"] {
   border-color: #22c55e;
 }
 
+/* Pattern table styles */
+.pattern-section {
+  margin-bottom: 24px;
+}
+
+.pattern-header {
+  margin: 8px 0 12px;
+  font-size: 1.05rem;
+  color: #2d3748;
+}
+
+.pattern-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
+
+.pattern-table thead th {
+  text-align: left;
+  padding: 10px 12px;
+  background: #f7fafc;
+  border-bottom: 1px solid #e6edf3;
+  font-weight: 600;
+}
+
+.pattern-table tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.pattern-table tbody tr.completed {
+  background: #f0f9ff;
+}
+
+.pattern-table tbody tr:hover {
+  background: #fbfdff;
+}
+
+.complexity-cell {
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  color: #667eea;
+  font-size: 0.9rem;
+}
+
 .problem-header {
   display: flex;
   align-items: center;

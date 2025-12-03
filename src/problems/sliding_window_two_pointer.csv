@@ -1,12 +1,12 @@
-category,name,url
-medium,Maximum point you can obtain from cards,https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
-medium,Longest Substring Without Repeating Characters,https://leetcode.com/problems/longest-substring-without-repeating-characters/
-medium,Max Consecutive Ones III,https://leetcode.com/problems/max-consecutive-ones-iii/
-medium,Fruit Into Baskets,https://www.geeksforgeeks.org/problems/fruit-into-baskets-1663137462/1
-medium,Longest Substring with At Most K Distinct Characters,https://www.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1
-medium,Number of substring containing all three characters,https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
-medium,longest repeating character replacement,https://leetcode.com/problems/longest-repeating-character-replacement/
-medium - imp,Binary subarray with sum,https://leetcode.com/problems/binary-subarrays-with-sum/
-medium,Count number of nice subarrays,https://leetcode.com/problems/count-number-of-nice-subarrays/
-hard,Subarray with k different integers,https://leetcode.com/problems/subarrays-with-k-different-integers/
-hard,Minimum Window Substring,https://leetcode.com/problems/minimum-window-substring/
+category,pattern,name,complexity,url
+medium,Sliding Window,Maximum point you can obtain from cards,TC: O(n) | SC: O(1),https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
+medium,Sliding Window,Longest Substring Without Repeating Characters,"TC: O(n) | SC: O(min(n,26))",https://leetcode.com/problems/longest-substring-without-repeating-characters/
+medium,Sliding Window,Max Consecutive Ones III,TC: O(n) | SC: O(1),https://leetcode.com/problems/max-consecutive-ones-iii/
+medium,Sliding Window,Fruit Into Baskets,TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/fruit-into-baskets-1663137462/1
+medium,Sliding Window,Longest Substring with At Most K Distinct Characters,TC: O(n) | SC: O(k),https://www.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1
+medium,Sliding Window,Number of substring containing all three characters,TC: O(n) | SC: O(1),https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/
+medium,Sliding Window,longest repeating character replacement,TC: O(n) | SC: O(26),https://leetcode.com/problems/longest-repeating-character-replacement/
+medium,Sliding Window,Count number of nice subarrays,TC: O(n) | SC: O(n),https://leetcode.com/problems/count-number-of-nice-subarrays/
+hard,Sliding Window,Subarray with k different integers,TC: O(n) | SC: O(k),https://leetcode.com/problems/subarrays-with-k-different-integers/
+hard,Sliding Window,Minimum Window Substring,TC: O(n) | SC: O(26),https://leetcode.com/problems/minimum-window-substring/
+medium - imp,Two Pointer,Binary subarray with sum,TC: O(n) | SC: O(n),https://leetcode.com/problems/binary-subarrays-with-sum/

@@ -1,24 +1,24 @@
-category,name,url
-new,Infix to Postfix Conversion,https://www.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1
-medium,Infix To Prefix Conversion,https://www.geeksforgeeks.org/problems/infix-to-prefix-notation/1
-medium,Prefix to Infix Conversion,https://www.geeksforgeeks.org/problems/prefix-to-infix-conversion/1
-medium,Postfix to Infix Conversion,https://www.geeksforgeeks.org/problems/postfix-to-infix-conversion/1
-medium,Prefix to Postfix Conversion,https://www.geeksforgeeks.org/problems/prefix-to-postfix-conversion/1
-medium,Postfix to Prefix Conversion,https://www.geeksforgeeks.org/problems/postfix-to-prefix-conversion/1
-new,Valid Parentheses,https://leetcode.com/problems/valid-parentheses/description/
-medium,Min Stack,https://leetcode.com/problems/min-stack/description/
-medium,Next Greater Element,https://leetcode.com/problems/next-greater-element-i/
-medium,Next Greater Element 2,https://leetcode.com/problems/next-greater-element-ii/
-medium,Previous Smaller Element,https://www.geeksforgeeks.org/problems/smallest-number-on-left3403/1
-new,Trapping Rainwater,https://leetcode.com/problems/trapping-rain-water/
-medium- imp,Sum of subarray minimum,https://leetcode.com/problems/sum-of-subarray-minimums/
-medium,Sum of subarray ranges,https://leetcode.com/problems/sum-of-subarray-ranges/
-medium,Asteroid Collision,https://leetcode.com/problems/asteroid-collision/
-medium,Remove k Digits,https://leetcode.com/problems/remove-k-digits/
-medium,Largest rectangle in a histogram,https://leetcode.com/problems/largest-rectangle-in-histogram/
-new,Maximal Rectangles,https://leetcode.com/problems/maximal-rectangle/
-medium - imp,Sliding Window maximum,https://leetcode.com/problems/sliding-window-maximum/
-medium,Stock span problem,https://leetcode.com/problems/online-stock-span/
-medium,The Celebrity Problem,https://www.geeksforgeeks.org/problems/the-celebrity-problem/1
-medium - imp,LRU cache,https://leetcode.com/problems/lru-cache/
-hard,LFU cache,https://leetcode.com/problems/lfu-cache/
+category,pattern,name,complexity,url
+new,Expression Conversion,Infix to Postfix Conversion,TC: O(n) | SC: O(n),https://www.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1
+medium,Expression Conversion,Infix To Prefix Conversion,TC: O(n) | SC: O(n),https://www.geeksforgeeks.org/problems/infix-to-prefix-notation/1
+medium,Expression Conversion,Prefix to Infix Conversion,TC: O(n) | SC: O(n),https://www.geeksforgeeks.org/problems/prefix-to-infix-conversion/1
+medium,Expression Conversion,Postfix to Infix Conversion,TC: O(n) | SC: O(n),https://www.geeksforgeeks.org/problems/postfix-to-infix-conversion/1
+medium,Expression Conversion,Prefix to Postfix Conversion,TC: O(n) | SC: O(n),https://www.geeksforgeeks.org/problems/prefix-to-postfix-conversion/1
+medium,Expression Conversion,Postfix to Prefix Conversion,TC: O(n) | SC: O(n),https://www.geeksforgeeks.org/problems/postfix-to-prefix-conversion/1
+new,Stack,Valid Parentheses,TC: O(n) | SC: O(n),https://leetcode.com/problems/valid-parentheses/description/
+medium,Stack,Min Stack,TC: O(1) | SC: O(n),https://leetcode.com/problems/min-stack/description/
+medium,Stack,Next Greater Element,TC: O(n) | SC: O(n),https://leetcode.com/problems/next-greater-element-i/
+medium,Stack,Next Greater Element 2,TC: O(n) | SC: O(n),https://leetcode.com/problems/next-greater-element-ii/
+medium,Stack,Previous Smaller Element,TC: O(n) | SC: O(n),https://www.geeksforgeeks.org/problems/smallest-number-on-left3403/1
+new,Stack,Trapping Rainwater,TC: O(n) | SC: O(n),https://leetcode.com/problems/trapping-rain-water/
+medium- imp,Stack,Sum of subarray minimum,TC: O(n) | SC: O(n),https://leetcode.com/problems/sum-of-subarray-minimums/
+medium,Stack,Sum of subarray ranges,TC: O(n) | SC: O(n),https://leetcode.com/problems/sum-of-subarray-ranges/
+medium,Stack,Asteroid Collision,TC: O(n) | SC: O(n),https://leetcode.com/problems/asteroid-collision/
+medium,Stack,Remove k Digits,TC: O(n) | SC: O(n),https://leetcode.com/problems/remove-k-digits/
+medium,Stack,Largest rectangle in a histogram,TC: O(n) | SC: O(n),https://leetcode.com/problems/largest-rectangle-in-histogram/
+new,Stack,Maximal Rectangles,TC: O(m×n) | SC: O(n),https://leetcode.com/problems/maximal-rectangle/
+medium,Stack,Stock span problem,TC: O(n) | SC: O(n),https://leetcode.com/problems/online-stock-span/
+medium,Stack,The Celebrity Problem,TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/the-celebrity-problem/1
+medium - imp,Deque,Sliding Window maximum,TC: O(n) | SC: O(k),https://leetcode.com/problems/sliding-window-maximum/
+medium - imp,Queue,LRU cache,TC: O(1) | SC: O(n),https://leetcode.com/problems/lru-cache/
+hard,Queue,LFU cache,TC: O(1) | SC: O(n),https://leetcode.com/problems/lfu-cache/

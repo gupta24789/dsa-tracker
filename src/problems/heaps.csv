@@ -1,13 +1,13 @@
-category,name,url
-medium,Kth largest element in an array,https://leetcode.com/problems/kth-largest-element-in-an-array/
-medium,Sort K sorted array,https://www.geeksforgeeks.org/problems/k-sorted-array1610/1
-medium,Merge M sorted Lists,https://leetcode.com/problems/merge-k-sorted-lists/
-medium,Replace each array element by its corresponding rank,https://www.geeksforgeeks.org/problems/replace-elements-by-its-rank-in-the-array/1
-medium,Task Scheduler,https://leetcode.com/problems/task-scheduler/
-medium,Hands of Straights,https://leetcode.com/problems/hand-of-straights/
-medium,Design twitter,https://leetcode.com/problems/design-twitter/
-medium,Connect n ropes with minimal cost,https://www.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1
-medium,Kth largest element in a stream of running integers,https://leetcode.com/problems/kth-largest-element-in-a-stream/description/
-medium,Maximum Sum Combination,https://www.geeksforgeeks.org/problems/maximum-sum-combination/1
-medium,Find Median from Data Stream,https://leetcode.com/problems/find-median-from-data-stream/
-medium,K most frequent elements,https://leetcode.com/problems/top-k-frequent-elements/
+category,pattern,name,complexity,url
+medium,Heap,Kth largest element in an array,TC: O(n log k) | SC: O(k),https://leetcode.com/problems/kth-largest-element-in-an-array/
+medium,Heap,Sort K sorted array,TC: O(n log k) | SC: O(k),https://www.geeksforgeeks.org/problems/k-sorted-array1610/1
+medium,Heap,Merge M sorted Lists,TC: O(n log m) | SC: O(m),https://leetcode.com/problems/merge-k-sorted-lists/
+medium,Heap,Replace each array element by its corresponding rank,TC: O(n log n) | SC: O(n),https://www.geeksforgeeks.org/problems/replace-elements-by-its-rank-in-the-array/1
+medium,Heap,Task Scheduler,TC: O(n log n) | SC: O(n),https://leetcode.com/problems/task-scheduler/
+medium,Heap,Hands of Straights,TC: O(n log n) | SC: O(n),https://leetcode.com/problems/hand-of-straights/
+medium,Heap,Design twitter,TC: O(log n) | SC: O(n),https://leetcode.com/problems/design-twitter/
+medium,Heap,Connect n ropes with minimal cost,TC: O(n log n) | SC: O(n),https://www.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1
+medium,Heap,Kth largest element in a stream of running integers,TC: O(log k) | SC: O(k),https://leetcode.com/problems/kth-largest-element-in-a-stream/description/
+medium,Heap,Maximum Sum Combination,TC: O(n log n) | SC: O(n),https://www.geeksforgeeks.org/problems/maximum-sum-combination/1
+medium,Heap,Find Median from Data Stream,TC: O(log n) | SC: O(n),https://leetcode.com/problems/find-median-from-data-stream/
+medium,Heap,K most frequent elements,TC: O(n log k) | SC: O(k),https://leetcode.com/problems/top-k-frequent-elements/

@@ -1,7 +1,7 @@
-category,name,url
-medium,Implement Trie - 2 (Prefix Tree),https://takeuforward.org/data-structure/implement-trie-ii/
-medium,Longest String with All Prefixes,https://www.geeksforgeeks.org/problems/longest-valid-word-with-all-prefixes/1
-medium,Number of Distinct Substrings in a String,https://www.geeksforgeeks.org/problems/count-of-distinct-substrings/1
-medium,Bit PreRequisites for TRIE Problems,https://takeuforward.org/trie/bit-prerequisites-for-trie-problems
-medium,Maximum XOR of two numbers in an array,https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/
-medium,Maximum XOR With an Element From Array,https://leetcode.com/problems/maximum-xor-with-an-element-from-array/
+category,pattern,name,complexity,url
+medium,Trie,Implement Trie - 2 (Prefix Tree),TC: O(m) | SC: O(m),https://takeuforward.org/data-structure/implement-trie-ii/
+medium,Trie,Longest String with All Prefixes,TC: O(n×m) | SC: O(n×m),https://www.geeksforgeeks.org/problems/longest-valid-word-with-all-prefixes/1
+medium,Trie,Number of Distinct Substrings in a String,TC: O(n²) | SC: O(n²),https://www.geeksforgeeks.org/problems/count-of-distinct-substrings/1
+medium,Trie,Bit PreRequisites for TRIE Problems,TC: O(m) | SC: O(m),https://takeuforward.org/trie/bit-prerequisites-for-trie-problems
+medium,Trie XOR,Maximum XOR of two numbers in an array,TC: O(n×32) | SC: O(n×32),https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/
+medium,Trie XOR,Maximum XOR With an Element From Array,TC: O(n×32) | SC: O(n×32),https://leetcode.com/problems/maximum-xor-with-an-element-from-array/

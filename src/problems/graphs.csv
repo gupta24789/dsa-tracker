@@ -1,46 +1,46 @@
-category,name,url
-new,Number of provinces (BFS|DFS),https://leetcode.com/problems/number-of-provinces/description/
-medium,Number of Island | Connected Components (BFS|DFS),https://www.geeksforgeeks.org/problems/connected-components-in-an-undirected-graph/1
-medium,Rotten Oranges,https://leetcode.com/problems/rotting-oranges/
-medium,Flood fill,https://leetcode.com/problems/flood-fill/
-medium,Detech cycle in unirected Graph (BFS|DFS),https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
-medium,0/1 Matrix,https://leetcode.com/problems/01-matrix/
-medium,Surrounded Regions,https://leetcode.com/problems/surrounded-regions/
-medium,Number of Enclaves,https://leetcode.com/problems/number-of-enclaves/
-medium,Word ladder - 1,https://leetcode.com/problems/word-ladder/
-medium,Word ladder - 2,https://leetcode.com/problems/word-ladder-ii/
-medium,Number of Distinct Islands,https://leetcode.com/problems/number-of-distinct-islands-ii/
-medium,Bipartite Graph (bfs|dfs),https://leetcode.com/problems/is-graph-bipartite/
-new,Topo Sort,https://www.geeksforgeeks.org/problems/topological-sort/1
-medium,Kahn's Algorithm,https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/
-medium,Detect Cycle in Directed Graph (bfs|dfs|topo sort),https://leetcode.com/problems/course-schedule-ii/discuss/293048/detecting-cycle-in-directed-graph-problem
-medium,Course Schedule - I,https://leetcode.com/problems/course-schedule/
-medium,Course Schedule - II,https://leetcode.com/problems/course-schedule-ii/
-medium,Find eventual safe states (dfs|bfs|topo sort),https://leetcode.com/problems/find-eventual-safe-states/description/
-medium,Alien dictionary,https://www.geeksforgeeks.org/problems/alien-dictionary/1
-new,Djisktra's Algorithm (priority queue|set|print shortest path),https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
-medium,Shortest Path in directed acylic graph,https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/1
-medium,Shortest Path in directed graph with unit weights,https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1
-medium,Shortest path in a binary maze,https://leetcode.com/problems/shortest-path-in-binary-matrix/
-medium,Path with minimum effort,https://leetcode.com/problems/path-with-minimum-effort/
-medium,Cheapest flights within k stops,https://leetcode.com/problems/cheapest-flights-within-k-stops/
-medium,Network Delay time,https://leetcode.com/problems/network-delay-time/
-medium,Number of ways to arrive at destination,https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/
-medium,Minimum Multiplications to reach End,https://www.geeksforgeeks.org/problems/minimum-multiplications-to-reach-end/1
-medium,Bellman Ford Algorithm,https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1
-medium,Floyd Warshal Algorithm,https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1
-medium,Find the city with the smallest number of neighbors in a threshold distance,https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/
-new,Minimum Spanning Tree,https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
-medium,Prim's Algorithm,https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
-medium,Disjoint Set [Union by Rank| Union by Size],https://www.geeksforgeeks.org/problems/disjoint-set-union-find/1
-medium,Number of provinces(disjoint set),https://leetcode.com/problems/number-of-provinces/description/
-medium,Kruskal's Algorithm,https://www.geeksforgeeks.org/problems/minimum-spanning-tree-kruskals-algorithm/1
-medium,Number of operations to make network connected,https://leetcode.com/problems/number-of-operations-to-make-network-connected/
-medium,Most stones removed with same rows or columns,https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
-medium,Accounts merge,https://leetcode.com/problems/accounts-merge/
-medium,Number of island II,https://www.geeksforgeeks.org/problems/number-of-islands/1
-medium,Making a Large Island,https://leetcode.com/problems/making-a-large-island/
-medium,Swim in rising water,https://leetcode.com/problems/swim-in-rising-water/
-new,Bridges in Graph,https://leetcode.com/problems/critical-connections-in-a-network/discuss/382385/find-bridges-in-a-graph
-hard,Articulation Point,https://www.geeksforgeeks.org/problems/articulation-point2616/1
-medium,Kosaraju's Algorithm,https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
+category,pattern,name,complexity,url
+new,Graph Traversal,Number of provinces (BFS|DFS),TC: O(n) | SC: O(1),https://leetcode.com/problems/number-of-provinces/description/
+medium,Graph Traversal,Number of Island | Connected Components (BFS|DFS),TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/connected-components-in-an-undirected-graph/1
+medium,DFS/BFS,Flood fill,TC: O(m×n) | SC: O(m×n),https://leetcode.com/problems/flood-fill/
+medium,DFS/BFS,Surrounded Regions,TC: O(m×n) | SC: O(m×n),https://leetcode.com/problems/surrounded-regions/
+medium,DFS/BFS,Number of Enclaves,TC: O(m×n) | SC: O(m×n),https://leetcode.com/problems/number-of-enclaves/
+medium,DFS/BFS,Number of Distinct Islands,TC: O(m×n) | SC: O(m×n),https://leetcode.com/problems/number-of-distinct-islands-ii/
+medium,DFS/BFS,Making a Large Island,TC: O(m×n) | SC: O(m×n),https://leetcode.com/problems/making-a-large-island/
+medium,BFS,Rotten Oranges,TC: O(m×n) | SC: O(m×n),https://leetcode.com/problems/rotting-oranges/
+medium,BFS,0/1 Matrix,TC: O(m×n) | SC: O(m×n),https://leetcode.com/problems/01-matrix/
+medium,BFS,Word ladder - 1,TC: O(n×l²) | SC: O(n×l),https://leetcode.com/problems/word-ladder/
+medium,BFS with Path,Word ladder - 2,TC: O(n×l²) | SC: O(n×l),https://leetcode.com/problems/word-ladder-ii/
+medium,Cycle Detection,Detech cycle in unirected Graph (BFS|DFS),TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1
+medium,Cycle Detection,Detect Cycle in Directed Graph (bfs|dfs|topo sort),TC: O(n) | SC: O(1),https://leetcode.com/problems/course-schedule-ii/discuss/293048/detecting-cycle-in-directed-graph-problem
+medium,Graph Coloring,Bipartite Graph (bfs|dfs),TC: O(n) | SC: O(1),https://leetcode.com/problems/is-graph-bipartite/
+new,Topological Sort,Topo Sort,TC: O(V+E) | SC: O(V),https://www.geeksforgeeks.org/problems/topological-sort/1
+medium,Topological Sort,Kahn's Algorithm,TC: O(V+E) | SC: O(V),https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/
+medium,Topological Sort,Course Schedule - I,TC: O(V+E) | SC: O(V),https://leetcode.com/problems/course-schedule/
+medium,Topological Sort,Course Schedule - II,TC: O(V+E) | SC: O(V),https://leetcode.com/problems/course-schedule-ii/
+medium,Topological Sort,Find eventual safe states (dfs|bfs|topo sort),TC: O(n) | SC: O(1),https://leetcode.com/problems/find-eventual-safe-states/description/
+medium,Topological Sort,Alien dictionary,TC: O(V+E) | SC: O(V),https://www.geeksforgeeks.org/problems/alien-dictionary/1
+new,Shortest Path,Djisktra's Algorithm (priority queue|set|print shortest path),TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
+medium,Shortest Path,Shortest Path in directed acylic graph,TC: O(V+E) | SC: O(V),https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/1
+medium,Shortest Path,Shortest Path in directed graph with unit weights,TC: O(V+E) | SC: O(V),https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1
+medium,Shortest Path,Shortest path in a binary maze,TC: O(m×n) | SC: O(m×n),https://leetcode.com/problems/shortest-path-in-binary-matrix/
+medium,Shortest Path,Path with minimum effort,TC: O((m×n) log(m×n)) | SC: O(m×n),https://leetcode.com/problems/path-with-minimum-effort/
+medium,Shortest Path,Cheapest flights within k stops,TC: O(k×E log V) | SC: O(V),https://leetcode.com/problems/cheapest-flights-within-k-stops/
+medium,Shortest Path,Network Delay time,TC: O((V+E) log V) | SC: O(V),https://leetcode.com/problems/network-delay-time/
+medium,Shortest Path,Number of ways to arrive at destination,TC: O((V+E) log V) | SC: O(V),https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/
+medium,Shortest Path,Minimum Multiplications to reach End,TC: O(V log V) | SC: O(V),https://www.geeksforgeeks.org/problems/minimum-multiplications-to-reach-end/1
+medium,Shortest Path,Bellman Ford Algorithm,TC: O(V×E) | SC: O(V),https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1
+medium,Shortest Path,Floyd Warshal Algorithm,TC: O(V³) | SC: O(V²),https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1
+medium,Shortest Path,Find the city with the smallest number of neighbors in a threshold distance,TC: O(V³) | SC: O(V²),https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/
+medium,Shortest Path,Swim in rising water,TC: O((m×n) log(m×n)) | SC: O(m×n),https://leetcode.com/problems/swim-in-rising-water/
+new,MST,Minimum Spanning Tree,TC: O((V+E) log V) | SC: O(V),https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
+medium,MST,Prim's Algorithm,TC: O((V+E) log V) | SC: O(V),https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1
+medium,MST,Kruskal's Algorithm,TC: O(E log E) | SC: O(V+E),https://www.geeksforgeeks.org/problems/minimum-spanning-tree-kruskals-algorithm/1
+medium,Disjoint Set,Disjoint Set [Union by Rank| Union by Size],TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/disjoint-set-union-find/1
+medium,Disjoint Set,Number of provinces(disjoint set),TC: O(V×α(V)) | SC: O(V),https://leetcode.com/problems/number-of-provinces/description/
+medium,Disjoint Set,Number of operations to make network connected,TC: O(E×α(V)) | SC: O(V),https://leetcode.com/problems/number-of-operations-to-make-network-connected/
+medium,Disjoint Set,Most stones removed with same rows or columns,TC: O(n×α(n)) | SC: O(n),https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
+medium,Disjoint Set,Accounts merge,TC: O(n log n) | SC: O(n),https://leetcode.com/problems/accounts-merge/
+medium,Disjoint Set,Number of island II,TC: O(n×α(n)) | SC: O(n),https://www.geeksforgeeks.org/problems/number-of-islands/1
+medium,SCC,Kosaraju's Algorithm,TC: O(V+E) | SC: O(V),https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1
+new,Graph Properties,Bridges in Graph,TC: O(V+E) | SC: O(V),https://leetcode.com/problems/critical-connections-in-a-network/discuss/382385/find-bridges-in-a-graph
+hard,Graph Properties,Articulation Point,TC: O(V+E) | SC: O(V),https://www.geeksforgeeks.org/problems/articulation-point2616/1

@@ -1,17 +1,17 @@
-category,name,url
-medium,Assign Cookies,https://leetcode.com/problems/assign-cookies/
-medium,Fractional Knapsack Problem,https://www.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1
-medium,Greedy algorithm to find minimum number of coins,https://www.geeksforgeeks.org/problems/-minimum-number-of-coins4426/1
-medium,Lemonade Change,https://leetcode.com/problems/lemonade-change/
-medium,Valid Paranthesis Checker,https://leetcode.com/problems/valid-parenthesis-string/
-medium,N meetings in one room,https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1
-medium,Jump Game,https://leetcode.com/problems/jump-game/
-medium,Jump Game 2,https://leetcode.com/problems/jump-game-ii/
-medium,Minimum number of platforms required for a railway,https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1
-medium,Job sequencing Problem,https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1
-medium,Candy,https://leetcode.com/problems/candy/
-medium,Program for Shortest Job First (or SJF) CPU Scheduling,https://www.geeksforgeeks.org/problems/shortest-job-first/1
-medium,Program for Least Recently Used (LRU) Page Replacement Algorithm,https://www.geeksforgeeks.org/problems/page-faults-in-lru5603/1
-medium,Insert Interval,https://leetcode.com/problems/insert-interval/
-medium,Merge Intervals,https://leetcode.com/problems/merge-intervals/
-medium,Non-overlapping Intervals,https://leetcode.com/problems/non-overlapping-intervals/
+category,pattern,name,complexity,url
+medium,Greedy,Assign Cookies,TC: O(n log n) | SC: O(1),https://leetcode.com/problems/assign-cookies/
+medium,Greedy,Fractional Knapsack Problem,TC: O(n log n) | SC: O(1),https://www.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1
+medium,Greedy,Greedy algorithm to find minimum number of coins,TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/-minimum-number-of-coins4426/1
+medium,Greedy,Lemonade Change,TC: O(n) | SC: O(1),https://leetcode.com/problems/lemonade-change/
+medium,Greedy,Valid Paranthesis Checker,TC: O(n) | SC: O(n),https://leetcode.com/problems/valid-parenthesis-string/
+medium,Greedy,Jump Game,TC: O(n) | SC: O(1),https://leetcode.com/problems/jump-game/
+medium,Greedy,Jump Game 2,TC: O(n) | SC: O(1),https://leetcode.com/problems/jump-game-ii/
+medium,Greedy,Candy,TC: O(n) | SC: O(n),https://leetcode.com/problems/candy/
+medium,Greedy Sorting,N meetings in one room,TC: O(n log n) | SC: O(1),https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1
+medium,Greedy Sorting,Minimum number of platforms required for a railway,TC: O(n log n) | SC: O(1),https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1
+medium,Greedy Sorting,Job sequencing Problem,TC: O(n²) | SC: O(n),https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1
+medium,Greedy Sorting,Program for Shortest Job First (or SJF) CPU Scheduling,TC: O(n log n) | SC: O(1),https://www.geeksforgeeks.org/problems/shortest-job-first/1
+medium,Interval Merge,Insert Interval,TC: O(n) | SC: O(n),https://leetcode.com/problems/insert-interval/
+medium,Interval Merge,Merge Intervals,TC: O(n log n) | SC: O(n),https://leetcode.com/problems/merge-intervals/
+medium,Interval Merge,Non-overlapping Intervals,TC: O(n log n) | SC: O(1),https://leetcode.com/problems/non-overlapping-intervals/
+medium,Cache,Program for Least Recently Used (LRU) Page Replacement Algorithm,TC: O(n) | SC: O(n),https://www.geeksforgeeks.org/problems/page-faults-in-lru5603/1

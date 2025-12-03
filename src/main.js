@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (files.length === 0 && section === 'problems') {
         files = [
           "array", "binary_search", "linkedList", "recursion", "bits",
-          "stack", "sliding_window_two_pointer", "heaps", "tree", "graphs",
+          "stack_and_queue", "sliding_window_two_pointer", "heaps", "tree", "graphs",
           "dp", "tries", "string", "greedy"
         ];
       }
@@ -231,44 +231,94 @@ document.addEventListener("DOMContentLoaded", () => {
         const csvText = await response.text();
         const problems = parseCSV(csvText);
 
+        // Add an index to each problem so ids remain stable after grouping
+        problems.forEach((p, i) => p._idx = i + 1);
+
+        // Group problems by pattern while preserving encounter order
+        const patternsMap = new Map();
+        problems.forEach(p => {
+          const pat = p.pattern || 'General';
+          if (!patternsMap.has(pat)) patternsMap.set(pat, []);
+          patternsMap.get(pat).push(p);
+        });
+
         const problemsContainer = document.createElement("div");
         problemsContainer.className = "problems-container";
 
-        problems.forEach((problem, index) => {
-          const problemId = `${topic}-${index + 1}`;
-          const problemCard = document.createElement("div");
-          problemCard.className = "problem-card";
+        // For each pattern, create a table with problems belonging to that pattern
+        patternsMap.forEach((plist, patternName) => {
+          const patternSection = document.createElement('div');
+          patternSection.className = 'pattern-section';
 
-          const checked = loadCheckboxState(problemId);
-          
-          problemCard.innerHTML = `
-            <label class="checkbox-container">
-              <input type="checkbox" id="${problemId}" ${checked ? "checked" : ""}>
-              <span class="checkmark"></span>
-            </label>
-            <span class="problem-number">${index + 1}</span>
-            <span class="problem-category ${problem.category}">${problem.category}</span>
-            <div class="problem-content">
-              <a href="${problem.url}" target="_blank" class="problem-link">${problem.name}</a>
-            </div>
-          `;
+          const patternHeader = document.createElement('h3');
+          patternHeader.className = 'pattern-header';
+          patternHeader.textContent = `${patternName} (${plist.length})`;
+          patternSection.appendChild(patternHeader);
 
-          problemCard.querySelector("input").addEventListener("change", (e) => {
-            saveCheckboxState(problemId, e.target.checked);
-            updateStats();
-            
-            if (e.target.checked) {
-              problemCard.classList.add('completed');
-            } else {
-              problemCard.classList.remove('completed');
-            }
+          const table = document.createElement('table');
+          table.className = 'pattern-table';
+          const thead = document.createElement('thead');
+          thead.innerHTML = `<tr><th></th><th>#</th><th>Category</th><th>Problem</th><th>Complexity</th></tr>`;
+          table.appendChild(thead);
+
+          const tbody = document.createElement('tbody');
+
+          plist.forEach(problem => {
+            const problemId = `${topic}-${problem._idx}`;
+            const tr = document.createElement('tr');
+            const checked = loadCheckboxState(problemId);
+            if (checked) tr.classList.add('completed');
+
+            // Checkbox cell
+            const tdCheck = document.createElement('td');
+            tdCheck.innerHTML = `<label class="checkbox-container"><input type="checkbox" id="${problemId}" ${checked ? 'checked' : ''}><span class="checkmark"></span></label>`;
+
+            // Number cell
+            const tdNum = document.createElement('td');
+            tdNum.className = 'problem-number';
+            tdNum.textContent = problem._idx;
+
+            // Category cell
+            const tdCat = document.createElement('td');
+            const catSpan = document.createElement('span');
+            catSpan.className = `problem-category ${problem.category}`;
+            catSpan.textContent = problem.category;
+            tdCat.appendChild(catSpan);
+
+            // Problem name/link cell
+            const tdName = document.createElement('td');
+            const a = document.createElement('a');
+            a.href = problem.url;
+            a.target = '_blank';
+            a.className = 'problem-link';
+            a.textContent = problem.name;
+            tdName.appendChild(a);
+
+            // Complexity cell
+            const tdComplexity = document.createElement('td');
+            tdComplexity.className = 'complexity-cell';
+            tdComplexity.textContent = problem.complexity || 'O(n)';
+
+            tr.appendChild(tdCheck);
+            tr.appendChild(tdNum);
+            tr.appendChild(tdCat);
+            tr.appendChild(tdName);
+            tr.appendChild(tdComplexity);
+
+            tbody.appendChild(tr);
+
+            // Wire up checkbox event
+            const inputEl = tdCheck.querySelector('input');
+            inputEl.addEventListener('change', (e) => {
+              saveCheckboxState(problemId, e.target.checked);
+              updateStats();
+              if (e.target.checked) tr.classList.add('completed'); else tr.classList.remove('completed');
+            });
           });
 
-          if (checked) {
-            problemCard.classList.add('completed');
-          }
-
-          problemsContainer.appendChild(problemCard);
+          table.appendChild(tbody);
+          patternSection.appendChild(table);
+          problemsContainer.appendChild(patternSection);
         });
 
         section.appendChild(problemsContainer);

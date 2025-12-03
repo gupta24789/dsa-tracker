@@ -1,26 +1,26 @@
-category,name,url
-new,Recursive Implementation of atoi,https://leetcode.com/problems/string-to-integer-atoi/
-easy,Pow(x n),https://leetcode.com/problems/powx-n/
-easy,Count Good numbers,https://leetcode.com/problems/count-good-numbers/
-easy,Sort a stack using recursion,https://www.geeksforgeeks.org/problems/sort-a-stack/1
-easy,Reverse a stack using recursion,https://www.geeksforgeeks.org/problems/reverse-a-stack/1
-new,Generate all binary strings,https://www.geeksforgeeks.org/problems/generate-all-binary-strings/1
-medium,Generate Paranthesis,https://leetcode.com/problems/generate-parentheses/
-medium,Print all subsequences/Power Set,https://leetcode.com/problems/subsets/
-medium,Check if there exists a subsequence with sum K,https://www.geeksforgeeks.org/problems/check-if-there-exists-a-subsequence-with-sum-k/1
-medium,Count all subsequences with sum K,https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/description/
-new,Combination Sum,https://leetcode.com/problems/combination-sum/
-medium,Combination Sum-II,https://leetcode.com/problems/combination-sum-ii/
-medium,Combination Sum - III,https://leetcode.com/problems/combination-sum-iii/
-medium,Subset Sum-I,https://www.geeksforgeeks.org/problems/subset-sums2234/1
-medium,Subset Sum-II,https://leetcode.com/problems/subsets-ii/
-medium,Letter Combinations of a Phone number,https://leetcode.com/problems/letter-combinations-of-a-phone-number/
-medium,Palindrome Partitioning,https://leetcode.com/problems/palindrome-partitioning/
-medium,Print all permutaion of string,https://leetcode.com/problems/permutations/description/
-new,Word Search,https://leetcode.com/problems/word-search/
-medium,Rat in a Maze,https://www.geeksforgeeks.org/problems/rat-in-a-maze-problem/1&selectedLang=python3
-medium,Word Break,https://leetcode.com/problems/word-break/
-medium,M Coloring Problem,https://www.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1
-hard,N Queen,https://leetcode.com/problems/n-queens/
-hard,Sudoko Solver,https://leetcode.com/problems/sudoku-solver/
-hard,Expression Add Operators,https://leetcode.com/problems/expression-add-operators/
+category,pattern,name,complexity,url
+new,Recursion Basics,Recursive Implementation of atoi,TC: O(n) | SC: O(n),https://leetcode.com/problems/string-to-integer-atoi/
+easy,Recursion Math,Pow(x n),TC: O(log n) | SC: O(log n),https://leetcode.com/problems/powx-n/
+easy,Recursion Math,Count Good numbers,TC: O(n) | SC: O(n),https://leetcode.com/problems/count-good-numbers/
+easy,Recursion Utility,Sort a stack using recursion,TC: O(n²) | SC: O(n),https://www.geeksforgeeks.org/problems/sort-a-stack/1
+easy,Recursion Utility,Reverse a stack using recursion,TC: O(n) | SC: O(n),https://www.geeksforgeeks.org/problems/reverse-a-stack/1
+new,String Generation,Generate all binary strings,TC: O(2^n) | SC: O(2^n),https://www.geeksforgeeks.org/problems/generate-all-binary-strings/1
+medium,Backtracking,Generate Paranthesis,TC: O(4^n/√n) | SC: O(4^n/√n),https://leetcode.com/problems/generate-parentheses/
+medium,Backtracking,Print all subsequences/Power Set,TC: O(2^n) | SC: O(2^n),https://leetcode.com/problems/subsets/
+medium,Backtracking,Check if there exists a subsequence with sum K,TC: O(n) | SC: O(n),https://www.geeksforgeeks.org/problems/check-if-there-exists-a-subsequence-with-sum-k/1
+medium,Backtracking,Count all subsequences with sum K,TC: O(n) | SC: O(n),https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/description/
+new,Backtracking,Combination Sum,TC: O(2^n) | SC: O(2^n),https://leetcode.com/problems/combination-sum/
+medium,Backtracking,Combination Sum-II,TC: O(2^n) | SC: O(2^n),https://leetcode.com/problems/combination-sum-ii/
+medium,Backtracking,Combination Sum - III,TC: O(2^n) | SC: O(2^n),https://leetcode.com/problems/combination-sum-iii/
+medium,Backtracking,Subset Sum-I,TC: O(2^n) | SC: O(2^n),https://www.geeksforgeeks.org/problems/subset-sums2234/1
+medium,Backtracking,Subset Sum-II,TC: O(2^n) | SC: O(2^n),https://leetcode.com/problems/subsets-ii/
+medium,Backtracking,Letter Combinations of a Phone number,TC: O(4^n) | SC: O(4^n),https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+medium,Backtracking,Palindrome Partitioning,TC: O(2^n) | SC: O(2^n),https://leetcode.com/problems/palindrome-partitioning/
+medium,Backtracking,Print all permutaion of string,TC: O(n!) | SC: O(n!),https://leetcode.com/problems/permutations/description/
+new,Backtracking,Word Search,TC: O(m×n×4^l) | SC: O(l),https://leetcode.com/problems/word-search/
+medium,Backtracking,Rat in a Maze,TC: O(2^(m×n)) | SC: O(m×n),https://www.geeksforgeeks.org/problems/rat-in-a-maze-problem/1&selectedLang=python3
+medium,Backtracking,Word Break,TC: O(n²) | SC: O(n),https://leetcode.com/problems/word-break/
+medium,Backtracking,M Coloring Problem,TC: O(m^n) | SC: O(n),https://www.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1
+hard,Backtracking,N Queen,TC: O(n!) | SC: O(n),https://leetcode.com/problems/n-queens/
+hard,Backtracking,Sudoko Solver,TC: O(9^(n×n)) | SC: O(1),https://leetcode.com/problems/sudoku-solver/
+hard,Backtracking,Expression Add Operators,TC: O(3^n) | SC: O(3^n),https://leetcode.com/problems/expression-add-operators/

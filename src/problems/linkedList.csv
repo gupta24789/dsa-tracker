@@ -1,23 +1,23 @@
-category,name,url
-medium,Middle of a LinkedList [TortoiseHare Method],https://leetcode.com/problems/middle-of-the-linked-list/
-medium,Reverse a LinkedList [Iterative],https://leetcode.com/problems/reverse-linked-list/
-medium,Reverse a LL [Recursive],https://leetcode.com/problems/reverse-linked-list/
-medium,Detect a loop in LL,https://leetcode.com/problems/linked-list-cycle/
-medium,Find the starting point in LL,https://leetcode.com/problems/linked-list-cycle-ii/
-medium,Length of Loop in LL,https://www.geeksforgeeks.org/problems/find-length-of-loop/1
-medium,Check if LL is palindrome or not,https://leetcode.com/problems/palindrome-linked-list/
-medium,Segrregate odd and even nodes in LL,https://leetcode.com/problems/odd-even-linked-list/
-medium,Remove Nth node from the back of the LL,https://leetcode.com/problems/remove-nth-node-from-end-of-list/
-medium,Delete the middle node of LL,https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/description/
-medium,Sort LL,https://leetcode.com/problems/sort-list/
-medium,Sort a LL of 0's 1's and 2's by changing links,https://www.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1
-medium,Find the intersection point of Y LL,https://leetcode.com/problems/intersection-of-two-linked-lists/
-medium,Add 1 to a number represented by LL,https://www.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-linked-list/1
-medium,Add 2 numbers in LL,https://leetcode.com/problems/add-two-numbers/
-medium,Delete all occurrences of a key in DLL,https://www.geeksforgeeks.org/problems/delete-all-occurrences-of-a-given-key-in-a-doubly-linked-list/1
-medium,Find pairs with given sum in DLL,https://www.geeksforgeeks.org/problems/find-pairs-with-given-sum-in-doubly-linked-list/1
-medium,Remove duplicates from sorted DLL,https://www.geeksforgeeks.org/problems/remove-duplicates-from-a-sorted-doubly-linked-list/1
-medium,Reverse LL in group of given size K,https://leetcode.com/problems/reverse-nodes-in-k-group/
-medium,Rotate a LL,https://leetcode.com/problems/rotate-list/description/
-medium,Flattening of LL,https://www.geeksforgeeks.org/problems/flattening-a-linked-list/1
-medium,Clone a Linked List with random and next pointer,https://leetcode.com/problems/copy-list-with-random-pointer/
+category,pattern,name,complexity,url
+medium,Two Pointer,Middle of a LinkedList [TortoiseHare Method],TC: O(n) | SC: O(1),https://leetcode.com/problems/middle-of-the-linked-list/
+medium,Two Pointer,Remove Nth node from the back of the LL,TC: O(n) | SC: O(1),https://leetcode.com/problems/remove-nth-node-from-end-of-list/
+medium,Two Pointer,Delete the middle node of LL,TC: O(n) | SC: O(1),https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/description/
+medium,LL Reversal,Reverse a LinkedList [Iterative],TC: O(n) | SC: O(1),https://leetcode.com/problems/reverse-linked-list/
+medium,LL Reversal,Reverse a LL [Recursive],TC: O(n) | SC: O(n),https://leetcode.com/problems/reverse-linked-list/
+medium,Cycle Detection,Detect a loop in LL,TC: O(n) | SC: O(1),https://leetcode.com/problems/linked-list-cycle/
+medium,Cycle Detection,Find the starting point in LL,TC: O(n) | SC: O(1),https://leetcode.com/problems/linked-list-cycle-ii/
+medium,Cycle Detection,Length of Loop in LL,TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/find-length-of-loop/1
+medium,LL Properties,Check if LL is palindrome or not,TC: O(n) | SC: O(1),https://leetcode.com/problems/palindrome-linked-list/
+medium,LL Rearrangement,Segrregate odd and even nodes in LL,TC: O(n) | SC: O(1),https://leetcode.com/problems/odd-even-linked-list/
+medium,LL Sorting,Sort LL,TC: O(n log n) | SC: O(log n),https://leetcode.com/problems/sort-list/
+medium,LL Sorting,Sort a LL of 0's 1's and 2's by changing links,TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1
+medium,LL Intersection,Find the intersection point of Y LL,TC: O(n) | SC: O(1),https://leetcode.com/problems/intersection-of-two-linked-lists/
+medium,LL Arithmetic,Add 1 to a number represented by LL,TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-linked-list/1
+medium,LL Arithmetic,Add 2 numbers in LL,TC: O(n) | SC: O(n),https://leetcode.com/problems/add-two-numbers/
+medium,DLL Operations,Delete all occurrences of a key in DLL,TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/delete-all-occurrences-of-a-given-key-in-a-doubly-linked-list/1
+medium,DLL Operations,Remove duplicates from sorted DLL,TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/remove-duplicates-from-a-sorted-doubly-linked-list/1
+medium,DLL Search,Find pairs with given sum in DLL,TC: O(n) | SC: O(1),https://www.geeksforgeeks.org/problems/find-pairs-with-given-sum-in-doubly-linked-list/1
+medium,LL Grouping,Reverse LL in group of given size K,TC: O(n) | SC: O(1),https://leetcode.com/problems/reverse-nodes-in-k-group/
+medium,LL Rotation,Rotate a LL,TC: O(n) | SC: O(1),https://leetcode.com/problems/rotate-list/description/
+medium,LL Flattening,Flattening of LL,TC: O(m×n) | SC: O(n),https://www.geeksforgeeks.org/problems/flattening-a-linked-list/1
+medium,LL Cloning,Clone a Linked List with random and next pointer,TC: O(n) | SC: O(n),https://leetcode.com/problems/copy-list-with-random-pointer/
