@@ -149,10 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function centerDiagram() {
-      // Remove any existing transform to get natural size
       inner.style.transform = 'none';
       
-      // Get the actual SVG viewBox or bounding box
       const viewBox = svg.getAttribute('viewBox');
       let naturalW, naturalH;
       
@@ -160,30 +158,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const [, , w, h] = viewBox.split(' ').map(Number);
         naturalW = w;
         naturalH = h;
-        console.log('Using viewBox:', { naturalW, naturalH });
       } else {
-        // Fallback to bounding box
         const bbox = svg.getBBox();
         naturalW = bbox.width;
         naturalH = bbox.height;
-        console.log('Using bbox:', { naturalW, naturalH });
       }
       
       const wrapW = wrapper.clientWidth;
       const wrapH = wrapper.clientHeight;
-      
-      console.log('Centering diagram:', { naturalW, naturalH, wrapW, wrapH });
-      
-      // Calculate scale to fit
       const scaleX = (wrapW - 40) / naturalW;
       const scaleY = (wrapH - 80) / naturalH;
       scale = Math.min(1, scaleX, scaleY);
-      
-      // Center the diagram
       tx = (wrapW - naturalW * scale) / 2;
       ty = (wrapH - naturalH * scale) / 2;
-      
-      console.log('Applied transform:', { scale, tx, ty });
       applyTransform();
     }
 
@@ -371,12 +358,10 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // Collect mermaid nodes BEFORE mermaid.run() replaces them
         const mermaidNodes = [...content.querySelectorAll('.mermaid')];
-        console.log('Found mermaid nodes:', mermaidNodes.length);
         
         if (mermaidNodes.length > 0) {
           // Wrap each in interactive container first
           mermaidNodes.forEach(el => {
-            console.log('Mermaid content:', el.textContent.substring(0, 50));
             const wrapper = document.createElement('div');
             wrapper.className = 'mermaid-wrapper';
             const inner = document.createElement('div');
@@ -404,14 +389,6 @@ document.addEventListener("DOMContentLoaded", () => {
           // Let mermaid render all .mermaid divs
           try {
             await mermaid.run({ nodes: content.querySelectorAll('.mermaid') });
-            console.log('Mermaid rendering complete');
-            
-            // Check if SVG was created
-            const svgs = content.querySelectorAll('.mermaid svg');
-            console.log('SVGs found:', svgs.length);
-            svgs.forEach((svg, i) => {
-              console.log(`SVG ${i}:`, svg.getBoundingClientRect());
-            });
           } catch (err) {
             console.error('Mermaid rendering error:', err);
           }
@@ -439,17 +416,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const md = await res.text();
 
-    marked.setOptions({
-      breaks: true,
-      gfm: true,
-      highlight: function(code, lang) {
-        if (hljs.getLanguage(lang)) {
-          return hljs.highlight(code, { language: lang }).value;
-        }
-        return code;
-      }
-    });
-
     const renderer = new marked.Renderer();
     
     renderer.link = function(href, title, text) {
@@ -457,20 +423,18 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     
     renderer.code = function(code, language) {
-      console.log('Code block detected:', { code: code?.substring(0, 50), language });
       if (language === 'mermaid') {
         return `<div class="mermaid">${code}</div>`;
       }
       const highlighted = language && hljs.getLanguage(language)
         ? hljs.highlight(code, { language }).value
-        : code;
+        : hljs.highlightAuto(code).value;
       return `<pre><code class="language-${language || ''}">${highlighted}</code></pre>`;
     };
 
     const div = document.createElement('div');
     div.className = 'markdown-content';
-    div.innerHTML = marked.parse(md, { renderer });
-    div.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
+    div.innerHTML = marked.parse(md, { renderer, breaks: true, gfm: true });
     return div;
   }
 
@@ -486,9 +450,9 @@ document.addEventListener("DOMContentLoaded", () => {
       breaks: true,
       gfm: true,
       renderer: {
-        link({ href, text: rawText }) {
-          const cleanText = rawText.replace(/\s*`[^`]+`\s*$/, '');
-          const badgeMatch = rawText.match(/`([^`]+)`\s*$/);
+        link(href, title, rawText) {
+          const cleanText = (rawText || '').replace(/\s*`[^`]+`\s*$/, '');
+          const badgeMatch = (rawText || '').match(/`([^`]+)`\s*$/);
           const badge = badgeMatch ? badgeMatch[1].split(' ')[0] : '';
           itemIndex++;
           const id = `${topic}-${itemIndex}`;
