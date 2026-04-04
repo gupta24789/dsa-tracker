@@ -1,417 +1,587 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Cache management for solved problems
-  const SOLVED_PROBLEMS_KEY = 'dsa_tracker_solved_problems';
+  const SOLVED_KEY = 'dsa_tracker_solved_problems';
   let solvedProblems = new Set();
 
-  // Load solved problems from localStorage
   function loadSolvedProblems() {
     try {
-      const saved = localStorage.getItem(SOLVED_PROBLEMS_KEY);
-      if (saved) {
-        solvedProblems = new Set(JSON.parse(saved));
-      }
-    } catch (err) {
-      console.error('Error loading solved problems:', err);
-      solvedProblems = new Set();
-    }
+      const saved = localStorage.getItem(SOLVED_KEY);
+      if (saved) solvedProblems = new Set(JSON.parse(saved));
+    } catch (_) { solvedProblems = new Set(); }
   }
 
-  // Save solved problems to localStorage
   function saveSolvedProblems() {
-    try {
-      localStorage.setItem(SOLVED_PROBLEMS_KEY, JSON.stringify([...solvedProblems]));
-    } catch (err) {
-      console.error('Error saving solved problems:', err);
-    }
+    try { localStorage.setItem(SOLVED_KEY, JSON.stringify([...solvedProblems])); } catch (_) {}
   }
 
   function saveCheckboxState(id, checked) {
-    if (checked) {
-      solvedProblems.add(id);
-    } else {
-      solvedProblems.delete(id);
-    }
+    checked ? solvedProblems.add(id) : solvedProblems.delete(id);
     saveSolvedProblems();
   }
 
-  function loadCheckboxState(id) {
-    return solvedProblems.has(id);
-  }
-
   function updateStats() {
-    const totalProblems = document.querySelectorAll('input[type="checkbox"]').length;
-    const completedProblems = document.querySelectorAll('input[type="checkbox"]:checked').length;
-    const progressPercentage = totalProblems > 0 ? Math.round((completedProblems / totalProblems) * 100) : 0;
-
-    document.getElementById('totalProblems').textContent = totalProblems;
-    document.getElementById('completedProblems').textContent = completedProblems;
-    document.getElementById('progressPercentage').textContent = `${progressPercentage}%`;
-
-    const progressElement = document.getElementById('progressPercentage');
-    if (progressPercentage >= 80) {
-      progressElement.style.color = '#22c55e';
-    } else if (progressPercentage >= 50) {
-      progressElement.style.color = '#eab308';
-    } else {
-      progressElement.style.color = '#ef4444';
+    const all  = document.querySelectorAll('input[type="checkbox"]');
+    const done = document.querySelectorAll('input[type="checkbox"]:checked');
+    const pct  = all.length > 0 ? Math.round((done.length / all.length) * 100) : 0;
+    document.getElementById('totalProblems').textContent     = all.length;
+    document.getElementById('completedProblems').textContent = done.length;
+    const el  = document.getElementById('progressPercentage');
+    const bar = document.getElementById('progressBar');
+    el.textContent = `${pct}%`;
+    el.style.color = pct >= 80 ? '#22c55e' : pct >= 50 ? '#eab308' : '#ef4444';
+    if (bar) {
+      bar.style.width = `${pct}%`;
+      bar.style.background = pct >= 80 ? '#22c55e' : pct >= 50 ? '#eab308' : '#ef4444';
     }
   }
 
-  const topicFilter = document.getElementById("topicFilter");
-  const sectionFilter = document.getElementById("sectionFilter");
-  const content = document.getElementById("content");
-  const resetButton = document.getElementById("resetButton");
-  let currentSection = "problems";
-  let availableTopics = {};
+  // Topics that have a problems file
+  const PROBLEMS_TOPICS = new Set([
+    "array", "binarySearch", "linkedList", "stackAndQueue", "heaps",
+    "recursion", "tree", "graphs", "dp", "greedy", "tries", "string", "bits"
+  ]);
 
-  async function fetchAvailableTopics(section) {
-    try {
-      const timestamp = new Date().getTime(); // Add timestamp to prevent caching
-      let files = [];
-      
-      try {
-        // Try to fetch the directory listing
-        const response = await fetch(`src/${section}/?t=${timestamp}`, {
-          headers: {
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            'Pragma': 'no-cache',
-            'Expires': '0'
-          },
-          cache: 'no-store'
-        });
-        
-        if (response.ok) {
-          const text = await response.text();
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(text, 'text/html');
-          files = Array.from(doc.querySelectorAll('a'))
-            .map(a => a.href)
-            .filter(href => {
-              const extension = section === 'problems' ? '.csv' : '.md';
-              return href.endsWith(extension);
-            })
-            .map(href => {
-              const filename = href.split('/').pop();
-              return filename.replace(section === 'problems' ? '.csv' : '.md', '');
-            });
-        }
-      } catch (err) {
-        console.warn('Failed to fetch directory listing:', err);
-      }
+  // Topics that have a concepts file
+  const CONCEPTS_TOPICS = new Set([
+    "array", "binarySearch", "linkedList", "stackAndQueue", "heaps",
+    "recursion", "tree", "graphs", "dp", "greedy", "tries", "string", "bits"
+  ]);
 
-      // If no files found and it's problems section, use the static list
-      if (files.length === 0 && section === 'problems') {
-        files = [
-          "array", "binary_search", "linkedList", "recursion", "bits",
-          "stack_and_queue", "sliding_window_two_pointer", "heaps", "tree", "graphs",
-          "dp", "tries", "string", "greedy"
-        ];
-      }
-      
-      availableTopics[section] = files;
-      return files;
-    } catch (err) {
-      console.error(`Error fetching topics for ${section}:`, err);
-      return [];
-    }
-  }
+  const ALL_TOPICS = ["array", "binarySearch", "linkedList", "stackAndQueue", "heaps",
+    "recursion", "tree", "graphs", "dp", "greedy", "tries", "string", "bits"];
 
-  async function populateTopicDropdown(section) {
-    topicFilter.innerHTML = '';
-    
-    if (!availableTopics[section]) {
-      await fetchAvailableTopics(section);
-    }
+  const topicFilter    = document.getElementById("topicFilter");
+  const content        = document.getElementById("content");
+  const resetButton    = document.getElementById("resetButton");
+  const tabsRow        = document.getElementById("tabsRow");
+  const conceptsTab    = document.getElementById("conceptsTab");
+  const problemsTab    = document.getElementById("problemsTab");
+  const statsContainer = document.querySelector('.stats-container');
 
-    const topics = availableTopics[section] || [];
-    topics.forEach(topic => {
-      const option = document.createElement("option");
-      option.value = topic;
-      option.textContent = topic.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-      topicFilter.appendChild(option);
+  let currentTopic = "array";
+  let currentTab   = "concepts"; // "concepts" | "problems"
+
+  // ── Populate topic dropdown ───────────────────────────────────────────────
+  function populateTopicDropdown() {
+    ALL_TOPICS.forEach(t => {
+      const opt = document.createElement('option');
+      opt.value = t;
+      opt.textContent = formatName(t);
+      topicFilter.appendChild(opt);
     });
   }
 
-  function parseCSV(csvText) {
-    const lines = csvText.trim().split('\n');
-    const headers = lines[0].split(',');
-    const problems = [];
-
-    for (let i = 1; i < lines.length; i++) {
-      const values = lines[i].split(',');
-      const problem = {};
-      headers.forEach((header, index) => {
-        problem[header.trim()] = values[index] ? values[index].trim() : '';
-      });
-      problems.push(problem);
-    }
-    return problems;
+  function formatName(t) {
+    return t
+      .replace(/([A-Z])/g, ' $1')
+      .replace(/_/g, ' ')
+      .replace(/\b\w/g, l => l.toUpperCase())
+      .trim();
   }
 
-  async function loadMarkdownContent(topic) {
-    const timestamp = new Date().getTime(); // Add timestamp to prevent caching
-    const response = await fetch(`src/${currentSection}/${topic}.md?t=${timestamp}`, {
-      headers: {
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0'
-      },
-      cache: 'no-store'
-    });
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    let markdownText = await response.text();
-    const contentDiv = document.createElement("div");
-    contentDiv.className = "markdown-content";
-    
-    // Preprocess markdown text to handle horizontal rules
-    markdownText = markdownText.replace(/^[\s]*---[\s]*$/gm, '\n\n---\n\n');
-    
-    // Configure marked options with custom renderer
-    const renderer = new marked.Renderer();
-    
-    // Custom renderer for horizontal rules
-    renderer.hr = function() {
-      return '<div class="custom-hr"><span></span></div>';
-    };
+  // ── Sync tab visibility based on current topic ────────────────────────────
+  function syncTabs() {
+    const hasConcepts = CONCEPTS_TOPICS.has(currentTopic);
+    const hasProblems = PROBLEMS_TOPICS.has(currentTopic);
 
-    marked.setOptions({
-      renderer: renderer,
-      highlight: function(code, lang) {
-        if (lang && hljs.getLanguage(lang)) {
-          return hljs.highlight(code, { language: lang }).value;
-        }
-        return hljs.highlightAuto(code).value;
-      },
-      breaks: true,
-      gfm: true,
-      headerIds: true,
-      xhtml: true,
-      pedantic: false,
-      mangle: false,
-      headerPrefix: 'section-',
-      smartLists: true,
-      smartypants: true
-    });
+    conceptsTab.style.display = hasConcepts ? '' : 'none';
+    problemsTab.style.display = hasProblems ? '' : 'none';
 
-    // Use marked.js for proper markdown rendering
-    contentDiv.innerHTML = marked.parse(markdownText);
-    
-    // Initialize syntax highlighting
-    contentDiv.querySelectorAll('pre code').forEach(block => {
-      hljs.highlightElement(block);
-    });
-    return contentDiv;
+    // If current tab isn't available for this topic, switch to one that is
+    if (currentTab === 'concepts' && !hasConcepts) currentTab = 'problems';
+    if (currentTab === 'problems' && !hasProblems) currentTab = 'concepts';
+
+    conceptsTab.classList.toggle('active', currentTab === 'concepts');
+    problemsTab.classList.toggle('active', currentTab === 'problems');
+
+    // Stats + reset only for problems tab
+    const showStats = currentTab === 'problems';
+    statsContainer.style.display = showStats ? 'flex' : 'none';
+    resetButton.style.display    = showStats ? 'inline-block' : 'none';
   }
 
-  async function loadTopic(topic) {
-    try {
-      const section = document.createElement("section");
-      section.className = "topic-section";
-      
-      const heading = document.createElement("h2");
-      heading.textContent = topic.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-      section.appendChild(heading);
-
-      if (currentSection === 'problems') {
-        // Handle CSV files for problems section
-        const timestamp = new Date().getTime(); // Add timestamp to prevent caching
-        const response = await fetch(`src/${currentSection}/${topic}.csv?t=${timestamp}`, {
-          headers: {
-            'Cache-Control': 'no-cache, no-store, must-revalidate',
-            'Pragma': 'no-cache',
-            'Expires': '0'
-          },
-          cache: 'no-store'
-        });
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const csvText = await response.text();
-        const problems = parseCSV(csvText);
-
-        // Add an index to each problem so ids remain stable after grouping
-        problems.forEach((p, i) => p._idx = i + 1);
-
-        // Group problems by pattern while preserving encounter order
-        const patternsMap = new Map();
-        problems.forEach(p => {
-          const pat = p.pattern || 'General';
-          if (!patternsMap.has(pat)) patternsMap.set(pat, []);
-          patternsMap.get(pat).push(p);
-        });
-
-        const problemsContainer = document.createElement("div");
-        problemsContainer.className = "problems-container";
-
-        // For each pattern, create a table with problems belonging to that pattern
-        patternsMap.forEach((plist, patternName) => {
-          const patternSection = document.createElement('div');
-          patternSection.className = 'pattern-section';
-
-          const patternHeader = document.createElement('h3');
-          patternHeader.className = 'pattern-header';
-          patternHeader.textContent = `${patternName} (${plist.length})`;
-          patternSection.appendChild(patternHeader);
-
-          const table = document.createElement('table');
-          table.className = 'pattern-table';
-          const thead = document.createElement('thead');
-          thead.innerHTML = `<tr><th></th><th>#</th><th>Category</th><th>Problem</th><th>Complexity</th></tr>`;
-          table.appendChild(thead);
-
-          const tbody = document.createElement('tbody');
-
-          plist.forEach(problem => {
-            const problemId = `${topic}-${problem._idx}`;
-            const tr = document.createElement('tr');
-            const checked = loadCheckboxState(problemId);
-            if (checked) tr.classList.add('completed');
-
-            // Checkbox cell
-            const tdCheck = document.createElement('td');
-            tdCheck.innerHTML = `<label class="checkbox-container"><input type="checkbox" id="${problemId}" ${checked ? 'checked' : ''}><span class="checkmark"></span></label>`;
-
-            // Number cell
-            const tdNum = document.createElement('td');
-            tdNum.className = 'problem-number';
-            tdNum.textContent = problem._idx;
-
-            // Category cell
-            const tdCat = document.createElement('td');
-            const catSpan = document.createElement('span');
-            catSpan.className = `problem-category ${problem.category}`;
-            catSpan.textContent = problem.category;
-            tdCat.appendChild(catSpan);
-
-            // Problem name/link cell
-            const tdName = document.createElement('td');
-            const a = document.createElement('a');
-            a.href = problem.url;
-            a.target = '_blank';
-            a.className = 'problem-link';
-            a.textContent = problem.name;
-            tdName.appendChild(a);
-
-            // Complexity cell
-            const tdComplexity = document.createElement('td');
-            tdComplexity.className = 'complexity-cell';
-            tdComplexity.textContent = problem.complexity || 'O(n)';
-
-            tr.appendChild(tdCheck);
-            tr.appendChild(tdNum);
-            tr.appendChild(tdCat);
-            tr.appendChild(tdName);
-            tr.appendChild(tdComplexity);
-
-            tbody.appendChild(tr);
-
-            // Wire up checkbox event
-            const inputEl = tdCheck.querySelector('input');
-            inputEl.addEventListener('change', (e) => {
-              saveCheckboxState(problemId, e.target.checked);
-              updateStats();
-              if (e.target.checked) tr.classList.add('completed'); else tr.classList.remove('completed');
-            });
-          });
-
-          table.appendChild(tbody);
-          patternSection.appendChild(table);
-          problemsContainer.appendChild(patternSection);
-        });
-
-        section.appendChild(problemsContainer);
-      } else {
-        // Handle Markdown files for cheat_sheet and patterns sections
-        const contentDiv = await loadMarkdownContent(topic);
-        section.appendChild(contentDiv);
-      }
-
-      content.appendChild(section);
-    } catch (err) {
-      console.error(`Error loading ${topic}:`, err);
-      const errorSection = document.createElement("section");
-      errorSection.innerHTML = `
-        <h2>${topic.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</h2>
-        <p class="error-message">Error loading content for this topic.</p>
-      `;
-      content.appendChild(errorSection);
-    }
-  }
-
-  async function loadAllTopics(selected) {
-    content.innerHTML = "";
-    await loadTopic(selected);
-    if (currentSection === 'problems') {
-      updateStats();
-    }
-  }
-
-  // Event Listeners
-  sectionFilter.addEventListener("change", async () => {
-    currentSection = sectionFilter.value;
-    
-    // Update visibility of stats and reset button for problems section
-    const statsContainer = document.querySelector('.stats-container');
-    if (statsContainer) {
-      statsContainer.style.display = currentSection === 'problems' ? 'flex' : 'none';
-    }
-    resetButton.style.display = currentSection === 'problems' ? 'inline-block' : 'none';
-    
-    // Show loading state in the topic dropdown
-    topicFilter.innerHTML = '<option value="">Loading topics...</option>';
-    topicFilter.disabled = true;
-    
-    await populateTopicDropdown(currentSection);
-    topicFilter.disabled = false;
-    
-    if (availableTopics[currentSection] && availableTopics[currentSection].length > 0) {
-      topicFilter.value = availableTopics[currentSection][0];
-      loadAllTopics(availableTopics[currentSection][0]);
-    }
-  });
-
+  // ── Event: topic change ───────────────────────────────────────────────────
   topicFilter.addEventListener("change", () => {
-    const selected = topicFilter.value;
-    loadAllTopics(selected);
+    currentTopic = topicFilter.value;
+    syncTabs();
+    render();
   });
 
+  // ── Event: tab clicks ─────────────────────────────────────────────────────
+  conceptsTab.addEventListener('click', () => {
+    currentTab = 'concepts';
+    syncTabs();
+    render();
+  });
+
+  problemsTab.addEventListener('click', () => {
+    currentTab = 'problems';
+    syncTabs();
+    render();
+  });
+
+  // ── Reset button ──────────────────────────────────────────────────────────
   resetButton.addEventListener("click", () => {
-    const selected = topicFilter.value;
-    let checkboxes = document.querySelectorAll(`input[id^="${selected}-"]`);
-    
-    checkboxes.forEach(checkbox => {
-      checkbox.checked = false;
-      saveCheckboxState(checkbox.id, false);
-      checkbox.closest('.problem-card').classList.remove('completed');
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      cb.checked = false;
+      saveCheckboxState(cb.dataset.id, false);
+      cb.closest('li')?.classList.remove('completed');
     });
-    
     updateStats();
   });
 
-  // Initialize solved problems cache
-  loadSolvedProblems();
+  // ── Make mermaid diagrams pannable and zoomable ───────────────────────────
+  function makeDiagramInteractive(wrapper) {
+    const inner = wrapper.querySelector('.mermaid-inner');
+    const svg = inner.querySelector('svg');
+    
+    if (!svg) {
+      console.error('No SVG found in wrapper');
+      return;
+    }
+    
+    let scale = 1, tx = 0, ty = 0;
+    let dragging = false, startX = 0, startY = 0;
 
-  // Run on startup
-  const statsContainer = document.querySelector('.stats-container');
-  if (statsContainer) {
-    statsContainer.style.display = 'flex';
+    function applyTransform() {
+      inner.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+      const label = wrapper.querySelector('.zoom-label');
+      if (label) label.textContent = Math.round(scale * 100) + '%';
+    }
+
+    function centerDiagram() {
+      // Remove any existing transform to get natural size
+      inner.style.transform = 'none';
+      
+      // Get the actual SVG viewBox or bounding box
+      const viewBox = svg.getAttribute('viewBox');
+      let naturalW, naturalH;
+      
+      if (viewBox) {
+        const [, , w, h] = viewBox.split(' ').map(Number);
+        naturalW = w;
+        naturalH = h;
+        console.log('Using viewBox:', { naturalW, naturalH });
+      } else {
+        // Fallback to bounding box
+        const bbox = svg.getBBox();
+        naturalW = bbox.width;
+        naturalH = bbox.height;
+        console.log('Using bbox:', { naturalW, naturalH });
+      }
+      
+      const wrapW = wrapper.clientWidth;
+      const wrapH = wrapper.clientHeight;
+      
+      console.log('Centering diagram:', { naturalW, naturalH, wrapW, wrapH });
+      
+      // Calculate scale to fit
+      const scaleX = (wrapW - 40) / naturalW;
+      const scaleY = (wrapH - 80) / naturalH;
+      scale = Math.min(1, scaleX, scaleY);
+      
+      // Center the diagram
+      tx = (wrapW - naturalW * scale) / 2;
+      ty = (wrapH - naturalH * scale) / 2;
+      
+      console.log('Applied transform:', { scale, tx, ty });
+      applyTransform();
+    }
+
+    // Zoom on scroll
+    wrapper.addEventListener('wheel', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      const rect = wrapper.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      const factor = e.deltaY > 0 ? 0.9 : 1.1;
+      const newScale = Math.min(5, Math.max(0.1, scale * factor));
+      tx = mx - (mx - tx) * (newScale / scale);
+      ty = my - (my - ty) * (newScale / scale);
+      scale = newScale;
+      applyTransform();
+    }, { passive: false });
+
+    // Pan on drag
+    wrapper.addEventListener('mousedown', e => {
+      if (e.target.closest('.mermaid-controls')) return;
+      dragging = true;
+      startX = e.clientX - tx;
+      startY = e.clientY - ty;
+      e.preventDefault();
+    });
+    wrapper.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      tx = e.clientX - startX;
+      ty = e.clientY - startY;
+      applyTransform();
+    });
+    wrapper.addEventListener('mouseup',    () => { dragging = false; });
+    wrapper.addEventListener('mouseleave', () => { dragging = false; });
+
+    // Touch support
+    let lastTouchDist = null;
+    wrapper.addEventListener('touchstart', e => {
+      if (e.touches.length === 1) {
+        dragging = true;
+        startX = e.touches[0].clientX - tx;
+        startY = e.touches[0].clientY - ty;
+      }
+    }, { passive: true });
+    wrapper.addEventListener('touchmove', e => {
+      e.preventDefault();
+      if (e.touches.length === 1 && dragging) {
+        tx = e.touches[0].clientX - startX;
+        ty = e.touches[0].clientY - startY;
+        applyTransform();
+      } else if (e.touches.length === 2) {
+        const dist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        if (lastTouchDist) {
+          scale = Math.min(5, Math.max(0.1, scale * (dist / lastTouchDist)));
+          applyTransform();
+        }
+        lastTouchDist = dist;
+      }
+    }, { passive: false });
+    wrapper.addEventListener('touchend', () => { dragging = false; lastTouchDist = null; });
+
+    // Zoom buttons — zoom toward center of wrapper
+    wrapper.querySelector('.btn-zoom-in').addEventListener('click', () => {
+      const cx = wrapper.clientWidth / 2, cy = wrapper.clientHeight / 2;
+      const f = 1.3;
+      scale = Math.min(5, scale * f);
+      tx = cx - (cx - tx) * f;
+      ty = cy - (cy - ty) * f;
+      applyTransform();
+    });
+    wrapper.querySelector('.btn-zoom-out').addEventListener('click', () => {
+      const cx = wrapper.clientWidth / 2, cy = wrapper.clientHeight / 2;
+      const f = 1.3;
+      scale = Math.max(0.1, scale / f);
+      tx = cx - (cx - tx) / f;
+      ty = cy - (cy - ty) / f;
+      applyTransform();
+    });
+    wrapper.querySelector('.btn-reset').addEventListener('click', () => centerDiagram());
+
+    // Fullscreen button
+    wrapper.querySelector('.btn-fullscreen').addEventListener('click', () => {
+      openDiagramModal(svg, wrapper);
+    });
+
+    // Center immediately and after a short delay
+    centerDiagram();
+    setTimeout(centerDiagram, 100);
+    setTimeout(centerDiagram, 300);
   }
-  resetButton.style.display = 'inline-block';
-  
-  // Initialize with the problems section
-  topicFilter.innerHTML = '<option value="">Loading topics...</option>';
-  topicFilter.disabled = true;
-  
-  fetchAvailableTopics(currentSection).then(() => {
-    populateTopicDropdown(currentSection).then(() => {
-      topicFilter.disabled = false;
-      // Load the first topic by default
-      if (availableTopics[currentSection] && availableTopics[currentSection].length > 0) {
-        topicFilter.value = availableTopics[currentSection][0];
-        loadAllTopics(availableTopics[currentSection][0]);
+
+  // ── Fullscreen modal ──────────────────────────────────────────────────────
+  function openDiagramModal(svg, sourceWrapper) {
+    const modal     = document.getElementById('diagramModal');
+    const modalBody = document.getElementById('modalBody');
+    const controls  = document.getElementById('modalControls');
+
+    // Clone SVG into modal
+    modalBody.innerHTML = '';
+    const inner = document.createElement('div');
+    inner.className = 'mermaid-inner';
+    const mermaidDiv = document.createElement('div');
+    mermaidDiv.className = 'mermaid';
+    const clonedSvg = svg.cloneNode(true);
+    clonedSvg.removeAttribute('width');
+    clonedSvg.removeAttribute('height');
+    clonedSvg.style.width  = 'max-content';
+    clonedSvg.style.height = 'max-content';
+    mermaidDiv.appendChild(clonedSvg);
+    inner.appendChild(mermaidDiv);
+    modalBody.appendChild(inner);
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+
+    // Pan/zoom state for modal
+    let scale = 1, tx = 0, ty = 0, dragging = false, startX = 0, startY = 0;
+
+    function applyTransform() {
+      inner.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+      controls.querySelector('.zoom-label').textContent = Math.round(scale * 100) + '%';
+    }
+
+    function centerModal() {
+      inner.style.transform = 'none';
+      const svgRect = clonedSvg.getBoundingClientRect();
+      const naturalW = svgRect.width  || 800;
+      const naturalH = svgRect.height || 500;
+      const bW = modalBody.clientWidth;
+      const bH = modalBody.clientHeight;
+      scale = Math.min(1, (bW - 60) / naturalW, (bH - 60) / naturalH);
+      tx = (bW - naturalW * scale) / 2;
+      ty = (bH - naturalH * scale) / 2;
+      applyTransform();
+    }
+
+    setTimeout(centerModal, 50);
+
+    // Wheel zoom
+    modalBody.addEventListener('wheel', e => {
+      e.preventDefault();
+      const rect = modalBody.getBoundingClientRect();
+      const mx = e.clientX - rect.left;
+      const my = e.clientY - rect.top;
+      const f = e.deltaY > 0 ? 0.9 : 1.1;
+      const ns = Math.min(5, Math.max(0.1, scale * f));
+      tx = mx - (mx - tx) * (ns / scale);
+      ty = my - (my - ty) * (ns / scale);
+      scale = ns;
+      applyTransform();
+    }, { passive: false });
+
+    // Drag
+    modalBody.addEventListener('mousedown', e => { dragging = true; startX = e.clientX - tx; startY = e.clientY - ty; e.preventDefault(); });
+    modalBody.addEventListener('mousemove', e => { if (!dragging) return; tx = e.clientX - startX; ty = e.clientY - startY; applyTransform(); });
+    modalBody.addEventListener('mouseup',   () => { dragging = false; });
+
+    // Controls
+    controls.querySelector('.btn-zoom-in').onclick  = () => { const f=1.3, cx=modalBody.clientWidth/2, cy=modalBody.clientHeight/2; scale=Math.min(5,scale*f); tx=cx-(cx-tx)*f; ty=cy-(cy-ty)*f; applyTransform(); };
+    controls.querySelector('.btn-zoom-out').onclick = () => { const f=1.3, cx=modalBody.clientWidth/2, cy=modalBody.clientHeight/2; scale=Math.max(0.1,scale/f); tx=cx-(cx-tx)/f; ty=cy-(cy-ty)/f; applyTransform(); };
+    controls.querySelector('.btn-reset').onclick    = () => centerModal();
+
+    // Close
+    const closeModal = () => {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      modalBody.innerHTML = '';
+    };
+    document.getElementById('modalClose').onclick = closeModal;
+    modal.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    modal.setAttribute('tabindex', '-1');
+    modal.focus();
+  }
+
+  // ── Render ────────────────────────────────────────────────────────────────
+  async function render() {
+    content.innerHTML = '';
+    try {
+      if (currentTab === 'concepts') {
+        const div = await loadMarkdown('concepts', currentTopic);
+        content.appendChild(div);
+        
+        // Collect mermaid nodes BEFORE mermaid.run() replaces them
+        const mermaidNodes = [...content.querySelectorAll('.mermaid')];
+        console.log('Found mermaid nodes:', mermaidNodes.length);
+        
+        if (mermaidNodes.length > 0) {
+          // Wrap each in interactive container first
+          mermaidNodes.forEach(el => {
+            console.log('Mermaid content:', el.textContent.substring(0, 50));
+            const wrapper = document.createElement('div');
+            wrapper.className = 'mermaid-wrapper';
+            const inner = document.createElement('div');
+            inner.className = 'mermaid-inner';
+            const hint = document.createElement('div');
+            hint.className = 'mermaid-hint';
+            hint.textContent = 'Scroll to zoom · Drag to pan';
+            const controls = document.createElement('div');
+            controls.className = 'mermaid-controls';
+            controls.innerHTML = `
+              <button class="btn-zoom-out" title="Zoom out">−</button>
+              <span class="zoom-label">100%</span>
+              <button class="btn-zoom-in" title="Zoom in">+</button>
+              <div class="ctrl-divider"></div>
+              <button class="btn-reset" title="Fit to screen">⊡</button>
+              <div class="ctrl-divider"></div>
+              <button class="btn-fullscreen" title="Full screen">⛶</button>`;
+            el.parentNode.insertBefore(wrapper, el);
+            inner.appendChild(el);
+            wrapper.appendChild(inner);
+            wrapper.appendChild(hint);
+            wrapper.appendChild(controls);
+          });
+          
+          // Let mermaid render all .mermaid divs
+          try {
+            await mermaid.run({ nodes: content.querySelectorAll('.mermaid') });
+            console.log('Mermaid rendering complete');
+            
+            // Check if SVG was created
+            const svgs = content.querySelectorAll('.mermaid svg');
+            console.log('SVGs found:', svgs.length);
+            svgs.forEach((svg, i) => {
+              console.log(`SVG ${i}:`, svg.getBoundingClientRect());
+            });
+          } catch (err) {
+            console.error('Mermaid rendering error:', err);
+          }
+          
+          // Wire up interactivity after SVG is rendered
+          setTimeout(() => {
+            content.querySelectorAll('.mermaid-wrapper').forEach(wrapper => {
+              makeDiagramInteractive(wrapper);
+            });
+          }, 300);
+        }
+      } else {
+        content.appendChild(await loadPracticeMarkdown(currentTopic));
+        updateStats();
+      }
+    } catch (err) {
+      console.error(err);
+      content.innerHTML = `<p class="error-message">Error loading content.</p>`;
+    }
+  }
+
+  // ── Concepts markdown (full markdown render) ─────────────────────────────
+  async function loadMarkdown(folder, topic) {
+    const res = await fetch(`src/${folder}/${topic}.md?t=${Date.now()}`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const md = await res.text();
+
+    marked.setOptions({
+      breaks: true,
+      gfm: true,
+      highlight: function(code, lang) {
+        if (hljs.getLanguage(lang)) {
+          return hljs.highlight(code, { language: lang }).value;
+        }
+        return code;
       }
     });
-  });
+
+    const renderer = new marked.Renderer();
+    
+    renderer.link = function(href, title, text) {
+      return `<a href="${href}" target="_blank" rel="noopener">${text}</a>`;
+    };
+    
+    renderer.code = function(code, language) {
+      console.log('Code block detected:', { code: code?.substring(0, 50), language });
+      if (language === 'mermaid') {
+        return `<div class="mermaid">${code}</div>`;
+      }
+      const highlighted = language && hljs.getLanguage(language)
+        ? hljs.highlight(code, { language }).value
+        : code;
+      return `<pre><code class="language-${language || ''}">${highlighted}</code></pre>`;
+    };
+
+    const div = document.createElement('div');
+    div.className = 'markdown-content';
+    div.innerHTML = marked.parse(md, { renderer });
+    div.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
+    return div;
+  }
+
+  // ── Practice markdown (with checkboxes) ───────────────────────────────────
+  async function loadPracticeMarkdown(topic) {
+    const res = await fetch(`src/problems/${topic}.md?t=${Date.now()}`, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const md = await res.text();
+
+    let itemIndex = 0;
+
+    const instance = new marked.Marked({
+      breaks: true,
+      gfm: true,
+      renderer: {
+        link({ href, text: rawText }) {
+          const cleanText = rawText.replace(/\s*`[^`]+`\s*$/, '');
+          const badgeMatch = rawText.match(/`([^`]+)`\s*$/);
+          const badge = badgeMatch ? badgeMatch[1].split(' ')[0] : '';
+          itemIndex++;
+          const id = `${topic}-${itemIndex}`;
+          const checked = solvedProblems.has(id) ? 'checked' : '';
+          return `<span class="practice-item">
+            <label class="checkbox-container">
+              <input type="checkbox" data-id="${id}" ${checked}>
+              <span class="checkmark"></span>
+            </label>
+            <a href="${href}" target="_blank" rel="noopener" class="problem-link">${cleanText}</a>
+            ${badge ? `<span class="problem-category ${badge}">${badge}</span>` : ''}
+          </span>`;
+        }
+      }
+    });
+
+    const div = document.createElement('div');
+    div.className = 'markdown-content practice-md';
+    div.innerHTML = instance.parse(md);
+
+    div.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+      const id = cb.dataset.id;
+      const li = cb.closest('li');
+      if (solvedProblems.has(id)) li?.classList.add('completed');
+      cb.addEventListener('change', e => {
+        saveCheckboxState(id, e.target.checked);
+        li?.classList.toggle('completed', e.target.checked);
+        updateStats();
+      });
+    });
+
+    // ── Fold/unfold each ## section ───────────────────────────────────────
+    div.querySelectorAll('h2').forEach(h2 => {
+      // Collect all sibling nodes until the next h2
+      const siblings = [];
+      let el = h2.nextElementSibling;
+      while (el && el.tagName !== 'H2') {
+        siblings.push(el);
+        el = el.nextElementSibling;
+      }
+      if (!siblings.length) return;
+
+      // Wrap siblings in a collapsible body div
+      const body = document.createElement('div');
+      body.className = 'section-body open';
+      h2.after(body);
+      siblings.forEach(s => body.appendChild(s));
+
+      // Count problems and completed in this section
+      function sectionStats() {
+        const total = body.querySelectorAll('input[type="checkbox"]').length;
+        const done  = body.querySelectorAll('input[type="checkbox"]:checked').length;
+        return { total, done };
+      }
+
+      // Build header
+      const { total, done } = sectionStats();
+      const chevron = document.createElement('span');
+      chevron.className = 'section-chevron';
+      chevron.textContent = '▾';
+
+      const badge = document.createElement('span');
+      badge.className = 'section-badge';
+      badge.textContent = `${done}/${total}`;
+
+      h2.classList.add('section-heading');
+      h2.appendChild(badge);
+      h2.appendChild(chevron);
+
+      // Update badge when checkboxes change
+      body.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', () => {
+          const s = sectionStats();
+          badge.textContent = `${s.done}/${s.total}`;
+          badge.classList.toggle('all-done', s.done === s.total);
+        });
+      });
+
+      // Toggle on click
+      h2.addEventListener('click', () => {
+        const isOpen = body.classList.toggle('open');
+        chevron.style.transform = isOpen ? '' : 'rotate(-90deg)';
+      });
+    });
+
+    return div;
+  }
+
+  // ── Init ───────────────────────────────────────────────────────────────────
+  mermaid.initialize({ startOnLoad: false, theme: 'dark' });
+  loadSolvedProblems();
+  populateTopicDropdown();
+  topicFilter.value = currentTopic;
+  syncTabs();
+  render();
 });

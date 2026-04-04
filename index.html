@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DSA Problem Tracker</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
   <link rel="stylesheet" href="src/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -18,40 +20,52 @@
 
     <div class="stats-container">
       <div class="stat-card">
-        <h3>Total Problems</h3>
-        <span id="totalProblems">0</span>
+        <div class="stat-label">Total</div>
+        <div class="stat-value" id="totalProblems">0</div>
       </div>
       <div class="stat-card">
-        <h3>Completed</h3>
-        <span id="completedProblems">0</span>
+        <div class="stat-label">Completed</div>
+        <div class="stat-value" id="completedProblems">0</div>
       </div>
-      <div class="stat-card">
-        <h3>Progress</h3>
-        <span id="progressPercentage">0%</span>
+      <div class="stat-card progress-card">
+        <div class="stat-label">Progress</div>
+        <div class="stat-value" id="progressPercentage">0%</div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" id="progressBar"></div></div>
       </div>
     </div>
 
-    <div class="filter-section">
-      <div class="filter-row">
-        <label for="sectionFilter"><strong>Select Section:</strong></label>
-        <select id="sectionFilter">
-          <option value="problems">Problems</option>
-          <option value="notes">Notes</option>
-        </select>
+    <div class="toolbar">
+      <select id="topicFilter"></select>
+      <div class="tab-group" id="tabsRow">
+        <button class="tab-btn active" id="conceptsTab">Concepts</button>
+        <button class="tab-btn" id="problemsTab">Problems</button>
       </div>
-      
-      <div class="filter-row">
-        <label for="topicFilter"><strong>Filter by Topic:</strong></label>
-        <select id="topicFilter">
-          <option value="all">All Topics</option>
-        </select>
-        <button id="resetButton">Reset Progress</button>
-      </div>
+      <button id="resetButton">Reset Progress</button>
     </div>
 
     <div id="content">Loading topics...</div>
   </div>
 
   <script src="src/main.js"></script>
+
+  <!-- Scroll navigation buttons -->
+  <button class="scroll-btn scroll-top" title="Go to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <button class="scroll-btn scroll-bottom" title="Go to bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">↓</button>
+
+  <!-- Fullscreen diagram modal -->
+  <div id="diagramModal" class="diagram-modal">
+    <div class="diagram-modal-header">
+      <span class="diagram-modal-title">Decision Flowchart</span>
+      <button class="diagram-modal-close" id="modalClose">✕</button>
+    </div>
+    <div class="diagram-modal-body" id="modalBody"></div>
+    <div class="mermaid-controls" id="modalControls">
+      <button class="btn-zoom-out" title="Zoom out">−</button>
+      <span class="zoom-label">100%</span>
+      <button class="btn-zoom-in" title="Zoom in">+</button>
+      <div class="ctrl-divider"></div>
+      <button class="btn-reset" title="Fit to screen">⊡</button>
+    </div>
+  </div>
 </body>
 </html>
