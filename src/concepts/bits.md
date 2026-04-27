@@ -26,35 +26,49 @@
 - `a ^ 0 = a` — XOR with 0 changes nothing
 - XOR is commutative and associative
 
-**Analogy:** XOR is like a toggle switch. Flip the same switch twice → back to original. Flip once → changed.
+```viz
+{
+  "title": "XOR Magic — Find the Single Number",
+  "description": "arr = [4, 1, 2, 1, 2]. All except one appear twice. XOR all → pairs cancel to 0, single survives.",
+  "array": [4, 1, 2, 1, 2],
+  "speed": 900,
+  "steps": [
+    { "pointers": { "i": 0 }, "highlight": [0], "label": "result = 0 ^ 4 = 4" },
+    { "pointers": { "i": 1 }, "highlight": [1], "label": "result = 4 ^ 1 = 5" },
+    { "pointers": { "i": 2 }, "highlight": [2], "label": "result = 5 ^ 2 = 7" },
+    { "pointers": { "i": 3 }, "highlight": [1,3], "label": "result = 7 ^ 1 = 6  (1^1 cancels out)" },
+    { "pointers": { "i": 4 }, "highlight": [2,4], "label": "result = 6 ^ 2 = 4  (2^2 cancels out)", "note": "Single number = 4 ✓. Pairs cancelled: 1^1=0, 2^2=0. Only 4 remains." }
+  ]
+}
+```
 
 **When to use:**
 - Find the single number that appears once (all others appear twice) → XOR all numbers, pairs cancel out
-- Find two numbers appearing once (all others twice) → XOR all, then split by a differing bit
 - Swap two numbers without temp: `a ^= b; b ^= a; a ^= b`
-- Find XOR of range [L, R] using prefix XOR
 
 ---
 
 ## Pattern 2: Check / Set / Clear / Toggle a Bit
 
-```
-# Check if ith bit is set
-(n >> i) & 1 == 1
-
-# Set ith bit (turn ON)
-n | (1 << i)
-
-# Clear ith bit (turn OFF)
-n & ~(1 << i)
-
-# Toggle ith bit
-n ^ (1 << i)
+```viz
+{
+  "title": "Bit Operations on n=13 (binary: 1101)",
+  "description": "n=13=1101. Demonstrate check, set, clear, toggle on bit position i=1.",
+  "array": [1, 1, 0, 1],
+  "speed": 1000,
+  "steps": [
+    { "pointers": {}, "highlight": [0,1,2,3], "label": "n=13=1101 in binary. Bits indexed right to left: bit0=1, bit1=0, bit2=1, bit3=1" },
+    { "pointers": { "i": 2 }, "highlight": [2], "label": "CHECK bit1: (13>>1)&1 = 6&1 = 0. Bit 1 is OFF." },
+    { "pointers": { "i": 2 }, "highlight": [2], "label": "SET bit1: 13|(1<<1) = 13|2 = 15 = 1111. Bit 1 turned ON." },
+    { "pointers": { "i": 1 }, "highlight": [1], "label": "CLEAR bit2: 13&~(1<<2) = 13&~4 = 13&11111011 = 9 = 1001. Bit 2 turned OFF." },
+    { "pointers": { "i": 3 }, "highlight": [3], "label": "TOGGLE bit3: 13^(1<<3) = 13^8 = 5 = 0101. Bit 3 flipped from 1 to 0.", "note": "All bit ops are O(1) ✓" }
+  ]
+}
 ```
 
 **When to use:**
 - Check if number is odd: `n & 1 == 1`
-- Check if power of 2: `n & (n-1) == 0` (only one bit set)
+- Check if power of 2: `n & (n-1) == 0`
 - Count set bits (Brian Kernighan): `while n: n &= n-1; count++`
 
 ---
@@ -64,6 +78,22 @@ n ^ (1 << i)
 `n & (n-1)` removes the lowest set bit.
 
 **Analogy:** Imagine a binary number like `1000`. Subtracting 1 gives `0111`. AND them → `0000`. If result is 0, only one bit was set → power of 2.
+
+```viz
+{
+  "title": "n & (n-1) — Count Set Bits (Brian Kernighan)",
+  "description": "n=13=1101. Each n&(n-1) removes the lowest set bit. Count iterations until n=0.",
+  "array": [1, 1, 0, 1],
+  "speed": 1000,
+  "steps": [
+    { "pointers": {}, "highlight": [0,1,2,3], "label": "n=13=1101. count=0" },
+    { "pointers": { "i": 3 }, "highlight": [3], "label": "n&(n-1)=13&12=1101&1100=1100=12. Removed bit0. count=1" },
+    { "pointers": { "i": 2 }, "highlight": [2], "label": "n&(n-1)=12&11=1100&1011=1000=8. Removed bit2. count=2" },
+    { "pointers": { "i": 0 }, "highlight": [0], "label": "n&(n-1)=8&7=1000&0111=0000=0. Removed bit3. count=3" },
+    { "pointers": {}, "label": "n=0 → stop.", "note": "13=1101 has 3 set bits ✓. Each iteration removes exactly one set bit." }
+  ]
+}
+```
 
 **Uses:**
 - Check power of 2: `n > 0 and (n & (n-1)) == 0`
@@ -78,41 +108,53 @@ n ^ (1 << i)
 
 **Analogy:** Each bit is a yes/no decision for one item. All possible subsets = all numbers from 0 to 2^n - 1.
 
-```
-# Enumerate all subsets of array of size n
-for mask in range(1 << n):
-    subset = []
-    for i in range(n):
-        if mask & (1 << i):
-            subset.append(arr[i])
+```viz
+{
+  "title": "Bitmask Subsets — arr=[A,B,C], n=3",
+  "description": "Each number 0..7 represents a subset. Bit i=1 means element i is included.",
+  "array": ["A", "B", "C"],
+  "speed": 800,
+  "steps": [
+    { "pointers": {}, "highlight": [], "label": "mask=000=0: {} empty subset" },
+    { "pointers": { "i": 0 }, "highlight": [0], "label": "mask=001=1: {A} (bit0 set)" },
+    { "pointers": { "i": 1 }, "highlight": [1], "label": "mask=010=2: {B} (bit1 set)" },
+    { "pointers": { "i": 0, "j": 1 }, "highlight": [0,1], "label": "mask=011=3: {A,B} (bit0,bit1 set)" },
+    { "pointers": { "i": 2 }, "highlight": [2], "label": "mask=100=4: {C} (bit2 set)" },
+    { "pointers": { "i": 0, "curr": 2 }, "highlight": [0,2], "label": "mask=101=5: {A,C}" },
+    { "pointers": { "i": 1, "j": 2 }, "highlight": [1,2], "label": "mask=110=6: {B,C}" },
+    { "pointers": { "i": 0, "j": 1, "curr": 2 }, "highlight": [0,1,2], "label": "mask=111=7: {A,B,C}", "note": "2³=8 subsets total ✓. Check if element i in mask: (mask>>i)&1==1" }
+  ]
+}
 ```
 
 **When to use:**
 - Generate all subsets (Power Set)
 - DP on subsets (Travelling Salesman, matching problems)
-- Check if subset has a property
 
 ---
 
 ## Pattern 5: Bit Tricks for Math
 
-- `n >> 1` = n / 2 (integer division)
-- `n << 1` = n * 2
-- `n & 1` = n % 2 (odd/even check)
-- `-n = ~n + 1` (two's complement)
-- `n ^ (n-1)` = sets all bits from lowest set bit downward
+```viz
+{
+  "title": "Fast Exponentiation — base=2, exp=10",
+  "description": "exp=10=1010 in binary. Square base each step. Multiply result when bit is set.",
+  "array": [0, 1, 0, 1],
+  "speed": 1000,
+  "steps": [
+    { "pointers": { "i": 3 }, "highlight": [3], "label": "exp=10=1010. bit0=0: skip. base=2²=4, exp>>=1 → exp=5=101" },
+    { "pointers": { "i": 2 }, "highlight": [2], "label": "bit0=1: result*=4=4. base=4²=16, exp>>=1 → exp=2=10" },
+    { "pointers": { "i": 1 }, "highlight": [1], "label": "bit0=0: skip. base=16²=256, exp>>=1 → exp=1=1" },
+    { "pointers": { "i": 0 }, "highlight": [0], "label": "bit0=1: result*=256=1024. base=256²=65536, exp>>=1 → exp=0", "note": "2^10 = 1024 ✓. Only 4 multiplications instead of 10. O(log n)." }
+  ]
+}
+```
 
-**Fast power (Exponentiation by squaring):**
-```
-def power(base, exp):
-    result = 1
-    while exp > 0:
-        if exp & 1:          # if current bit is set
-            result *= base
-        base *= base
-        exp >>= 1
-    return result
-```
+- `n >> 1` = n / 2,  `n << 1` = n * 2,  `n & 1` = n % 2 (odd/even)
+
+**When to use:**
+- Fast power/exponentiation
+- Multiply/divide by powers of 2
 
 ---
 

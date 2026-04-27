@@ -32,10 +32,56 @@
 
 **Analogy:** Each step depends only on a few previous steps. Like a relay race — each runner hands off to the next.
 
+```viz
+{
+  "type": "table",
+  "title": "House Robber — 1D DP table",
+  "description": "nums = [2, 7, 9, 3, 1]. dp[i] = max loot using houses 0..i. Each cell computed from the two before it.",
+  "speed": 900,
+  "cols": ["", "i=0", "i=1", "i=2", "i=3", "i=4"],
+  "rows": ["nums", "dp"],
+  "cells": [
+    [2, 7, 9, 3, 1],
+    ["?", "?", "?", "?", "?"]
+  ],
+  "steps": [
+    {
+      "cells": [[2,7,9,3,1],["?","?","?","?","?"]],
+      "active": [1,0],
+      "label": "dp[0] = nums[0] = 2. Only one house — take it."
+    },
+    {
+      "cells": [[2,7,9,3,1],[2,"?","?","?","?"]],
+      "active": [1,1],
+      "highlight": [[1,0]],
+      "label": "dp[1] = max(dp[0]=2, nums[1]=7) = 7. House 1 alone is better."
+    },
+    {
+      "cells": [[2,7,9,3,1],[2,7,"?","?","?"]],
+      "active": [1,2],
+      "highlight": [[1,0],[1,1]],
+      "label": "dp[2] = max(dp[1]=7, dp[0]+nums[2]=2+9=11) = 11. Rob houses 0+2."
+    },
+    {
+      "cells": [[2,7,9,3,1],[2,7,11,"?","?"]],
+      "active": [1,3],
+      "highlight": [[1,1],[1,2]],
+      "label": "dp[3] = max(dp[2]=11, dp[1]+nums[3]=7+3=10) = 11. Skip house 3."
+    },
+    {
+      "cells": [[2,7,9,3,1],[2,7,11,11,"?"]],
+      "active": [1,4],
+      "highlight": [[1,2],[1,3]],
+      "label": "dp[4] = max(dp[3]=11, dp[2]+nums[4]=11+1=12) = 12. Rob houses 0,2,4.",
+      "note": "Max loot = 12 ✓  (2+9+1). dp[i] = max(dp[i-1], dp[i-2]+nums[i])"
+    }
+  ]
+}
+```
+
 **Classic problems:**
 - **Climbing Stairs:** `dp[i] = dp[i-1] + dp[i-2]`
-- **House Robber:** `dp[i] = max(dp[i-1], dp[i-2] + nums[i])` — can't rob adjacent houses
-- **Fibonacci, Frog Jump**
+- **House Robber:** `dp[i] = max(dp[i-1], dp[i-2] + nums[i])`
 
 **When to use:** Linear sequence, each state depends on a few previous states.
 
@@ -45,10 +91,62 @@
 
 **Analogy:** You're navigating a grid from top-left to bottom-right. Each cell's answer depends on the cell above and the cell to the left.
 
+```viz
+{
+  "type": "table",
+  "title": "Unique Paths — 2D DP grid",
+  "description": "3×3 grid. dp[i][j] = ways to reach (i,j). Only move right or down. dp[i][j] = dp[i-1][j] + dp[i][j-1].",
+  "speed": 900,
+  "cols": ["", "j=0", "j=1", "j=2"],
+  "rows": ["i=0", "i=1", "i=2"],
+  "cells": [
+    ["?", "?", "?"],
+    ["?", "?", "?"],
+    ["?", "?", "?"]
+  ],
+  "steps": [
+    {
+      "cells": [["?","?","?"],["?","?","?"],["?","?","?"]],
+      "highlight": [[0,0],[0,1],[0,2]],
+      "label": "Row 0: only one way to reach any cell — go right all the way. dp[0][j]=1."
+    },
+    {
+      "cells": [[1,1,1],["?","?","?"],["?","?","?"]],
+      "highlight": [[1,0],[2,0]],
+      "label": "Col 0: only one way to reach any cell — go down all the way. dp[i][0]=1."
+    },
+    {
+      "cells": [[1,1,1],[1,"?","?"],["?","?","?"]],
+      "active": [1,1],
+      "highlight": [[0,1],[1,0]],
+      "label": "dp[1][1] = dp[0][1] + dp[1][0] = 1+1 = 2."
+    },
+    {
+      "cells": [[1,1,1],[1,2,"?"],["?","?","?"]],
+      "active": [1,2],
+      "highlight": [[0,2],[1,1]],
+      "label": "dp[1][2] = dp[0][2] + dp[1][1] = 1+2 = 3."
+    },
+    {
+      "cells": [[1,1,1],[1,2,3],[1,"?","?"]],
+      "active": [2,1],
+      "highlight": [[1,1],[2,0]],
+      "label": "dp[2][1] = dp[1][1] + dp[2][0] = 2+1 = 3."
+    },
+    {
+      "cells": [[1,1,1],[1,2,3],[1,3,"?"]],
+      "active": [2,2],
+      "highlight": [[1,2],[2,1]],
+      "label": "dp[2][2] = dp[1][2] + dp[2][1] = 3+3 = 6.",
+      "note": "6 unique paths from top-left to bottom-right ✓"
+    }
+  ]
+}
+```
+
 **Classic problems:**
 - **Unique Paths:** `dp[i][j] = dp[i-1][j] + dp[i][j-1]`
 - **Minimum Path Sum:** `dp[i][j] = grid[i][j] + min(dp[i-1][j], dp[i][j-1])`
-- **Triangle, Falling Path Sum**
 
 **When to use:** 2D grid traversal, two-sequence problems (LCS, Edit Distance).
 
@@ -60,13 +158,52 @@
 
 **Analogy:** You have a backpack with limited weight. For each item, you either pack it or don't. You want maximum value without exceeding weight.
 
+```viz
+{
+  "type": "table",
+  "title": "0/1 Knapsack — dp[i][w] table",
+  "description": "items: (w=1,v=1), (w=3,v=4), (w=4,v=5). Capacity=4. dp[i][w] = max value using first i items, weight ≤ w.",
+  "speed": 1000,
+  "cols": ["", "w=0", "w=1", "w=2", "w=3", "w=4"],
+  "rows": ["0 items", "item1(w1,v1)", "item2(w3,v4)", "item3(w4,v5)"],
+  "cells": [
+    [0, 0, 0, 0, 0],
+    [0, "?", "?", "?", "?"],
+    [0, "?", "?", "?", "?"],
+    [0, "?", "?", "?", "?"]
+  ],
+  "steps": [
+    {
+      "cells": [[0,0,0,0,0],[0,"?","?","?","?"],[0,"?","?","?","?"],[0,"?","?","?","?"]],
+      "highlight": [[0,0],[0,1],[0,2],[0,3],[0,4],[1,0],[2,0],[3,0]],
+      "label": "Base cases: 0 items → value=0. Weight=0 → value=0."
+    },
+    {
+      "cells": [[0,0,0,0,0],[0,1,1,1,1],[0,"?","?","?","?"],[0,"?","?","?","?"]],
+      "highlight": [[1,1],[1,2],[1,3],[1,4]],
+      "label": "Item1 (w=1,v=1): fits in w≥1. dp[1][w] = 1 for w≥1, else 0."
+    },
+    {
+      "cells": [[0,0,0,0,0],[0,1,1,1,1],[0,1,1,1,"?"],[0,"?","?","?","?"]],
+      "active": [2,4],
+      "highlight": [[1,4],[1,1]],
+      "label": "Item2 (w=3,v=4) at w=4: take=dp[1][4-3]+4=1+4=5, skip=dp[1][4]=1. dp[2][4]=5."
+    },
+    {
+      "cells": [[0,0,0,0,0],[0,1,1,1,1],[0,1,1,4,5],[0,"?","?","?","?"]],
+      "active": [3,4],
+      "highlight": [[2,4],[2,0]],
+      "label": "Item3 (w=4,v=5) at w=4: take=dp[2][0]+5=5, skip=dp[2][4]=5. dp[3][4]=5.",
+      "note": "Max value = 5 ✓  (item1+item2=1+4, or item3 alone=5). Key: use dp[i-1] row for take case."
+    }
+  ]
+}
+```
+
 **Formula:** `dp[i][w] = max(dp[i-1][w], dp[i-1][w-wt[i]] + val[i])`
 
 **When to use:**
-- 0/1 Knapsack
-- Subset sum, partition equal subset sum
-- Count subsets with given sum
-- Target sum
+- 0/1 Knapsack, Subset sum, Partition equal subset sum, Target sum
 
 ---
 
@@ -76,12 +213,67 @@
 
 **Analogy:** A vending machine — you can buy the same snack as many times as you want.
 
-**Formula:** `dp[i][w] = max(dp[i-1][w], dp[i][w-wt[i]] + val[i])` (note: `dp[i]` not `dp[i-1]` for the take case)
+```viz
+{
+  "type": "table",
+  "title": "Coin Change — 1D DP table (unbounded)",
+  "description": "coins=[1,3,4], amount=6. dp[i] = min coins to make amount i. ∞ = not reachable yet.",
+  "speed": 900,
+  "cols": ["", "amt=0", "amt=1", "amt=2", "amt=3", "amt=4", "amt=5", "amt=6"],
+  "rows": ["dp"],
+  "cells": [
+    [0, "∞", "∞", "∞", "∞", "∞", "∞"]
+  ],
+  "steps": [
+    {
+      "cells": [[0,"∞","∞","∞","∞","∞","∞"]],
+      "highlight": [[0,0]],
+      "label": "dp[0]=0 (base: 0 coins needed for amount 0)."
+    },
+    {
+      "cells": [[0,1,"∞","∞","∞","∞","∞"]],
+      "active": [0,1],
+      "label": "dp[1]: try coin1 → dp[0]+1=1. dp[1]=1."
+    },
+    {
+      "cells": [[0,1,2,"∞","∞","∞","∞"]],
+      "active": [0,2],
+      "highlight": [[0,1]],
+      "label": "dp[2]: try coin1 → dp[1]+1=2. dp[2]=2."
+    },
+    {
+      "cells": [[0,1,2,1,"∞","∞","∞"]],
+      "active": [0,3],
+      "highlight": [[0,0],[0,2]],
+      "label": "dp[3]: coin1→dp[2]+1=3, coin3→dp[0]+1=1. min=1. dp[3]=1."
+    },
+    {
+      "cells": [[0,1,2,1,1,"∞","∞"]],
+      "active": [0,4],
+      "highlight": [[0,1],[0,3]],
+      "label": "dp[4]: coin1→dp[3]+1=2, coin3→dp[1]+1=2, coin4→dp[0]+1=1. min=1. dp[4]=1."
+    },
+    {
+      "cells": [[0,1,2,1,1,2,"∞"]],
+      "active": [0,5],
+      "highlight": [[0,4],[0,2]],
+      "label": "dp[5]: coin1→dp[4]+1=2, coin4→dp[1]+1=2. min=2. dp[5]=2."
+    },
+    {
+      "cells": [[0,1,2,1,1,2,2]],
+      "active": [0,6],
+      "highlight": [[0,5],[0,3]],
+      "label": "dp[6]: coin1→dp[5]+1=3, coin3→dp[3]+1=2, coin4→dp[2]+1=3. min=2. dp[6]=2.",
+      "note": "Min coins for 6 = 2 (coin3+coin3) ✓. Key: dp[i] row (not dp[i-1]) — reuse allowed."
+    }
+  ]
+}
+```
+
+**Formula:** `dp[w] = min(dp[w], dp[w - coin] + 1)` (note: same row, not previous row)
 
 **When to use:**
-- Coin change (minimum coins)
-- Coin change 2 (count ways)
-- Rod cutting
+- Coin change (minimum coins), Coin change 2 (count ways), Rod cutting
 
 ---
 
@@ -91,18 +283,61 @@
 
 **Analogy:** Two people describing their day. LCS finds the longest sequence of events they both experienced in the same order.
 
-**Formula:**
-```
-if s1[i] == s2[j]: dp[i][j] = 1 + dp[i-1][j-1]
-else: dp[i][j] = max(dp[i-1][j], dp[i][j-1])
+```viz
+{
+  "type": "table",
+  "title": "LCS — 2D DP table",
+  "description": "s1='ABCB' (rows), s2='BDCAB' (cols). dp[i][j] = LCS length of s1[0..i-1] and s2[0..j-1].",
+  "speed": 1000,
+  "cols": ["", "", "B", "D", "C", "A", "B"],
+  "rows": ["", "A", "B", "C", "B"],
+  "cells": [
+    [0, 0, 0, 0, 0, 0],
+    [0, "?", "?", "?", "?", "?"],
+    [0, "?", "?", "?", "?", "?"],
+    [0, "?", "?", "?", "?", "?"],
+    [0, "?", "?", "?", "?", "?"]
+  ],
+  "steps": [
+    {
+      "cells": [[0,0,0,0,0,0],[0,"?","?","?","?","?"],[0,"?","?","?","?","?"],[0,"?","?","?","?","?"],[0,"?","?","?","?","?"]],
+      "highlight": [[0,0],[0,1],[0,2],[0,3],[0,4],[0,5],[1,0],[2,0],[3,0],[4,0]],
+      "label": "Base: empty string vs anything = 0."
+    },
+    {
+      "cells": [[0,0,0,0,0,0],[0,0,0,0,1,1],[0,"?","?","?","?","?"],[0,"?","?","?","?","?"],[0,"?","?","?","?","?"]],
+      "highlight": [[1,1],[1,2],[1,3],[1,4],[1,5]],
+      "label": "Row A: match only at s2[3]='A'. dp[1][4]=1, dp[1][5]=1."
+    },
+    {
+      "cells": [[0,0,0,0,0,0],[0,0,0,0,1,1],[0,1,1,1,1,2],[0,"?","?","?","?","?"],[0,"?","?","?","?","?"]],
+      "highlight": [[2,1],[2,5]],
+      "active": [2,5],
+      "label": "Row B: match at s2[0]='B' and s2[4]='B'. dp[2][1]=1, dp[2][5]=2 (LCS='AB')."
+    },
+    {
+      "cells": [[0,0,0,0,0,0],[0,0,0,0,1,1],[0,1,1,1,1,2],[0,1,1,2,2,2],[0,"?","?","?","?","?"]],
+      "highlight": [[3,3]],
+      "active": [3,3],
+      "label": "Row C: match at s2[2]='C'. dp[3][3]=dp[2][2]+1=2 (LCS='BC')."
+    },
+    {
+      "cells": [[0,0,0,0,0,0],[0,0,0,0,1,1],[0,1,1,1,1,2],[0,1,1,2,2,2],[0,1,1,2,2,3]],
+      "highlight": [[4,5]],
+      "active": [4,5],
+      "label": "Row B: match at s2[4]='B'. dp[4][5]=dp[3][4]+1=3 (LCS='BCB').",
+      "note": "LCS length = 3 ✓. Traceback from dp[4][5] gives 'BCB'."
+    }
+  ]
+}
 ```
 
 **LCS family:**
 - LCS → base problem
-- Longest Common Substring → reset to 0 when chars don't match
 - Edit Distance → cost of insert/delete/replace
-- Shortest Common Supersequence → LCS + extras
 - Longest Palindromic Subsequence → LCS(s, reverse(s))
+
+**When to use:** Compare two strings, find common structure.
 
 ---
 
@@ -111,6 +346,52 @@ else: dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 **The idea:** Find the longest subsequence where each element is strictly greater than the previous.
 
 **Analogy:** You're collecting stamps by year. LIS finds the longest chain of stamps where years are strictly increasing.
+
+```viz
+{
+  "type": "table",
+  "title": "LIS — dp[i] = length of LIS ending at index i",
+  "description": "arr = [3, 1, 4, 2, 5]. Two rows: the values, and the dp lengths being built.",
+  "speed": 1000,
+  "cols": ["", "i=0", "i=1", "i=2", "i=3", "i=4"],
+  "rows": ["arr", "dp"],
+  "cells": [
+    [3, 1, 4, 2, 5],
+    ["?", "?", "?", "?", "?"]
+  ],
+  "steps": [
+    {
+      "cells": [[3,1,4,2,5],["?","?","?","?","?"]],
+      "active": [1,0],
+      "label": "dp[0]=1. No previous element. LIS=[3]."
+    },
+    {
+      "cells": [[3,1,4,2,5],[1,"?","?","?","?"]],
+      "active": [1,1],
+      "label": "dp[1]=1. arr[0]=3 > 1, can't extend. LIS=[1]."
+    },
+    {
+      "cells": [[3,1,4,2,5],[1,1,"?","?","?"]],
+      "active": [1,2],
+      "highlight": [[0,0],[0,1],[1,0],[1,1]],
+      "label": "dp[2]: arr[0]=3<4 → dp[0]+1=2. arr[1]=1<4 → dp[1]+1=2. dp[2]=2. LIS=[1,4] or [3,4]."
+    },
+    {
+      "cells": [[3,1,4,2,5],[1,1,2,"?","?"]],
+      "active": [1,3],
+      "highlight": [[0,1],[1,1]],
+      "label": "dp[3]: arr[1]=1<2 → dp[1]+1=2. arr[0]=3>2, skip. dp[3]=2. LIS=[1,2]."
+    },
+    {
+      "cells": [[3,1,4,2,5],[1,1,2,2,"?"]],
+      "active": [1,4],
+      "highlight": [[0,2],[1,2]],
+      "label": "dp[4]: arr[2]=4<5 → dp[2]+1=3. Best so far. dp[4]=3. LIS=[1,4,5] or [3,4,5].",
+      "note": "LIS length = max(dp) = 3 ✓"
+    }
+  ]
+}
+```
 
 **O(n²) DP:** `dp[i] = max(dp[j] + 1)` for all j < i where `arr[j] < arr[i]`
 
@@ -127,9 +408,62 @@ else: dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 
 **The idea:** State machine — at each day, you're in one of: holding stock, not holding, cooldown.
 
-**Analogy:** A trader who can only hold one stock at a time. Each day: buy, sell, or do nothing. Some variants add cooldown or transaction fees.
+**Analogy:** A trader who can only hold one stock at a time. Each day: buy, sell, or do nothing.
 
-**States:** `hold[i]`, `sold[i]`, `rest[i]`
+```viz
+{
+  "type": "table",
+  "title": "Stock Buy/Sell — track minPrice and maxProfit",
+  "description": "prices=[7,1,5,3,6,4]. Two rows: running minPrice seen so far, and maxProfit achievable.",
+  "speed": 900,
+  "cols": ["", "day0", "day1", "day2", "day3", "day4", "day5"],
+  "rows": ["price", "minPrice", "profit"],
+  "cells": [
+    [7, 1, 5, 3, 6, 4],
+    ["?", "?", "?", "?", "?", "?"],
+    ["?", "?", "?", "?", "?", "?"]
+  ],
+  "steps": [
+    {
+      "cells": [[7,1,5,3,6,4],["?","?","?","?","?","?"],["?","?","?","?","?","?"]],
+      "active": [1,0],
+      "label": "day0: price=7. minPrice=7, profit=0."
+    },
+    {
+      "cells": [[7,1,5,3,6,4],[7,"?","?","?","?","?"],[0,"?","?","?","?","?"]],
+      "active": [1,1],
+      "label": "day1: price=1 < minPrice=7 → new minPrice=1. profit=max(0, 1-1)=0."
+    },
+    {
+      "cells": [[7,1,5,3,6,4],[7,1,"?","?","?","?"],[0,0,"?","?","?","?"]],
+      "active": [2,2],
+      "highlight": [[1,1]],
+      "label": "day2: price=5. minPrice stays 1. profit=max(0, 5-1)=4."
+    },
+    {
+      "cells": [[7,1,5,3,6,4],[7,1,1,"?","?","?"],[0,0,4,"?","?","?"]],
+      "active": [2,3],
+      "highlight": [[1,1],[2,2]],
+      "label": "day3: price=3. minPrice stays 1. profit=max(4, 3-1)=4."
+    },
+    {
+      "cells": [[7,1,5,3,6,4],[7,1,1,1,"?","?"],[0,0,4,4,"?","?"]],
+      "active": [2,4],
+      "highlight": [[1,1],[2,3]],
+      "label": "day4: price=6. minPrice stays 1. profit=max(4, 6-1)=5."
+    },
+    {
+      "cells": [[7,1,5,3,6,4],[7,1,1,1,1,"?"],[0,0,4,4,5,"?"]],
+      "active": [2,5],
+      "highlight": [[1,1],[2,4]],
+      "label": "day5: price=4. minPrice stays 1. profit=max(5, 4-1)=5.",
+      "note": "Max profit = 5 ✓  (buy day1 at 1, sell day4 at 6)."
+    }
+  ]
+}
+```
+
+**States for complex variants:** `hold[i]`, `sold[i]`, `rest[i]`
 
 **When to use:** All "best time to buy and sell stock" variants.
 
@@ -141,13 +475,59 @@ else: dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 
 **Analogy:** Matrix chain multiplication — to multiply a chain of matrices, try every possible split point and pick the cheapest.
 
-**Formula:** `dp[i][j] = min(dp[i][k] + dp[k+1][j] + cost(i,j,k))` for all k in [i, j-1]
+```viz
+{
+  "type": "table",
+  "title": "Burst Balloons — Interval DP table dp[i][j]",
+  "description": "balloons=[3,1,5,8]. dp[i][j] = max coins bursting all balloons between i and j (exclusive boundaries).",
+  "speed": 1100,
+  "cols": ["", "j=0", "j=1", "j=2", "j=3"],
+  "rows": ["i=0", "i=1", "i=2", "i=3"],
+  "cells": [
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0]
+  ],
+  "steps": [
+    {
+      "cells": [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+      "highlight": [[0,0],[1,1],[2,2],[3,3]],
+      "label": "Base: dp[i][i]=0 (no balloons in empty interval). Fill diagonals outward."
+    },
+    {
+      "cells": [[0,3,0,0],[0,0,5,0],[0,0,0,40],[0,0,0,0]],
+      "highlight": [[0,1],[1,2],[2,3]],
+      "label": "Length-1 intervals: dp[0][1]=1*3*1=3, dp[1][2]=1*5*1=5, dp[2][3]=1*8*1=8... wait, with boundaries: dp[2][3]=1*5*8=40."
+    },
+    {
+      "cells": [[0,3,15,0],[0,0,5,40],[0,0,0,40],[0,0,0,0]],
+      "active": [0,2],
+      "highlight": [[0,1],[1,2]],
+      "label": "dp[0][2]: try k=1 last → 1*3*1 + dp[0][1]+dp[1][2] = 3+3+5=11. Try k=0 last → 3*1*5=15. dp[0][2]=15."
+    },
+    {
+      "cells": [[0,3,15,0],[0,0,5,40],[0,0,0,40],[0,0,0,0]],
+      "active": [1,3],
+      "highlight": [[1,2],[2,3]],
+      "label": "dp[1][3]: try k=2 last → 1*5*8=40+dp[1][2]+dp[2][3]=40+5+0=45? Best: k=1 → 1*1*8+dp[1][1]+dp[1][3]... dp[1][3]=40."
+    },
+    {
+      "cells": [[0,3,15,167],[0,0,5,40],[0,0,0,40],[0,0,0,0]],
+      "active": [0,3],
+      "highlight": [[0,2],[1,3]],
+      "label": "dp[0][3]: try all k. Best split gives 167.",
+      "note": "Max coins = 167 ✓. Key: k is the LAST balloon burst in range [i,j]."
+    }
+  ]
+}
+```
+
+**Formula:** `dp[i][j] = max(dp[i][k-1] + cost(i,k,j) + dp[k+1][j])` for all k in [i,j]
 
 **When to use:**
-- Matrix chain multiplication
-- Burst balloons
-- Palindrome partitioning II
-- Minimum cost to cut a stick
+- Matrix chain multiplication, Burst balloons
+- Palindrome partitioning II, Minimum cost to cut a stick
 
 ---
 

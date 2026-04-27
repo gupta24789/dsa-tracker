@@ -410,6 +410,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // ── Viz rendering — delegated to src/viz/ ────────────────────────────────
+  // VizEngine is loaded via src/viz/index.js before main.js.
+  function renderViz(container, specText) {
+    VizEngine.render(container, specText);
+  }
+
   // ── Concepts markdown (full markdown render) ─────────────────────────────
   async function loadMarkdown(folder, topic) {
     const res = await fetch(`src/${folder}/${topic}.md?t=${Date.now()}`, { cache: 'no-store' });
@@ -426,6 +432,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (language === 'mermaid') {
         return `<div class="mermaid">${code}</div>`;
       }
+      if (language === 'viz') {
+        const id = 'viz-' + Math.random().toString(36).slice(2, 9);
+        // Store spec for post-processing
+        window.__vizQueue = window.__vizQueue || [];
+        window.__vizQueue.push({ id, spec: code });
+        return `<div class="viz-container" id="${id}"></div>`;
+      }
       const highlighted = language && hljs.getLanguage(language)
         ? hljs.highlight(code, { language }).value
         : hljs.highlightAuto(code).value;
@@ -435,6 +448,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const div = document.createElement('div');
     div.className = 'markdown-content';
     div.innerHTML = marked.parse(md, { renderer, breaks: true, gfm: true });
+
+    // Render any viz blocks
+    if (window.__vizQueue && window.__vizQueue.length) {
+      window.__vizQueue.forEach(({ id, spec }) => {
+        const el = div.querySelector(`#${id}`);
+        if (el) renderViz(el, spec);
+      });
+      window.__vizQueue = [];
+    }
     return div;
   }
 

@@ -688,3 +688,472 @@ header p {
 .btn-fullscreen {
   font-size: 13px !important;
 }
+
+/* ── Viz Animation Engine ────────────────────────────────────────────────── */
+.viz-container {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 20px 20px 14px;
+  margin: 1.5em 0;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  user-select: none;
+}
+
+.viz-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 4px;
+}
+
+.viz-desc {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-bottom: 14px;
+}
+
+.viz-array-area {
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding-top: 6px;
+  padding-bottom: 4px;
+  /* Don't set overflow here — it clips the translateY lift on highlighted cells */
+}
+
+.viz-array-row {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  overflow-x: auto;   /* scroll only the row, not the whole area */
+  width: 100%;
+  padding-top: 6px;   /* room for translateY(-3px) lift on highlighted cells */
+  padding-bottom: 2px;
+}
+
+.viz-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #334155;
+  border-radius: 8px;
+  background: #1e293b;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.viz-cell-val {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  line-height: 1;
+}
+
+.viz-cell-idx {
+  font-size: 0.6rem;
+  color: #475569;
+  margin-top: 3px;
+}
+
+.viz-cell-highlight {
+  background: #1e3a5f;
+  border-color: #3b82f6;
+  transform: translateY(-3px);
+}
+
+.viz-cell-pointed {
+  border-color: #6366f1;
+}
+
+.viz-ptr-row {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  margin-top: 4px;
+  min-height: 24px;
+}
+
+.viz-ptr-cell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.viz-ptr-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 4px;
+  letter-spacing: 0.3px;
+}
+
+.viz-step-label {
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: #94a3b8;
+  min-height: 1.2em;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.viz-step-note {
+  margin-top: 4px;
+  font-size: 0.78rem;
+  color: #22c55e;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.viz-progress-track {
+  height: 3px;
+  background: #1e293b;
+  border-radius: 99px;
+  margin: 12px 0 10px;
+  overflow: hidden;
+}
+
+.viz-progress-fill {
+  height: 100%;
+  background: #6366f1;
+  border-radius: 99px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+
+.viz-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.viz-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  background: #1e293b;
+  color: #94a3b8;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.viz-btn:hover:not(:disabled) {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+.viz-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.viz-btn-play {
+  background: #6366f1;
+  color: white;
+  border-color: #6366f1;
+  width: 34px;
+  height: 34px;
+  font-size: 13px;
+}
+
+.viz-btn-play:hover {
+  background: #4f46e5 !important;
+}
+
+.viz-btn-reset {
+  margin-left: auto;
+  font-size: 14px;
+}
+
+.viz-step-counter {
+  font-size: 0.72rem;
+  color: #475569;
+  font-family: 'Fira Code', monospace;
+  margin-left: 4px;
+}
+
+.viz-error {
+  color: #ef4444;
+  font-size: 0.8rem;
+  padding: 8px;
+}
+
+/* ── Viz: shared area wrapper ────────────────────────────────────────────── */
+.viz-area {
+  min-height: 80px;
+  overflow-x: auto;
+}
+
+/* ── Viz type: table ─────────────────────────────────────────────────────── */
+.viz-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 4px;
+}
+
+.viz-table {
+  border-collapse: collapse;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 0.82rem;
+}
+
+.viz-th {
+  background: #1e293b;
+  color: #64748b;
+  font-weight: 600;
+  padding: 6px 12px;
+  border: 1px solid #334155;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.viz-th-corner { color: #475569; }
+.viz-th-row    { text-align: right; min-width: 64px; }
+
+.viz-td {
+  background: #0f172a;
+  color: #94a3b8;
+  padding: 6px 14px;
+  border: 1px solid #1e293b;
+  text-align: center;
+  min-width: 44px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.viz-td-highlight {
+  background: #1e3a5f;
+  color: #93c5fd;
+  border-color: #3b82f6;
+}
+
+.viz-td-active {
+  background: #4f46e5;
+  color: #fff;
+  border-color: #818cf8;
+  font-weight: 700;
+  box-shadow: 0 0 0 2px #818cf8;
+}
+
+/* ── Viz type: tree ──────────────────────────────────────────────────────── */
+.viz-tree-area {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 4px 0 8px;
+}
+
+.viz-tree-svg {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+}
+
+.viz-tree-edge {
+  stroke: #334155;
+  stroke-width: 2;
+  transition: stroke 0.2s;
+}
+
+.viz-tree-edge-hl {
+  stroke: #6366f1;
+  stroke-width: 2.5;
+}
+
+.viz-tree-node circle {
+  fill: #1e293b;
+  stroke: #334155;
+  stroke-width: 2;
+  transition: fill 0.2s, stroke 0.2s;
+}
+
+.viz-tree-node-hl circle {
+  fill: #1e3a5f;
+  stroke: #3b82f6;
+  stroke-width: 2.5;
+}
+
+.viz-tree-node-active circle {
+  fill: #4f46e5;
+  stroke: #818cf8;
+  stroke-width: 2.5;
+}
+
+.viz-tree-text {
+  fill: #94a3b8;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.viz-tree-node-hl    .viz-tree-text { fill: #93c5fd; }
+.viz-tree-node-active .viz-tree-text { fill: #fff; }
+
+/* ── Viz type: linkedlist ────────────────────────────────────────────────── */
+.viz-ll-area {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.viz-ll-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.viz-ll-node {
+  width: 52px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #334155;
+  border-radius: 8px;
+  background: #1e293b;
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+
+.viz-ll-node-hl {
+  background: #1e3a5f;
+  border-color: #3b82f6;
+}
+
+.viz-ll-node-active {
+  background: #4f46e5;
+  border-color: #818cf8;
+}
+
+.viz-ll-val {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  line-height: 1;
+}
+
+.viz-ll-node-active .viz-ll-val { color: #fff; }
+
+.viz-ll-idx {
+  font-size: 0.6rem;
+  color: #475569;
+  margin-top: 2px;
+}
+
+.viz-ll-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 40px;
+  font-size: 1.1rem;
+  color: #475569;
+  flex-shrink: 0;
+  align-self: flex-start;
+  padding-top: 10px;
+}
+
+.viz-ll-arrow-null  { color: #ef4444; font-size: 0.9rem; }
+.viz-ll-arrow-cycle { color: #f97316; }
+
+.viz-ll-ptrs {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  margin-top: 4px;
+  min-height: 20px;
+  justify-content: center;
+}
+
+.viz-ll-cycle-label {
+  font-size: 0.72rem;
+  color: #f97316;
+  margin-top: 6px;
+  font-family: 'Fira Code', monospace;
+}
+
+/* ── Viz type: graph ─────────────────────────────────────────────────────── */
+.viz-graph-area {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 4px 0 8px;
+}
+
+.viz-graph-svg {
+  display: block;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+}
+
+.viz-graph-edge {
+  stroke: #334155;
+  stroke-width: 2;
+  transition: stroke 0.2s;
+}
+
+.viz-graph-edge-hl {
+  stroke: #6366f1;
+  stroke-width: 2.5;
+}
+
+.viz-graph-edge-label {
+  fill: #64748b;
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  text-anchor: middle;
+}
+
+.viz-graph-arrow { fill: #334155; }
+.viz-graph-edge-hl ~ .viz-graph-arrow,
+.viz-graph-edge-hl + .viz-graph-arrow { fill: #6366f1; }
+
+.viz-graph-node circle {
+  fill: #1e293b;
+  stroke: #334155;
+  stroke-width: 2;
+  transition: fill 0.2s, stroke 0.2s;
+}
+
+.viz-graph-node-hl circle {
+  fill: #1e3a5f;
+  stroke: #3b82f6;
+  stroke-width: 2.5;
+}
+
+.viz-graph-node-active circle {
+  fill: #4f46e5;
+  stroke: #818cf8;
+  stroke-width: 2.5;
+}
+
+.viz-graph-text {
+  fill: #94a3b8;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  pointer-events: none;
+}
+
+.viz-graph-node-hl     .viz-graph-text { fill: #93c5fd; }
+.viz-graph-node-active .viz-graph-text { fill: #fff; }

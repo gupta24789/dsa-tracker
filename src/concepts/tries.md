@@ -19,33 +19,54 @@
 
 **The idea:** Each node has up to 26 children (for lowercase letters) and an `isEnd` flag.
 
-```
-class TrieNode:
-    def __init__(self):
-        self.children = {}
-        self.isEnd = False
-
-def insert(word):
-    node = root
-    for ch in word:
-        if ch not in node.children:
-            node.children[ch] = TrieNode()
-        node = node.children[ch]
-    node.isEnd = True
-
-def search(word):
-    node = root
-    for ch in word:
-        if ch not in node.children: return False
-        node = node.children[ch]
-    return node.isEnd
-
-def startsWith(prefix):
-    node = root
-    for ch in prefix:
-        if ch not in node.children: return False
-        node = node.children[ch]
-    return True
+```viz
+{
+  "type": "table",
+  "title": "Trie Insert — 'cat', 'car', 'cake'",
+  "description": "Each row = one trie level. Shared prefixes share the same node. isEnd marks a complete word.",
+  "speed": 1000,
+  "cols": ["", "Level 1", "Level 2", "Level 3", "Level 4", "Level 5"],
+  "rows": ["cat", "car", "cake"],
+  "cells": [
+    ["c", "a", "t*", "-", "-"],
+    ["c", "a", "r*", "-", "-"],
+    ["c", "a", "k", "e*", "-"]
+  ],
+  "steps": [
+    {
+      "cells": [["?","?","?","-","-"],["?","?","?","-","-"],["?","?","?","?","-"]],
+      "label": "Start: trie is empty."
+    },
+    {
+      "cells": [["c","?","?","-","-"],["?","?","?","-","-"],["?","?","?","?","-"]],
+      "active": [0,0],
+      "label": "Insert 'cat': create node 'c' at level 1."
+    },
+    {
+      "cells": [["c","a","?","-","-"],["?","?","?","-","-"],["?","?","?","?","-"]],
+      "active": [0,1],
+      "label": "Create node 'a' at level 2."
+    },
+    {
+      "cells": [["c","a","t*","-","-"],["?","?","?","-","-"],["?","?","?","?","-"]],
+      "active": [0,2],
+      "label": "Create node 't' at level 3. Mark isEnd=true. 'cat' inserted ✓"
+    },
+    {
+      "cells": [["c","a","t*","-","-"],["c","a","r*","-","-"],["?","?","?","?","-"]],
+      "highlight": [[1,0],[1,1]],
+      "active": [1,2],
+      "label": "Insert 'car': 'c' and 'a' already exist (shared!). Only add new node 'r*'."
+    },
+    {
+      "cells": [["c","a","t*","-","-"],["c","a","r*","-","-"],["c","a","k","e*","-"]],
+      "highlight": [[2,0],[2,1]],
+      "active": [2,3],
+      "label": "Insert 'cake': 'c' and 'a' shared again. Add 'k' then 'e*'.",
+      "note": "3 words share the 'c→a' prefix. Trie saves space vs storing full strings separately ✓"
+    }
+  ]
+}
 ```
 
 **When to use:**
@@ -61,6 +82,62 @@ def startsWith(prefix):
 **The idea:** Store numbers in a binary trie (bit by bit, from MSB to LSB). To maximize XOR with a number, greedily go to the opposite bit at each level.
 
 **Analogy:** You're trying to be as different as possible from a given number. At each bit, if the number has a 0, you want a 1 (and vice versa). The trie lets you greedily pick the most different path.
+
+```viz
+{
+  "type": "table",
+  "title": "Binary Trie — Maximum XOR of two numbers",
+  "description": "nums=[3,10,5,25]. Each row = one number's 5-bit binary. Greedy: for num=3, pick opposite bit at each level to maximize XOR.",
+  "speed": 1000,
+  "cols": ["", "bit4", "bit3", "bit2", "bit1", "bit0"],
+  "rows": ["3", "10", "5", "25", "→XOR(3)"],
+  "cells": [
+    [0, 0, 0, 1, 1],
+    [0, 1, 0, 1, 0],
+    [0, 0, 1, 0, 1],
+    [1, 1, 0, 0, 1],
+    ["?", "?", "?", "?", "?"]
+  ],
+  "steps": [
+    {
+      "cells": [[0,0,0,1,1],[0,1,0,1,0],[0,0,1,0,1],[1,1,0,0,1],["?","?","?","?","?"]],
+      "highlight": [[0,0],[1,0],[2,0],[3,0]],
+      "label": "All 4 numbers inserted in binary trie. Now find max XOR for 3=00011."
+    },
+    {
+      "cells": [[0,0,0,1,1],[0,1,0,1,0],[0,0,1,0,1],[1,1,0,0,1],["1","?","?","?","?"]],
+      "active": [4,0],
+      "highlight": [[3,0]],
+      "label": "bit4: 3 has 0 → want 1. Trie has 1 (from 25=11001). XOR bit=1. Follow 1."
+    },
+    {
+      "cells": [[0,0,0,1,1],[0,1,0,1,0],[0,0,1,0,1],[1,1,0,0,1],["1","1","?","?","?"]],
+      "active": [4,1],
+      "highlight": [[3,1]],
+      "label": "bit3: 3 has 0 → want 1. Trie has 1 (from 25). XOR bit=1. Follow 1."
+    },
+    {
+      "cells": [[0,0,0,1,1],[0,1,0,1,0],[0,0,1,0,1],[1,1,0,0,1],["1","1","0","?","?"]],
+      "active": [4,2],
+      "highlight": [[3,2]],
+      "label": "bit2: 3 has 0 → want 1. No 1 available → follow 0. XOR bit=0."
+    },
+    {
+      "cells": [[0,0,0,1,1],[0,1,0,1,0],[0,0,1,0,1],[1,1,0,0,1],["1","1","0","1","?"]],
+      "active": [4,3],
+      "highlight": [[3,3]],
+      "label": "bit1: 3 has 1 → want 0. Trie has 0 (from 25). XOR bit=1. Follow 0."
+    },
+    {
+      "cells": [[0,0,0,1,1],[0,1,0,1,0],[0,0,1,0,1],[1,1,0,0,1],["1","1","0","1","0"]],
+      "active": [4,4],
+      "highlight": [[3,4]],
+      "label": "bit0: 3 has 1 → want 0. No 0 → follow 1. XOR bit=0.",
+      "note": "XOR row = 11010 = 26. Max XOR = 3 XOR 25 = 26 ✓. Greedy: always pick opposite bit when available."
+    }
+  ]
+}
+```
 
 **Template (Max XOR):**
 ```
@@ -88,6 +165,65 @@ return xor
 ## Pattern 3: Trie for String Matching
 
 **The idea:** Build a trie of patterns, then search text against it. More efficient than checking each pattern separately.
+
+**Analogy:** Instead of scanning the grid for each word one by one, you build a single trie of all words. As you DFS through the grid, you simultaneously walk the trie — one traversal finds all matching words at once.
+
+```viz
+{
+  "type": "table",
+  "title": "Word Search II — Trie + DFS on Grid",
+  "description": "3×3 grid. DFS each cell while walking the trie simultaneously. Prune when prefix not in trie.",
+  "speed": 1000,
+  "cols": ["", "col0", "col1", "col2"],
+  "rows": ["row0", "row1", "row2"],
+  "cells": [
+    ["e", "a", "t"],
+    ["t", "e", "a"],
+    ["n", "a", "t"]
+  ],
+  "steps": [
+    {
+      "cells": [["e","a","t"],["t","e","a"],["n","a","t"]],
+      "label": "Grid built. Trie contains: eat, tea, tan, ate, nat, bat. Start DFS from each cell."
+    },
+    {
+      "cells": [["e","a","t"],["t","e","a"],["n","a","t"]],
+      "active": [0,0],
+      "label": "DFS from (0,0)='e'. Trie has 'e' prefix → continue."
+    },
+    {
+      "cells": [["e","a","t"],["t","e","a"],["n","a","t"]],
+      "highlight": [[0,0]],
+      "active": [0,1],
+      "label": "Move to (0,1)='a'. Trie path 'ea' exists → continue."
+    },
+    {
+      "cells": [["e","a","t"],["t","e","a"],["n","a","t"]],
+      "highlight": [[0,0],[0,1]],
+      "active": [0,2],
+      "label": "Move to (0,2)='t'. Trie path 'eat' → isEnd=true! Found 'eat' ✓"
+    },
+    {
+      "cells": [["e","a","t"],["t","e","a"],["n","a","t"]],
+      "active": [1,0],
+      "label": "DFS from (1,0)='t'. Trie has 't' prefix (tea, tan) → continue."
+    },
+    {
+      "cells": [["e","a","t"],["t","e","a"],["n","a","t"]],
+      "highlight": [[1,0]],
+      "active": [1,1],
+      "label": "Move to (1,1)='e'. Trie path 'te' exists → continue."
+    },
+    {
+      "cells": [["e","a","t"],["t","e","a"],["n","a","t"]],
+      "highlight": [[1,0],[1,1]],
+      "active": [0,1],
+      "label": "Move to (0,1)='a'. Trie path 'tea' → isEnd=true! Found 'tea' ✓",
+      "note": "Trie pruning: if prefix not in trie → stop DFS immediately. All 6 words found ✓"
+    }
+  ]
+}
+```
 
 **When to use:**
 - Word search II (find all words from a list in a grid)

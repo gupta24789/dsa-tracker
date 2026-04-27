@@ -10,12 +10,25 @@
 
 **The idea:** Use left and right pointers moving toward each other.
 
+```viz
+{
+  "title": "Palindrome Check — Two Pointers from both ends",
+  "description": "s='racecar'. L starts at left, R at right. Compare chars, move inward.",
+  "array": ["r", "a", "c", "e", "c", "a", "r"],
+  "speed": 900,
+  "steps": [
+    { "pointers": { "L": 0, "R": 6 }, "highlight": [0,6], "label": "s[L]='r' == s[R]='r' ✓. Move inward." },
+    { "pointers": { "L": 1, "R": 5 }, "highlight": [1,5], "label": "s[L]='a' == s[R]='a' ✓. Move inward." },
+    { "pointers": { "L": 2, "R": 4 }, "highlight": [2,4], "label": "s[L]='c' == s[R]='c' ✓. Move inward." },
+    { "pointers": { "L": 3, "R": 3 }, "highlight": [3], "label": "L==R (middle). Done.", "note": "'racecar' is a palindrome ✓. If any mismatch → not palindrome." }
+  ]
+}
+```
+
 **When to use:**
 - Palindrome check (compare characters from both ends)
 - Reverse a string in-place
 - Valid Palindrome (skip non-alphanumeric)
-
-**Analogy:** Reading a word forward and backward simultaneously. If all characters match → palindrome.
 
 ---
 
@@ -23,13 +36,30 @@
 
 **The idea:** Maintain a window of characters, expand/shrink based on conditions.
 
+```viz
+{
+  "title": "Longest Substring Without Repeating Characters",
+  "description": "s = 'abcabc'. Expand R, shrink L when duplicate found. Track max window.",
+  "array": ["a", "b", "c", "a", "b", "c"],
+  "speed": 900,
+  "steps": [
+    { "pointers": { "L": 0, "R": 0 }, "highlight": [0], "label": "L=0, R=0. Window='a'. No repeat. max=1" },
+    { "pointers": { "L": 0, "R": 1 }, "highlight": [0,1], "label": "R=1. Window='ab'. No repeat. max=2" },
+    { "pointers": { "L": 0, "R": 2 }, "highlight": [0,1,2], "label": "R=2. Window='abc'. No repeat. max=3" },
+    { "pointers": { "L": 0, "R": 3 }, "highlight": [0,1,2,3], "label": "R=3. Window='abca'. 'a' repeats! Shrink L until no repeat." },
+    { "pointers": { "L": 1, "R": 3 }, "highlight": [1,2,3], "label": "L=1. Window='bca'. No repeat. max=3" },
+    { "pointers": { "L": 1, "R": 4 }, "highlight": [1,2,3,4], "label": "R=4. Window='bcab'. 'b' repeats! Shrink L." },
+    { "pointers": { "L": 2, "R": 4 }, "highlight": [2,3,4], "label": "L=2. Window='cab'. No repeat. max=3" },
+    { "pointers": { "L": 2, "R": 5 }, "highlight": [2,3,4,5], "label": "R=5. Window='cabc'. 'c' repeats! Shrink L.", "note": "Final max = 3 ('abc') ✓" }
+  ]
+}
+```
+
 **When to use:**
 - Longest substring without repeating characters
 - Minimum window substring
 - Permutation in string (fixed window = length of pattern)
 - Longest substring with at most K distinct characters
-
-**Key tool:** Use a frequency map (hashmap) to track character counts in the window.
 
 ---
 
@@ -39,11 +69,28 @@
 
 **Analogy:** Two bags of Scrabble tiles. They're anagrams if both bags contain exactly the same tiles.
 
+```viz
+{
+  "title": "Find All Anagrams in String — Sliding Window + Frequency Map",
+  "description": "s='cbaebabacd', p='abc'. Fixed window of len(p)=3. Compare freq maps.",
+  "array": ["c", "b", "a", "e", "b", "a", "b", "a", "c", "d"],
+  "speed": 900,
+  "steps": [
+    { "pointers": { "L": 0, "R": 2 }, "highlight": [0,1,2], "label": "Window 'cba'. freq={c:1,b:1,a:1} == p_freq={a:1,b:1,c:1} ✓ Anagram at idx 0!" },
+    { "pointers": { "L": 1, "R": 3 }, "highlight": [1,2,3], "label": "Slide: remove 'c', add 'e'. Window 'bae'. freq≠p_freq ✗" },
+    { "pointers": { "L": 2, "R": 4 }, "highlight": [2,3,4], "label": "Slide: remove 'b', add 'b'. Window 'aeb'. freq≠p_freq ✗" },
+    { "pointers": { "L": 3, "R": 5 }, "highlight": [3,4,5], "label": "Slide: remove 'a', add 'a'. Window 'eba'. freq≠p_freq ✗" },
+    { "pointers": { "L": 4, "R": 6 }, "highlight": [4,5,6], "label": "Window 'bab'. freq≠p_freq ✗" },
+    { "pointers": { "L": 5, "R": 7 }, "highlight": [5,6,7], "label": "Window 'aba'. freq={a:2,b:1}≠p_freq ✗" },
+    { "pointers": { "L": 6, "R": 8 }, "highlight": [6,7,8], "label": "Window 'bac'. freq={b:1,a:1,c:1} == p_freq ✓ Anagram at idx 6!", "note": "Anagram indices: [0, 6] ✓" }
+  ]
+}
+```
+
 **When to use:**
-- Valid anagram
-- Group anagrams (use sorted string or frequency tuple as key)
+- Valid anagram, Group anagrams
 - Find all anagrams in a string (sliding window + frequency map)
-- Isomorphic strings (map characters from s to t and back)
+- Isomorphic strings
 
 ---
 
@@ -51,16 +98,22 @@
 
 **The idea:** Find a pattern inside a text efficiently — O(n + m) instead of O(n*m).
 
-**KMP (Knuth-Morris-Pratt):**
-- Build a "failure function" (LPS array) for the pattern
-- LPS[i] = length of longest proper prefix of pattern[0..i] that is also a suffix
-- Use LPS to skip redundant comparisons
-
-**Analogy:** You're searching for "ABCABC" in a text. When a mismatch happens at position 6, KMP knows the first 3 characters already matched (because "ABC" is both a prefix and suffix of "ABCABC"). It jumps back only 3 positions instead of starting over.
-
-**Rabin-Karp:** Use rolling hash to compare pattern with each window in O(1). Good for multiple pattern search.
-
-**Z-Function:** Z[i] = length of longest substring starting at i that matches a prefix of the string. Useful for pattern matching.
+```viz
+{
+  "title": "KMP — Skip redundant comparisons using LPS array",
+  "description": "pattern='ABCABC'. LPS=[0,0,0,1,2,3]. On mismatch, jump back using LPS instead of restarting.",
+  "array": ["A", "B", "C", "A", "B", "C"],
+  "speed": 1000,
+  "steps": [
+    { "pointers": { "i": 0 }, "highlight": [0], "label": "LPS[0]='A': no proper prefix=suffix. LPS[0]=0" },
+    { "pointers": { "i": 1 }, "highlight": [1], "label": "LPS[1]='AB': no prefix=suffix. LPS[1]=0" },
+    { "pointers": { "i": 2 }, "highlight": [2], "label": "LPS[2]='ABC': no prefix=suffix. LPS[2]=0" },
+    { "pointers": { "i": 3 }, "highlight": [0,3], "label": "LPS[3]='ABCA': 'A'='A' → prefix=suffix of len 1. LPS[3]=1" },
+    { "pointers": { "i": 4 }, "highlight": [0,1,3,4], "label": "LPS[4]='ABCAB': 'AB'='AB' → LPS[4]=2" },
+    { "pointers": { "i": 5 }, "highlight": [0,1,2,3,4,5], "label": "LPS[5]='ABCABC': 'ABC'='ABC' → LPS[5]=3", "note": "LPS=[0,0,0,1,2,3]. On mismatch at pos 6, jump to pos 3 (not 0). Saves recomparing 'ABC'." }
+  ]
+}
+```
 
 **When to use:**
 - Find pattern in text (KMP)
@@ -72,15 +125,29 @@
 ## Pattern 5: Palindrome Techniques
 
 **Expand Around Center:**
-- For each character (and gap between characters), expand outward while characters match
+
+```viz
+{
+  "title": "Expand Around Center — Longest Palindromic Substring",
+  "description": "s='babad'. For each center (char or gap), expand while chars match.",
+  "array": ["b", "a", "b", "a", "d"],
+  "speed": 1000,
+  "steps": [
+    { "pointers": { "L": 0, "R": 0 }, "highlight": [0], "label": "Center=0('b'): expand → L=-1 stop. Palindrome='b' len=1" },
+    { "pointers": { "L": 0, "R": 2 }, "highlight": [0,1,2], "label": "Center=1('a'): expand → s[0]='b'==s[2]='b' ✓. Expand more → L=-1 stop. Palindrome='bab' len=3" },
+    { "pointers": { "L": 1, "R": 3 }, "highlight": [1,2,3], "label": "Center=2('b'): expand → s[1]='a'==s[3]='a' ✓. Expand → L=0,R=4: 'b'≠'d' stop. Palindrome='aba' len=3" },
+    { "pointers": { "L": 2, "R": 4 }, "highlight": [2,3,4], "label": "Center=3('a'): expand → s[2]='b'≠s[4]='d' stop. Palindrome='a' len=1" },
+    { "pointers": { "L": 4, "R": 4 }, "highlight": [4], "label": "Center=4('d'): no expansion. Palindrome='d' len=1", "note": "Longest palindrome = 'bab' or 'aba' (len=3) ✓. O(n²) time, O(1) space." }
+  ]
+}
+```
+
 - O(n²) time, O(1) space
 - Use for: Longest palindromic substring, count palindromic substrings
 
-**DP approach:**
-- `dp[i][j] = true` if `s[i..j]` is palindrome
-- `dp[i][j] = (s[i] == s[j]) && dp[i+1][j-1]`
-
-**Manacher's Algorithm:** O(n) palindrome finding — advanced.
+**When to use:**
+- Longest palindromic substring
+- Count palindromic substrings
 
 ---
 
@@ -90,7 +157,85 @@
 - Edit distance (insert/delete/replace to convert s1 to s2)
 - Longest Common Subsequence
 - Wildcard matching / Regex matching
-- Distinct subsequences
+
+```viz
+{
+  "type": "table",
+  "title": "Edit Distance — Convert 'horse' to 'ros'",
+  "description": "dp[i][j] = min operations to convert s1[0..i-1] to s2[0..j-1]. Operations: insert, delete, replace.",
+  "cols": ["", "", "r", "o", "s"],
+  "rows": ["", "h", "o", "r", "s", "e"],
+  "speed": 1000,
+  "steps": [
+    {
+      "cells": [
+        [0, 1, 2, 3],
+        [1, "?", "?", "?"],
+        [2, "?", "?", "?"],
+        [3, "?", "?", "?"],
+        [4, "?", "?", "?"],
+        [5, "?", "?", "?"]
+      ],
+      "active": [1, 1],
+      "highlight": [[0, 1]],
+      "label": "dp[1][1]: 'h'≠'r' → min(replace=dp[0][0]+1=1, delete=dp[0][1]+1=2, insert=dp[1][0]+1=2) = 1"
+    },
+    {
+      "cells": [
+        [0, 1, 2, 3],
+        [1, 1, "?", "?"],
+        [2, "?", "?", "?"],
+        [3, "?", "?", "?"],
+        [4, "?", "?", "?"],
+        [5, "?", "?", "?"]
+      ],
+      "active": [2, 1],
+      "highlight": [[1, 1], [2, 0]],
+      "label": "dp[2][1]: 'o'≠'r' → min(dp[1][0]+1=2, dp[1][1]+1=2, dp[2][0]+1=3) = 2"
+    },
+    {
+      "cells": [
+        [0, 1, 2, 3],
+        [1, 1, "?", "?"],
+        [2, 2, "?", "?"],
+        [3, "?", "?", "?"],
+        [4, "?", "?", "?"],
+        [5, "?", "?", "?"]
+      ],
+      "active": [3, 2],
+      "highlight": [[2, 1], [3, 1]],
+      "label": "dp[3][2]: 'r'≠'o' → min(dp[2][1]+1, dp[2][2]+1, dp[3][1]+1) = 2"
+    },
+    {
+      "cells": [
+        [0, 1, 2, 3],
+        [1, 1, "?", "?"],
+        [2, 2, "?", "?"],
+        [3, "?", 2, "?"],
+        [4, "?", "?", "?"],
+        [5, "?", "?", "?"]
+      ],
+      "active": [4, 3],
+      "highlight": [[3, 2], [4, 2]],
+      "label": "dp[4][3]: 's'=='s' → dp[3][2]=2 (no cost)"
+    },
+    {
+      "cells": [
+        [0, 1, 2, 3],
+        [1, 1, "?", "?"],
+        [2, 2, "?", "?"],
+        [3, "?", 2, "?"],
+        [4, "?", "?", 2],
+        [5, "?", "?", "?"]
+      ],
+      "active": [5, 3],
+      "highlight": [[4, 3]],
+      "label": "dp[5][3]: 'e'≠'s' → min(dp[4][2]+1, dp[4][3]+1, dp[5][2]+1) = 3",
+      "note": "Edit distance = 3 ✓ (replace h→r, delete r, delete e)"
+    }
+  ]
+}
+```
 
 **Key insight:** Most string DP uses a 2D table where `dp[i][j]` represents the answer for `s1[0..i]` and `s2[0..j]`.
 
@@ -101,6 +246,20 @@
 **Longest Common Prefix:** Sort the array. Compare only first and last strings — their common prefix is the answer for all.
 
 **Analogy:** If the shortest and tallest person in a group both fit through a door, everyone fits.
+
+```viz
+{
+  "title": "Longest Common Prefix — Sort and compare extremes",
+  "description": "words=['flower','flow','flight']. Sort → ['flight','flow','flower']. Compare first and last only.",
+  "array": ["f", "l", "i", "g", "h", "t"],
+  "speed": 900,
+  "steps": [
+    { "pointers": { "i": 0, "j": 0 }, "highlight": [0], "label": "Compare first='flight' vs last='flower'. Pos 0: 'f'=='f' ✓" },
+    { "pointers": { "i": 1, "j": 1 }, "highlight": [1], "label": "Pos 1: 'l'=='l' ✓" },
+    { "pointers": { "i": 2, "j": 2 }, "highlight": [2], "label": "Pos 2: 'i' vs 'o'. MISMATCH → stop.", "note": "LCP = 'fl' ✓. If first and last share prefix 'fl', all words in between also share it (sorted order)." }
+  ]
+}
+```
 
 **When to use:**
 - Longest common prefix
