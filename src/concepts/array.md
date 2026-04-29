@@ -21,6 +21,20 @@ Think of an array like a **row of lockers** in a school hallway. Each locker has
                ↑ new
 ```
 
+### Complexity Cheat Sheet
+
+| Operation | Time | Notes |
+|-----------|------|-------|
+| Access by index | O(1) | Direct memory jump |
+| Search (unsorted) | O(n) | Linear scan |
+| Search (sorted) | O(log n) | Binary search |
+| Insert at end | O(1) amortized | Dynamic array resize |
+| Insert at index | O(n) | Shift elements right |
+| Delete at index | O(n) | Shift elements left |
+| Delete at end | O(1) | No shift needed |
+
+**Space:** O(n) to store n elements.
+
 ---
 
 ## Pattern 1: Linear Scan
@@ -50,8 +64,10 @@ Think of an array like a **row of lockers** in a school hallway. Each locker has
 - Check if array is sorted
 - Consecutive ones, equilibrium point
 
+**Complexity:** Time O(n) · Space O(1)
+
 **Template:**
-```
+```python
 result = initial_value
 for each element:
     update result based on element
@@ -106,7 +122,29 @@ return result
 - Partition array (0s, 1s, 2s)
 - Merge two sorted arrays
 
+**Complexity:** Time O(n) · Space O(1)
+
 **Key insight:** Sorting first + two pointers often replaces O(n²) brute force with O(n log n).
+
+**Template:**
+```python
+# Opposite direction
+L, R = 0, len(arr) - 1
+while L < R:
+    if condition_met:
+        # found answer
+    elif need_larger:
+        L += 1
+    else:
+        R -= 1
+
+# Same direction (fast/slow)
+slow = 0
+for fast in range(len(arr)):
+    if arr[fast] != arr[slow]:
+        slow += 1
+        arr[slow] = arr[fast]
+```
 
 ---
 
@@ -144,16 +182,21 @@ return result
 - Contiguous subarray/substring problems
 - "Longest/shortest subarray with condition X"
 - Frequency tracking within a range
+- Elements are **non-negative** (negatives break shrinking logic)
+
+**Complexity:** Time O(n) · Space O(1) or O(k) for frequency maps
 
 **Template:**
-```
+```python
 left = 0
 for right in range(n):
-    add arr[right] to window
+    # expand: add arr[right] to window
+    window += arr[right]
     while window violates condition:
-        remove arr[left] from window
-        left++
-    update result
+        # shrink: remove arr[left] from window
+        window -= arr[left]
+        left += 1
+    update result  # e.g. max(result, right - left + 1)
 ```
 
 ---
@@ -188,6 +231,20 @@ So if `prefix[j] - K` exists in the map → subarray found.
 - Longest subarray with sum K
 - Count subarrays with given XOR
 - Zero-sum subarray
+- Works with **negative numbers** (unlike sliding window)
+
+**Complexity:** Time O(n) · Space O(n)
+
+**Template:**
+```python
+prefix = 0
+mp = {0: 1}          # seed: empty prefix has sum 0
+for num in arr:
+    prefix += num
+    if prefix - K in mp:
+        count += mp[prefix - K]
+    mp[prefix] = mp.get(prefix, 0) + 1
+```
 
 ---
 
@@ -217,6 +274,18 @@ So if `prefix[j] - K` exists in the map → subarray found.
 - Longest consecutive sequence
 - Group anagrams
 - Find duplicates/missing numbers
+
+**Complexity:** Time O(n) · Space O(n)
+
+**Template:**
+```python
+seen = {}
+for i, num in enumerate(arr):
+    complement = target - num
+    if complement in seen:
+        return [seen[complement], i]
+    seen[num] = i
+```
 
 ---
 
@@ -251,6 +320,17 @@ So if `prefix[j] - K` exists in the map → subarray found.
 **When to use:**
 - Maximum subarray sum
 - Maximum product subarray (track both max and min due to negatives)
+
+**Complexity:** Time O(n) · Space O(1)
+
+**Template:**
+```python
+curr = best = arr[0]
+for num in arr[1:]:
+    curr = max(num, curr + num)   # extend or restart
+    best = max(best, curr)
+return best
+```
 
 ---
 
@@ -307,6 +387,8 @@ So if `prefix[j] - K` exists in the map → subarray found.
 - 3Sum / 4Sum (sort + two pointers)
 - Find duplicates
 
+**Complexity:** Time O(n log n) · Space O(n) for output
+
 ---
 
 ## Pattern 8: Matrix Traversal
@@ -354,6 +436,8 @@ So if `prefix[j] - K` exists in the map → subarray found.
 - **Spiral:** Use four boundary pointers (top, bottom, left, right)
 - **Search in sorted matrix:** Start from top-right corner — go left if too big, go down if too small
 
+**Complexity:** Time O(m×n) traversal · O(m+n) for sorted matrix search · Space O(1)
+
 ---
 
 ## Pattern 9: Merge Sort Trick (Count while Sorting)
@@ -381,6 +465,8 @@ So if `prefix[j] - K` exists in the map → subarray found.
 - Count inversions
 - Reverse pairs
 - Any "count pairs across two halves" problem
+
+**Complexity:** Time O(n log n) · Space O(n)
 
 ---
 
@@ -412,6 +498,53 @@ So if `prefix[j] - K` exists in the map → subarray found.
 - Majority element appearing > n/2 times
 - Majority element appearing > n/3 times (use two candidates)
 
+**Complexity:** Time O(n) · Space O(1)
+
+**Template:**
+```python
+candidate, count = None, 0
+for num in arr:
+    if count == 0:
+        candidate = num
+    count += 1 if num == candidate else -1
+# verify: count occurrences of candidate to confirm majority
+```
+
+---
+
+## Differentiating Kadane's vs Prefix Hashing vs Sliding Window
+
+All three deal with **subarrays** — the key is the **problem requirement**, not the word "subarray".
+
+| | Kadane's | Prefix + Hashing | Sliding Window |
+|---|---|---|---|
+| **Goal** | Optimize sum (max/min) | Exact condition on sum | Range constraint |
+| **Negatives?** | ✅ Yes | ✅ Yes | ❌ Usually breaks |
+| **Counts subarrays?** | ❌ No | ✅ Yes | ❌ No |
+| **Dynamic window?** | ❌ No | ❌ No | ✅ Yes |
+| **Exact sum K?** | ❌ No | ✅ Yes | ❌ No |
+| **Complexity** | O(n) time, O(1) space | O(n) time, O(n) space | O(n) time, O(1) space |
+
+### Decision
+
+- **"maximum / minimum sum subarray"** → Kadane's
+- **"sum = K" / "count subarrays" / "divisible by K"** → Prefix + Hashing
+- **"longest / shortest" with positive elements** → Sliding Window
+
+### Real Interview Examples
+
+| Problem | Why |
+|---------|-----|
+| Max subarray sum | Optimize → Kadane |
+| Count subarrays with sum = K | Exact count → Prefix + Hash |
+| Longest subarray with sum ≤ K (positives) | Range + shrinkable → Sliding Window |
+| Longest subarray with sum = K (with negatives) | Exact + negatives → Prefix + Hash |
+| Max sum circular subarray | Kadane (modified) |
+
+> **Common trap:** Sliding window for "sum = K with negative numbers" — the window can't shrink correctly when negatives are present. Use Prefix + Hashing instead.
+
+**1-line memory:**  Kadane → optimize &nbsp;·&nbsp; Prefix → exact match &nbsp;·&nbsp; Sliding → flexible window
+
 ---
 
 ## Quick "When to Use What"
@@ -435,22 +568,20 @@ So if `prefix[j] - K` exists in the map → subarray found.
 ```mermaid
 flowchart TD
     A([Array Problem]) --> B{Contiguous\nsubarray?}
-    B -->|Yes| C{Fixed or\ndynamic size?}
+    B -->|Yes| C{What do you need?}
+    C -->|Max/min sum| Q[Kadane's Algorithm]
     C -->|Fixed size k| D[Sliding Window\nFixed]
-    C -->|Condition-based| E[Sliding Window\nDynamic]
+    C -->|Longest/shortest\npositive nums| E[Sliding Window\nDynamic]
+    C -->|Exact sum = K\nor count| M[Prefix Sum\n+ HashMap]
     B -->|No| F{Need pairs\nor triplets?}
     F -->|Yes| G{Array sorted?}
     G -->|Yes| H[Two Pointer]
     G -->|No| I{Sort first\nfeasible?}
     I -->|Yes| J[Sort + Two Pointer\n3Sum / 4Sum]
     I -->|No| K[Hashing\nTwo Sum]
-    F -->|No| L{Subarray sum\nor count?}
-    L -->|Yes| M[Prefix Sum\n+ HashMap]
-    L -->|No| N{Find majority\nelement?}
+    F -->|No| N{Find majority\nelement?}
     N -->|Yes| O[Moore's Voting]
-    N -->|No| P{Max/min\nsubarray sum?}
-    P -->|Yes| Q[Kadane's Algorithm]
-    P -->|No| R{2D Matrix?}
+    N -->|No| R{2D Matrix?}
     R -->|Yes| S[Matrix Traversal\nSpiral / Rotate / Search]
     R -->|No| T{Count pairs\nacross halves?}
     T -->|Yes| U[Merge Sort Trick]
