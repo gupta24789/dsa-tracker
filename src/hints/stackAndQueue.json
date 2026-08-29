@@ -1,0 +1,97 @@
+{
+  "https://leetcode.com/problems/valid-parentheses/description/": {
+    "optimal": { "idea": "Push opens; on a close, the stack top must be the matching open.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/removing-stars-from-a-string/": {
+    "optimal": { "idea": "Stack of chars; a '*' pops the last pushed char.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/simplify-path/": {
+    "optimal": { "idea": "Split on '/'; push names, '..' pops, ignore '.' and empties; join the stack.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/remove-k-digits/": {
+    "optimal": { "idea": "Monotonic increasing stack; pop larger preceding digits while k>0 to minimize the number.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/asteroid-collision/": {
+    "optimal": { "idea": "Stack; a right-mover meeting a left-mover collides, popping the smaller until resolved.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/validate-stack-sequences/": {
+    "optimal": { "idea": "Simulate: push pushed[] and pop whenever the top matches the next popped[] value.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/next-greater-element-i/": {
+    "brute": { "idea": "For each element scan right for the first greater.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Monotonic decreasing stack over nums2 builds a next-greater map; look up nums1.", "time": "O(n+m)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/next-greater-element-ii/": {
+    "brute": { "idea": "For each element scan up to n-1 following positions (wrapping) for the first greater.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Monotonic stack over the array traversed twice (mod n) to handle the circular wrap.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/smallest-number-on-left3403/1": {
+    "brute": { "idea": "For each element scan left for the first smaller.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Monotonic increasing stack; the top after popping >= current is the previous smaller.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/daily-temperatures/": {
+    "brute": { "idea": "For each day scan forward for a warmer day.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Monotonic decreasing stack of indices; on a warmer day, pop and record the day gap.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/online-stock-span/": {
+    "brute": { "idea": "On each call, scan backward counting consecutive prices <= today's.", "time": "O(n) per call", "space": "O(n)" },
+    "optimal": { "idea": "Monotonic decreasing stack of (price, span); pop <= current and accumulate spans.", "time": "O(1) amortized", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/sum-of-subarray-minimums/": {
+    "brute": { "idea": "Enumerate all subarrays, sum each minimum.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "For each element count subarrays where it's the min via previous/next smaller (monotonic stack).", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/sum-of-subarray-ranges/": {
+    "brute": { "idea": "For every subarray track max-min and sum them.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Sum of maxes minus sum of mins, each via the subarray-contribution monotonic-stack technique.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/largest-rectangle-in-histogram/": {
+    "brute": { "idea": "For each bar expand left/right while >= its height for the widest rectangle.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Monotonic increasing stack; on a smaller bar, pop and compute area with the popped height.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/maximal-rectangle/": {
+    "brute": { "idea": "Try every pair of rows/columns as rectangle bounds and check it's all 1s.", "time": "O((m*n)^2)", "space": "O(1)" },
+    "optimal": { "idea": "Build a histogram of consecutive 1s per row, apply largest-rectangle-in-histogram each row.", "time": "O(m*n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/car-fleet/": {
+    "optimal": { "idea": "Sort by position desc; compute time to target, a car joins a fleet if not slower than the one ahead.", "time": "O(n log n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/min-stack/description/": {
+    "optimal": { "idea": "Auxiliary stack tracking the running minimum (or store value-min deltas).", "time": "O(1) per op", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/evaluate-reverse-polish-notation/": {
+    "optimal": { "idea": "Push numbers; on an operator pop two operands, compute, push the result.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/baseball-game/": {
+    "optimal": { "idea": "Stack of scores; apply +, D (double), C (cancel) against the recent entries.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/infix-to-postfix-1587115620/1": {
+    "optimal": { "idea": "Shunting-yard: output operands; use an operator stack honoring precedence and parentheses.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/infix-to-prefix-notation/1": {
+    "optimal": { "idea": "Reverse the infix, convert to postfix (swap brackets), then reverse the result.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/prefix-to-infix-conversion/1": {
+    "optimal": { "idea": "Scan right to left; pop two operands per operator and push '(a op b)'.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/postfix-to-infix-conversion/1": {
+    "optimal": { "idea": "Scan left to right; pop two operands per operator and push '(a op b)'.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/prefix-to-postfix-conversion/1": {
+    "optimal": { "idea": "Scan right to left; pop two operands per operator and push 'ab op'.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/postfix-to-prefix-conversion/1": {
+    "optimal": { "idea": "Scan left to right; pop two operands per operator and push 'op ab'.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/sliding-window-maximum/": {
+    "brute": { "idea": "For each window scan all k elements for the max.", "time": "O(n*k)", "space": "O(1)" },
+    "optimal": { "idea": "Monotonic decreasing deque of indices; front is the window max, drop out-of-window and smaller.", "time": "O(n)", "space": "O(k)" }
+  },
+  "https://leetcode.com/problems/implement-stack-using-queues/": {
+    "optimal": { "idea": "One queue; after each push, rotate the queue so the new element sits at the front.", "time": "O(n) push", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/the-celebrity-problem/1": {
+    "brute": { "idea": "For each person check they know no one and everyone knows them.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Stack-eliminate candidates: if A knows B, drop A else drop B; verify the survivor.", "time": "O(n)", "space": "O(1)" }
+  }
+}

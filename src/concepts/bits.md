@@ -46,6 +46,9 @@
 - Find the single number that appears once (all others appear twice) → XOR all numbers, pairs cancel out
 - Swap two numbers without temp: `a ^= b; b ^= a; a ^= b`
 
+> **In an interview:** trigger words are *"every element appears twice except..."* or *"without extra space"*. If two singles exist, XOR-all then split by a set bit.
+> **Remember:** a^a=0, a^0=a — duplicates annihilate, the loner survives.
+
 ---
 
 ## Pattern 2: Check / Set / Clear / Toggle a Bit
@@ -70,6 +73,9 @@
 - Check if number is odd: `n & 1 == 1`
 - Check if power of 2: `n & (n-1) == 0`
 - Count set bits (Brian Kernighan): `while n: n &= n-1; count++`
+
+> **In an interview:** trigger words are *"the i-th bit"*, *"turn on/off a flag"*, or bitmask state. Say the mask `1 << i` out loud and whether you AND, OR, or XOR.
+> **Remember:** check `>>i & 1`, set `| 1<<i`, clear `& ~(1<<i)`, toggle `^ 1<<i`.
 
 ---
 
@@ -99,6 +105,9 @@
 - Check power of 2: `n > 0 and (n & (n-1)) == 0`
 - Count set bits: repeatedly do `n &= n-1` until n = 0
 - Find lowest set bit: `n & (-n)`
+
+> **In an interview:** trigger words are *"power of two"*, *"count 1-bits"*, *"lowest set bit"*. These are one-liners the interviewer expects instantly.
+> **Remember:** `n & (n-1)` drops the lowest set bit; `n & -n` isolates it.
 
 ---
 
@@ -131,6 +140,9 @@
 - Generate all subsets (Power Set)
 - DP on subsets (Travelling Salesman, matching problems)
 
+> **In an interview:** trigger is small **n (≤ ~20)** plus *"try all subsets / assignments"*. The bitmask becomes your loop variable or DP state key.
+> **Remember:** integers 0…2ⁿ−1 enumerate every subset; bit i set means item i is in.
+
 ---
 
 ## Pattern 5: Bit Tricks for Math
@@ -156,6 +168,9 @@
 - Fast power/exponentiation
 - Multiply/divide by powers of 2
 
+> **In an interview:** trigger words are *"compute x^n"*, *"without the multiply/divide operator"*, or huge exponents needing O(log n).
+> **Remember:** square the base, halve the exponent; multiply into the result on each set bit.
+
 ---
 
 ## Pattern 6: XOR in Arrays
@@ -170,6 +185,9 @@
 ```
 
 **XOR of range [L, R]:** `xor(1, R) ^ xor(1, L-1)`
+
+> **In an interview:** trigger is *"XOR of a large range [L, R]"* where looping would TLE. The `n % 4` pattern gives xor(1..n) in O(1).
+> **Remember:** range XOR = prefixXor(R) ^ prefixXor(L-1), same telescoping idea as prefix sums.
 
 ---
 
@@ -211,3 +229,25 @@ flowchart TD
     P -->|No| R{XOR of\na range?}
     R -->|Yes| S[XOR 1 to R XOR XOR 1 to L-1\nUse n mod 4 pattern]
 ```
+
+---
+
+## Problem → Pattern Cross-References
+
+The problems list now mirrors the patterns above (section names match the concept patterns). Notes:
+
+| Problem | Home pattern | Why (and what else it touches) |
+|---------|--------------|-------------------------------|
+| Single Number II (rest thrice) | XOR Magic | Count bits mod 3, or use two accumulator masks |
+| Single Number III (two singles) | XOR Magic | XOR all → split by a differing bit, XOR each group (see flowchart) |
+| Minimum Bit Flips | Power of 2 / Count Set Bits | Count set bits of `A ^ B` |
+| Divide Two Integers | Bit Math | Repeated subtraction using shifts (bit-by-bit quotient) |
+
+**Cross-topic homes:**
+
+- **Power Set / Subsets** (LeetCode 78) → home is `recursion.md` (Subsets, pick/no-pick). The bitmask 0…2ⁿ−1 iteration (Pattern 4 above) is the same problem through a different lens — practice it there, no duplicate entry here.
+- **Pow(x, n)** → home is `recursion.md` (fast exponentiation). The bit-by-bit squaring shown in Pattern 5 above is the same algorithm viewed through bits.
+
+**On the Number Theory section:** prime factors, divisors, and the Sieve aren't bit tricks — they're kept here only because there's no dedicated math topic. If a `math` topic is ever added, that's their real home.
+
+> **The two highest-value bit skills:** XOR cancellation (pairs vanish) and `n & (n-1)` (drops the lowest set bit). A large share of interview bit problems are one of these two in disguise.

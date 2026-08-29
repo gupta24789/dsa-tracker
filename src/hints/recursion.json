@@ -1,0 +1,92 @@
+{
+  "https://leetcode.com/problems/powx-n/": {
+    "brute": { "idea": "Multiply x by itself n times.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Fast exponentiation: x^n = (x^(n/2))^2, halving the exponent each step.", "time": "O(log n)", "space": "O(log n)" }
+  },
+  "https://leetcode.com/problems/count-good-numbers/": {
+    "optimal": { "idea": "Even positions have 5 choices, odd have 4 primes; combine via fast modular exponentiation.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/sort-a-stack/1": {
+    "optimal": { "idea": "Pop all via recursion, then insert each back in sorted order using a helper.", "time": "O(n^2)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/reverse-a-stack/1": {
+    "optimal": { "idea": "Recursively pop all, then insert each element at the bottom of the stack.", "time": "O(n^2)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/generate-all-binary-strings/1": {
+    "optimal": { "idea": "Recurse choosing 0 or 1 at each position (avoid consecutive 1s if required).", "time": "O(2^n)", "space": "O(n)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/subset-sums2234/1": {
+    "optimal": { "idea": "Pick/no-pick each element, accumulating the running sum at the leaves.", "time": "O(2^n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/subsets-ii/": {
+    "optimal": { "idea": "Sort; at each level skip duplicate siblings to avoid repeated subsets.", "time": "O(2^n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/subsets/": {
+    "optimal": { "idea": "Pick/no-pick recursion (or bitmask 0..2^n-1) to emit every subset.", "time": "O(2^n * n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/check-if-there-exists-a-subsequence-with-sum-k/1": {
+    "optimal": { "idea": "Recurse pick/no-pick; return true as soon as the running sum hits K.", "time": "O(2^n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/description/": {
+    "brute": { "idea": "Enumerate all subsequences and test min+max <= target.", "time": "O(2^n)", "space": "O(n)" },
+    "optimal": { "idea": "Sort; two pointers, when min+max<=target all subsets in between count (2^(r-l)).", "time": "O(n log n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/combination-sum/": {
+    "optimal": { "idea": "Backtrack; stay on the same index to allow reuse, advance to move on.", "time": "O(2^t)", "space": "O(t)" }
+  },
+  "https://leetcode.com/problems/combination-sum-ii/": {
+    "optimal": { "idea": "Sort; each element used once, skip duplicate siblings at the same depth.", "time": "O(2^n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/combination-sum-iii/": {
+    "optimal": { "idea": "Backtrack over digits 1-9 choosing k of them that sum to n.", "time": "O(C(9,k))", "space": "O(k)" }
+  },
+  "https://leetcode.com/problems/letter-combinations-of-a-phone-number/": {
+    "optimal": { "idea": "Recurse position by position, appending each letter mapped to the current digit.", "time": "O(4^n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/permutations/": {
+    "optimal": { "idea": "Backtrack with a used[] flag (or swap in place) to fix each slot.", "time": "O(n!*n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/permutations-ii/": {
+    "optimal": { "idea": "Sort; skip a value at a level if its duplicate hasn't been used yet.", "time": "O(n!*n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/n-queens/": {
+    "optimal": { "idea": "Place one queen per row; track attacked columns and both diagonals in sets.", "time": "O(n!)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/sudoku-solver/": {
+    "optimal": { "idea": "Find next empty cell, try 1-9 valid by row/col/box, recurse and backtrack.", "time": "O(9^cells)", "space": "O(1)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1": {
+    "optimal": { "idea": "Assign colors vertex by vertex; recurse only with colors not used by neighbors.", "time": "O(m^n)", "space": "O(n)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/rat-in-a-maze-problem/1": {
+    "optimal": { "idea": "DFS in a fixed direction order, marking visited cells and backtracking on dead ends.", "time": "O(4^(n^2))", "space": "O(n^2)" }
+  },
+  "https://leetcode.com/problems/word-search/": {
+    "optimal": { "idea": "DFS from each cell matching the next char, marking visited and backtracking.", "time": "O(cells*4^L)", "space": "O(L)" }
+  },
+  "https://leetcode.com/problems/matchsticks-to-square/": {
+    "optimal": { "idea": "Backtrack placing sticks into 4 buckets of side=sum/4; sort desc and prune.", "time": "O(4^n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/generate-parentheses/": {
+    "optimal": { "idea": "Backtrack adding '(' while open<n and ')' while close<open.", "time": "O(4^n/sqrt n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/palindrome-partitioning/": {
+    "optimal": { "idea": "Backtrack cut points; recurse on the suffix only when the current prefix is a palindrome.", "time": "O(2^n * n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/restore-ip-addresses/": {
+    "optimal": { "idea": "Backtrack placing 3 dots; each segment 1-3 digits, value <=255, no leading zeros.", "time": "O(1) (bounded)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/expression-add-operators/": {
+    "optimal": { "idea": "Recurse over splits inserting +,-,*; carry the running value and last operand for * precedence.", "time": "O(4^n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/splitting-a-string-into-descending-consecutive-values/": {
+    "optimal": { "idea": "Fix the first number, then recursively require each next chunk to equal previous-1.", "time": "O(2^n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/find-unique-binary-string/": {
+    "brute": { "idea": "Put all strings in a set; generate candidates 0..2^n-1 until one is absent.", "time": "O(n^2)", "space": "O(n^2)" },
+    "optimal": { "idea": "Cantor diagonal: flip the i-th bit of the i-th string to differ from all n strings.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/": {
+    "optimal": { "idea": "Backtrack combining words as bitmasks; skip any that share bits (duplicate letters).", "time": "O(2^n)", "space": "O(n)" }
+  }
+}

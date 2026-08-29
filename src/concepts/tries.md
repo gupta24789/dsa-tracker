@@ -75,6 +75,9 @@
 - Longest word with all prefixes valid
 - Count distinct substrings
 
+> **In an interview:** trigger words are *"prefix"*, *"starts with"*, *"autocomplete"*, or many words sharing structure. If it's exact-match only, a hash set is simpler — say so.
+> **Remember:** path from root spells a prefix; `isEnd` marks a complete word.
+
 ---
 
 ## Pattern 2: Trie for XOR Problems
@@ -160,6 +163,9 @@ return xor
 - Maximum XOR of two numbers in an array
 - Maximum XOR with an element from array (with queries)
 
+> **In an interview:** trigger words are *"maximum XOR pair"* — the leap is realizing a bit-by-bit trie turns an O(n²) pair search into O(32n).
+> **Remember:** insert numbers MSB-first; to maximize XOR, greedily walk toward the opposite bit.
+
 ---
 
 ## Pattern 3: Trie for String Matching
@@ -229,6 +235,9 @@ return xor
 - Word search II (find all words from a list in a grid)
 - Multi-pattern matching
 
+> **In an interview:** trigger is searching a grid/text for **many** words at once. Building one trie and walking it during DFS beats running a search per word.
+> **Remember:** trie lets you prune the instant a prefix leaves the word set.
+
 ---
 
 ## When to Use a Trie
@@ -270,3 +279,24 @@ flowchart TD
     J -->|Yes| K[Store count at\neach end node]
     J -->|No| L[Just isEnd flag\nis enough]
 ```
+
+---
+
+## Problem → Pattern Cross-References
+
+The problems list mirrors the 3 patterns above. Notes:
+
+| Problem | Home pattern | Why (and what else it touches) |
+|---------|--------------|-------------------------------|
+| Design Add and Search Words | Basic Trie | Search with '.' wildcard → DFS across children at that level |
+| Replace Words | Basic Trie | Walk each word until the first matching root (isEnd) |
+| Longest String with All Prefixes | Basic Trie | DFS, only descend through nodes that are themselves words |
+| Number of Distinct Substrings | Basic Trie | Insert all suffixes; each new node = one distinct substring |
+| Word Search II | String Matching | Build a trie of the word list, DFS the grid, prune off-trie paths |
+
+**Notes on curation:**
+
+- Added the canonical **Implement Trie (Prefix Tree)** (LeetCode 208) alongside the count-based **Implement Trie II**.
+- "Bit Prerequisites for Trie" is reading material, not a problem — see `bits.md` for the actual XOR problems that build the intuition for the Binary Trie pattern.
+
+> **When a trie beats a hashmap:** any time the query is about *prefixes* (autocomplete, "all words starting with…") or *bitwise paths* (max XOR). For exact-match-only lookups, a hashmap is simpler — reach for a trie when structure is shared.

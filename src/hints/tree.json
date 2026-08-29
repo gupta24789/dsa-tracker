@@ -1,0 +1,173 @@
+{
+  "https://leetcode.com/problems/binary-tree-inorder-traversal/": {
+    "optimal": { "idea": "Recurse left, visit node, recurse right (or iterative with an explicit stack).", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/binary-tree-preorder-traversal/": {
+    "optimal": { "idea": "Visit node, then left, then right (iterative: push right before left).", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/binary-tree-postorder-traversal/": {
+    "optimal": { "idea": "Left, right, then node; iterative uses two stacks or a reversed modified preorder.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/binary-tree-level-order-traversal/": {
+    "optimal": { "idea": "BFS with a queue, processing one full level (queue size) at a time.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/": {
+    "optimal": { "idea": "Level-order BFS; reverse the order of alternate levels.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/average-of-levels-in-binary-tree/": {
+    "optimal": { "idea": "BFS level by level, averaging each level's values.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/maximum-width-of-binary-tree/": {
+    "optimal": { "idea": "BFS assigning heap-style indices (2i, 2i+1); width = last-first+1 per level.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/maximum-depth-of-binary-tree/": {
+    "optimal": { "idea": "Height = 1 + max(height(left), height(right)); post-order recursion.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/invert-binary-tree/": {
+    "optimal": { "idea": "Recursively swap left and right children.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/same-tree/": {
+    "optimal": { "idea": "Recurse both trees together; values and structure must match at every node.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/subtree-of-another-tree/": {
+    "optimal": { "idea": "At each node of the main tree, run a same-tree check against the subtree.", "time": "O(n*m)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/merge-two-binary-trees/": {
+    "optimal": { "idea": "Recurse both; sum overlapping nodes, take whichever child exists otherwise.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/path-sum/": {
+    "optimal": { "idea": "DFS subtracting node values; at a leaf check the remainder is zero.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/symmetric-tree/": {
+    "optimal": { "idea": "Recurse mirrored pairs: left.left vs right.right and left.right vs right.left.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/balanced-binary-tree/": {
+    "brute": { "idea": "For each node compute left/right heights separately and check the diff.", "time": "O(n^2)", "space": "O(h)" },
+    "optimal": { "idea": "Post-order returning height; propagate -1 up as soon as a subtree is unbalanced.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/diameter-of-binary-tree/": {
+    "brute": { "idea": "For each node, diameter = height(left)+height(right); recompute heights each time.", "time": "O(n^2)", "space": "O(h)" },
+    "optimal": { "idea": "Post-order returning height; update a global max with left+right at each node.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://www.geeksforgeeks.org/problems/children-sum-parent/1": {
+    "optimal": { "idea": "Recurse; each node's value must equal the sum of its children's values.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/count-complete-tree-nodes/": {
+    "brute": { "idea": "Traverse and count every node.", "time": "O(n)", "space": "O(h)" },
+    "optimal": { "idea": "Compare left-most and right-most heights; if equal it's perfect (2^h-1), else recurse.", "time": "O(log^2 n)", "space": "O(log n)" }
+  },
+  "https://leetcode.com/problems/count-good-nodes-in-binary-tree/": {
+    "optimal": { "idea": "DFS carrying the max seen on the path; a node is good if >= that max.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/construct-string-from-binary-tree/": {
+    "optimal": { "idea": "Preorder build; add () for children, omitting an empty right when left is also empty.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1": {
+    "optimal": { "idea": "Level-order BFS taking the first node of each level (or DFS tracking first-per-depth).", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/binary-tree-right-side-view/": {
+    "optimal": { "idea": "Level-order BFS taking the last node of each level.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/top-view-of-binary-tree/1": {
+    "optimal": { "idea": "BFS with horizontal distance; keep the first node seen at each distance.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1": {
+    "optimal": { "idea": "BFS with horizontal distance; keep the last node seen at each distance.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/": {
+    "optimal": { "idea": "BFS/DFS tracking (col,row); sort by column, then row, then value.", "time": "O(n log n)", "space": "O(n)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/boundary-traversal-of-binary-tree/1": {
+    "optimal": { "idea": "Left boundary (top-down) + all leaves + right boundary (bottom-up), avoiding duplicates.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/populating-next-right-pointers-in-each-node/": {
+    "brute": { "idea": "Level-order BFS linking each node to the next in its level.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Use the established next pointers of the level above to link the next level in O(1) space.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/": {
+    "optimal": { "idea": "Recurse; a node is the LCA if p and q are found in different subtrees (or it is one of them).", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://www.geeksforgeeks.org/problems/root-to-leaf-paths/1": {
+    "optimal": { "idea": "DFS accumulating the path; record it (or return true) at the target/leaf.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/": {
+    "optimal": { "idea": "Map child→parent, then BFS outward k levels from the target in all directions.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/burning-tree/1": {
+    "optimal": { "idea": "Add parent pointers, then BFS from the start node; answer is the max distance reached.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/": {
+    "optimal": { "idea": "Preorder gives the root; its index in inorder splits left/right subtrees. Use an index map.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/": {
+    "optimal": { "idea": "Postorder end gives the root; split inorder around it, build right before left.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/unique-binary-tree-requirements/1": {
+    "optimal": { "idea": "A unique tree needs inorder paired with pre/post; pre+post alone is ambiguous.", "time": "O(1)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/binary-tree-maximum-path-sum/": {
+    "optimal": { "idea": "Post-order returning best downward gain; update global with left+node+right at each node.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/": {
+    "optimal": { "idea": "Preorder with null markers to a string; rebuild by consuming tokens in the same order.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/flatten-binary-tree-to-linked-list/": {
+    "brute": { "idea": "Preorder into a list, then relink nodes as all-right children.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Reverse-preorder (right,left,node) linking each node's right to the previously visited one.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/search-in-a-binary-search-tree/": {
+    "optimal": { "idea": "Go left if target < node, right if greater; O(h) navigation.", "time": "O(h)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/minimum-element-in-bst/1": {
+    "optimal": { "idea": "Keep going left (min) or right (max) until null.", "time": "O(h)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/implementing-ceil-in-bst/1": {
+    "optimal": { "idea": "Navigate BST; on node>=key record it and go left, else go right.", "time": "O(h)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/floor-in-bst/1": {
+    "optimal": { "idea": "Navigate BST; on node<=key record it and go right, else go left.", "time": "O(h)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/insert-into-a-binary-search-tree/": {
+    "optimal": { "idea": "Navigate as in search until a null child, attach the new node there.", "time": "O(h)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/delete-node-in-a-bst/": {
+    "optimal": { "idea": "Find node; 0/1 child is trivial, for 2 children replace with inorder successor then delete it.", "time": "O(h)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/validate-binary-search-tree/": {
+    "optimal": { "idea": "Recurse passing (min,max) bounds each node must satisfy (or check inorder is increasing).", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/": {
+    "optimal": { "idea": "Use BST order: both smaller go left, both larger go right, else the split point is the LCA.", "time": "O(h)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/": {
+    "brute": { "idea": "Insert each preorder value into the BST one by one.", "time": "O(n^2)", "space": "O(h)" },
+    "optimal": { "idea": "Insert in preorder using an upper-bound to decide left vs right placement in one pass.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/minimum-distance-between-bst-nodes/": {
+    "optimal": { "idea": "Inorder traversal; the min gap is between consecutive (sorted) values.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/kth-largest-element-in-bst/1": {
+    "optimal": { "idea": "Reverse inorder (right,node,left) and stop at the kth visited node.", "time": "O(h+k)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/kth-smallest-element-in-a-bst/": {
+    "brute": { "idea": "Full inorder into a sorted array, return index k-1.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Inorder traversal; stop at the kth visited node.", "time": "O(h+k)", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/two-sum-iv-input-is-a-bst/": {
+    "brute": { "idea": "For each node, search the tree for (target - node.val).", "time": "O(n*h)", "space": "O(h)" },
+    "optimal": { "idea": "Inorder to a sorted array then two pointers (or a hash set during traversal).", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/predecessor-and-successor/1": {
+    "optimal": { "idea": "Navigate BST recording the last-left-turn (successor) and last-right-turn (predecessor).", "time": "O(h)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/binary-search-tree-iterator/": {
+    "optimal": { "idea": "Controlled inorder: a stack of leftmost nodes; next() pops and pushes the right subtree's lefts.", "time": "O(1) amortized", "space": "O(h)" }
+  },
+  "https://leetcode.com/problems/recover-binary-search-tree/": {
+    "optimal": { "idea": "Inorder to spot the two swapped nodes (out-of-order pairs), then swap their values back.", "time": "O(n)", "space": "O(h)" }
+  },
+  "https://www.geeksforgeeks.org/problems/largest-bst/1": {
+    "brute": { "idea": "For each node, validate its subtree is a BST and measure its size.", "time": "O(n^2)", "space": "O(h)" },
+    "optimal": { "idea": "Post-order returning (isBST, min, max, size); combine children for the largest valid subtree.", "time": "O(n)", "space": "O(h)" }
+  }
+}

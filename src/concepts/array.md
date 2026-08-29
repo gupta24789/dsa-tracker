@@ -46,15 +46,15 @@ Think of an array like a **row of lockers** in a school hallway. Each locker has
 ```viz
 {
   "title": "Linear Scan — find maximum",
-  "description": "arr = [3, 7, 1, 9, 4]. Walk once, keep updating max seen so far.",
+  "description": "arr = [3, 7, 1, 9, 4]. The 'max' badge + lit cell show the best so far; 'i' scans across. The lit cell only moves when a bigger value appears.",
   "array": [3, 7, 1, 9, 4],
   "speed": 800,
   "steps": [
-    { "pointers": { "i": 0 }, "highlight": [0], "label": "i=0, val=3. max = 3" },
-    { "pointers": { "i": 1 }, "highlight": [1], "label": "i=1, val=7. 7 > 3 → max = 7" },
-    { "pointers": { "i": 2 }, "highlight": [2], "label": "i=2, val=1. 1 < 7 → max stays 7" },
-    { "pointers": { "i": 3 }, "highlight": [3], "label": "i=3, val=9. 9 > 7 → max = 9" },
-    { "pointers": { "i": 4 }, "highlight": [4], "label": "i=4, val=4. 4 < 9 → max stays 9", "note": "Answer: max = 9 ✓ One pass, O(n)" }
+    { "pointers": { "i": 0, "max": 0 }, "highlight": [0], "label": "i=0, val=3. First element → max = 3 (at index 0)." },
+    { "pointers": { "i": 1, "max": 1 }, "highlight": [1], "label": "i=1, val=7. 7 > 3 → new max = 7 (lit cell moves here)." },
+    { "pointers": { "i": 2, "max": 1 }, "highlight": [1], "label": "i=2, val=1. 1 < 7 → max stays 7. i keeps scanning." },
+    { "pointers": { "i": 3, "max": 3 }, "highlight": [3], "label": "i=3, val=9. 9 > 7 → new max = 9 (lit cell moves here)." },
+    { "pointers": { "i": 4, "max": 3 }, "highlight": [3], "label": "i=4, val=4. 4 < 9 → max stays 9.", "note": "Answer: max = 9 ✓ One pass, O(n). The lit cell only ever moves forward to a bigger value." }
   ]
 }
 ```
@@ -74,6 +74,9 @@ for each element:
 return result
 ```
 
+> **In an interview:** trigger words are *"find the max / min / count / best so far"* in a single pass.
+> **Remember:** one variable, one walk — never look back.
+
 ---
 
 ## Pattern 2: Two Pointer
@@ -87,31 +90,31 @@ return result
 ```viz
 {
   "title": "Two Pointer — Opposite Direction (pair sum = target)",
-  "description": "arr = [1, 3, 5, 7, 9], target = 10. L moves right when sum too small, R moves left when too big.",
-  "array": [1, 3, 5, 7, 9],
+  "description": "arr = [2, 4, 5, 7, 11], target = 11. Start at both ends. sum too big → R moves left; too small → L moves right.",
+  "array": [2, 4, 5, 7, 11],
   "speed": 900,
   "steps": [
-    { "pointers": { "L": 0, "R": 4 }, "highlight": [0, 4], "label": "Start: L=0, R=4. sum = 1+9 = 10 == target ✓", "note": "Found pair (1, 9)! But let's see what happens when it's not immediate..." },
-    { "pointers": { "L": 0, "R": 4 }, "highlight": [0, 4], "label": "Now target = 8. sum = 1+9 = 10 > 8 → too big, move R left." },
-    { "pointers": { "L": 0, "R": 3 }, "highlight": [0, 3], "label": "L=0, R=3. sum = 1+7 = 8 == target ✓", "note": "Found pair (1, 7)!" },
-    { "pointers": { "L": 0, "R": 3 }, "highlight": [0, 3], "label": "Now target = 12. Reset: L=0, R=4. sum = 1+9 = 10 < 12 → too small, move L right." },
-    { "pointers": { "L": 1, "R": 4 }, "highlight": [1, 4], "label": "L=1, R=4. sum = 3+9 = 12 == target ✓", "note": "Found pair (3, 9)! Rule: sum < target → L++. sum > target → R--. L crosses R → no pair exists." }
+    { "pointers": { "L": 0, "R": 4 }, "highlight": [0, 4], "label": "L=0, R=4: sum = 2 + 11 = 13 > 11 → too big, move R left." },
+    { "pointers": { "L": 0, "R": 3 }, "highlight": [0, 3], "label": "L=0, R=3: sum = 2 + 7 = 9 < 11 → too small, move L right." },
+    { "pointers": { "L": 1, "R": 3 }, "highlight": [1, 3], "label": "L=1, R=3: sum = 4 + 7 = 11 == target ✓", "note": "Found pair (4, 7). Rule: sum < target → L++, sum > target → R--, L crosses R → no pair exists." }
   ]
 }
 ```
 
 ```viz
 {
-  "title": "Two Pointer — Same Direction (remove duplicates)",
-  "description": "arr = [1, 1, 2, 3, 3]. S=slow writes unique values, F=fast scans ahead.",
-  "array": [1, 1, 2, 3, 3],
-  "speed": 900,
+  "type": "table",
+  "title": "Two Pointer — Same Direction (remove duplicates in-place)",
+  "description": "arr = [1, 1, 2, 3, 3]. Bright = F (scanner). Blue = S (last unique slot). When F finds a new value, S advances and F's value is written there.",
+  "speed": 950,
+  "cols": ["idx", "0", "1", "2", "3", "4"],
+  "rows": ["val"],
+  "cells": [[1, 1, 2, 3, 3]],
   "steps": [
-    { "pointers": { "S": 0, "F": 0 }, "highlight": [0], "label": "S=0, F=0. Initialize." },
-    { "pointers": { "S": 0, "F": 1 }, "highlight": [0, 1], "label": "arr[F]=1 == arr[S]=1 → duplicate, skip. F++" },
-    { "pointers": { "S": 0, "F": 2 }, "highlight": [0, 2], "label": "arr[F]=2 != arr[S]=1 → new value! S++, write arr[S]=arr[F]" },
-    { "pointers": { "S": 1, "F": 3 }, "highlight": [1, 3], "label": "arr[F]=3 != arr[S]=2 → new value! S++, write arr[S]=arr[F]" },
-    { "pointers": { "S": 2, "F": 4 }, "highlight": [2, 4], "label": "arr[F]=3 == arr[S]=3 → duplicate, skip. F++", "note": "Result: first S+1=3 elements = [1, 2, 3] ✓" }
+    { "cells": [[1,1,2,3,3]], "active": [0,1], "highlight": [[0,0]], "label": "S=0, F=1: arr[F]=1 == arr[S]=1 → duplicate, skip. F++" },
+    { "cells": [[1,2,2,3,3]], "active": [0,2], "highlight": [[0,1]], "label": "F=2: arr[F]=2 != arr[S]=1 → new value. S++ (=1), write arr[1]=2." },
+    { "cells": [[1,2,3,3,3]], "active": [0,3], "highlight": [[0,2]], "label": "F=3: arr[F]=3 != arr[S]=2 → new value. S++ (=2), write arr[2]=3." },
+    { "cells": [[1,2,3,3,3]], "active": [0,4], "highlight": [[0,2]], "label": "F=4: arr[F]=3 == arr[S]=3 → duplicate, skip. F++", "note": "First S+1 = 3 cells hold the unique values [1, 2, 3] ✓" }
   ]
 }
 ```
@@ -145,6 +148,9 @@ for fast in range(len(arr)):
         slow += 1
         arr[slow] = arr[fast]
 ```
+
+> **In an interview:** trigger words are *"sorted array"* + *"pair / triplet / partition / in-place"*. First question to ask: is the input sorted (or can I sort it)?
+> **Remember:** opposite ends for pair-sums, same-direction slow/fast for in-place rewrites.
 
 ---
 
@@ -199,6 +205,9 @@ for right in range(n):
     update result  # e.g. max(result, right - left + 1)
 ```
 
+> **In an interview:** trigger words are *"longest / shortest contiguous subarray/substring"* with **non-negative** values. Ask: can values be negative? If yes, this breaks — reach for prefix+hashing.
+> **Remember:** expand right always, shrink left only when the window breaks the rule.
+
 ---
 
 ## Pattern 4: Prefix Sum + Hashing
@@ -214,11 +223,11 @@ for right in range(n):
   "array": [3, 1, 2, -2, 4],
   "speed": 1000,
   "steps": [
-    { "pointers": { "i": 0 }, "highlight": [0], "label": "prefix=3. Need 3-3=0 → 0 IS in map! Subarray arr[0..0]=[3] ✓", "note": "Found subarray [3] at index 0" },
-    { "pointers": { "i": 1 }, "highlight": [1], "label": "prefix=4. Need 4-3=1 → not in map. Store {4:1}" },
-    { "pointers": { "i": 2 }, "highlight": [0,1,2], "label": "prefix=6. Need 6-3=3 → 3 IS in map! Subarray arr[1..2]=[1,2] ✓", "note": "Found subarray [1,2] ending at index 2" },
-    { "pointers": { "i": 3 }, "highlight": [3], "label": "prefix=4. Need 4-3=1 → not in map. Store {4:2}" },
-    { "pointers": { "i": 4 }, "highlight": [4], "label": "prefix=8. Need 8-3=5 → not in map. Store {8:1}" }
+    { "pointers": { "i": 0 }, "highlight": [0], "label": "prefix=3. Need 3-3=0 → 0 is in map! Subarray arr[0..0]=[3] ✓. Store {3:1}." },
+    { "pointers": { "i": 1 }, "highlight": [1], "label": "prefix=4. Need 4-3=1 → not in map. Store {4:1}." },
+    { "pointers": { "i": 2 }, "highlight": [1,2], "label": "prefix=6. Need 6-3=3 → 3 is in map! Subarray arr[1..2]=[1,2] ✓. Store {6:1}." },
+    { "pointers": { "i": 3 }, "highlight": [3], "label": "prefix=4. Need 4-3=1 → not in map. Store {4:2}." },
+    { "pointers": { "i": 4 }, "highlight": [4], "label": "prefix=8. Need 8-3=5 → not in map. Store {8:1}.", "note": "2 subarrays sum to K=3: [3] and [1,2]. Works even with the negative (-2) ✓" }
   ]
 }
 ```
@@ -246,6 +255,9 @@ for num in arr:
     mp[prefix] = mp.get(prefix, 0) + 1
 ```
 
+> **In an interview:** trigger words are *"count / exact sum = K / XOR = K / zero-sum"*, especially **with negatives**. Always seed the map with `{0: 1}`.
+> **Remember:** if `prefix - K` was seen before, a subarray summing to K ends here.
+
 ---
 
 ## Pattern 5: Hashing (Frequency / Lookup)
@@ -261,10 +273,8 @@ for num in arr:
   "array": [2, 7, 11, 4],
   "speed": 900,
   "steps": [
-    { "pointers": { "i": 0 }, "highlight": [0], "label": "val=2. Need 9-2=7. Map={} → not found. Store {2:0}" },
-    { "pointers": { "i": 1 }, "highlight": [0,1], "label": "val=7. Need 9-7=2. Map={2:0} → FOUND at index 0!", "note": "Answer: [0, 1] (values 2+7=9) ✓ O(n) vs O(n²) brute force" },
-    { "pointers": { "i": 2 }, "highlight": [2], "label": "val=11. Need 9-11=-2. Not found. (Already answered above)" },
-    { "pointers": { "i": 3 }, "highlight": [3], "label": "val=4. Need 9-4=5. Not found." }
+    { "pointers": { "i": 0 }, "highlight": [0], "label": "val=2. Need 9-2=7. Map={} → not found. Store {2:0}." },
+    { "pointers": { "i": 1 }, "highlight": [0,1], "label": "val=7. Need 9-7=2. Map={2:0} → FOUND at index 0! Return and stop.", "note": "Answer: [0, 1] (2 + 7 = 9) ✓. One pass, O(n) vs O(n²) brute force." }
   ]
 }
 ```
@@ -286,6 +296,9 @@ for i, num in enumerate(arr):
         return [seen[complement], i]
     seen[num] = i
 ```
+
+> **In an interview:** trigger words are *"has it appeared before / complement / frequency / duplicate"*. Trade O(1) space for O(n) time.
+> **Remember:** the map turns "search the rest of the array" into a single lookup.
 
 ---
 
@@ -331,6 +344,9 @@ for num in arr[1:]:
     best = max(best, curr)
 return best
 ```
+
+> **In an interview:** trigger words are *"maximum / minimum sum (or product) subarray"*. Follow-up is often "return the indices" — track where curr restarts.
+> **Remember:** at each step, extend or restart — keep the running best.
 
 ---
 
@@ -389,6 +405,9 @@ return best
 
 **Complexity:** Time O(n log n) · Space O(n) for output
 
+> **In an interview:** if brute force is O(n²) and order doesn't matter, ask *"does sorting first make this easier?"* — it often unlocks two pointers or a greedy sweep.
+> **Remember:** sort turns chaos into structure you can exploit in one pass.
+
 ---
 
 ## Pattern 8: Matrix Traversal
@@ -438,6 +457,9 @@ return best
 
 **Complexity:** Time O(m×n) traversal · O(m+n) for sorted matrix search · Space O(1)
 
+> **In an interview:** clarify the index math out loud (row/col bounds) before coding — off-by-one on boundaries is the usual bug. For rotate/spiral, state the boundary-shrinking plan first.
+> **Remember:** rotate = transpose + reverse rows; sorted-matrix search = start top-right.
+
 ---
 
 ## Pattern 9: Merge Sort Trick (Count while Sorting)
@@ -448,15 +470,43 @@ return best
 
 ```viz
 {
-  "title": "Merge Sort Trick — Count Inversions",
-  "description": "arr = [3, 1, 2]. An inversion = pair where left > right. Count during merge step.",
-  "array": [3, 1, 2],
+  "type": "table",
+  "title": "Merge Sort Trick — Count Inversions during merge",
+  "description": "arr = [2, 4, 1, 3] → two sorted halves Left=[2,4], Right=[1,3]. When a Right value is picked, every remaining Left value is an inversion — count them all at once.",
   "speed": 1100,
+  "cols": ["half", "•", "•", "•", "•"],
+  "rows": ["Left", "Right", "Merged"],
+  "cells": [
+    [2, 4, "", ""],
+    [1, 3, "", ""],
+    ["", "", "", ""]
+  ],
   "steps": [
-    { "pointers": {}, "highlight": [0,1,2], "label": "Split: left=[3], right=[1,2]. Now merge and count." },
-    { "pointers": { "L": 0, "R": 1 }, "highlight": [0,1], "label": "Compare L[0]=3 vs R[0]=1. 3>1 → pick 1 from right. All remaining left (just 3) jumped over 1 → inversions += 1" },
-    { "pointers": { "L": 0, "R": 2 }, "highlight": [0,2], "label": "Compare L[0]=3 vs R[1]=2. 3>2 → pick 2 from right. inversions += 1" },
-    { "pointers": { "L": 0 }, "highlight": [0], "label": "Pick remaining L[0]=3. Merged: [1,2,3]", "note": "Total inversions = 2. Pairs (3,1) and (3,2) were inverted ✓" }
+    {
+      "cells": [[2,4,"",""],[1,3,"",""],["","","",""]],
+      "label": "Two already-sorted halves: Left=[2,4], Right=[1,3]. Merge them left-to-right, counting inversions. total=0"
+    },
+    {
+      "cells": [[2,4,"",""],["",3,"",""],[1,"","",""]],
+      "active": [2,0], "highlight": [[0,0],[0,1]],
+      "label": "Compare Left 2 vs Right 1 → 1 smaller, output it. Both remaining Left values (2,4) are > 1 → inversions += 2. total=2"
+    },
+    {
+      "cells": [["",4,"",""],["",3,"",""],[1,2,"",""]],
+      "active": [2,1],
+      "label": "Compare Left 2 vs Right 3 → 2 smaller, output it. 2 < 3 → no inversion. total=2"
+    },
+    {
+      "cells": [["",4,"",""],["","","",""],[1,2,3,""]],
+      "active": [2,2], "highlight": [[0,1]],
+      "label": "Compare Left 4 vs Right 3 → 3 smaller, output it. Remaining Left (4) is > 3 → inversions += 1. total=3"
+    },
+    {
+      "cells": [["","","",""],["","","",""],[1,2,3,4]],
+      "active": [2,3],
+      "label": "Right half empty → append remaining Left (4). Merged = [1,2,3,4].",
+      "note": "Total inversions = 3: (2,1), (4,1), (4,3) ✓. The trick: when a Right value wins, ALL remaining Left values count at once — O(n log n), not O(n²)."
+    }
   ]
 }
 ```
@@ -467,6 +517,9 @@ return best
 - Any "count pairs across two halves" problem
 
 **Complexity:** Time O(n log n) · Space O(n)
+
+> **In an interview:** trigger words are *"count pairs where i < j and (some order condition)"* and the naive O(n²) is too slow. The count happens during the merge step.
+> **Remember:** while merging two sorted halves, count how many left elements "jump over" each right element.
 
 ---
 
@@ -509,6 +562,98 @@ for num in arr:
     count += 1 if num == candidate else -1
 # verify: count occurrences of candidate to confirm majority
 ```
+
+> **In an interview:** trigger words are *"element appearing more than n/2 (or n/3) times"* with an O(1)-space requirement. Always add the verification pass — the candidate isn't guaranteed to be a true majority.
+> **Remember:** opposite votes cancel; whoever survives is the candidate.
+
+---
+
+## Pattern 11: Cyclic Sort
+
+**The idea:** When an array holds `n` numbers from a known range (usually `1..n` or `0..n-1`), each value has a "correct" index. Walk the array and keep swapping each number to its correct slot. After one pass, whatever is out of place reveals the missing / duplicate number — all in O(n) time and O(1) space.
+
+**Analogy:** Numbered lockers 1..n and numbered bags scattered on the floor. You pick up a bag, walk it to its matching locker, and swap out whatever was sitting there. Repeat until every bag is home. Any empty locker = a missing number.
+
+```viz
+{
+  "type": "table",
+  "title": "Cyclic Sort — send each value home to index (value-1)",
+  "description": "arr = [3, 1, 5, 4, 2]. Bright = index i being processed; blue = the slot its value belongs in. Watch values swap into place.",
+  "speed": 1000,
+  "cols": ["idx", "0", "1", "2", "3", "4"],
+  "rows": ["val"],
+  "cells": [[3, 1, 5, 4, 2]],
+  "steps": [
+    { "cells": [[3,1,5,4,2]], "active": [0,0], "highlight": [[0,2]], "label": "i=0: arr[0]=3 belongs at index 2. Swap arr[0] ↔ arr[2]." },
+    { "cells": [[5,1,3,4,2]], "active": [0,0], "highlight": [[0,4]], "label": "arr[0]=5 belongs at index 4. Swap arr[0] ↔ arr[4]." },
+    { "cells": [[2,1,3,4,5]], "active": [0,0], "highlight": [[0,1]], "label": "arr[0]=2 belongs at index 1. Swap arr[0] ↔ arr[1]." },
+    { "cells": [[1,2,3,4,5]], "active": [0,0], "label": "arr[0]=1 is already correct (index 0). Advance i." },
+    { "cells": [[1,2,3,4,5]], "highlight": [[0,0],[0,1],[0,2],[0,3],[0,4]], "label": "Every arr[i] == i+1. Sorted in O(n).", "note": "If any slot ended with arr[i] != i+1 → i+1 is missing and arr[i] is the duplicate ✓" }
+  ]
+}
+```
+
+**Template:**
+```python
+i = 0
+while i < n:
+    correct = arr[i] - 1        # target index for arr[i] (range 1..n)
+    if arr[i] != arr[correct]:
+        arr[i], arr[correct] = arr[correct], arr[i]   # swap into place
+    else:
+        i += 1
+# Second pass: any i where arr[i] != i+1 → missing/duplicate found
+```
+
+**When to use:**
+- Numbers in range `1..n` (or `0..n-1`)
+- Missing number, all missing numbers
+- Find the duplicate, all duplicates
+- Set mismatch (the missing + repeated pair)
+- First missing positive (range trick: ignore values outside `1..n`)
+
+**Complexity:** Time O(n) · Space O(1)
+
+**Key insight:** Each swap puts at least one number in its final place, so the total work is linear despite the nested-looking swap.
+
+> **In an interview:** trigger words are *"array of n numbers in range 1..n"* + *"missing / duplicate"* with O(1) space. If the array is read-only, switch to Floyd (Pattern 12).
+> **Remember:** every value belongs at index value-1 — put it home, then the odd slot out is your answer.
+
+---
+
+## Pattern 12: Fast & Slow on an Array (Floyd on Index Chains)
+
+**The idea:** When values in `1..n` can be read as "next index" pointers, the array becomes a linked list with a guaranteed cycle. Floyd's tortoise-and-hare finds the cycle entrance — which is the duplicate value — in O(1) space without modifying the array.
+
+**Analogy:** Same tortoise-and-hare as the linked-list cycle problem, but the "next node" is `arr[current]` instead of `node.next`.
+
+```viz
+{
+  "title": "Find the Duplicate — Floyd on arr[i] as a pointer",
+  "description": "arr = [3, 1, 3, 4, 2]. Follow i → arr[i]. A repeated value creates a cycle; its entrance is the duplicate.",
+  "array": [3, 1, 3, 4, 2],
+  "speed": 1000,
+  "steps": [
+    { "pointers": { "S": 0, "F": 0 }, "highlight": [0], "label": "Phase 1 start: slow and fast both at index 0." },
+    { "pointers": { "S": 3, "F": 4 }, "highlight": [3, 4], "label": "slow = arr[0] = 3 (1 step). fast = arr[arr[0]] = arr[3] = 4 (2 steps)." },
+    { "pointers": { "S": 4, "F": 3 }, "highlight": [3, 4], "label": "slow = arr[3] = 4. fast = arr[arr[4]] = arr[2] = 3." },
+    { "pointers": { "S": 2, "F": 2 }, "highlight": [2], "label": "slow = arr[4] = 2. fast = arr[arr[3]] = arr[4] = 2 → they MEET at index 2." },
+    { "pointers": { "S": 0, "F": 2 }, "highlight": [0, 2], "label": "Phase 2: reset slow to index 0. Now move BOTH one step at a time." },
+    { "pointers": { "S": 3, "F": 3 }, "highlight": [3], "label": "slow = arr[0] = 3. fast = arr[2] = 3 → MEET at index 3 = cycle entrance.", "note": "Duplicate value = 3 ✓. O(n) time, O(1) space, array untouched." }
+  ]
+}
+```
+
+**When to use:**
+- Find the Duplicate Number (values `1..n`, exactly one repeated, read-only array)
+- Any problem where `arr[i]` can be treated as an edge to another index
+
+**Complexity:** Time O(n) · Space O(1)
+
+> **In an interview:** trigger words are *"find the duplicate, don't modify the array, use O(1) space"* — the constraints are the giveaway. Reframe `arr[i]` as a pointer to index `arr[i]`.
+> **Remember:** duplicate value = the entrance of the cycle the pointers form.
+
+> **Cyclic Sort vs Floyd:** both solve range-`1..n` problems. Use **cyclic sort** when you're allowed to modify the array and may need *all* missing/duplicate values. Use **Floyd** when the array is read-only and you need the single duplicate without mutation.
 
 ---
 
@@ -560,6 +705,8 @@ All three deal with **subarrays** — the key is the **problem requirement**, no
 | Overlapping intervals, k-sum | Sort first |
 | Count pairs across halves | Merge Sort trick |
 | Majority element | Moore's Voting |
+| Numbers in range 1..n, missing/duplicate | Cyclic Sort |
+| Find duplicate, read-only array | Fast & Slow (Floyd) |
 
 ---
 
@@ -579,7 +726,10 @@ flowchart TD
     G -->|No| I{Sort first\nfeasible?}
     I -->|Yes| J[Sort + Two Pointer\n3Sum / 4Sum]
     I -->|No| K[Hashing\nTwo Sum]
-    F -->|No| N{Find majority\nelement?}
+    F -->|No| W{Numbers in\nrange 1..n?}
+    W -->|Yes, can modify| X[Cyclic Sort\nmissing / duplicate]
+    W -->|Yes, read-only| Y[Fast & Slow Floyd\nfind the duplicate]
+    W -->|No| N{Find majority\nelement?}
     N -->|Yes| O[Moore's Voting]
     N -->|No| R{2D Matrix?}
     R -->|Yes| S[Matrix Traversal\nSpiral / Rotate / Search]
@@ -587,3 +737,48 @@ flowchart TD
     T -->|Yes| U[Merge Sort Trick]
     T -->|No| V[Linear Scan]
 ```
+
+---
+
+## Problem → Pattern Cross-References
+
+Some problems could plausibly sit under two patterns. Each lives in exactly **one** section of the problems list (its interview-default approach). The notes below capture the connections so nothing is lost.
+
+**Problems whose home isn't obvious:**
+
+| Problem | Home pattern | Why (and what else it touches) |
+|---------|--------------|-------------------------------|
+| Replace Elements with Greatest on Right | Linear Scan | Suffix-max scan, right to left |
+| Leaders in an Array | Linear Scan | Suffix-max scan right to left — *not* a stack problem despite the name |
+| Product of Array Except Self | Linear Scan | Prefix/suffix product in two passes, no hashing needed |
+| Is Subsequence | Two Pointer | Same-direction pointers over two strings |
+| Remove Element | Two Pointer | Same-direction slow/fast write |
+| Trapping Rain Water | Two Pointer | Opposite pointers tracking left/right max (also solvable with a stack) |
+| Sort Colors (0s/1s/2s) | Two Pointer | Dutch National Flag, three pointers |
+| Best Time to Buy/Sell Stock | Sliding Window | Track min-so-far while scanning (also framed as Kadane-style) |
+| Equilibrium Point / Find Pivot Index | Prefix Sum + Hashing | Compare prefix sum to total minus prefix |
+| Subarray sum = K, XOR = K, 0-sum, sum-K | Prefix Sum + Hashing | Prefix + map — the pattern that handles **negatives**, unlike sliding window |
+| Longest Consecutive Sequence | Hashing | Set membership to find sequence starts |
+| Maximum Product Subarray | Kadane's | Kadane variant tracking both max and min (negatives flip sign) |
+| 3-Sum / 4-Sum | Sorting-Based | Sort first, then two-pointer sweep |
+| Merge Overlapping Intervals | Sorting-Based | Sort by start, merge when overlap — *not* the merge-sort counting trick |
+| Sliding Window Maximum | Sliding Window | Monotonic deque (also appears in Stack/Queue topic as a deque problem) |
+
+**Moved out of the Array list entirely (their true home):**
+
+- **Unique Paths** → `dp.md` (2D grid DP) — it's the worked example in the DP concept notes.
+- **Single Number** → `bits.md` (XOR trick).
+- **Pow(x, n)** → `bits.md` / `recursion.md` (binary exponentiation).
+- **Encode and Decode Strings** → `string.md` (serialization design).
+- **Search a 2D Matrix** → `binarySearch.md` (fully-sorted matrix treated as 1D binary search).
+- **Sliding Window Maximum** → `stackAndQueue.md` (monotonic deque is the defining O(n) technique).
+- **Top K Frequent Elements** → `heaps.md` (Top K pattern — min-heap of size K is the interview default).
+- **Valid Anagram** and **Isomorphic Strings** → `string.md` (Hashing/frequency on characters — the string concept's Pattern 3).
+
+**Range-`1..n` problems (now under their pattern, moved out of "Math Tricks"):**
+
+- **Missing Number, All Disappeared, All Duplicates, Set Mismatch, Repeating & Missing** → *Cyclic Sort* (place each value at index `value-1`; leftovers reveal missing/duplicate).
+- **First Missing Positive** → *Cyclic Sort* with the range trick (ignore values outside `1..n`).
+- **Find the Duplicate Number** → *Fast & Slow (Floyd)* when the array is read-only and must stay unmodified.
+
+> **Reading the split of the three "subarray" patterns:** *Kadane's* optimizes a sum (max/min). *Prefix + Hashing* answers exact-sum / counting questions and survives negatives. *Sliding Window* handles range constraints on non-negative data. See the differentiation table above.

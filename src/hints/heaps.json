@@ -1,0 +1,43 @@
+{
+  "https://leetcode.com/problems/kth-largest-element-in-an-array/": {
+    "brute": { "idea": "Sort descending and take index k-1.", "time": "O(n log n)", "space": "O(1)" },
+    "better": { "idea": "Min-heap of size k; the root is the kth largest.", "time": "O(n log k)", "space": "O(k)" },
+    "optimal": { "idea": "Quickselect partitioning around a pivot until the kth position is fixed.", "time": "O(n) avg", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/kth-largest-element-in-a-stream/description/": {
+    "optimal": { "idea": "Maintain a size-k min-heap; each add pushes then pops if over k; root = kth largest.", "time": "O(log k) per add", "space": "O(k)" }
+  },
+  "https://leetcode.com/problems/top-k-frequent-elements/": {
+    "brute": { "idea": "Count frequencies, sort by count, take the top k.", "time": "O(n log n)", "space": "O(n)" },
+    "better": { "idea": "Count, then a size-k min-heap by frequency.", "time": "O(n log k)", "space": "O(n)" },
+    "optimal": { "idea": "Bucket sort by frequency (index = count), collect from the highest buckets.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/replace-elements-by-its-rank-in-the-array/1": {
+    "optimal": { "idea": "Sort unique values to assign ranks (map value→rank), then replace each element.", "time": "O(n log n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/maximum-sum-combination/1": {
+    "brute": { "idea": "Compute all n*n pair sums, sort, take top k.", "time": "O(n^2 log n)", "space": "O(n^2)" },
+    "optimal": { "idea": "Sort both; max-heap of candidate pair sums, pop k times expanding neighbors, use a visited set.", "time": "O(k log k)", "space": "O(k)" }
+  },
+  "https://www.geeksforgeeks.org/problems/k-sorted-array1610/1": {
+    "brute": { "idea": "Ignore the near-sorted property and just sort.", "time": "O(n log n)", "space": "O(1)" },
+    "optimal": { "idea": "Min-heap of size k+1; pop the smallest to the output as you slide forward.", "time": "O(n log k)", "space": "O(k)" }
+  },
+  "https://leetcode.com/problems/find-median-from-data-stream/": {
+    "brute": { "idea": "Keep a sorted list, insert each number in order, read the middle.", "time": "O(n) per add", "space": "O(n)" },
+    "optimal": { "idea": "Max-heap for the lower half, min-heap for the upper; balance sizes; median from the tops.", "time": "O(log n) per add", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/task-scheduler/": {
+    "brute": { "idea": "Max-heap by frequency; simulate each cooldown-sized round, popping tasks and re-adding after cooldown.", "time": "O(n log 26)", "space": "O(1)" },
+    "optimal": { "idea": "Formula on the most frequent task: (maxFreq-1)*(n+1) + countOfMaxFreq, clamped to length.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/hand-of-straights/": {
+    "optimal": { "idea": "Count values; repeatedly start a run at the smallest available and decrement the next groupSize values.", "time": "O(n log n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/minimum-cost-of-ropes-1587115620/1": {
+    "optimal": { "idea": "Min-heap; repeatedly pop the two smallest ropes, add their sum to cost, push it back.", "time": "O(n log n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/design-twitter/": {
+    "optimal": { "idea": "Per-user tweet lists with timestamps; merge followees' recent tweets via a max-heap for the feed.", "time": "O(f log f) per feed", "space": "O(n)" }
+  }
+}

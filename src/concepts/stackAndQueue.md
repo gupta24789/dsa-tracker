@@ -14,17 +14,17 @@
 
 ```viz
 {
+  "type": "stack",
   "title": "Balanced Parentheses — Stack push/pop",
-  "description": "String: ( [ { } ] ). Push on open, pop and match on close.",
-  "array": ["(", "[", "{", "}", "]", ")"],
+  "description": "String: ( [ { } ] ). Push on open, pop and match on close. Watch the stack grow then drain.",
   "speed": 900,
   "steps": [
-    { "pointers": { "i": 0 }, "highlight": [0], "label": "See '(' → opening bracket, PUSH. Stack: ['(']" },
-    { "pointers": { "i": 1 }, "highlight": [1], "label": "See '[' → opening bracket, PUSH. Stack: ['(','[']" },
-    { "pointers": { "i": 2 }, "highlight": [2], "label": "See '{' → opening bracket, PUSH. Stack: ['(','[','{']" },
-    { "pointers": { "i": 3 }, "highlight": [3], "label": "See '}' → closing, POP '{' → matches ✓. Stack: ['(','[']" },
-    { "pointers": { "i": 4 }, "highlight": [4], "label": "See ']' → closing, POP '[' → matches ✓. Stack: ['(']" },
-    { "pointers": { "i": 5 }, "highlight": [5], "label": "See ')' → closing, POP '(' → matches ✓. Stack: []", "note": "Stack empty at end → valid! ✓" }
+    { "stack": ["("], "flash": { "type": "push", "value": "(" }, "label": "See '(' → opening bracket, PUSH." },
+    { "stack": ["(", "["], "flash": { "type": "push", "value": "[" }, "label": "See '[' → opening bracket, PUSH." },
+    { "stack": ["(", "[", "{"], "flash": { "type": "push", "value": "{" }, "label": "See '{' → opening bracket, PUSH." },
+    { "stack": ["(", "["], "flash": { "type": "pop", "value": "{" }, "label": "See '}' → closing, POP '{' → matches ✓." },
+    { "stack": ["("], "flash": { "type": "pop", "value": "[" }, "label": "See ']' → closing, POP '[' → matches ✓." },
+    { "stack": [], "flash": { "type": "pop", "value": "(" }, "label": "See ')' → closing, POP '(' → matches ✓.", "note": "Stack empty at end → valid! ✓" }
   ]
 }
 ```
@@ -33,6 +33,9 @@
 - Valid parentheses
 - Evaluate expressions
 - Decode nested strings
+
+> **In an interview:** trigger words are *"matching / balanced / nested / innermost"*. Anytime the most-recent-unmatched thing must be resolved first, that's LIFO.
+> **Remember:** push on open, pop-and-match on close; empty stack at the end = valid.
 
 ---
 
@@ -44,16 +47,18 @@
 
 ```viz
 {
+  "type": "stack",
   "title": "Monotonic Stack — Next Greater Element",
-  "description": "arr = [2, 1, 5, 3, 4]. For each element, find the next greater to its right. Stack stores indices.",
-  "array": [2, 1, 5, 3, 4],
+  "description": "arr = [2, 1, 5, 3, 4]. Stack holds values still waiting for a greater element to their right — always decreasing top to bottom.",
   "speed": 1000,
   "steps": [
-    { "pointers": { "i": 0 }, "highlight": [0], "label": "i=0, val=2. Stack empty → push 0. Stack: [0]" },
-    { "pointers": { "i": 1 }, "highlight": [1], "label": "i=1, val=1. 1 < arr[top]=2 → push 1. Stack: [0,1]" },
-    { "pointers": { "i": 2 }, "highlight": [2], "label": "i=2, val=5. 5 > arr[1]=1 → pop 1, NGE[1]=5. 5 > arr[0]=2 → pop 0, NGE[0]=5. Push 2. Stack: [2]" },
-    { "pointers": { "i": 3 }, "highlight": [3], "label": "i=3, val=3. 3 < arr[2]=5 → push 3. Stack: [2,3]" },
-    { "pointers": { "i": 4 }, "highlight": [4], "label": "i=4, val=4. 4 > arr[3]=3 → pop 3, NGE[3]=4. 4 < arr[2]=5 → push 4. Stack: [2,4]", "note": "Remaining in stack → NGE = -1. Result: [5,5,-1,4,-1] ✓" }
+    { "stack": [2], "flash": { "type": "push", "value": 2 }, "label": "val=2. Stack empty → push. Stack (bottom→top): [2]" },
+    { "stack": [2, 1], "flash": { "type": "push", "value": 1 }, "label": "val=1. 1 < top(2) → push. Stack: [2,1]" },
+    { "stack": [2], "flash": { "type": "pop", "value": 1 }, "label": "val=5. 5 > top(1) → pop 1, NGE(1)=5." },
+    { "stack": [5], "flash": { "type": "pop", "value": 2 }, "label": "5 > new top(2) → pop 2, NGE(2)=5. Push 5. Stack: [5]" },
+    { "stack": [5, 3], "flash": { "type": "push", "value": 3 }, "label": "val=3. 3 < top(5) → push. Stack: [5,3]" },
+    { "stack": [5], "flash": { "type": "pop", "value": 3 }, "label": "val=4. 4 > top(3) → pop 3, NGE(3)=4." },
+    { "stack": [5, 4], "flash": { "type": "push", "value": 4 }, "label": "4 < new top(5) → push. Stack: [5,4]", "note": "Whatever's left in the stack never found a greater element → NGE = -1. Result for [2,1,5,3,4] = [5,5,-1,4,-1] ✓" }
   ]
 }
 ```
@@ -69,6 +74,9 @@
 - Trapping rain water
 - Sum of subarray minimums
 
+> **In an interview:** trigger words are *"next/previous greater or smaller"*, *"histogram"*, *"span"*. If your brute force is a nested loop scanning left/right, a monotonic stack collapses it to O(n).
+> **Remember:** pop while the stack order breaks — the element that pops you is your answer.
+
 ---
 
 ## Pattern 3: Min Stack / Max Stack
@@ -79,23 +87,26 @@
 
 ```viz
 {
+  "type": "stack",
   "title": "Min Stack — getMin() in O(1)",
-  "description": "Push/pop on main stack. Auxiliary minStack always tracks current minimum at top.",
-  "array": [5, 3, 7, 2, 4],
+  "description": "Push 5,3,7,2,4 then pop once. Main stack holds real values; minStack's top is always the current minimum.",
   "speed": 900,
   "steps": [
-    { "pointers": { "i": 0 }, "highlight": [0], "label": "Push 5. mainStack:[5], minStack:[5]. min=5" },
-    { "pointers": { "i": 1 }, "highlight": [1], "label": "Push 3. 3<5 → minStack:[5,3]. min=3" },
-    { "pointers": { "i": 2 }, "highlight": [2], "label": "Push 7. 7>3 → minStack:[5,3,3]. min=3 (repeat current min)" },
-    { "pointers": { "i": 3 }, "highlight": [3], "label": "Push 2. 2<3 → minStack:[5,3,3,2]. min=2" },
-    { "pointers": { "i": 4 }, "highlight": [4], "label": "Push 4. 4>2 → minStack:[5,3,3,2,2]. min=2" },
-    { "pointers": { "i": 3 }, "highlight": [3], "label": "Pop 4. minStack pops 2. min=minStack.top()=2", "note": "getMin() = minStack.top() always O(1) ✓" }
+    { "stacks": [{ "label": "main", "values": [5] }, { "label": "minStack", "values": [5] }], "label": "Push 5. Both stacks: [5]. min=5" },
+    { "stacks": [{ "label": "main", "values": [5, 3] }, { "label": "minStack", "values": [5, 3] }], "label": "Push 3. 3<5 → minStack pushes 3. min=3" },
+    { "stacks": [{ "label": "main", "values": [5, 3, 7] }, { "label": "minStack", "values": [5, 3, 3] }], "label": "Push 7. 7>3 → minStack repeats current min 3. min=3" },
+    { "stacks": [{ "label": "main", "values": [5, 3, 7, 2] }, { "label": "minStack", "values": [5, 3, 3, 2] }], "label": "Push 2. 2<3 → minStack pushes 2. min=2" },
+    { "stacks": [{ "label": "main", "values": [5, 3, 7, 2, 4] }, { "label": "minStack", "values": [5, 3, 3, 2, 2] }], "label": "Push 4. 4>2 → minStack repeats 2. min=2" },
+    { "stacks": [{ "label": "main", "values": [5, 3, 7, 2], "flash": { "type": "pop", "value": 4 } }, { "label": "minStack", "values": [5, 3, 3, 2], "flash": { "type": "pop", "value": 2 } }], "label": "Pop 4 from main. minStack pops its top too (2). New min = minStack.top() = 2.", "note": "getMin() = minStack.top(), always O(1) ✓" }
   ]
 }
 ```
 
 **When to use:**
 - Design a stack that supports getMin() in O(1)
+
+> **In an interview:** trigger is *"getMin/getMax in O(1)"* alongside normal push/pop. The interviewer is testing whether you keep min history, not just the current min.
+> **Remember:** push the running min alongside each value so pops restore the previous min for free.
 
 ---
 
@@ -105,16 +116,16 @@
 
 ```viz
 {
+  "type": "stack",
   "title": "Evaluate Reverse Polish Notation (Postfix)",
-  "description": "tokens = [2, 3, 4, *, +] = 2 + (3*4) = 14. Numbers push, operators pop two and push result.",
-  "array": [2, 3, 4, "*", "+"],
+  "description": "tokens = [2, 3, 4, *, +] = 2 + (3*4) = 14. Numbers push; an operator pops the top two and pushes the result.",
   "speed": 1000,
   "steps": [
-    { "pointers": { "i": 0 }, "highlight": [0], "label": "See 2 → push. Stack: [2]" },
-    { "pointers": { "i": 1 }, "highlight": [1], "label": "See 3 → push. Stack: [2, 3]" },
-    { "pointers": { "i": 2 }, "highlight": [2], "label": "See 4 → push. Stack: [2, 3, 4]" },
-    { "pointers": { "i": 3 }, "highlight": [3], "label": "See '*' → pop 4 and 3, compute 3*4=12, push. Stack: [2, 12]" },
-    { "pointers": { "i": 4 }, "highlight": [4], "label": "See '+' → pop 12 and 2, compute 2+12=14, push. Stack: [14]", "note": "Result = 14 ✓" }
+    { "stack": [2], "flash": { "type": "push", "value": 2 }, "label": "See 2 → push." },
+    { "stack": [2, 3], "flash": { "type": "push", "value": 3 }, "label": "See 3 → push. Stack: [2, 3]" },
+    { "stack": [2, 3, 4], "flash": { "type": "push", "value": 4 }, "label": "See 4 → push. Stack: [2, 3, 4]" },
+    { "stack": [2, 12], "flash": { "type": "push", "value": 12 }, "label": "See '*' → pop 4 and 3, compute 3*4=12, push. Stack: [2, 12]" },
+    { "stack": [14], "flash": { "type": "push", "value": 14 }, "label": "See '+' → pop 12 and 2, compute 2+12=14, push. Stack: [14]", "note": "Result = 14 ✓" }
   ]
 }
 ```
@@ -123,6 +134,9 @@
 - Evaluate Reverse Polish Notation
 - Expression parsing
 - Calculator problems
+
+> **In an interview:** trigger words are *"evaluate expression / RPN / basic calculator / infix-postfix"*. Clarify operator precedence and whether parentheses appear.
+> **Remember:** operands push; an operator pops its operands, computes, and pushes the result.
 
 ---
 
@@ -170,6 +184,9 @@
 - Shortest path in unweighted graph
 - Rotten oranges, 0/1 matrix
 
+> **In an interview:** trigger words are *"level by level"*, *"shortest path in an unweighted grid/graph"*, *"minimum steps"*. Process one full level (current queue size) at a time.
+> **Remember:** FIFO explores in rings of equal distance — first arrival is the shortest path.
+
 ---
 
 ## Pattern 6: Deque (Sliding Window Maximum)
@@ -180,17 +197,17 @@
 
 ```viz
 {
-  "title": "Sliding Window Maximum — Deque (k=3)",
-  "description": "arr = [1, 3, -1, -3, 5, 3]. Window size k=3. Deque stores indices of useful candidates (decreasing values).",
-  "array": [1, 3, -1, -3, 5, 3],
+  "type": "queue",
+  "title": "Sliding Window Maximum — Monotonic Deque (k=3)",
+  "description": "arr = [1, 3, -1, -3, 5, 3], k=3. Deque holds candidate VALUES, front→back decreasing. Front is always the current window's max.",
   "speed": 1000,
   "steps": [
-    { "pointers": { "i": 0 }, "highlight": [0], "label": "i=0, val=1. Deque empty → push 0. Deque:[0]. Window not full yet." },
-    { "pointers": { "i": 1 }, "highlight": [0,1], "label": "i=1, val=3. 3>arr[0]=1 → pop 0 (useless). Push 1. Deque:[1]. Window not full yet." },
-    { "pointers": { "i": 2 }, "highlight": [0,1,2], "label": "i=2, val=-1. -1<arr[1]=3 → push 2. Deque:[1,2]. Window full! max=arr[1]=3 ✓" },
-    { "pointers": { "i": 3 }, "highlight": [1,2,3], "label": "i=3, val=-3. -3<arr[2]=-1 → push 3. Deque:[1,2,3]. Front=1 still in window. max=arr[1]=3 ✓" },
-    { "pointers": { "i": 4 }, "highlight": [2,3,4], "label": "i=4, val=5. 5>all → pop 3,2,1. Push 4. Deque:[4]. max=arr[4]=5 ✓" },
-    { "pointers": { "i": 5 }, "highlight": [3,4,5], "label": "i=5, val=3. 3<arr[4]=5 → push 5. Deque:[4,5]. max=arr[4]=5 ✓", "note": "Result: [3, 3, 5, 5] ✓" }
+    { "queue": [1], "flash": { "type": "pushBack", "value": 1 }, "label": "val=1. Deque empty → push back. [1]. Window not full yet." },
+    { "queue": [3], "flash": { "type": "popBack", "value": 1 }, "label": "val=3. 3 > back(1) → pop back (useless), push 3. [3]. Window not full yet." },
+    { "queue": [3, -1], "flash": { "type": "pushBack", "value": -1 }, "label": "val=-1. -1 < back(3) → push back. [3,-1]. Window full! max = front = 3 ✓" },
+    { "queue": [3, -1, -3], "flash": { "type": "pushBack", "value": -3 }, "label": "val=-3. -3 < back(-1) → push back. [3,-1,-3]. Front(3) still in window. max=3 ✓" },
+    { "queue": [5], "flash": { "type": "pushBack", "value": 5 }, "label": "val=5. 5 > everyone → pop back until empty (3,-1,-3 all popped), push 5. [5]. max=5 ✓" },
+    { "queue": [5, 3], "flash": { "type": "pushBack", "value": 3 }, "label": "val=3. 3 < back(5) → push back. [5,3]. max = front = 5 ✓", "note": "Result: [3, 3, 5, 5] ✓. The front is always the max because the deque stays decreasing." }
   ]
 }
 ```
@@ -199,54 +216,8 @@
 - Sliding window maximum/minimum
 - Any "best element in current window" problem
 
----
-
-## Pattern 7: LRU Cache (Queue + HashMap)
-
-**The idea:** Combine a doubly linked list (for O(1) remove/insert) with a hashmap (for O(1) lookup).
-
-**Analogy:** Your browser's recently visited tabs. The most recently used tab is at the front. When you run out of space, the least recently used tab gets closed.
-
-```viz
-{
-  "type": "linkedlist",
-  "title": "LRU Cache (capacity=3) — get/put operations",
-  "description": "DLL: most recently used at left (head), least recently used at right (tail, evicted first).",
-  "nodes": [1, 2, 3],
-  "speed": 1100,
-  "steps": [
-    {
-      "nodes": [1],
-      "label": "put(1). Cache: [1]. Size=1/3"
-    },
-    {
-      "nodes": [2, 1],
-      "highlight": [0],
-      "label": "put(2). Cache: [2→1]. Size=2/3"
-    },
-    {
-      "nodes": [3, 2, 1],
-      "highlight": [0],
-      "label": "put(3). Cache: [3→2→1]. Size=3/3 (full)"
-    },
-    {
-      "nodes": [4, 3, 2],
-      "highlight": [0],
-      "label": "put(4). Cache full → evict LRU=1 (tail). Cache: [4→3→2]"
-    },
-    {
-      "nodes": [2, 4, 3],
-      "highlight": [0],
-      "label": "get(2). Hit! Move 2 to head. Cache: [2→4→3]",
-      "note": "HashMap gives O(1) lookup. DLL gives O(1) move-to-head and evict-from-tail ✓"
-    }
-  ]
-}
-```
-
-**When to use:**
-- LRU Cache design
-- LFU Cache design
+> **In an interview:** trigger words are *"maximum/minimum of every window of size k"*. A heap gives O(n log k); the monotonic deque gets it to O(n) — mention both.
+> **Remember:** the deque keeps only useful candidates in decreasing order; the front is the window's max.
 
 ---
 
@@ -261,7 +232,6 @@
 | Expression evaluation | Stack |
 | Level-by-level processing, BFS | Queue |
 | Max/min in sliding window | Deque |
-| O(1) get/put with eviction | LRU Cache |
 
 ---
 
@@ -277,10 +247,30 @@ flowchart TD
     B -->|Max/Min in\nsliding window| G[Deque\nMaintain useful candidates]
     B -->|Expression\nevaluation| H[Stack\nOperands + operators]
     B -->|Get min/max\nin O-1| I[Auxiliary Stack\ntrack min/max alongside]
-    B -->|Cache with\neviction| J{Eviction policy?}
-    J -->|Least Recently Used| K[LRU Cache\nDLL + HashMap]
-    J -->|Least Frequently Used| L[LFU Cache\nTwo HashMaps + DLL]
-    D --> M{Direction?}
-    M -->|Next greater to right| N[Traverse left to right\npop when arr-i- > stack top]
-    M -->|Next greater to left| O[Traverse right to left\nsame logic]
+    D --> J{Direction?}
+    J -->|Next greater to right| K[Traverse left to right\npop when arr-i- > stack top]
+    J -->|Next greater to left| L[Traverse right to left\nsame logic]
 ```
+
+---
+
+## Problem → Pattern Cross-References
+
+The problems list mirrors the patterns above. Each problem has one home. Notes on the connections and cross-topic moves:
+
+| Problem | Home pattern | Why (and what else it touches) |
+|---------|--------------|-------------------------------|
+| Remove k Digits / Asteroid Collision | Balanced/Nested | Stack-of-decisions, pop when the new item invalidates the top |
+| Car Fleet | Monotonic Stack | Sort by position, then a monotonic sweep of arrival times |
+| Sum of Subarray Minimums / Ranges | Monotonic Stack | Contribution technique using previous/next smaller |
+| Maximal Rectangle | Monotonic Stack | Reduces each row to a histogram (Largest Rectangle) |
+| The Celebrity Problem | Stack/Queue Design | Stack-elimination of candidates in O(n) |
+
+**Cross-topic homes (mentioned here, listed elsewhere):**
+
+- **Sliding Window Maximum** → home is *Deque* in this file (monotonic deque, O(n)). Removed from `array.md`.
+- **Trapping Rain Water** → home is *Two Pointer* in `array.md`. It's also a classic monotonic-stack problem — worth solving both ways, but it's listed once.
+- **Generate Parentheses** → home is *Backtracking* in `recursion.md`, not a stack problem despite the brackets.
+- **LRU / LFU Cache** → moved to `linkedList.md` (Design — HashMap + DLL), since the DLL is the core structure.
+
+> **The big idea:** the *Monotonic Stack* is the highest-leverage pattern in this topic. Next greater/smaller, histogram, stock span, and subarray-min contributions are all the same "pop while the stack order breaks" move.

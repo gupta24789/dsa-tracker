@@ -71,6 +71,9 @@
 - N meetings in one room
 - Minimum platforms needed
 
+> **In an interview:** trigger words are *"maximum non-overlapping / minimum rooms / schedule the most"*. State your sort key (usually end time) and why before coding.
+> **Remember:** sort by end time, always take the earliest-ending compatible interval.
+
 ---
 
 ## Pattern 2: Greedy with Sorting
@@ -99,6 +102,9 @@
 - Fractional knapsack (sort by value/weight ratio)
 - Minimum coins (sort denominations descending)
 
+> **In an interview:** trigger words are *"match / assign / pair up to maximize (or minimize)"*. Justify the sort key with an exchange argument if pressed.
+> **Remember:** sort both sides, then match greedily — smallest that fits, biggest ratio first, etc.
+
 ---
 
 ## Pattern 3: Jump Game (Reach-Based Greedy)
@@ -122,6 +128,9 @@
 **Jump Game I:** Can you reach the end? Track `maxReach`. If `i > maxReach` → false.
 
 **Jump Game II:** Minimum jumps. Track current jump boundary and next jump boundary. When you cross the boundary, increment jumps.
+
+> **In an interview:** trigger words are *"can you reach the end / minimum jumps / minimum taps"* on an array of reach values. Resist the DP urge — the greedy reach is O(n).
+> **Remember:** carry the farthest reachable index; bump the jump count when you hit the current boundary.
 
 ---
 
@@ -148,6 +157,9 @@
 - Valid parenthesis string (with wildcards)
 - Minimum bracket reversals
 - Remove k digits (monotonic stack + greedy)
+
+> **In an interview:** trigger words are *"valid parentheses with wildcards / minimum insertions or removals to balance"*. Track a running open count (or a min/max range when '*' is involved).
+> **Remember:** balance greedily as you scan; never let the close count exceed the open count.
 
 ---
 
@@ -176,6 +188,9 @@
 **When to use:**
 - Candy distribution
 - Problems where each element depends on both neighbors
+
+> **In an interview:** the tell is a constraint against **both** neighbors at once — a single pass can't satisfy both. Propose the two-pass fix explicitly.
+> **Remember:** sweep left-to-right for the left rule, right-to-left for the right, take the max per element.
 
 ---
 
@@ -227,3 +242,23 @@ flowchart TD
     O -->|Yes - exchange argument| P[Greedy works\nSort by key criterion]
     O -->|No / unsure| Q[Use DP instead\nGreedy may fail]
 ```
+
+---
+
+## Problem → Pattern Cross-References
+
+The problems list now mirrors the 5 patterns above. The old generic "Greedy" section mixed assign/match, jump, string, and two-pass problems. Now split. Notes:
+
+| Problem | Home pattern | Why (and what else it touches) |
+|---------|--------------|-------------------------------|
+| Job Sequencing / Min Platforms | Interval Scheduling | Sort by deadline/time, greedily place (min-heap for platforms) |
+| Non-overlapping Intervals | Interval Scheduling | Activity-selection: sort by end, count keepers |
+| Fractional Knapsack | Greedy with Sorting | Sort by value/weight ratio (contrast 0/1 Knapsack → DP) |
+| Lemonade Change | Greedy with Sorting | Greedily give the largest bills first |
+| Valid Parenthesis String | Greedy on Strings | Track min/max possible open count |
+
+**Cross-topic home:**
+
+- **Merge Intervals** → home is `array.md` (Sorting-Based). It's the "sort by *start*, merge overlaps" pattern taught in the array concept viz. The greedy topic here is about scheduling by *end time* (activity selection), a different decision rule — so Merge Intervals stays in arrays.
+
+> **The proof obligation:** greedy is only correct with an exchange argument (swapping a greedy choice for any other never improves the result). When you can't make that argument, it's a DP problem — see the Greedy vs DP table above.

@@ -54,6 +54,9 @@
 - Level-order traversal
 - Rotten oranges, 0/1 matrix, word ladder
 
+> **In an interview:** trigger words are *"shortest path / fewest steps / minimum moves"* on an **unweighted** graph or grid. Multiple starting points? Seed the queue with all of them (multi-source BFS).
+> **Remember:** BFS explores in rings of equal distance, so the first time you reach a node is the shortest way.
+
 ---
 
 ## Pattern 2: DFS (Depth-First Search)
@@ -93,6 +96,9 @@
 - Connected components, Cycle detection
 - Topological sort, Flood fill, Path finding
 
+> **In an interview:** trigger words are *"count components / flood fill / does a path exist / enumerate reachable"*. On a grid, treat each cell as a node with 4 (or 8) neighbors.
+> **Remember:** go deep, mark visited on entry, backtrack at dead ends.
+
 ---
 
 ## Pattern 3: Cycle Detection
@@ -123,6 +129,9 @@
   ]
 }
 ```
+
+> **In an interview:** trigger words are *"is there a cycle / is this a valid DAG / would this create a loop"*. State up front whether the graph is directed — the method differs.
+> **Remember:** undirected → a visited non-parent neighbor; directed → a node already on the recursion stack.
 
 ---
 
@@ -164,6 +173,9 @@
 - Build systems, task dependencies
 - Alien dictionary
 
+> **In an interview:** trigger words are *"order of tasks / prerequisites / build order / dependencies"*. If a valid order is impossible, the graph has a cycle — Kahn's detects it when fewer than V nodes are emitted.
+> **Remember:** repeatedly remove in-degree-0 nodes (Kahn's), or reverse a post-order DFS.
+
 ---
 
 ## Pattern 5: Shortest Path
@@ -202,6 +214,9 @@
 **Weighted graph with negative weights → Bellman-Ford** — Relax all edges V-1 times.
 
 **All pairs shortest path → Floyd-Warshall** — `dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])` for all k.
+
+> **In an interview:** the decision tree is the whole game — unweighted → BFS; non-negative weights → Dijkstra; negative edges → Bellman-Ford; all-pairs → Floyd-Warshall. Ask about edge weights before choosing.
+> **Remember:** match the algorithm to the weights; using Dijkstra with negative edges silently gives wrong answers.
 
 ---
 
@@ -242,6 +257,9 @@
 
 **Kruskal's Algorithm:** Sort all edges by weight. Add edge if it doesn't create a cycle (use Union-Find).
 
+> **In an interview:** trigger words are *"connect all nodes at minimum cost / minimum total weight to link everything"*. Kruskal (sort edges + union-find) is easiest to code; Prim suits dense graphs.
+> **Remember:** greedily add the cheapest edge that joins two different components.
+
 ---
 
 ## Pattern 7: Disjoint Set Union (Union-Find)
@@ -278,6 +296,9 @@
 - Detect cycle in undirected graph
 - Number of connected components
 - Kruskal's MST, Accounts merge
+
+> **In an interview:** trigger words are *"are these connected / merge groups / dynamic connectivity"*, especially when edges arrive one at a time. Union-find beats re-running DFS after each edge.
+> **Remember:** union by rank + path compression → near-O(1) find/union.
 
 ---
 
@@ -316,6 +337,9 @@
 - Is graph bipartite?
 - Can we divide into two groups with no internal conflicts?
 
+> **In an interview:** trigger words are *"two groups / two teams / no two adjacent share X / possible bipartition"*. An odd-length cycle is exactly what makes it impossible.
+> **Remember:** 2-color via BFS/DFS; a neighbor forced into the same color means not bipartite.
+
 ---
 
 ## Pattern 9: Strongly Connected Components (SCC)
@@ -352,6 +376,9 @@
 ```
 
 **When to use:** Find groups where every node can reach every other node.
+
+> **In an interview:** trigger words are *"mutually reachable / strongly connected / condense the graph"* in a directed graph. Kosaraju (two DFS passes) or Tarjan (one pass) both work.
+> **Remember:** an SCC is a maximal set where every node reaches every other; two passes on the graph and its transpose reveal them.
 
 ---
 
@@ -398,3 +425,25 @@ flowchart TD
     T -->|Yes| U[Bipartite Check\nBFS/DFS alternating colors]
     T -->|No| V[DFS / BFS\nfor traversal or flood fill]
 ```
+
+---
+
+## Problem → Pattern Cross-References
+
+The problems list now mirrors the 9 patterns above. The old file had a 26-item "Graph Traversal" bucket that duplicated almost every specialized section (Dijkstra, Bellman-Ford, Floyd-Warshall, Prim, Kruskal, topo sort, bipartite, islands, Word Ladder all appeared twice). Now deduped. Notes:
+
+| Problem | Home pattern | Why (and what else it touches) |
+|---------|--------------|-------------------------------|
+| Islands / Enclaves / Closed Islands | Grid Traversal | Flood-fill DFS/BFS on a matrix; the grid *is* the graph |
+| Pacific Atlantic Water Flow | Grid Traversal | Multi-source reverse flood fill |
+| Redundant Connection | Cycle Detection | Union-Find catches the edge that closes a cycle |
+| Number of Islands II | Union-Find | Dynamic connectivity as cells are added |
+| Course Schedule I/II | Topological Sort | Cycle check + ordering on a dependency DAG |
+| Swim in Rising Water / Path with Min Effort | Shortest Path (Weighted) | Dijkstra-style with a modified relaxation (min of max edge) |
+| Cheapest Flights Within K Stops | Shortest Path (Weighted) | Bellman-Ford-style with a hop limit |
+
+**Not a graph problem (dropped from this list):**
+
+- **Verifying an Alien Dictionary** (LeetCode 953) is a pairwise string-order comparison, unrelated to the topo-sort *Alien Dictionary* (which stays under Topological Sort). If you want it tracked, its home is `string.md`.
+
+> **Routing intuition:** unweighted shortest path → BFS; non-negative weights → Dijkstra; negative weights → Bellman-Ford; all-pairs → Floyd-Warshall; dependencies → topo sort; dynamic connectivity → Union-Find. The concept flowchart above is the fast lookup.

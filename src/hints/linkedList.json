@@ -1,0 +1,102 @@
+{
+  "https://leetcode.com/problems/middle-of-the-linked-list/": {
+    "brute": { "idea": "Count the length, then walk again to length/2.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Slow moves 1, fast moves 2; when fast hits the end, slow is at the middle.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/": {
+    "optimal": { "idea": "Fast/slow to find the middle while keeping prev to slow, then unlink slow.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/reverse-linked-list/": {
+    "brute": { "idea": "Push all values to a stack/array, rebuild the list reversed.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Iterate with prev/curr/next, flipping curr.next to prev; return prev.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/palindrome-linked-list/": {
+    "brute": { "idea": "Copy values to an array and check it with two pointers.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Find the middle, reverse the second half, compare both halves node by node.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/reverse-nodes-in-k-group/": {
+    "optimal": { "idea": "Check k nodes remain, reverse that block iteratively, link to the recursively processed rest.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/merge-two-sorted-lists/": {
+    "optimal": { "idea": "Dummy head; repeatedly attach the smaller of the two current nodes.", "time": "O(n+m)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/sort-list/": {
+    "brute": { "idea": "Collect values, sort, rebuild the list.", "time": "O(n log n)", "space": "O(n)" },
+    "optimal": { "idea": "Merge sort on the list: split at the middle, sort halves, merge.", "time": "O(n log n)", "space": "O(log n)" }
+  },
+  "https://leetcode.com/problems/merge-k-sorted-lists/": {
+    "brute": { "idea": "Collect all values, sort, rebuild a list.", "time": "O(N log N)", "space": "O(N)" },
+    "better": { "idea": "Merge lists one by one into an accumulator.", "time": "O(N*k)", "space": "O(1)" },
+    "optimal": { "idea": "Min-heap of the k current heads; pop smallest, push its next.", "time": "O(N log k)", "space": "O(k)" }
+  },
+  "https://leetcode.com/problems/remove-linked-list-elements/": {
+    "optimal": { "idea": "Dummy head; skip nodes whose value equals the target.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/remove-nth-node-from-end-of-list/": {
+    "brute": { "idea": "Count length, then walk to length-n and unlink.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Dummy head; advance fast n steps, then move both until fast ends; unlink slow.next.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/delete-node-in-a-linked-list/": {
+    "optimal": { "idea": "Given only the node, copy next's value into it and skip next.", "time": "O(1)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/odd-even-linked-list/": {
+    "optimal": { "idea": "Weave two chains (odd-index and even-index nodes), then link odd tail to even head.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/given-a-linked-list-of-0s-1s-and-2s-sort-it/1": {
+    "brute": { "idea": "Count 0s/1s/2s, then overwrite node values.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Maintain three dummy chains for 0s/1s/2s, append each node, then concatenate.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/reorder-list/": {
+    "brute": { "idea": "Store nodes in an array, then re-link by two-ends-inward index order.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Find middle, reverse second half, then merge the two halves alternately.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/rotate-list/": {
+    "optimal": { "idea": "Make it circular, find new tail at length-(k%length), break the ring there.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/flattening-a-linked-list/1": {
+    "optimal": { "idea": "Merge the sorted bottom-lists pairwise (right to left) using a sorted-merge helper.", "time": "O(N*k)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/copy-list-with-random-pointer/": {
+    "better": { "idea": "Hash map original→copy, then wire next/random in a second pass.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Interleave copies after each original, set random via cur.next, then split the lists.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/linked-list-cycle/": {
+    "brute": { "idea": "Store visited nodes in a hash set; a repeat means a cycle.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Floyd's fast/slow; a cycle exists if they ever meet.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/linked-list-cycle-ii/": {
+    "brute": { "idea": "Hash set of visited nodes; the first repeat is the cycle start.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "After fast/slow meet, reset one to head; move both by 1, they meet at the cycle start.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/find-length-of-loop/1": {
+    "optimal": { "idea": "After the meeting point, keep one pointer fixed and count steps until it returns.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/intersection-of-two-linked-lists/": {
+    "brute": { "idea": "For each node of A, scan all of B for a match.", "time": "O(n*m)", "space": "O(1)" },
+    "better": { "idea": "Put A's nodes in a hash set, scan B for the first present node.", "time": "O(n+m)", "space": "O(n)" },
+    "optimal": { "idea": "Two pointers switching to the other list at the end; they align at the intersection.", "time": "O(n+m)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/add-1-to-a-number-represented-as-linked-list/1": {
+    "optimal": { "idea": "Reverse, add 1 with carry, reverse back (or recurse to carry from the tail).", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/add-two-numbers/": {
+    "optimal": { "idea": "Walk both lists with a running carry, creating result nodes as you go.", "time": "O(n+m)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/delete-all-occurrences-of-a-given-key-in-a-doubly-linked-list/1": {
+    "optimal": { "idea": "Traverse; for each match, relink prev and next around the node.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/remove-duplicates-from-a-sorted-doubly-linked-list/1": {
+    "optimal": { "idea": "Traverse; skip nodes equal to the previous kept value, relinking as you go.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/find-pairs-with-given-sum-in-doubly-linked-list/1": {
+    "brute": { "idea": "Check every pair of nodes.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Two pointers from head and tail (sorted DLL); move inward on sum vs target.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/lru-cache/": {
+    "brute": { "idea": "Store entries in an ordered list/array; find and move on access by scanning.", "time": "O(n) per op", "space": "O(capacity)" },
+    "optimal": { "idea": "Hash map + doubly linked list; move to head on use, evict from tail when full.", "time": "O(1) per op", "space": "O(capacity)" }
+  },
+  "https://leetcode.com/problems/lfu-cache/": {
+    "optimal": { "idea": "Hash maps for key→node and freq→DLL; track minFreq to evict the LRU of the least frequent.", "time": "O(1) per op", "space": "O(capacity)" }
+  }
+}

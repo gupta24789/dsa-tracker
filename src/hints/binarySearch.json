@@ -1,0 +1,131 @@
+{
+  "https://leetcode.com/problems/binary-search/": {
+    "brute": { "idea": "Linear scan for the target.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Halve the range: compare mid to target, move low/high accordingly.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/implement-lower-bound/1": {
+    "brute": { "idea": "Linear scan for the first index with arr[i] >= x.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search: on arr[mid]>=x save mid and go left, else go right.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/implement-upper-bound/1": {
+    "brute": { "idea": "Linear scan for the first index with arr[i] > x.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search: on arr[mid]>x save mid and go left, else go right.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/search-insert-position/description/": {
+    "brute": { "idea": "Linear scan for the first index with arr[i] >= target.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Lower bound of the target; that index is where it would be inserted.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/floor-in-a-sorted-array-1587115620/1": {
+    "brute": { "idea": "Linear scan tracking the last element <= x (floor) / first >= x (ceil).", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search: floor = last element <= x (go right on arr[mid]<=x); ceil is the mirror.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/": {
+    "brute": { "idea": "Linear scan recording the first and last index of the target.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Two binary searches: lower bound of target = first, upper bound - 1 = last.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/number-of-occurrence2259/1": {
+    "brute": { "idea": "Linear scan counting matches.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "count = upperBound(x) - lowerBound(x) via two binary searches.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/search-in-rotated-sorted-array/": {
+    "brute": { "idea": "Linear scan for the target.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "At each mid one half is sorted; check if target lies within it to pick a side.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/search-in-rotated-sorted-array-ii/": {
+    "brute": { "idea": "Linear scan for the target.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Like I, but when arr[low]==arr[mid]==arr[high] shrink both ends by one (duplicates).", "time": "O(log n) avg, O(n) worst", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/": {
+    "brute": { "idea": "Scan for the smallest element.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "If arr[mid] > arr[high], min is right of mid; else at mid or left.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/rotation4723/1": {
+    "brute": { "idea": "Scan for the index of the minimum element.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Index of the minimum element = number of rotations (binary search for the min).", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/single-element-in-a-sorted-array/": {
+    "brute": { "idea": "XOR all elements, or scan checking pairs.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Pairs align at even indices before the single; use index parity at mid to pick the side.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/find-peak-element/description/": {
+    "brute": { "idea": "Scan for any element greater than both neighbors.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "If arr[mid] < arr[mid+1] a peak lies right, else at mid or left; move toward the higher side.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/square-root/1": {
+    "brute": { "idea": "Iterate i from 1 while i*i <= n.", "time": "O(sqrt n)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search x in [1,n]; largest x with x*x <= n.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/find-nth-root-of-m5843/1": {
+    "optimal": { "idea": "Binary search the base; compare base^n to m, careful with overflow.", "time": "O(n log m)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/koko-eating-bananas/": {
+    "brute": { "idea": "Try every speed from 1 upward until hours <= h.", "time": "O(n*max)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search the speed; feasible(speed) = total hours <= h is monotonic.", "time": "O(n log max)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/": {
+    "brute": { "idea": "Try every day from min to max bloom, check feasibility each time.", "time": "O(max*n)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search the day; feasible(day) = enough adjacent bloomed flowers for m bouquets.", "time": "O(n log max)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/find-the-smallest-divisor-given-a-threshold/": {
+    "brute": { "idea": "Try each divisor from 1 up, compute the sum of ceilings.", "time": "O(n*max)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search the divisor; sum of ceil(a/divisor) <= threshold is monotonic.", "time": "O(n log max)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/": {
+    "brute": { "idea": "Try every capacity from max weight up to the total sum, check days each time.", "time": "O(n*sum)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search capacity in [max weight, sum]; feasible(cap) = days needed <= D.", "time": "O(n log sum)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/kth-missing-positive-number/description/": {
+    "brute": { "idea": "Walk the array counting missing numbers until you reach k.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Missing before index i = arr[i]-(i+1); binary search where this reaches k.", "time": "O(log n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/aggressive-cows/1": {
+    "brute": { "idea": "Sort; try every possible gap from 1 upward, checking placement feasibility.", "time": "O(n*max)", "space": "O(1)" },
+    "optimal": { "idea": "Sort; binary search the minimum gap; feasible(gap) = can place all cows greedily.", "time": "O(n log max)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/allocate-minimum-number-of-pages0937/1": {
+    "brute": { "idea": "Try every page limit from max-book to total sum, check students needed each time.", "time": "O(n*sum)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search the max pages per student; feasible = students needed <= k.", "time": "O(n log sum)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/split-array-largest-sum/": {
+    "brute": { "idea": "Try every candidate max sum from max-element to total, check splits each time.", "time": "O(n*sum)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search the largest allowed subarray sum; feasible = splits needed <= k.", "time": "O(n log sum)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/the-painters-partition-problem1535/1": {
+    "brute": { "idea": "Try every candidate max time from max-board to total, check painters each time.", "time": "O(n*sum)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search max time per painter; feasible = painters <= k (same as book allocation).", "time": "O(n log sum)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/minimize-max-distance-to-gas-station/1": {
+    "brute": { "idea": "Repeatedly place each new station in the currently largest gap (max-heap), k times.", "time": "O(k log n)", "space": "O(n)" },
+    "optimal": { "idea": "Binary search the answer distance (reals); feasible = stations to add <= k.", "time": "O(n log(max/eps))", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/median-of-two-sorted-arrays/": {
+    "brute": { "idea": "Merge both arrays and take the middle.", "time": "O(n+m)", "space": "O(n+m)" },
+    "better": { "idea": "Merge just up to the median index without storing (count with two pointers).", "time": "O(n+m)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search the partition of the smaller array so left half sizes/values balance.", "time": "O(log min(n,m))", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array1317/1": {
+    "brute": { "idea": "Merge until the kth element is reached.", "time": "O(k)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search the partition so exactly k elements sit on the left side.", "time": "O(log min(n,m))", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/row-with-minimum-number-of-1s5430/1": {
+    "brute": { "idea": "Count 1s in every row and take the max.", "time": "O(m*n)", "space": "O(1)" },
+    "optimal": { "idea": "Each row sorted; binary search the first 1 per row, track the best row.", "time": "O(m log n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/search-a-2d-matrix/": {
+    "brute": { "idea": "Scan every cell for the target.", "time": "O(m*n)", "space": "O(1)" },
+    "better": { "idea": "Find the candidate row (last with first element <= target), then binary search that row.", "time": "O(m + log n)", "space": "O(1)" },
+    "optimal": { "idea": "Treat the fully-sorted matrix as one array: row = mid/cols, col = mid%cols.", "time": "O(log(m*n))", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/search-a-2d-matrix-ii/": {
+    "brute": { "idea": "Scan every cell.", "time": "O(m*n)", "space": "O(1)" },
+    "optimal": { "idea": "Start at top-right; go left if too big, down if too small.", "time": "O(m+n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/find-a-peak-element-ii/": {
+    "brute": { "idea": "Scan every cell checking it exceeds its four neighbors.", "time": "O(m*n)", "space": "O(1)" },
+    "optimal": { "idea": "Binary search columns; in the mid column find the row-max, compare horizontal neighbors.", "time": "O(m log n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/median-in-a-row-wise-sorted-matrix1527/1": {
+    "brute": { "idea": "Flatten all elements into one array, sort, take the middle.", "time": "O(m*n log(m*n))", "space": "O(m*n)" },
+    "optimal": { "idea": "Binary search the value; count elements <= mid per row; median where count crosses (m*n)/2.", "time": "O(m log n log max)", "space": "O(1)" }
+  }
+}

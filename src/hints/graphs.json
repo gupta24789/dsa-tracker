@@ -1,0 +1,171 @@
+{
+  "https://practice.geeksforgeeks.org/problems/bfs-traversal-of-graph/1": {
+    "optimal": { "idea": "Queue + visited set; dequeue a node, enqueue its unvisited neighbors.", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1": {
+    "optimal": { "idea": "Recurse (or stack) into unvisited neighbors, marking visited on entry.", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/clone-graph/": {
+    "optimal": { "idea": "DFS/BFS with an original→clone map to copy nodes and wire edges once.", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/number-of-islands/": {
+    "optimal": { "idea": "Scan the grid; each unvisited land cell triggers a flood-fill and counts as one island.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/island-perimeter/": {
+    "optimal": { "idea": "For each land cell add 4, subtract 2 per shared edge with an adjacent land cell.", "time": "O(m*n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/max-area-of-island/": {
+    "optimal": { "idea": "Flood-fill each island returning its cell count; track the maximum.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/flood-fill/": {
+    "optimal": { "idea": "DFS/BFS from the start, recoloring connected same-color cells.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/surrounded-regions/": {
+    "optimal": { "idea": "Flood-fill 'O's connected to the border as safe; flip all remaining 'O's to 'X'.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/number-of-closed-islands/": {
+    "optimal": { "idea": "Remove land touching the border via flood-fill, then count the remaining islands.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/number-of-enclaves/": {
+    "optimal": { "idea": "Flood-fill land from the borders; count leftover interior land cells.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/number-of-distinct-islands-ii/": {
+    "optimal": { "idea": "Flood-fill each island, normalize its shape (relative coords under 8 transforms), dedupe in a set.", "time": "O(m*n*log)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/making-a-large-island/": {
+    "optimal": { "idea": "Label each island with a size via flood-fill; for each 0, sum distinct neighbor island sizes +1.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/count-sub-islands/": {
+    "optimal": { "idea": "Flood-fill grid2 islands; an island counts only if every cell is land in grid1 too.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/pacific-atlantic-water-flow/": {
+    "optimal": { "idea": "Reverse flood-fill inward from each ocean's borders; answer is cells reachable from both.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/number-of-provinces/description/": {
+    "optimal": { "idea": "Count connected components over the adjacency matrix via DFS/BFS or union-find.", "time": "O(V^2)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/": {
+    "optimal": { "idea": "Union-find every edge, then count distinct roots (or DFS component count).", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/graph-valid-tree/": {
+    "optimal": { "idea": "A tree has exactly n-1 edges and is fully connected with no cycle (union-find check).", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/rotting-oranges/": {
+    "optimal": { "idea": "Multi-source BFS from all rotten oranges; the last level reached is the minute count.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/01-matrix/": {
+    "optimal": { "idea": "Multi-source BFS starting from all 0 cells to fill nearest-zero distances.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/as-far-from-land-as-possible/": {
+    "optimal": { "idea": "Multi-source BFS from all land cells; the last water cell reached gives the max distance.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/shortest-bridge/": {
+    "optimal": { "idea": "Flood-fill one island, then multi-source BFS outward until it hits the second island.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/shortest-path-in-binary-matrix/": {
+    "optimal": { "idea": "BFS from top-left over 8 directions through 0-cells; first arrival at the end is shortest.", "time": "O(m*n)", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/word-ladder/": {
+    "optimal": { "idea": "BFS over words; neighbors differ by one letter (use wildcard patterns to find them fast).", "time": "O(N*L*26)", "space": "O(N*L)" }
+  },
+  "https://leetcode.com/problems/word-ladder-ii/": {
+    "optimal": { "idea": "BFS to build level/parent info, then backtrack DFS to reconstruct all shortest paths.", "time": "O(N*L*26)", "space": "O(N*L)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/detect-cycle-in-an-undirected-graph/1": {
+    "optimal": { "idea": "DFS/BFS; a visited neighbor that isn't the parent means a cycle (or union-find).", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/detect-cycle-in-a-directed-graph/1": {
+    "optimal": { "idea": "DFS tracking the recursion stack; revisiting a node on the current path is a cycle.", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/redundant-connection/": {
+    "optimal": { "idea": "Union-find edges in order; the first edge joining already-connected nodes is redundant.", "time": "O(E)", "space": "O(V)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/topological-sort/1": {
+    "optimal": { "idea": "DFS post-order pushed onto a stack, then reversed (or Kahn's in-degree BFS).", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://www.geeksforgeeks.org/topological-sorting-indegree-based-solution/": {
+    "optimal": { "idea": "Kahn's: start with in-degree-0 nodes, remove them, decrement neighbors' in-degrees.", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/course-schedule/": {
+    "optimal": { "idea": "Detect a cycle in the prerequisite digraph; no cycle means it's completable.", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/course-schedule-ii/": {
+    "optimal": { "idea": "Kahn's topological order of courses; empty result if a cycle exists.", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/find-eventual-safe-states/description/": {
+    "optimal": { "idea": "A node is safe if all paths lead to terminals; reverse-graph Kahn's or DFS coloring.", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://www.geeksforgeeks.org/problems/alien-dictionary/1": {
+    "optimal": { "idea": "Derive char-order edges from adjacent word pairs, then topological sort the letters.", "time": "O(N*L + V+E)", "space": "O(V+E)" }
+  },
+  "https://leetcode.com/problems/is-graph-bipartite/": {
+    "optimal": { "idea": "2-color via BFS/DFS; a neighbor forced to the same color means not bipartite.", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1": {
+    "optimal": { "idea": "Min-heap by distance; pop the closest node and relax its edges.", "time": "O(E log V)", "space": "O(V)" }
+  },
+  "https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/1": {
+    "optimal": { "idea": "Topological order then relax edges in that order (DAG, handles negatives).", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1": {
+    "optimal": { "idea": "Plain BFS from the source since every edge has unit weight.", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/path-with-minimum-effort/": {
+    "optimal": { "idea": "Dijkstra where a path's cost is the max edge (height diff) along it.", "time": "O(m*n log(m*n))", "space": "O(m*n)" }
+  },
+  "https://leetcode.com/problems/cheapest-flights-within-k-stops/": {
+    "brute": { "idea": "DFS/backtrack every path from src within k stops, tracking the cheapest.", "time": "O(V^k)", "space": "O(V)" },
+    "optimal": { "idea": "Bellman-Ford limited to k+1 relaxation rounds (or BFS by stops).", "time": "O(k*E)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/network-delay-time/": {
+    "optimal": { "idea": "Dijkstra from the source; answer is the maximum shortest-distance reached.", "time": "O(E log V)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/": {
+    "optimal": { "idea": "Dijkstra also counting paths: carry a ways[] updated during relaxation.", "time": "O(E log V)", "space": "O(V)" }
+  },
+  "https://www.geeksforgeeks.org/problems/minimum-multiplications-to-reach-end/1": {
+    "optimal": { "idea": "BFS over reachable numbers mod 100000, edges = multiply by each given value.", "time": "O(100000*k)", "space": "O(100000)" }
+  },
+  "https://leetcode.com/problems/swim-in-rising-water/": {
+    "optimal": { "idea": "Dijkstra/min-heap where path cost is the max cell elevation encountered.", "time": "O(n^2 log n)", "space": "O(n^2)" }
+  },
+  "https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/": {
+    "optimal": { "idea": "Floyd-Warshall all-pairs, then count reachable cities within the threshold per city.", "time": "O(V^3)", "space": "O(V^2)" }
+  },
+  "https://www.geeksforgeeks.org/problems/distance-from-the-source-bellman-ford-algorithm/1": {
+    "optimal": { "idea": "Relax all edges V-1 times; a further relaxation signals a negative cycle.", "time": "O(V*E)", "space": "O(V)" }
+  },
+  "https://www.geeksforgeeks.org/problems/implementing-floyd-warshall2042/1": {
+    "optimal": { "idea": "DP over intermediate nodes: dist[i][j] = min(dist[i][j], dist[i][k]+dist[k][j]).", "time": "O(V^3)", "space": "O(V^2)" }
+  },
+  "https://www.geeksforgeeks.org/problems/minimum-spanning-tree/1": {
+    "optimal": { "idea": "Prim's: grow the tree from any node, always adding the cheapest edge to a new node via a heap.", "time": "O(E log V)", "space": "O(V)" }
+  },
+  "https://www.geeksforgeeks.org/problems/minimum-spanning-tree-kruskals-algorithm/1": {
+    "optimal": { "idea": "Sort edges by weight; add each if it joins two different components (union-find).", "time": "O(E log E)", "space": "O(V)" }
+  },
+  "https://www.geeksforgeeks.org/problems/disjoint-set-union-find/1": {
+    "optimal": { "idea": "Union by rank/size + path compression gives near-O(1) find/union.", "time": "O(alpha(n))", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/number-of-operations-to-make-network-connected/": {
+    "optimal": { "idea": "Union-find; need (components-1) moves, possible only if spare edges >= that.", "time": "O(E)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/": {
+    "optimal": { "idea": "Union stones sharing a row or column; removable = total - number of components.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/accounts-merge/": {
+    "optimal": { "idea": "Union-find emails within each account; group emails by root and attach the name.", "time": "O(N*L log)", "space": "O(N*L)" }
+  },
+  "https://www.geeksforgeeks.org/problems/number-of-islands/1": {
+    "optimal": { "idea": "Process add-land operations with union-find, unioning to land neighbors; track live components.", "time": "O(k*alpha)", "space": "O(m*n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/strongly-connected-components-kosarajus-algo/1": {
+    "optimal": { "idea": "DFS finish-order stack, transpose the graph, then DFS in that order; each tree is an SCC.", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://leetcode.com/problems/critical-connections-in-a-network/": {
+    "optimal": { "idea": "Tarjan bridges: DFS with discovery and low-link times; an edge is a bridge if low[child] > disc[node].", "time": "O(V+E)", "space": "O(V)" }
+  },
+  "https://www.geeksforgeeks.org/problems/articulation-point2616/1": {
+    "optimal": { "idea": "Tarjan: DFS disc/low times; a node is a cut vertex by the low-link and root-children rules.", "time": "O(V+E)", "space": "O(V)" }
+  }
+}

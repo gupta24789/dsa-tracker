@@ -30,6 +30,9 @@
 - Reverse a string in-place
 - Valid Palindrome (skip non-alphanumeric)
 
+> **In an interview:** trigger words are *"palindrome / reverse / compare ends"*. Clarify case-sensitivity and whether to skip non-alphanumeric characters.
+> **Remember:** two pointers from both ends, marching inward.
+
 ---
 
 ## Pattern 2: Sliding Window on Strings
@@ -60,6 +63,9 @@
 - Minimum window substring
 - Permutation in string (fixed window = length of pattern)
 - Longest substring with at most K distinct characters
+
+> **In an interview:** trigger words are *"longest / shortest substring with condition X"* or *"contains all of ..."*. Ask if the window size is fixed (anagram search) or dynamic (longest-without-repeat).
+> **Remember:** expand right, shrink left when the window violates the rule; track a char-count map.
 
 ---
 
@@ -92,6 +98,9 @@
 - Find all anagrams in a string (sliding window + frequency map)
 - Isomorphic strings
 
+> **In an interview:** trigger words are *"anagram / same characters / one-to-one mapping"*. A 26-int count array beats sorting and is O(n).
+> **Remember:** anagrams share a frequency signature; isomorphic strings share a consistent bijection.
+
 ---
 
 ## Pattern 4: String Matching (KMP / Rabin-Karp / Z-Function)
@@ -119,6 +128,9 @@
 - Find pattern in text (KMP)
 - Shortest palindrome (KMP on s + "#" + reverse(s))
 - Longest happy prefix
+
+> **In an interview:** trigger words are *"find pattern in text"*, *"longest prefix that is also a suffix"*. Building the LPS array is the reusable core — many problems reduce to it.
+> **Remember:** LPS lets you resume after a mismatch instead of restarting — O(n+m), not O(nm).
 
 ---
 
@@ -148,6 +160,9 @@
 **When to use:**
 - Longest palindromic substring
 - Count palindromic substrings
+
+> **In an interview:** trigger words are *"longest / count palindromic substring"*. Expand-around-center is O(n²)/O(1)-space and easy to code; mention Manacher's for O(n) if pushed.
+> **Remember:** try all 2n−1 centers (chars and gaps); expand while both ends match.
 
 ---
 
@@ -239,6 +254,9 @@
 
 **Key insight:** Most string DP uses a 2D table where `dp[i][j]` represents the answer for `s1[0..i]` and `s2[0..j]`.
 
+> **In an interview:** trigger words are *"edit / convert / match two strings"*, *"subsequence"*. Two strings + "min operations" or "how many ways" almost always means a 2D DP.
+> **Remember:** `dp[i][j]` compares prefixes; branch on whether s1[i] and s2[j] match. (Full family lives in `dp.md`.)
+
 ---
 
 ## Pattern 7: Prefix / Suffix Tricks
@@ -265,6 +283,9 @@
 - Longest common prefix
 - Group strings by prefix
 - Trie (for prefix queries at scale)
+
+> **In an interview:** trigger words are *"common prefix / group by prefix"*. For repeated prefix queries at scale, pivot to a trie.
+> **Remember:** sort, then only the first and last strings bound the common prefix.
 
 ---
 
@@ -320,3 +341,26 @@ flowchart TD
     T -->|Yes| U[Trie]
     T -->|No| V[Two Pointer\nor Linear Scan]
 ```
+
+---
+
+## Problem → Pattern Cross-References
+
+The problems list now mirrors the 7 patterns above. The old file grouped by loose labels ("String Manipulation", "String Pattern") and had duplicates — "Reverse Words" was listed twice (same LeetCode 151). Now deduped. Notes:
+
+| Problem | Home pattern | Why (and what else it touches) |
+|---------|--------------|-------------------------------|
+| Valid Anagram / Isomorphic Strings | Hashing | Character-frequency / bijection maps — moved here from `array.md` |
+| Sort Characters by Frequency | Hashing | Count then order by frequency |
+| Longest Palindromic Substring | Palindrome | Expand-around-center (also a DP problem — cross-links to `dp.md`) |
+| Count Palindromic Subsequences | Palindrome | 2D interval DP over the string |
+| Shortest Palindrome / Longest Happy Prefix | String Matching | Both reduce to building the KMP LPS array |
+| Longest Common Prefix | String Matching | Sort + compare extremes, or vertical scan |
+
+**Notes on curation & cross-topic homes:**
+
+- Removed the duplicate "Reverse Every Word in A String" (same as "Reverse Words in a String").
+- **Implement Atoi** is the home for recursive-atoi (referenced from `recursion.md`).
+- Heavy two-string DP (LCS, Edit Distance, Distinct Subsequences, Wildcard/Regex) lives in `dp.md` under *LCS / String DP* — Pattern 6 above points there rather than duplicating them.
+
+> **The disguise principle:** most string problems are array problems wearing letters. Two pointer, sliding window, hashing, and DP transfer directly — recognize the underlying array pattern first.

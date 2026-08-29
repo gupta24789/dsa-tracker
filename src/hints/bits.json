@@ -1,0 +1,60 @@
+{
+  "https://www.geeksforgeeks.org/problems/check-whether-k-th-bit-is-set-or-not-1587115620/1": {
+    "optimal": { "idea": "(n >> k) & 1 tells whether bit k is set.", "time": "O(1)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/odd-or-even3618/1": {
+    "optimal": { "idea": "n & 1 == 1 means odd (last bit set).", "time": "O(1)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/set-the-rightmost-unset-bit4436/1": {
+    "optimal": { "idea": "n | (n+1) sets the rightmost 0 bit.", "time": "O(1)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/swap-two-numbers3844/1": {
+    "optimal": { "idea": "XOR swap: a^=b; b^=a; a^=b (no temp variable).", "time": "O(1)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/power-of-2-1587115620/1": {
+    "brute": { "idea": "Repeatedly divide by 2 and check for a remainder.", "time": "O(log n)", "space": "O(1)" },
+    "optimal": { "idea": "n > 0 and (n & (n-1)) == 0 means only one bit is set.", "time": "O(1)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/set-bits0143/1": {
+    "brute": { "idea": "Check each of the 32 bits with a shift and mask.", "time": "O(32)", "space": "O(1)" },
+    "optimal": { "idea": "Brian Kernighan: n &= n-1 drops the lowest set bit each loop; count loops.", "time": "O(set bits)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/minimum-bit-flips-to-convert-number/": {
+    "optimal": { "idea": "Count set bits of (a XOR b) — each differing bit needs one flip.", "time": "O(1)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/single-number/": {
+    "brute": { "idea": "Hash map of counts, return the one with count 1.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "XOR all numbers; pairs cancel to 0, leaving the unique one.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/single-number-ii/": {
+    "brute": { "idea": "Hash map of counts, return the one with count 1.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Sum each bit position mod 3 (or a two-mask ones/twos state machine).", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/single-number-iii/": {
+    "brute": { "idea": "Hash map of counts, collect the two with count 1.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "XOR all → a^b; a set bit splits numbers into two groups, XOR each group for a and b.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/two-numbers-with-odd-occurrences5846/1": {
+    "brute": { "idea": "Hash map of counts, collect the two with an odd count.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Same as Single Number III: XOR all, split by a differing bit, XOR each group.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/find-xor-of-numbers-from-l-to-r/1": {
+    "brute": { "idea": "XOR every number from L to R.", "time": "O(R-L)", "space": "O(1)" },
+    "optimal": { "idea": "xor(1..n) has a period-4 pattern by n%4; answer = xor(1..R) ^ xor(1..L-1).", "time": "O(1)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/divide-two-integers/": {
+    "brute": { "idea": "Repeatedly subtract the divisor, counting steps.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Subtract shifted (doubled) multiples of the divisor to build the quotient bit by bit.", "time": "O(log^2 n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/prime-factors5052/1": {
+    "brute": { "idea": "Trial divide by every number from 2 to n.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Divide out factors from 2 up to sqrt(n); a remainder > 1 is a prime factor.", "time": "O(sqrt n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/all-divisors-of-a-number/1": {
+    "brute": { "idea": "Check divisibility for every i from 1 to n.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Loop i to sqrt(n); each divisor i pairs with n/i.", "time": "O(sqrt n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/sieve-of-eratosthenes5242/1": {
+    "optimal": { "idea": "Mark multiples of each prime starting at p*p as composite.", "time": "O(n log log n)", "space": "O(n)" }
+  }
+}

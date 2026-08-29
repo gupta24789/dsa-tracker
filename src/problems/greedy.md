@@ -1,28 +1,32 @@
-﻿## Greedy
-
-1. [Assign Cookies](https://leetcode.com/problems/assign-cookies/) `medium`
-2. [Fractional Knapsack Problem](https://www.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1) `medium`
-3. [Greedy algorithm to find minimum number of coins](https://www.geeksforgeeks.org/problems/-minimum-number-of-coins4426/1) `medium`
-4. [Lemonade Change](https://leetcode.com/problems/lemonade-change/) `medium`
-5. [Valid Paranthesis Checker](https://leetcode.com/problems/valid-parenthesis-string/) `medium`
-6. [Jump Game](https://leetcode.com/problems/jump-game/) `medium`
-7. [Jump Game 2](https://leetcode.com/problems/jump-game-ii/) `medium`
-8. [Candy](https://leetcode.com/problems/candy/) `medium`
-
-## Greedy Sorting
+﻿## Interval Scheduling (Sort by Endpoint)
 
 1. [N meetings in one room](https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1) `medium`
 2. [Minimum number of platforms required for a railway](https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1) `medium`
-3. [Job sequencing Problem](https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1) `medium`
-4. [Program for Shortest Job First (or SJF) CPU Scheduling](https://www.geeksforgeeks.org/problems/shortest-job-first/1) `medium`
+3. [Job Sequencing Problem](https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1) `medium`
+4. [Shortest Job First (SJF) CPU Scheduling](https://www.geeksforgeeks.org/problems/shortest-job-first/1) `medium`
+5. [Insert Interval](https://leetcode.com/problems/insert-interval/) `medium`
+6. [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/) `medium`
 
-## Interval Merge
+## Greedy with Sorting (Assign / Match)
 
-1. [Insert Interval](https://leetcode.com/problems/insert-interval/) `medium`
-2. [Merge Intervals](https://leetcode.com/problems/merge-intervals/) `medium`
-3. [Non-overlapping Intervals](https://leetcode.com/problems/non-overlapping-intervals/) `medium`
+1. [Assign Cookies](https://leetcode.com/problems/assign-cookies/) `easy`
+2. [Fractional Knapsack Problem](https://www.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1) `medium`
+3. [Minimum Number of Coins](https://www.geeksforgeeks.org/problems/-minimum-number-of-coins4426/1) `medium`
+4. [Lemonade Change](https://leetcode.com/problems/lemonade-change/) `easy`
 
-## Cache
+## Jump Game (Reach-Based)
 
-1. [Program for Least Recently Used (LRU) Page Replacement Algorithm](https://www.geeksforgeeks.org/problems/page-faults-in-lru5603/1) `medium`
+1. [Jump Game](https://leetcode.com/problems/jump-game/) `medium`
+2. [Jump Game II](https://leetcode.com/problems/jump-game-ii/) `medium`
 
+## Greedy on Strings
+
+1. [Valid Parenthesis String](https://leetcode.com/problems/valid-parenthesis-string/) `medium`
+
+## Two-Pass Greedy
+
+1. [Candy](https://leetcode.com/problems/candy/) `hard`
+
+## Other
+
+1. [LRU Page Replacement (Page Faults)](https://www.geeksforgeeks.org/problems/page-faults-in-lru5603/1) `medium`

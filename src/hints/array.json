@@ -1,0 +1,319 @@
+{
+  "https://www.geeksforgeeks.org/problems/largest-element-in-array4009/1": {
+    "optimal": { "idea": "Single scan tracking the running maximum.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/second-largest3735/1": {
+    "brute": { "idea": "Sort the array; the second largest is the second distinct value from the end.", "time": "O(n log n)", "space": "O(1)" },
+    "better": { "idea": "Find the max, then scan again for the largest value strictly less than it.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "One pass tracking both largest and second-largest together.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/check-if-an-array-is-sorted0701/1": {
+    "optimal": { "idea": "Scan once; return false if any element is smaller than its predecessor.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/": {
+    "optimal": { "idea": "Count 'drops' where arr[i] > arr[i+1] (wrapping around); valid if at most one drop.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/max-consecutive-ones/": {
+    "optimal": { "idea": "Scan, tracking current run of 1s and the best run seen; reset on a 0.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/length-of-last-word/": {
+    "optimal": { "idea": "Scan from the end: skip trailing spaces, then count letters until the next space.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/can-place-flowers/": {
+    "optimal": { "idea": "Greedy scan; plant when a slot and both neighbors are empty, decrementing n.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/replace-elements-with-greatest-element-on-right-side/": {
+    "brute": { "idea": "For each index, scan everything to its right for the max.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Scan right to left keeping a running suffix-max; write it, then update with the current value.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/leaders-in-an-array-1587115620/1": {
+    "brute": { "idea": "For each element, scan right to check it's greater than all that follow.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Scan right to left keeping the max-so-far; an element is a leader if it exceeds that max.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/product-of-array-except-self/": {
+    "brute": { "idea": "For each index, multiply all other elements.", "time": "O(n^2)", "space": "O(1)" },
+    "better": { "idea": "Prefix-product and suffix-product arrays; answer[i] = prefix[i-1] * suffix[i+1].", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Store prefix products in the output, then multiply by a running suffix product in a second pass.", "time": "O(n)", "space": "O(1)" }
+  },
+
+  "https://leetcode.com/problems/valid-palindrome/": {
+    "brute": { "idea": "Filter alphanumerics into a new string, compare it to its reverse.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Two pointers from both ends; skip non-alphanumerics, compare lowercased chars.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/valid-palindrome-ii/": {
+    "brute": { "idea": "For each index, delete it and check if the rest is a palindrome.", "time": "O(n^2)", "space": "O(n)" },
+    "optimal": { "idea": "Two pointers; on first mismatch, try skipping the left OR the right char and check either remainder.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/reverse-string/": {
+    "optimal": { "idea": "Two pointers from both ends, swap inward until they cross.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/merge-strings-alternately/": {
+    "optimal": { "idea": "Two pointers, one per string; append alternately, then drain the longer one.", "time": "O(n+m)", "space": "O(n+m)" }
+  },
+  "https://leetcode.com/problems/is-subsequence/": {
+    "optimal": { "idea": "Two pointers; advance s-pointer only on match, t-pointer always. Subsequence if s-pointer finishes.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/move-zeroes/": {
+    "brute": { "idea": "Build a new array of non-zeros, then pad with zeros.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Slow/fast pointers; fast scans, slow marks the next write slot, swap to push zeros back.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/remove-element/": {
+    "optimal": { "idea": "Slow/fast pointers; copy elements that don't equal val to the slow index.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/remove-duplicates-from-sorted-array/": {
+    "optimal": { "idea": "Slow/fast pointers; write a value only when it differs from the last kept value.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/": {
+    "optimal": { "idea": "Slow/fast pointers; allow a value only if it differs from arr[slow-2], permitting two copies.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/sort-colors/": {
+    "brute": { "idea": "Sort the array.", "time": "O(n log n)", "space": "O(1)" },
+    "better": { "idea": "Counting sort: count 0s/1s/2s, then overwrite the array in two passes.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "Dutch National Flag: low/mid/high pointers place 0s front, 2s back in one pass.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/rearrange-array-alternately-1587115620/1": {
+    "brute": { "idea": "Use an auxiliary array; fill max, min, max, min from both ends.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Encode both new and old value into each slot with a max_val+1 modulus trick, then decode.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/rearrange-array-elements-by-sign/": {
+    "brute": { "idea": "Separate positives and negatives into two lists, then interleave them.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Two write pointers at even (positives) and odd (negatives) indices; place each element by sign.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/": {
+    "brute": { "idea": "Check every pair.", "time": "O(n^2)", "space": "O(1)" },
+    "better": { "idea": "For each element, binary search its complement in the sorted array.", "time": "O(n log n)", "space": "O(1)" },
+    "optimal": { "idea": "Two pointers from both ends; sum too small → move left up, too big → move right down.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/container-with-most-water/": {
+    "brute": { "idea": "Try every pair of lines, track max area.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Two pointers from both ends; area limited by the shorter line, so move the shorter pointer inward.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/merge-sorted-array/": {
+    "brute": { "idea": "Copy both into a new array and sort.", "time": "O((n+m)log(n+m))", "space": "O(n+m)" },
+    "optimal": { "idea": "Fill from the back: three pointers at the ends of nums1's data, nums2, and the write slot.", "time": "O(n+m)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/trapping-rain-water/": {
+    "brute": { "idea": "For each bar, scan left and right for the tallest walls; water = min(maxL,maxR)-height.", "time": "O(n^2)", "space": "O(1)" },
+    "better": { "idea": "Precompute prefix-max and suffix-max arrays, then sum trapped water per bar.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Two pointers with running leftMax/rightMax; process the side with the smaller wall.", "time": "O(n)", "space": "O(1)" }
+  },
+
+  "https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/": {
+    "brute": { "idea": "Try every split of i cards from the left and k-i from the right.", "time": "O(k^2)", "space": "O(1)" },
+    "optimal": { "idea": "Take all k from the left, then slide: swap a left card for a right card, tracking the max sum.", "time": "O(k)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/longest-substring-without-repeating-characters/": {
+    "brute": { "idea": "Check every substring for all-unique characters.", "time": "O(n^2)", "space": "O(n)" },
+    "optimal": { "idea": "Sliding window with a last-seen-index map; jump left past the previous occurrence on a repeat.", "time": "O(n)", "space": "O(charset)" }
+  },
+  "https://leetcode.com/problems/longest-repeating-character-replacement/": {
+    "brute": { "idea": "For every substring, check if (length - most frequent char count) <= k.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Window valid while (windowLen - maxFreqCount) <= k; expand right, shrink left when it breaks.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/permutation-in-string/": {
+    "brute": { "idea": "Check if any substring of len(p) is an anagram by sorting/counting each.", "time": "O(n*k)", "space": "O(1)" },
+    "optimal": { "idea": "Fixed window of len(p) with a frequency match; slide and compare counts.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/max-consecutive-ones-iii/": {
+    "brute": { "idea": "For every subarray, check the count of zeros is <= k, track the longest.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Sliding window allowing at most k zeros; shrink left when zero-count exceeds k.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/fruit-into-baskets-1663137462/1": {
+    "brute": { "idea": "For every subarray, check it has at most 2 distinct values, track the longest.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Longest subarray with at most 2 distinct values via a sliding window + count map.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/longest-k-unique-characters-substring0853/1": {
+    "brute": { "idea": "For every substring, count distinct chars and keep those with <= k.", "time": "O(n^2)", "space": "O(k)" },
+    "optimal": { "idea": "Sliding window with a count map; shrink left while distinct count exceeds k.", "time": "O(n)", "space": "O(k)" }
+  },
+  "https://leetcode.com/problems/number-of-substrings-containing-all-three-characters/": {
+    "brute": { "idea": "Enumerate all substrings and check each contains a, b, and c.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Track last-seen index of a,b,c; for each right, add min(lastA,lastB,lastC)+1.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/count-number-of-nice-subarrays/": {
+    "brute": { "idea": "For every subarray, count odd numbers and check it equals k.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Treat odds as 1s: 'exactly k' = atMost(k) - atMost(k-1) via sliding window.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/minimum-size-subarray-sum/": {
+    "brute": { "idea": "Try every starting index, extend until sum >= target.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Expand right adding to sum; shrink left while sum >= target, tracking min length.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/frequency-of-the-most-frequent-element/": {
+    "brute": { "idea": "Sort; for each target element, greedily count how many predecessors it can raise within budget k.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Sort, then slide a window where cost to raise all to arr[right] (len*arr[right] - windowSum) <= k.", "time": "O(n log n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/subarrays-with-k-different-integers/": {
+    "brute": { "idea": "For every subarray, count distinct integers and check it equals k.", "time": "O(n^2)", "space": "O(n)" },
+    "optimal": { "idea": "'Exactly k distinct' = atMost(k) - atMost(k-1), each computed with a sliding window.", "time": "O(n)", "space": "O(k)" }
+  },
+  "https://leetcode.com/problems/minimum-window-substring/": {
+    "brute": { "idea": "Check every substring for whether it covers all needed characters.", "time": "O(n^2)", "space": "O(charset)" },
+    "optimal": { "idea": "Expand right to cover all needed chars, then shrink left to minimize while still valid.", "time": "O(n)", "space": "O(charset)" }
+  },
+
+  "https://practice.geeksforgeeks.org/problems/equilibrium-point-1587115620/1": {
+    "brute": { "idea": "For each index, sum the left side and right side separately and compare.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Track left sum; at each i, right sum = total - left - arr[i]. Equilibrium when they match.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/find-pivot-index/": {
+    "brute": { "idea": "For each index, sum everything left and everything right separately and compare.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Total sum known; scan tracking left sum, check left == total - left - arr[i].", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/subarray-with-given-sum-1587115621/1": {
+    "brute": { "idea": "Try every subarray, sum and compare to target.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "For positives, sliding window: shrink from left while running sum exceeds target.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1": {
+    "brute": { "idea": "Try every subarray, track the longest whose sum is K.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Prefix sum + map of first-seen prefix; if prefix-K was seen, update longest length.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1": {
+    "brute": { "idea": "Check every subarray for a zero sum.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Prefix sum + map; a repeated prefix means the span between them sums to zero.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/subarray-sum-equals-k/": {
+    "brute": { "idea": "Sum every subarray and count those equal to k.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Prefix sum + count map; add freq of (prefix - k) seen so far for each index.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/count-subarray-with-given-xor/1": {
+    "brute": { "idea": "XOR every subarray and count those equal to k.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Running XOR + count map; for each prefix, add freq of (prefix XOR k).", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/binary-subarrays-with-sum/": {
+    "brute": { "idea": "Sum every subarray and count those equal to goal.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Prefix sum + count map (or atMost(goal)-atMost(goal-1) sliding window).", "time": "O(n)", "space": "O(n)" }
+  },
+
+  "https://leetcode.com/problems/contains-duplicate/": {
+    "brute": { "idea": "Compare every pair.", "time": "O(n^2)", "space": "O(1)" },
+    "better": { "idea": "Sort, then check adjacent equal elements.", "time": "O(n log n)", "space": "O(1)" },
+    "optimal": { "idea": "Insert into a hash set; a value already present means a duplicate.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/array-subset-of-another-array2317/1": {
+    "brute": { "idea": "For each element of the smaller array, linear-scan the larger.", "time": "O(n*m)", "space": "O(1)" },
+    "optimal": { "idea": "Put the larger array in a hash set, then verify every element of the smaller is present.", "time": "O(n+m)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/unique-email-addresses/": {
+    "optimal": { "idea": "Normalize each address (drop dots in local part, cut at '+'), insert into a set, count size.", "time": "O(total chars)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/group-anagrams/": {
+    "brute": { "idea": "Compare each word against existing groups by sorting/comparing.", "time": "O(n^2 * k)", "space": "O(n*k)" },
+    "optimal": { "idea": "Key each word by its sorted letters (or 26-count signature); group in a hash map.", "time": "O(n*k log k)", "space": "O(n*k)" }
+  },
+  "https://leetcode.com/problems/valid-sudoku/": {
+    "optimal": { "idea": "One pass with hash sets per row, column, and 3x3 box; detect any repeat.", "time": "O(1) (81 cells)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/two-sum/": {
+    "brute": { "idea": "Check every pair for the target sum.", "time": "O(n^2)", "space": "O(1)" },
+    "better": { "idea": "Sort with original indices, then two pointers for the complement.", "time": "O(n log n)", "space": "O(n)" },
+    "optimal": { "idea": "Hash map of value→index; for each num, look up (target - num).", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/longest-consecutive-sequence/": {
+    "brute": { "idea": "For each number, linear-search for its consecutive successors.", "time": "O(n^3)", "space": "O(1)" },
+    "better": { "idea": "Sort, then scan for the longest run of consecutive values.", "time": "O(n log n)", "space": "O(1)" },
+    "optimal": { "idea": "Put all in a set; start counting only at sequence starts (num-1 absent).", "time": "O(n)", "space": "O(n)" }
+  },
+
+  "https://leetcode.com/problems/maximum-subarray/": {
+    "brute": { "idea": "Sum every subarray, track the max.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Kadane: curr = max(num, curr+num); best = max(best, curr).", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/maximum-sub-array5443/1": {
+    "optimal": { "idea": "Kadane while tracking start/end indices; reset start when curr restarts.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/maximum-product-subarray/": {
+    "brute": { "idea": "Compute the product of every subarray, track the max.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Track running max AND min (a negative flips them); best = max over all maxProducts.", "time": "O(n)", "space": "O(1)" }
+  },
+
+  "https://leetcode.com/problems/minimum-difference-between-highest-and-lowest-of-k-scores/": {
+    "optimal": { "idea": "Sort, then slide a window of size k; answer is the min of arr[i+k-1] - arr[i].", "time": "O(n log n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/3sum/": {
+    "brute": { "idea": "Check every triplet, dedupe via a set.", "time": "O(n^3)", "space": "O(n)" },
+    "better": { "idea": "Fix one element, use a hash set to find the pair summing to its negation.", "time": "O(n^2)", "space": "O(n)" },
+    "optimal": { "idea": "Sort; fix i, two-pointer the rest for -arr[i]; skip duplicates.", "time": "O(n^2)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/4sum/": {
+    "brute": { "idea": "Check every quadruple.", "time": "O(n^4)", "space": "O(n)" },
+    "optimal": { "idea": "Sort; fix two indices, two-pointer the remaining pair; skip duplicates.", "time": "O(n^3)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/merge-intervals/": {
+    "optimal": { "idea": "Sort by start; merge into the last interval when the current start <= last end.", "time": "O(n log n)", "space": "O(n)" }
+  },
+
+  "https://leetcode.com/problems/set-matrix-zeroes/": {
+    "brute": { "idea": "Mark rows/cols to zero in a separate matrix, then apply.", "time": "O((m*n)*(m+n))", "space": "O(m*n)" },
+    "better": { "idea": "Use row and column marker arrays.", "time": "O(m*n)", "space": "O(m+n)" },
+    "optimal": { "idea": "Use the first row/column as markers, with a separate flag for column 0.", "time": "O(m*n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/rotate-image/": {
+    "brute": { "idea": "Copy into a new matrix with rotated index mapping.", "time": "O(n^2)", "space": "O(n^2)" },
+    "optimal": { "idea": "Transpose the matrix, then reverse each row (for 90° clockwise).", "time": "O(n^2)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/spiral-matrix/": {
+    "optimal": { "idea": "Four boundary pointers (top,bottom,left,right); peel layers inward.", "time": "O(m*n)", "space": "O(1)" }
+  },
+
+  "https://www.geeksforgeeks.org/problems/inversion-of-array-1587115620/1": {
+    "brute": { "idea": "Count all pairs (i<j) with arr[i] > arr[j].", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Merge sort; during merge, count how many left-half elements exceed each right element.", "time": "O(n log n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/reverse-pairs/": {
+    "brute": { "idea": "Check every pair for arr[i] > 2*arr[j].", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Merge sort; before merging, count pairs where arr[i] > 2*arr[j] across the halves.", "time": "O(n log n)", "space": "O(n)" }
+  },
+
+  "https://leetcode.com/problems/majority-element/": {
+    "brute": { "idea": "Count occurrences of each element.", "time": "O(n^2)", "space": "O(1)" },
+    "better": { "idea": "Hash map of counts, or sort and take the middle element.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Boyer-Moore voting: one candidate + count; increment on match, decrement otherwise.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/majority-element-ii/": {
+    "better": { "idea": "Hash map of counts, keep those exceeding n/3.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Boyer-Moore with two candidates and two counts; verify both at the end.", "time": "O(n)", "space": "O(1)" }
+  },
+
+  "https://leetcode.com/problems/missing-number/": {
+    "brute": { "idea": "Sort, then find the first index whose value != index.", "time": "O(n log n)", "space": "O(1)" },
+    "better": { "idea": "Sum 0..n formula minus the array sum gives the missing number.", "time": "O(n)", "space": "O(1)" },
+    "optimal": { "idea": "XOR all indices 0..n with all values; pairs cancel, leaving the missing number.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/": {
+    "brute": { "idea": "Use a seen set/boolean array, then collect indices never marked.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Mark presence by negating arr[abs(v)-1]; indices still positive are missing.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/find-all-duplicates-in-an-array/": {
+    "brute": { "idea": "Count with a hash map, collect values seen twice.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Negate arr[abs(v)-1]; if already negative, abs(v) is a duplicate.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/set-mismatch/": {
+    "better": { "idea": "Count frequencies to find the value appearing twice and the value missing.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Cyclic sort or index-marking; the misplaced slot reveals both duplicate and missing.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/find-missing-and-repeating2512/1": {
+    "better": { "idea": "Frequency count array to spot the repeated and the missing value.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Cyclic sort placing each value at index value-1; the misplaced slot gives both.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/first-missing-positive/": {
+    "brute": { "idea": "Put all in a set, then probe 1,2,3,... for the first absent.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Cyclic sort placing v in slot v-1 (ignore out-of-range); first index where arr[i]!=i+1.", "time": "O(n)", "space": "O(1)" }
+  },
+
+  "https://leetcode.com/problems/find-the-duplicate-number/": {
+    "brute": { "idea": "Sort or use a hash set to spot the repeat.", "time": "O(n log n)", "space": "O(1)" },
+    "optimal": { "idea": "Treat arr[i] as a next-index pointer; Floyd's cycle detection finds the entrance = duplicate.", "time": "O(n)", "space": "O(1)" }
+  },
+
+  "https://leetcode.com/problems/rotate-array/": {
+    "brute": { "idea": "Rotate one step at a time, k times.", "time": "O(n*k)", "space": "O(1)" },
+    "better": { "idea": "Copy each element to its rotated position in a temp array.", "time": "O(n)", "space": "O(n)" },
+    "optimal": { "idea": "Reverse whole array, then reverse first k and remaining n-k.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/next-permutation/": {
+    "optimal": { "idea": "Find first descending arr[i]<arr[i+1] from the right, swap with next-greater, reverse the suffix.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/pascals-triangle/": {
+    "optimal": { "idea": "Build each row from the previous; row[j] = prev[j-1] + prev[j].", "time": "O(n^2)", "space": "O(n^2)" }
+  }
+}

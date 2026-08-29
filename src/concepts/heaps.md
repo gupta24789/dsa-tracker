@@ -20,17 +20,17 @@ A heap is a **priority queue** — a structure that always gives you the smalles
 
 ```viz
 {
+  "type": "heap",
   "title": "Top K=3 Largest Elements — Min-Heap of size K",
-  "description": "arr = [4, 1, 7, 3, 9, 2]. Keep a min-heap of size 3. If new element > heap min, swap it in.",
-  "array": [4, 1, 7, 3, 9, 2],
+  "description": "arr = [4, 1, 7, 3, 9, 2]. Keep a min-heap of size 3 — root is always the weakest kept element. If a new value beats the root, evict the root.",
   "speed": 900,
   "steps": [
-    { "pointers": { "i": 0 }, "highlight": [0], "label": "Push 4. Heap: [4]. Size=1 ≤ K=3" },
-    { "pointers": { "i": 1 }, "highlight": [1], "label": "Push 1. Heap: [1,4]. Size=2 ≤ K=3" },
-    { "pointers": { "i": 2 }, "highlight": [2], "label": "Push 7. Heap: [1,4,7]. Size=3 = K" },
-    { "pointers": { "i": 3 }, "highlight": [3], "label": "Push 3. Size>K → pop min(1). Heap: [3,4,7]. Size=3" },
-    { "pointers": { "i": 4 }, "highlight": [4], "label": "Push 9. Size>K → pop min(3). Heap: [4,7,9]. Size=3" },
-    { "pointers": { "i": 5 }, "highlight": [5], "label": "Push 2. Size>K → pop min(2). Heap: [4,7,9]. Size=3", "note": "Top 3 largest = [4, 7, 9] ✓" }
+    { "nodes": [4], "active": 0, "label": "Push 4. Heap: [4]. Size=1 ≤ K=3" },
+    { "nodes": [1, 4], "active": 0, "label": "Push 1. 1 becomes root (min). Heap: [1,4]. Size=2 ≤ K=3" },
+    { "nodes": [1, 4, 7], "active": 2, "label": "Push 7. Heap: [1,4,7]. Size=3 = K. Root=1." },
+    { "nodes": [3, 4, 7], "active": 0, "label": "Push 3. Size>K → pop root(1), it's the weakest. Heap becomes [3,4,7]. Size=3" },
+    { "nodes": [4, 9, 7], "active": 0, "label": "Push 9. Size>K → pop root(3). Heap: [4,9,7]. Size=3" },
+    { "nodes": [4, 9, 7], "active": null, "highlight": [0, 1, 2], "label": "Push 2. 2 < root(4) → 2 can't beat the weakest kept element, discard it.", "note": "Top 3 largest = [4, 7, 9] ✓ (root 4 is the weakest of the three we kept)" }
   ]
 }
 ```
@@ -42,6 +42,9 @@ A heap is a **priority queue** — a structure that always gives you the smalles
 - K most frequent elements
 - K closest points to origin
 
+> **In an interview:** trigger words are *"K largest / smallest / most frequent / closest"*. The counter-intuitive bit: use a **min**-heap for K *largest*.
+> **Remember:** keep a size-K heap; the root is the weakest kept element you evict.
+
 ---
 
 ## Pattern 2: Merge K Sorted Lists / Arrays
@@ -52,16 +55,16 @@ A heap is a **priority queue** — a structure that always gives you the smalles
 
 ```viz
 {
+  "type": "heap",
   "title": "Merge K Sorted Lists — Min-Heap picks smallest head",
-  "description": "3 lists: [1,4,7], [2,5,8], [3,6,9]. Heap always gives the global minimum next.",
-  "array": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "description": "3 lists: L0=[1,4,7], L1=[2,5,8], L2=[3,6,9]. The heap holds one candidate per list — its root is always the next output.",
   "speed": 900,
   "steps": [
-    { "pointers": { "i": 0 }, "highlight": [0], "label": "Init heap with heads: (1,L0), (2,L1), (3,L2). Pop min=1 → output 1. Push next from L0: 4" },
-    { "pointers": { "i": 1 }, "highlight": [1], "label": "Heap: (2,L1),(3,L2),(4,L0). Pop min=2 → output 2. Push next from L1: 5" },
-    { "pointers": { "i": 2 }, "highlight": [2], "label": "Heap: (3,L2),(4,L0),(5,L1). Pop min=3 → output 3. Push next from L2: 6" },
-    { "pointers": { "i": 3 }, "highlight": [3], "label": "Pop min=4 → output 4. Push 7 from L0." },
-    { "pointers": { "i": 4 }, "highlight": [4,5,6,7,8], "label": "Continue: 5,6,7,8,9...", "note": "Result: [1,2,3,4,5,6,7,8,9] ✓ O(n log k) where k=number of lists" }
+    { "nodes": [1, 2, 3], "active": 0, "label": "Init heap with the 3 heads: 1(L0), 2(L1), 3(L2). Root=1 → output 1. Push L0's next (4)." },
+    { "nodes": [2, 4, 3], "active": 0, "label": "Heap: 2(L1),4(L0),3(L2). Root=2 → output 2. Push L1's next (5)." },
+    { "nodes": [3, 4, 5], "active": 0, "label": "Heap: 3(L2),4(L0),5(L1). Root=3 → output 3. Push L2's next (6)." },
+    { "nodes": [4, 6, 5], "active": 0, "label": "Heap: 4(L0),6(L2),5(L1). Root=4 → output 4. Push L0's next (7)." },
+    { "nodes": [5, 6, 7], "active": 0, "label": "Heap: 5(L1),6(L2),7(L0). Root=5 → output 5. Push L1's next (8).", "note": "Output so far: [1,2,3,4,5] ✓ Continuing gives [1..9]. O(n log k) — heap size stays k, not n." }
   ]
 }
 ```
@@ -70,6 +73,9 @@ A heap is a **priority queue** — a structure that always gives you the smalles
 - Merge K sorted lists
 - K-way merge
 - Find smallest range covering K lists
+
+> **In an interview:** trigger words are *"merge K sorted..."* or *"smallest range across K lists"*. A heap of the K current heads beats merging pairwise.
+> **Remember:** heap holds one candidate per list; pop the min, push that list's next element.
 
 ---
 
@@ -81,15 +87,42 @@ A heap is a **priority queue** — a structure that always gives you the smalles
 
 ```viz
 {
+  "type": "heap",
   "title": "Running Median — Two Heaps",
-  "description": "Stream: [5, 2, 8, 1]. MaxHeap=lower half, MinHeap=upper half. Balance sizes ±1.",
-  "array": [5, 2, 8, 1],
+  "description": "Stream: 5, 2, 8, 1. MaxHeap (lower half) root ≤ MinHeap (upper half) root, sizes balanced within 1. Median = tops of the two heaps.",
   "speed": 1100,
   "steps": [
-    { "pointers": { "i": 0 }, "highlight": [0], "label": "Insert 5 → MaxHeap:[5], MinHeap:[]. Median = 5" },
-    { "pointers": { "i": 1 }, "highlight": [1], "label": "Insert 2. 2<5 → MaxHeap:[5,2]. Rebalance → move 5 to MinHeap. MaxHeap:[2], MinHeap:[5]. Median = (2+5)/2 = 3.5" },
-    { "pointers": { "i": 2 }, "highlight": [2], "label": "Insert 8. 8>MinHeap top(5) → MinHeap:[5,8]. Rebalance → move 5 to MaxHeap. MaxHeap:[5,2], MinHeap:[8]. Median = 5" },
-    { "pointers": { "i": 3 }, "highlight": [3], "label": "Insert 1. 1<MaxHeap top(5) → MaxHeap:[5,2,1]. Rebalance → move 5 to MinHeap. MaxHeap:[2,1], MinHeap:[5,8]. Median = (2+5)/2 = 3.5", "note": "MaxHeap top = 2, MinHeap top = 5. Median = (2+5)/2 = 3.5 ✓" }
+    {
+      "heaps": [
+        { "label": "MaxHeap (lower)", "nodes": [5], "active": 0 },
+        { "label": "MinHeap (upper)", "nodes": [] }
+      ],
+      "label": "Insert 5 → goes to MaxHeap (empty MinHeap). Median = 5."
+    },
+    {
+      "heaps": [
+        { "label": "MaxHeap (lower)", "nodes": [2] },
+        { "label": "MinHeap (upper)", "nodes": [5], "active": 0 }
+      ],
+      "label": "Insert 2. 2<5 → MaxHeap:[5,2], but that's unbalanced → move root 5 to MinHeap.",
+      "note": "MaxHeap root=2, MinHeap root=5. Median = (2+5)/2 = 3.5"
+    },
+    {
+      "heaps": [
+        { "label": "MaxHeap (lower)", "nodes": [5, 2], "active": 0 },
+        { "label": "MinHeap (upper)", "nodes": [8] }
+      ],
+      "label": "Insert 8. 8 > MinHeap root(5) → MinHeap:[5,8], unbalanced → move root 5 to MaxHeap.",
+      "note": "MaxHeap root=5, MinHeap root=8. Median = 5 (MaxHeap is the larger half now, its root is the median)"
+    },
+    {
+      "heaps": [
+        { "label": "MaxHeap (lower)", "nodes": [2, 1] },
+        { "label": "MinHeap (upper)", "nodes": [5, 8], "active": 0 }
+      ],
+      "label": "Insert 1. 1 < MaxHeap root(5) → MaxHeap:[5,2,1], unbalanced → move root 5 to MinHeap.",
+      "note": "MaxHeap root = 2, MinHeap root = 5. Median = (2+5)/2 = 3.5 ✓"
+    }
   ]
 }
 ```
@@ -99,6 +132,9 @@ A heap is a **priority queue** — a structure that always gives you the smalles
 **When to use:**
 - Find median from a data stream
 - Sliding window median
+
+> **In an interview:** trigger words are *"median of a running stream"* or *"median in a sliding window"* — you need the middle as data keeps arriving.
+> **Remember:** max-heap holds the smaller half, min-heap the larger; keep sizes within 1, median sits at the tops.
 
 ---
 
@@ -165,6 +201,9 @@ A heap is a **priority queue** — a structure that always gives you the smalles
 - Connect ropes with minimum cost
 - Reorganize string
 
+> **In an interview:** trigger words are *"process the most frequent / most urgent next"* or *"repeatedly combine the two cheapest"*. A max- or min-heap gives the next pick in O(log n).
+> **Remember:** the heap answers "what's the best choice right now?" after every update.
+
 ---
 
 ## Pattern 5: Dijkstra's Shortest Path
@@ -227,6 +266,9 @@ A heap is a **priority queue** — a structure that always gives you the smalles
 - Network delay time
 - Path with minimum effort
 
+> **In an interview:** trigger words are *"shortest path"* with **non-negative weights**. If weights can be negative, switch to Bellman-Ford (see graphs).
+> **Remember:** always expand the closest unsettled node; the min-heap keyed on distance hands it to you.
+
 ---
 
 ## Heap vs Sorting
@@ -271,3 +313,25 @@ flowchart TD
     N -->|Yes| O[Heap beats sorting\nO-log n- per operation]
     N -->|No| P[Consider sorting instead\nO-n log n- one time]
 ```
+
+---
+
+## Problem → Pattern Cross-References
+
+The problems list mirrors the 5 patterns above. Notes on homes and cross-topic moves:
+
+| Problem | Home pattern | Why (and what else it touches) |
+|---------|--------------|-------------------------------|
+| Kth largest in a stream | Top K | Min-heap of size K maintained across a stream |
+| Replace elements by rank | Top K | Heap/sort to assign ranks |
+| Maximum Sum Combination | Top K | Max-heap over candidate pair sums |
+| Sort K sorted array | K-way Merge | Min-heap of window size k |
+| Hands of Straights / Connect Ropes | Scheduling/Greedy | Greedy choice driven by a heap's min/max |
+
+**Cross-topic homes:**
+
+- **Top K Frequent Elements** → home is *Top K* here (moved out of `array.md` Hashing). Count frequencies, then min-heap of size K.
+- **Merge K Sorted Lists** (LeetCode 23) → home is *Merge* in `linkedList.md`, since it's a linked-list problem; the heap is the tool. "Sort K sorted array" represents the K-way-merge pattern here.
+- **Dijkstra** problems live in `graphs.md`, though the min-heap is the engine — see Pattern 5 above.
+
+> **Core intuition:** reach for a heap when you need a *repeatedly-updated* min or max (streams, K-way merges, "process next best"). If you have all data up front and only need one pass, sorting is often simpler.

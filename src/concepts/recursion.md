@@ -21,24 +21,42 @@
 
 ```viz
 {
-  "title": "Pick / No-Pick — Generate All Subsets",
-  "description": "arr = [1, 2, 3]. At each index: pick (include) or no-pick (skip). Shows which elements are included.",
-  "array": [1, 2, 3],
-  "speed": 800,
+  "type": "recursion",
+  "title": "Pick / No-Pick — Generate All Subsets of [1,2,3]",
+  "description": "At index i, branch left = skip arr[i], branch right = pick arr[i]. Leaves at depth 3 are the 2³=8 subsets.",
+  "calls": [
+    { "id": "root", "label": "i=0,[]", "x": 50, "y": 8 },
+    { "id": "L",  "label": "i=1,[]",  "parent": "root", "x": 25, "y": 26 },
+    { "id": "R",  "label": "i=1,[1]", "parent": "root", "x": 75, "y": 26 },
+    { "id": "LL", "label": "i=2,[]",   "parent": "L", "x": 12, "y": 44 },
+    { "id": "LR", "label": "i=2,[2]",  "parent": "L", "x": 38, "y": 44 },
+    { "id": "RL", "label": "i=2,[1]",  "parent": "R", "x": 62, "y": 44 },
+    { "id": "RR", "label": "i=2,[1,2]", "parent": "R", "x": 88, "y": 44 },
+    { "id": "LLL", "label": "[]",      "parent": "LL", "x": 6,  "y": 62 },
+    { "id": "LLR", "label": "[3]",     "parent": "LL", "x": 19, "y": 62 },
+    { "id": "LRL", "label": "[2]",     "parent": "LR", "x": 32, "y": 62 },
+    { "id": "LRR", "label": "[2,3]",   "parent": "LR", "x": 45, "y": 62 },
+    { "id": "RLL", "label": "[1]",     "parent": "RL", "x": 58, "y": 62 },
+    { "id": "RLR", "label": "[1,3]",   "parent": "RL", "x": 71, "y": 62 },
+    { "id": "RRL", "label": "[1,2]",   "parent": "RR", "x": 84, "y": 62 },
+    { "id": "RRR", "label": "[1,2,3]", "parent": "RR", "x": 97, "y": 62 }
+  ],
+  "speed": 900,
   "steps": [
-    { "pointers": {}, "highlight": [], "label": "Start: [] — empty subset (no-pick all)" },
-    { "pointers": { "i": 2 }, "highlight": [2], "label": "Pick 3 only → [3]" },
-    { "pointers": { "i": 1 }, "highlight": [1], "label": "Pick 2 only → [2]" },
-    { "pointers": { "i": 1, "j": 2 }, "highlight": [1,2], "label": "Pick 2 and 3 → [2,3]" },
-    { "pointers": { "i": 0 }, "highlight": [0], "label": "Pick 1 only → [1]" },
-    { "pointers": { "i": 0, "j": 2 }, "highlight": [0,2], "label": "Pick 1 and 3 → [1,3]" },
-    { "pointers": { "i": 0, "curr": 1 }, "highlight": [0,1], "label": "Pick 1 and 2 → [1,2]" },
-    { "pointers": { "i": 0, "curr": 1, "j": 2 }, "highlight": [0,1,2], "label": "Pick all → [1,2,3]", "note": "Total 2³=8 subsets ✓ (including empty set)" }
+    { "visible": ["root"], "active": "root", "label": "Start at index 0 with subset []. Two choices: skip 1, or pick 1." },
+    { "visible": ["root","L","R"], "active": "L", "label": "Branch: L=skip 1 ([]) , R=pick 1 ([1]). Go into L first." },
+    { "visible": ["root","L","R","LL","LR"], "active": "LL", "label": "From L: skip 2 (LL, []) or pick 2 (LR, [2])." },
+    { "visible": ["root","L","R","LL","LR","LLL","LLR","LRL","LRR"], "highlight": ["LLL","LLR","LRL","LRR"], "label": "Depth 3 leaves under L: [], [3], [2], [2,3]." },
+    { "visible": ["root","L","R","LL","LR","RL","RR","LLL","LLR","LRL","LRR"], "active": "R", "label": "Now expand R: skip 2 (RL, [1]) or pick 2 (RR, [1,2])." },
+    { "visible": ["root","L","R","LL","LR","RL","RR","LLL","LLR","LRL","LRR","RLL","RLR","RRL","RRR"], "highlight": ["RLL","RLR","RRL","RRR"], "label": "Depth 3 leaves under R: [1], [1,3], [1,2], [1,2,3].", "note": "All 8 leaves = all 8 subsets ✓. Height 3 = number of elements; 2 branches per level = 2³ leaves." }
   ]
 }
 ```
 
 **When to use:** Generate all subsets, subset sum, count subsequences.
+
+> **In an interview:** trigger words are *"all subsets / all subsequences / every combination"*. Clarify whether duplicates in the input must be de-duped in the output.
+> **Remember:** at each index, branch twice — pick it or skip it.
 
 ---
 
@@ -50,17 +68,26 @@
 
 ```viz
 {
-  "title": "Backtracking — Generate All Permutations of [1,2,3]",
-  "description": "At each slot, try each unused number. After recursing, undo (backtrack) and try next.",
-  "array": [1, 2, 3],
-  "speed": 900,
+  "type": "recursion",
+  "title": "Backtracking — First 2 Full Permutations of [1,2,3]",
+  "description": "Each frame = one recursive call: choose an unused number, recurse, then undo (backtrack) before trying the next choice at that same level.",
+  "calls": [
+    { "id": "root", "label": "slot0", "x": 50, "y": 8 },
+    { "id": "try1", "label": "try 1",  "parent": "root", "x": 50, "y": 26 },
+    { "id": "try2", "label": "try 2",  "parent": "try1", "x": 35, "y": 44 },
+    { "id": "try3", "label": "try 3",  "parent": "try2", "x": 35, "y": 62 },
+    { "id": "try3b", "label": "try 3", "parent": "try1", "x": 65, "y": 44 },
+    { "id": "try2b", "label": "try 2", "parent": "try3b", "x": 65, "y": 62 }
+  ],
+  "speed": 1000,
   "steps": [
-    { "pointers": { "i": 0 }, "highlight": [0], "label": "Slot 0: try 1. used={1}. Recurse →" },
-    { "pointers": { "i": 1 }, "highlight": [0,1], "label": "Slot 1: try 2. used={1,2}. Recurse →" },
-    { "pointers": { "i": 2 }, "highlight": [0,1,2], "label": "Slot 2: try 3. Permutation [1,2,3] ✓. Backtrack." },
-    { "pointers": { "i": 2 }, "highlight": [0,2,1], "label": "Slot 1: backtrack, try 3. Slot 2: try 2. Permutation [1,3,2] ✓. Backtrack." },
-    { "pointers": { "i": 1 }, "highlight": [1,0,2], "label": "Slot 0: backtrack, try 2. Slot 1: try 1. Slot 2: try 3. → [2,1,3] ✓" },
-    { "pointers": { "i": 0 }, "highlight": [2,0,1], "label": "Continue: [2,3,1],[3,1,2],[3,2,1]...", "note": "Total 3!=6 permutations ✓. Key: undo choice after recursion returns." }
+    { "visible": ["root"], "active": "root", "label": "Slot 0: no numbers used yet. Try 1." },
+    { "visible": ["root","try1"], "active": "try1", "highlight": ["root"], "label": "Slot 0 = 1. used={1}. Recurse into slot 1." },
+    { "visible": ["root","try1","try2"], "active": "try2", "highlight": ["root","try1"], "label": "Slot 1: try 2 (3 was also available). used={1,2}. Recurse into slot 2." },
+    { "visible": ["root","try1","try2","try3"], "active": "try3", "highlight": ["root","try1","try2"], "label": "Slot 2: only 3 left → try 3. Permutation [1,2,3] found!" },
+    { "visible": ["root","try1","try2","try3"], "returned": { "try3": "[1,2,3]", "try2": "[1,2,3]" }, "highlight": ["try3"], "label": "Base case hit → return up. Slot 2's call returns, slot 1's call returns." },
+    { "visible": ["root","try1","try2","try3","try3b"], "active": "try3b", "returned": { "try2": "[1,2,3]" }, "highlight": ["try1"], "label": "Back at slot 1: UNDO try 2 (used={1} again). Try 3 instead. Recurse into slot 2." },
+    { "visible": ["root","try1","try2","try3","try3b","try2b"], "active": "try2b", "returned": { "try2": "[1,2,3]", "try3b": "[1,3,2]" }, "highlight": ["root","try1","try3b"], "label": "Slot 2: only 2 left → try 2. Permutation [1,3,2] found!", "note": "2 of 6 total permutations shown. Same undo-and-retry repeats at slot 0 for starting values 2 and 3 → 3! = 6 total." }
   ]
 }
 ```
@@ -68,6 +95,9 @@
 **The key:** You **undo** the choice after the recursive call returns.
 
 **When to use:** Permutations, combinations, N-Queens, Sudoku, word search, palindrome partitioning.
+
+> **In an interview:** trigger words are *"find all valid ... / place ... without conflict / generate every arrangement"*. State your choice, your constraint, and your undo step before coding.
+> **Remember:** choose → recurse → un-choose; prune illegal branches early.
 
 ---
 
@@ -127,6 +157,9 @@
 | Permutations | slot index | unused numbers |
 | Subsets | array index | take / skip |
 
+> **In an interview:** when stuck on a backtracking problem, ask out loud *"what does one level of recursion decide, and what does the loop iterate over?"* — that split unlocks the template.
+> **Remember:** recursion = WHERE (position); loop = WHAT (the options there).
+
 ---
 
 ## Pattern 4: Permutations
@@ -137,20 +170,32 @@
 
 ```viz
 {
-  "title": "Permutations — Swap-based approach",
-  "description": "arr=[1,2,3]. At each index, swap with every element from index to end, recurse, then swap back.",
-  "array": [1, 2, 3],
+  "type": "recursion",
+  "title": "Permutations — Swap-based approach on [1,2,3]",
+  "description": "At index idx, swap idx with each position from idx to end, recurse, then swap back. Each frame shows the array state AT that call.",
+  "calls": [
+    { "id": "root", "label": "idx0:[1,2,3]", "x": 50, "y": 8 },
+    { "id": "a", "label": "idx1:[1,2,3]", "parent": "root", "x": 25, "y": 26 },
+    { "id": "b", "label": "idx2:[1,2,3]", "parent": "a", "x": 15, "y": 44 },
+    { "id": "c", "label": "idx2:[1,3,2]", "parent": "a", "x": 35, "y": 44 },
+    { "id": "d", "label": "idx1:[2,1,3]", "parent": "root", "x": 75, "y": 26 }
+  ],
   "speed": 1000,
   "steps": [
-    { "pointers": { "i": 0 }, "highlight": [0,1,2], "label": "idx=0: swap(0,0)→[1,2,3], recurse. Then swap(0,1)→[2,1,3], recurse. Then swap(0,2)→[3,2,1], recurse." },
-    { "pointers": { "i": 1 }, "highlight": [0,1], "label": "idx=1 with [1,2,3]: swap(1,1)→[1,2,3], recurse. swap(1,2)→[1,3,2], recurse." },
-    { "pointers": { "i": 2 }, "highlight": [0,1,2], "label": "idx=2: base case, record permutation [1,2,3] ✓" },
-    { "pointers": { "i": 2 }, "highlight": [0,2,1], "label": "Backtrack, swap back. Next: [1,3,2] ✓", "note": "All 6 permutations generated ✓. Swap-back = backtrack." }
+    { "visible": ["root"], "active": "root", "label": "idx=0, array=[1,2,3]. Swap(0,0) — no-op — then recurse into idx=1." },
+    { "visible": ["root","a"], "active": "a", "highlight": ["root"], "label": "idx=1, array=[1,2,3]. Swap(1,1) — no-op — recurse into idx=2." },
+    { "visible": ["root","a","b"], "active": "b", "returned": { "b": "[1,2,3]" }, "highlight": ["root","a"], "label": "idx=2 == last index → base case. Record permutation [1,2,3] ✓. Return." },
+    { "visible": ["root","a","b","c"], "active": "c", "returned": { "b": "[1,2,3]" }, "highlight": ["a"], "label": "Back at idx=1: swap back(1,1), then swap(1,2) → [1,3,2]. Recurse into idx=2 again." },
+    { "visible": ["root","a","b","c"], "returned": { "b": "[1,2,3]", "c": "[1,3,2]" }, "highlight": ["c"], "label": "idx=2 base case → record [1,3,2] ✓. Return, swap back(1,2). idx=1's work is done." },
+    { "visible": ["root","a","b","c","d"], "active": "d", "returned": { "b": "[1,2,3]", "c": "[1,3,2]" }, "highlight": ["root"], "label": "Back at idx=0: swap back(0,0), then swap(0,1) → [2,1,3]. Recurse into idx=1 with this new array.", "note": "Pattern repeats for [2,1,3] and [3,2,1] starting arrays → 3! = 6 total permutations. Swap-back after the recursive call IS the backtrack step." }
   ]
 }
 ```
 
 **When to use:** All permutations of array/string. For duplicates: sort first, skip same-value siblings.
+
+> **In an interview:** trigger words are *"all orderings / arrangements"* (n! of them). If the input has duplicates, sort and skip same-value siblings to avoid repeats.
+> **Remember:** fix each slot with an unused element; mark used, recurse, unmark.
 
 ---
 
@@ -177,6 +222,9 @@
 
 **When to use:** Merge sort, binary search, count inversions.
 
+> **In an interview:** trigger is a problem that *splits cleanly into independent halves* with a cheap combine step. Name your split point and your merge/combine logic.
+> **Remember:** solve left, solve right, combine — the combine step is where the real work is.
+
 ---
 
 ## Memoization (Recursion + Cache)
@@ -186,6 +234,9 @@ When the same subproblem appears multiple times, store the result.
 **Analogy:** Calculating Fibonacci. Without memo, fib(3) is recalculated dozens of times. With a notebook, you look it up after computing once.
 
 **Rule:** Overlapping subproblems in recursion → add a cache → that's top-down DP.
+
+> **In an interview:** the moment you notice the same arguments recomputed (or the recursion tree branching on overlapping states), say *"I'll memoize on these parameters"* — that's the jump to DP.
+> **Remember:** if the recursion revisits identical subproblems, cache by its changing parameters.
 
 ---
 
@@ -222,3 +273,25 @@ flowchart TD
     N -->|Yes| O[Divide and Conquer\nMerge Sort / Quick Sort]
     N -->|No| P[Pure Recursion\nBase case + smaller call]
 ```
+
+---
+
+## Problem → Pattern Cross-References
+
+The problems list now mirrors the patterns above, deduped (the old file listed N-Queens, Sudoku, Combination Sum, and Palindrome Partitioning twice). Notes on homes and cross-topic moves:
+
+| Problem | Home pattern | Why (and what else it touches) |
+|---------|--------------|-------------------------------|
+| Combination Sum I/II/III | Combinations | Pick/no-pick with an index that only moves forward |
+| Letter Combinations of a Phone Number | Combinations | Cartesian product via recursion |
+| N-Queens / Sudoku / Rat in a Maze | Backtracking (Grid) | Recursion fixes the row/cell, loop tries columns/digits (the Golden Rule) |
+| Palindrome Partitioning / Restore IP | Backtracking (String) | Recursion fixes the cut index, loop tries substring lengths |
+| Generate Parentheses | Backtracking (String) | Choice = add '(' or ')' under validity constraints — *not* a stack problem |
+
+**Cross-topic homes:**
+
+- **Word Break** → home is `dp.md` (overlapping subproblems → memoization). Pure recursion TLEs.
+- **Implement Atoi** (a.k.a. recursive atoi) → home is `string.md` (String Conversion).
+- **Pow(x, n)** → home is here (divide-and-conquer fast exponentiation). Removed the duplicate in `bits.md`.
+
+> **The Golden Rule again:** for any configuration search, decide what each recursion level *fixes* (position) versus what the loop *explores* (options). Get that split right and N-Queens, Sudoku, and permutations all become the same template.

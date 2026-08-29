@@ -44,6 +44,9 @@
 
 **Morris Traversal:** Inorder/Preorder in O(1) space by temporarily modifying tree pointers.
 
+> **In an interview:** pick the order by the goal — inorder for sorted BST output, preorder to copy/serialize, postorder to delete or aggregate children. If asked for O(1) space, mention Morris.
+> **Remember:** inorder = Left-Root-Right; preorder = Root first; postorder = Root last.
+
 ---
 
 ## Pattern 2: Tree Properties (Height, Diameter, Balance)
@@ -83,6 +86,9 @@ def solve(node):
 - Height of tree, Diameter, Check if balanced
 - Maximum path sum, Count nodes
 
+> **In an interview:** trigger words are *"height / depth / diameter / balanced / path sum"*. The unlock is returning one value up while updating a global — don't recompute heights top-down (that's O(n²)).
+> **Remember:** post-order — solve left, solve right, combine at the node.
+
 ---
 
 ## Pattern 3: Views (Top, Bottom, Left, Right)
@@ -94,6 +100,9 @@ def solve(node):
 - **Vertical Order:** Group nodes by column index
 
 **Analogy:** You're photographing a tree from different angles. Each angle reveals different nodes.
+
+> **In an interview:** trigger words are *"top / bottom / left / right view"*, *"vertical order"*. Clarify tie-breaking when two nodes share a column (usually by level, then value).
+> **Remember:** BFS + a horizontal-distance key; first-per-column = top view, last-per-column = bottom.
 
 ---
 
@@ -132,6 +141,9 @@ def solve(node):
 - LCA in BST (simpler — use BST property to navigate)
 - Distance between two nodes
 
+> **In an interview:** trigger words are *"lowest common ancestor"*, *"distance between two nodes"*, *"nodes at distance K"*. In a BST, exploit ordering; in a plain tree, recurse and check both sides.
+> **Remember:** both sides return non-null → this node is the LCA.
+
 ---
 
 ## Pattern 5: BST Operations
@@ -165,6 +177,9 @@ def solve(node):
 - Floor/Ceil → navigate using BST property
 - Two Sum in BST → inorder gives sorted array, then two pointers
 
+> **In an interview:** the word *"BST"* is the signal — decide which property you need: left/right navigation (search, insert, delete, floor/ceil) or inorder-is-sorted (kth, validate, two-sum).
+> **Remember:** BST search/insert is O(h); an inorder walk yields values in sorted order.
+
 ---
 
 ## Pattern 6: Tree Construction
@@ -192,6 +207,9 @@ def solve(node):
 
 **When to use:**
 - Build tree from preorder+inorder or postorder+inorder traversals
+
+> **In an interview:** trigger is *"reconstruct the tree from two traversals"*. Note that pre+post alone is ambiguous — you need inorder to split left/right.
+> **Remember:** pre/post gives the root; find it in inorder to split the two subtrees. Use an index map for O(n).
 
 ---
 
@@ -221,6 +239,9 @@ def solve(node):
 - Diameter of tree
 - Largest BST in binary tree
 
+> **In an interview:** the tell is that each node's answer needs a *bundle* of facts from its children (e.g. isBST + min + max + size). Return a small struct/tuple upward.
+> **Remember:** post-order returning a tuple; combine children, update a global best.
+
 ---
 
 ## Pattern 8: Serialize / Deserialize
@@ -246,6 +267,9 @@ def solve(node):
 ```
 
 **When to use:** Store/transmit a tree, clone a tree.
+
+> **In an interview:** trigger words are *"serialize / deserialize / encode a tree / clone"*. Agree on the format (preorder + null markers is simplest) and that decode consumes tokens in the same order.
+> **Remember:** preorder with explicit null markers round-trips a tree uniquely.
 
 ---
 
@@ -288,3 +312,21 @@ flowchart TD
     Q -->|Postorder + Inorder| S[Postorder last = root\nInorder splits left/right]
     H -->|Serialize/Deserialize| T[Preorder with null markers]
 ```
+
+---
+
+## Problem → Pattern Cross-References
+
+The problems list now mirrors the 8 patterns above (with BST split into Operations vs Inorder-Applications). Duplicates removed: LCA-in-BST was listed twice, "Same Tree" was duplicated as a separate "Tree Comparison" entry, and Left View sat under DFS traversals. Notes:
+
+| Problem | Home pattern | Why (and what else it touches) |
+|---------|--------------|-------------------------------|
+| Symmetric / Same / Subtree | Tree Properties | Simultaneous two-node recursion, a Properties variant |
+| Diameter / Max Width | Properties / BFS | Diameter is post-order; width is BFS with index tracking |
+| Nodes at Distance K / Burn Tree | LCA | Both need parent pointers or root-to-node paths, an LCA-family skill |
+| Kth smallest/largest, Two-Sum in BST, Recover BST | BST — Inorder Applications | All exploit that inorder of a BST is sorted |
+| Largest BST in Binary Tree | Tree DP | Post-order returning (isBST, min, max, size) — lives here, cross-links to BST |
+
+**Why two BST sections?** *BST Operations* uses the left/right navigation property (search, insert, delete, floor/ceil, LCA). *Inorder Applications* uses the "inorder = sorted" property. Recognizing which property a problem needs is the whole game.
+
+> **The unifying move for binary trees:** most non-view, non-BFS problems are **post-order** — solve left, solve right, combine at the node. Height, diameter, balance, max-path-sum, and largest-BST are all the same shape with a different `combine`.

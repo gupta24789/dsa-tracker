@@ -9,6 +9,9 @@
 //   src/viz/tree.js        → window.VizTree
 //   src/viz/linkedlist.js  → window.VizLinkedList
 //   src/viz/graph.js       → window.VizGraph
+//   src/viz/stackqueue.js  → window.VizStack, window.VizQueue
+//   src/viz/recursion.js   → window.VizRecursion
+//   src/viz/heap.js        → window.VizHeap
 
 window.VizEngine = {
   // Map type string → renderer object (must have a .build(spec, stepIdx) method)
@@ -18,6 +21,10 @@ window.VizEngine = {
     tree:       () => window.VizTree,
     linkedlist: () => window.VizLinkedList,
     graph:      () => window.VizGraph,
+    stack:      () => window.VizStack,
+    queue:      () => window.VizQueue,
+    recursion:  () => window.VizRecursion,
+    heap:       () => window.VizHeap,
   },
 
   render(container, specText) {

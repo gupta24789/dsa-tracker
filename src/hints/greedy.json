@@ -1,0 +1,54 @@
+{
+  "https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1": {
+    "brute": { "idea": "Try subsets/orderings to maximize non-overlapping meetings.", "time": "O(2^n)", "space": "O(n)" },
+    "optimal": { "idea": "Sort by end time; greedily pick a meeting if it starts after the last picked one ends.", "time": "O(n log n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1": {
+    "brute": { "idea": "For each train, count overlaps with all others.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Sort arrivals and departures; sweep both, +1 on arrival, -1 on departure, track peak.", "time": "O(n log n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1": {
+    "better": { "idea": "Sort by profit desc; for each job scan back from its deadline for a free slot.", "time": "O(n^2)", "space": "O(n)" },
+    "optimal": { "idea": "Sort by profit desc; place each job in the latest free slot using union-find.", "time": "O(n log n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/shortest-job-first/1": {
+    "optimal": { "idea": "Sort by burst time; shortest jobs first minimize average waiting time.", "time": "O(n log n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/insert-interval/": {
+    "optimal": { "idea": "Add intervals ending before the new one, merge overlaps into it, then add the rest.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/non-overlapping-intervals/": {
+    "brute": { "idea": "Sort by start; DP for the max set of compatible intervals (like weighted interval scheduling), removals = n - that.", "time": "O(n^2)", "space": "O(n)" },
+    "optimal": { "idea": "Sort by end; greedily keep non-overlapping intervals, count the rest as removals.", "time": "O(n log n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/assign-cookies/": {
+    "optimal": { "idea": "Sort children and cookies; give the smallest sufficient cookie to each child.", "time": "O(n log n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/fractional-knapsack-1587115620/1": {
+    "optimal": { "idea": "Sort by value/weight ratio; take greedily, splitting the last item as a fraction.", "time": "O(n log n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/-minimum-number-of-coins4426/1": {
+    "optimal": { "idea": "For canonical denominations, greedily take the largest coin <= remaining amount.", "time": "O(amount/coin)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/lemonade-change/": {
+    "optimal": { "idea": "Track $5 and $10 bills; give change greedily, preferring a $10+$5 over three $5s.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/jump-game/": {
+    "brute": { "idea": "DFS/DP trying every jump length from each index.", "time": "O(n^2)", "space": "O(n)" },
+    "optimal": { "idea": "Track the farthest reachable index; fail if the current index ever exceeds it.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/jump-game-ii/": {
+    "brute": { "idea": "DP: min jumps to each index from all reachable predecessors.", "time": "O(n^2)", "space": "O(n)" },
+    "optimal": { "idea": "BFS-like: track current jump boundary and farthest reach; increment jumps at each boundary.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/valid-parenthesis-string/": {
+    "optimal": { "idea": "Track min and max possible open count; '*' widens the range; valid if min hits 0 and max stays >=0.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/candy/": {
+    "brute": { "idea": "Repeatedly sweep, bumping any child that violates a neighbor rule until stable.", "time": "O(n^2)", "space": "O(n)" },
+    "optimal": { "idea": "Two passes: left-to-right then right-to-left; take the max candy per child.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/page-faults-in-lru5603/1": {
+    "optimal": { "idea": "Simulate an LRU set/queue of capacity C; on a miss evict the least-recently-used and count the fault.", "time": "O(n)", "space": "O(C)" }
+  }
+}

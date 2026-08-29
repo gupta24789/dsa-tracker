@@ -1,0 +1,35 @@
+{
+  "https://leetcode.com/problems/implement-trie-prefix-tree/": {
+    "optimal": { "idea": "Nodes with 26 children + isEnd flag; walk/create per character for insert, search, startsWith.", "time": "O(L) per op", "space": "O(total chars)" }
+  },
+  "https://www.geeksforgeeks.org/problems/trie-or-prefix-tree/1": {
+    "optimal": { "idea": "Add countEnd and countPrefix ints per node; increment/decrement on insert/erase for exact counts.", "time": "O(L) per op", "space": "O(total chars)" }
+  },
+  "https://www.geeksforgeeks.org/problems/longest-valid-word-with-all-prefixes/1": {
+    "brute": { "idea": "Put words in a set; for each word check every prefix is present.", "time": "O(n*L)", "space": "O(n*L)" },
+    "optimal": { "idea": "Insert all words; DFS the trie descending only through nodes marked isEnd; track the longest.", "time": "O(total chars)", "space": "O(total chars)" }
+  },
+  "https://www.geeksforgeeks.org/problems/count-of-distinct-substrings/1": {
+    "brute": { "idea": "Insert all substrings into a hash set and count.", "time": "O(n^3)", "space": "O(n^2)" },
+    "optimal": { "idea": "Insert all suffixes into a trie; each newly created node equals one distinct substring.", "time": "O(n^2)", "space": "O(n^2)" }
+  },
+  "https://leetcode.com/problems/design-add-and-search-words-data-structure/": {
+    "brute": { "idea": "Store words in a list; on search, compare against each word treating '.' as a wildcard.", "time": "O(n*L) per search", "space": "O(n*L)" },
+    "optimal": { "idea": "Trie insert; search handles '.' by recursing into all children at that position.", "time": "O(L) / O(26^dots)", "space": "O(total chars)" }
+  },
+  "https://leetcode.com/problems/replace-words/": {
+    "brute": { "idea": "For each word, test every dictionary root as a prefix.", "time": "O(n*d*L)", "space": "O(d*L)" },
+    "optimal": { "idea": "Insert roots into a trie; walk each word, stop at the first isEnd for the shortest root.", "time": "O(total chars)", "space": "O(total chars)" }
+  },
+  "https://leetcode.com/problems/maximum-xor-of-two-numbers-in-an-array/": {
+    "brute": { "idea": "Try every pair and track the max XOR.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Binary trie of bits (MSB first); for each number greedily follow the opposite bit.", "time": "O(32n)", "space": "O(32n)" }
+  },
+  "https://leetcode.com/problems/maximum-xor-with-an-element-from-array/": {
+    "optimal": { "idea": "Sort numbers and offline-sort queries by limit; insert into a binary trie as the limit grows, then query.", "time": "O((n+q)*32)", "space": "O(32n)" }
+  },
+  "https://leetcode.com/problems/word-search-ii/": {
+    "brute": { "idea": "Run a separate grid DFS for each word in the list.", "time": "O(W*cells*4^L)", "space": "O(L)" },
+    "optimal": { "idea": "Build a trie of the word list; DFS the grid walking the trie in parallel, pruning off-trie paths.", "time": "O(cells*4^L)", "space": "O(total chars)" }
+  }
+}

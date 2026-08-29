@@ -3,61 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DSA Problem Tracker</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Practice Tracker</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
-  <link rel="stylesheet" href="src/style.css" />
+  <link rel="stylesheet" href="src/style.css?v=25" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
   <script src="https://cdn.jsdelivr.net/npm/marked@9.1.6/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>📚 DSA Problem Tracker</h1>
-      <p>Track your progress through Data Structures and Algorithms problems</p>
-    </header>
+  <div class="app-shell" id="appShell">
+    <!-- ── Left sidebar ─────────────────────────────────────────────── -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-icon">📚</span>
+        <span class="brand-text">Progress Tracker</span>
+      </div>
+      <nav class="topic-nav" id="topicNav"></nav>
+      <div class="sidebar-footer">
+        <div class="data-buttons">
+          <button id="exportButton" title="Download your progress, review schedule, and notes as a file">↓ Export</button>
+          <button id="importButton" title="Restore data from a previously exported file">↑ Import</button>
+        </div>
+        <input type="file" id="importFile" accept="application/json,.json" hidden>
+        <button id="resetButton" title="Reset progress for this topic">Reset Progress</button>
+      </div>
+    </aside>
 
-    <div class="stats-container">
-      <div class="stat-card">
-        <div class="stat-label">Total</div>
-        <div class="stat-value" id="totalProblems">0</div>
+    <!-- Mobile overlay backdrop -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- ── Main area ────────────────────────────────────────────────── -->
+    <div class="main-area">
+      <div class="topbar">
+        <button class="menu-toggle" id="menuToggle" title="Menu">☰</button>
+        <h1 class="topbar-title" id="topicTitle">Array</h1>
+        <div class="tab-group" id="tabsRow">
+          <button class="tab-btn active" id="conceptsTab">Concepts</button>
+          <button class="tab-btn" id="problemsTab">Problems</button>
+        </div>
+        <div class="topbar-stats" id="topbarStats">
+          <span class="mini-stat"><span id="completedProblems">0</span>/<span id="totalProblems">0</span></span>
+          <span class="mini-progress-track"><span class="mini-progress-fill" id="progressBar"></span></span>
+          <span class="mini-pct" id="progressPercentage">0%</span>
+        </div>
       </div>
-      <div class="stat-card">
-        <div class="stat-label">Completed</div>
-        <div class="stat-value" id="completedProblems">0</div>
-      </div>
-      <div class="stat-card progress-card">
-        <div class="stat-label">Progress</div>
-        <div class="stat-value" id="progressPercentage">0%</div>
-        <div class="progress-bar-track"><div class="progress-bar-fill" id="progressBar"></div></div>
-      </div>
+
+      <div id="content">Loading topics...</div>
     </div>
-
-    <div class="toolbar">
-      <select id="topicFilter"></select>
-      <div class="tab-group" id="tabsRow">
-        <button class="tab-btn active" id="conceptsTab">Concepts</button>
-        <button class="tab-btn" id="problemsTab">Problems</button>
-      </div>
-      <button id="resetButton">Reset Progress</button>
-    </div>
-
-    <div id="content">Loading topics...</div>
   </div>
 
-  <script src="src/viz/colors.js"></script>
-  <script src="src/viz/array.js"></script>
-  <script src="src/viz/table.js"></script>
-  <script src="src/viz/tree.js"></script>
-  <script src="src/viz/linkedlist.js"></script>
-  <script src="src/viz/graph.js"></script>
-  <script src="src/viz/index.js"></script>
-  <script src="src/main.js"></script>
+  <script src="src/viz/colors.js?v=25"></script>
+  <script src="src/viz/array.js?v=25"></script>
+  <script src="src/viz/table.js?v=25"></script>
+  <script src="src/viz/tree.js?v=25"></script>
+  <script src="src/viz/linkedlist.js?v=25"></script>
+  <script src="src/viz/graph.js?v=25"></script>
+  <script src="src/viz/stackqueue.js?v=25"></script>
+  <script src="src/viz/recursion.js?v=25"></script>
+  <script src="src/viz/heap.js?v=25"></script>
+  <script src="src/viz/index.js?v=25"></script>
+  <script src="src/main.js?v=25"></script>
 
   <!-- Scroll navigation buttons -->
-  <button class="scroll-btn scroll-top" title="Go to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
-  <button class="scroll-btn scroll-bottom" title="Go to bottom" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">↓</button>
+  <button class="scroll-btn scroll-top" title="Go to top" onclick="document.querySelector('.main-area').scrollTo({top:0,behavior:'smooth'})">↑</button>
+  <button class="scroll-btn scroll-bottom" title="Go to bottom" onclick="document.querySelector('.main-area').scrollTo({top:document.querySelector('.main-area').scrollHeight,behavior:'smooth'})">↓</button>
 
   <!-- Fullscreen diagram modal -->
   <div id="diagramModal" class="diagram-modal">

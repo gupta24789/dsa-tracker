@@ -55,6 +55,9 @@ Think of a **treasure hunt**. Each clue (node) tells you where the next clue is.
 
 **Nth from end trick:** Move fast N steps ahead, then move both together. When fast hits null, slow is at the target.
 
+> **In an interview:** trigger words are *"middle / Nth from end / detect a cycle / one pass, O(1) space"*. If they forbid a length pre-count, that's the hint for two speeds.
+> **Remember:** fast moves 2, slow moves 1 — the gap does the work.
+
 ---
 
 ## Pattern 2: Reversal
@@ -67,15 +70,15 @@ Think of a **treasure hunt**. Each clue (node) tells you where the next clue is.
 {
   "type": "linkedlist",
   "title": "Linked List Reversal — prev / curr / next",
-  "description": "List: 1→2→3→4→5. At each step: save next, flip curr.next to prev, advance both.",
+  "description": "List: 1→2→3→4→5. Each ← arrow is a link that has been flipped to point backward. Watch them flip left-to-right.",
   "nodes": [1, 2, 3, 4, 5],
   "speed": 1000,
   "steps": [
-    { "pointers": { "curr": 0 }, "highlight": [0], "label": "prev=null, curr=1. Flip: 1.next=null" },
-    { "pointers": { "curr": 1 }, "highlight": [1], "label": "prev=1, curr=2. Flip: 2.next=1" },
-    { "pointers": { "curr": 2 }, "highlight": [2], "label": "prev=2, curr=3. Flip: 3.next=2" },
-    { "pointers": { "curr": 3 }, "highlight": [3], "label": "prev=3, curr=4. Flip: 4.next=3" },
-    { "pointers": { "curr": 4 }, "highlight": [4], "label": "prev=4, curr=5. Flip: 5.next=4. Done.", "note": "New head=5. List: 5→4→3→2→1 ✓" }
+    { "pointers": { "curr": 0 }, "highlight": [0], "arrows": { "0": "none" }, "label": "prev=null, curr=1. Flip 1.next → null (1 is the new tail)." },
+    { "pointers": { "curr": 1 }, "highlight": [1], "arrows": { "0": "back" }, "label": "prev=1, curr=2. Flip 2.next → 1. Link 1–2 now points ←." },
+    { "pointers": { "curr": 2 }, "highlight": [2], "arrows": { "0": "back", "1": "back" }, "label": "prev=2, curr=3. Flip 3.next → 2. Link 2–3 now points ←." },
+    { "pointers": { "curr": 3 }, "highlight": [3], "arrows": { "0": "back", "1": "back", "2": "back" }, "label": "prev=3, curr=4. Flip 4.next → 3. Link 3–4 now points ←." },
+    { "pointers": { "curr": 4 }, "highlight": [4], "arrows": { "0": "back", "1": "back", "2": "back", "3": "back" }, "label": "prev=4, curr=5. Flip 5.next → 4. All links flipped.", "note": "New head = 5. Reading the ← arrows: 5→4→3→2→1 ✓" }
   ]
 }
 ```
@@ -98,6 +101,9 @@ return prev
 - Palindrome check (reverse second half, compare)
 - Reorder list
 
+> **In an interview:** trigger words are *"reverse the list / reverse in k-groups / palindrome list"*. Draw the three pointers before coding — this is where off-by-one bugs live.
+> **Remember:** save next, flip curr.next to prev, advance both; return prev.
+
 ---
 
 ## Pattern 3: Merge
@@ -110,16 +116,58 @@ return prev
 {
   "type": "linkedlist",
   "title": "Merge Two Sorted Lists",
-  "description": "List A: [1, 3, 5]  List B: [2, 4, 6]. Always pick the smaller head. Result builds left to right.",
-  "nodes": [1, 2, 3, 4, 5, 6],
+  "description": "List A: 1→3→5, List B: 2→4→6. Compare the two current heads (active), attach the smaller to the Merged list.",
   "speed": 900,
   "steps": [
-    { "highlight": [0], "label": "A=1, B=2. Pick A(1)" },
-    { "highlight": [1], "label": "A=3, B=2. Pick B(2)" },
-    { "highlight": [2], "label": "A=3, B=4. Pick A(3)" },
-    { "highlight": [3], "label": "A=5, B=4. Pick B(4)" },
-    { "highlight": [4], "label": "A=5, B=6. Pick A(5)" },
-    { "highlight": [5], "label": "B=6. Pick B(6)", "note": "Merged ✓" }
+    {
+      "lists": [
+        { "label": "A", "nodes": [1, 3, 5], "active": 0 },
+        { "label": "B", "nodes": [2, 4, 6], "active": 0 },
+        { "label": "Merged", "nodes": [] }
+      ],
+      "label": "Heads: A=1, B=2. 1 < 2 → take A's head."
+    },
+    {
+      "lists": [
+        { "label": "A", "nodes": [3, 5], "active": 0 },
+        { "label": "B", "nodes": [2, 4, 6], "active": 0 },
+        { "label": "Merged", "nodes": [1] }
+      ],
+      "label": "Heads: A=3, B=2. 2 < 3 → take B's head."
+    },
+    {
+      "lists": [
+        { "label": "A", "nodes": [3, 5], "active": 0 },
+        { "label": "B", "nodes": [4, 6], "active": 0 },
+        { "label": "Merged", "nodes": [1, 2] }
+      ],
+      "label": "Heads: A=3, B=4. 3 < 4 → take A's head."
+    },
+    {
+      "lists": [
+        { "label": "A", "nodes": [5], "active": 0 },
+        { "label": "B", "nodes": [4, 6], "active": 0 },
+        { "label": "Merged", "nodes": [1, 2, 3] }
+      ],
+      "label": "Heads: A=5, B=4. 4 < 5 → take B's head."
+    },
+    {
+      "lists": [
+        { "label": "A", "nodes": [5], "active": 0 },
+        { "label": "B", "nodes": [6], "active": 0 },
+        { "label": "Merged", "nodes": [1, 2, 3, 4] }
+      ],
+      "label": "Heads: A=5, B=6. 5 < 6 → take A's head."
+    },
+    {
+      "lists": [
+        { "label": "A", "nodes": [] },
+        { "label": "B", "nodes": [6], "active": 0 },
+        { "label": "Merged", "nodes": [1, 2, 3, 4, 5] }
+      ],
+      "label": "A is empty → attach all remaining B nodes (just 6).",
+      "note": "Merged = 1→2→3→4→5→6 ✓. Use a dummy head so the first attach needs no special case."
+    }
   ]
 }
 ```
@@ -128,6 +176,9 @@ return prev
 - Merge two sorted lists
 - Merge K sorted lists (use a min-heap)
 - Sort a linked list (merge sort on LL)
+
+> **In an interview:** trigger words are *"merge sorted lists"* or *"sort a linked list"* (merge sort is the O(n log n), O(1)-extra choice). Use a dummy head to simplify the wiring.
+> **Remember:** always attach the smaller current head, then advance that list.
 
 ---
 
@@ -159,6 +210,9 @@ return prev
 - Delete nodes with a given value
 - Any problem where the head might change
 
+> **In an interview:** the tell is *"the head itself might be deleted/changed"*. Reach for a dummy node the moment deletion could touch the head — it removes the special case.
+> **Remember:** dummy → head, return dummy.next; now every node has a predecessor.
+
 ---
 
 ## Pattern 5: In-place Rearrangement
@@ -169,15 +223,63 @@ return prev
 {
   "type": "linkedlist",
   "title": "Reorder List — Interleave first and reversed second half",
-  "description": "List: 1→2→3→4→5. Steps: find mid, reverse second half, merge alternately.",
-  "nodes": [1, 2, 3, 4, 5],
+  "description": "List: 1→2→3→4→5. Decompose into Front (1→2→3) and reversed Back (5→4), then take one from each alternately.",
   "speed": 1000,
   "steps": [
-    { "pointers": { "S": 2 }, "highlight": [2], "label": "Step 1: Find mid → node3" },
-    { "pointers": { "i": 4, "j": 3 }, "highlight": [3, 4], "label": "Step 2: Reverse second half [4,5]→[5,4]" },
-    { "pointers": { "i": 0, "j": 4 }, "highlight": [0, 4], "label": "Step 3: Merge. Take 1, then 5" },
-    { "pointers": { "i": 1, "j": 3 }, "highlight": [1, 3], "label": "Take 2, then 4" },
-    { "pointers": { "i": 2 }, "highlight": [2], "label": "Take 3", "note": "Result: 1→5→2→4→3 ✓" }
+    {
+      "lists": [
+        { "label": "Full", "nodes": [1, 2, 3, 4, 5], "pointers": { "mid": 2 }, "highlight": [2] }
+      ],
+      "label": "Step 1: find middle (fast/slow) → node 3. Split into [1,2,3] and [4,5]."
+    },
+    {
+      "lists": [
+        { "label": "Front", "nodes": [1, 2, 3], "active": 0 },
+        { "label": "Back (reversed)", "nodes": [5, 4], "active": 0 }
+      ],
+      "label": "Step 2: reverse the back half [4,5] → [5,4]. Now merge, taking Front then Back."
+    },
+    {
+      "lists": [
+        { "label": "Front", "nodes": [2, 3], "active": 0 },
+        { "label": "Back (reversed)", "nodes": [5, 4], "active": 0 },
+        { "label": "Result", "nodes": [1] }
+      ],
+      "label": "Take Front head 1."
+    },
+    {
+      "lists": [
+        { "label": "Front", "nodes": [2, 3], "active": 0 },
+        { "label": "Back (reversed)", "nodes": [4], "active": 0 },
+        { "label": "Result", "nodes": [1, 5] }
+      ],
+      "label": "Take Back head 5."
+    },
+    {
+      "lists": [
+        { "label": "Front", "nodes": [3], "active": 0 },
+        { "label": "Back (reversed)", "nodes": [4], "active": 0 },
+        { "label": "Result", "nodes": [1, 5, 2] }
+      ],
+      "label": "Take Front head 2."
+    },
+    {
+      "lists": [
+        { "label": "Front", "nodes": [3], "active": 0 },
+        { "label": "Back (reversed)", "nodes": [] },
+        { "label": "Result", "nodes": [1, 5, 2, 4] }
+      ],
+      "label": "Take Back head 4. Back is now empty."
+    },
+    {
+      "lists": [
+        { "label": "Front", "nodes": [] },
+        { "label": "Back (reversed)", "nodes": [] },
+        { "label": "Result", "nodes": [1, 5, 2, 4, 3] }
+      ],
+      "label": "Take Front head 3. Both halves empty.",
+      "note": "Result: 1→5→2→4→3 ✓. Reorder = find-mid + reverse-second-half + alternate-merge."
+    }
   ]
 }
 ```
@@ -187,6 +289,9 @@ return prev
 - Reorder list (first + reversed second half interleaved)
 - Flatten a multilevel list
 - Rotate list by K
+
+> **In an interview:** trigger words are *"reorder / rotate / regroup, in place, no extra list"*. These usually decompose into find-mid + reverse + merge — say that decomposition aloud.
+> **Remember:** rewire `.next` pointers; never allocate new nodes.
 
 ---
 
@@ -216,6 +321,9 @@ return prev
 
 **Why it works:** The math works out — the distance from head to cycle start equals the distance from meeting point to cycle start.
 
+> **In an interview:** trigger words are *"is there a loop / where does the loop start / loop length"* with an O(1)-space constraint (a hash set is the easy O(n)-space fallback to mention).
+> **Remember:** meet inside the cycle, then reset one pointer to head; they re-meet at the entrance.
+
 ---
 
 ## Pattern 7: Intersection of Two Lists
@@ -228,15 +336,30 @@ return prev
 {
   "type": "linkedlist",
   "title": "Intersection of Two Lists",
-  "description": "List A: [1,3,5,7,9] (len=5), List B: [2,7,9] (len=3). They intersect at node 7 (index 3 in A, index 1 in B).",
-  "nodes": [1, 3, 5, 7, 9],
+  "description": "List A: 1→3→5→7→9 (len 5), List B: 2→7→9 (len 3). The tail 7→9 is shared. pA walks A then B; pB walks B then A — both cover lenA+lenB and align at the join.",
   "speed": 1000,
   "steps": [
-    { "pointers": { "i": 0, "j": 0 }, "label": "pA at A[0]=1, pB at B[0]=2. Both advance." },
-    { "pointers": { "i": 3, "j": 1 }, "highlight": [3], "label": "pA=A[3]=7, pB=B[1]=7. Same node!", "note": "Intersection at node 7 ✓. Key: pA travels lenA+lenB, pB travels lenB+lenA → meet at intersection" }
+    {
+      "lists": [
+        { "label": "A", "nodes": [1, 3, 5, 7, 9], "pointers": { "pA": 0 }, "highlight": [3, 4] },
+        { "label": "B", "nodes": [2, 7, 9], "pointers": { "pB": 0 }, "highlight": [1, 2] }
+      ],
+      "label": "Start: pA=A[0]=1, pB=B[0]=2. Highlighted tail (7→9) is the shared segment. Advance both."
+    },
+    {
+      "lists": [
+        { "label": "A", "nodes": [1, 3, 5, 7, 9], "pointers": { "pA": 3 }, "highlight": [3, 4] },
+        { "label": "B", "nodes": [2, 7, 9], "pointers": { "pB": 1 }, "highlight": [1, 2] }
+      ],
+      "label": "pA reached the join at A[3]=7; pB reached B[1]=7 — same physical node.",
+      "note": "Intersection = node 7 ✓. Switching each pointer to the other head at the end equalizes distance (lenA+lenB), so they meet at the join."
+    }
   ]
 }
 ```
+
+> **In an interview:** trigger words are *"where do two lists merge / find the common node"*. Compare by node identity, not by value.
+> **Remember:** switch each pointer to the other list's head at the end; they align after lenA+lenB steps.
 
 ---
 
@@ -246,6 +369,54 @@ Each node has both `next` and `prev` pointers. Useful for:
 - LRU Cache (O(1) insert + delete anywhere)
 - Browser history (forward/back)
 - Remove duplicates efficiently
+
+**The idea (LRU Cache):** Combine a doubly linked list (for O(1) remove/insert) with a hashmap (for O(1) lookup). Most recently used sits at the head; least recently used sits at the tail and gets evicted first.
+
+**Analogy:** Your browser's recently visited tabs. The most recently used tab is at the front. When you run out of space, the least recently used tab gets closed.
+
+```viz
+{
+  "type": "linkedlist",
+  "title": "LRU Cache (capacity=3) — get/put operations",
+  "description": "DLL: most recently used at left (head), least recently used at right (tail, evicted first).",
+  "nodes": [1, 2, 3],
+  "speed": 1100,
+  "steps": [
+    {
+      "nodes": [1],
+      "label": "put(1). Cache: [1]. Size=1/3"
+    },
+    {
+      "nodes": [2, 1],
+      "highlight": [0],
+      "label": "put(2). Cache: [2→1]. Size=2/3"
+    },
+    {
+      "nodes": [3, 2, 1],
+      "highlight": [0],
+      "label": "put(3). Cache: [3→2→1]. Size=3/3 (full)"
+    },
+    {
+      "nodes": [4, 3, 2],
+      "highlight": [0],
+      "label": "put(4). Cache full → evict LRU=1 (tail). Cache: [4→3→2]"
+    },
+    {
+      "nodes": [2, 4, 3],
+      "highlight": [0],
+      "label": "get(2). Hit! Move 2 to head. Cache: [2→4→3]",
+      "note": "HashMap gives O(1) lookup. DLL gives O(1) move-to-head and evict-from-tail ✓"
+    }
+  ]
+}
+```
+
+**When to use:**
+- LRU Cache design
+- LFU Cache design
+
+> **In an interview:** trigger words are *"O(1) get and put with eviction"*. The insight the interviewer wants: hash map for lookup + doubly linked list for ordering.
+> **Remember:** map finds the node in O(1); the DLL moves it to the front / evicts the tail in O(1).
 
 ---
 
@@ -259,6 +430,7 @@ Each node has both `next` and `prev` pointers. Useful for:
 | Merge sorted lists | Merge pattern |
 | Head might change | Dummy node |
 | Interleave, rotate, flatten | In-place rearrangement |
+| O(1) get/put with eviction | LRU Cache (DLL + HashMap) |
 | Two lists meet | Intersection trick |
 | O(1) delete anywhere | Doubly Linked List |
 
@@ -287,3 +459,24 @@ flowchart TD
     Q -->|Yes| R[Find mid → Reverse half\n→ Merge alternately]
     Q -->|No| S[Single pass\nwith pointer tricks]
 ```
+
+---
+
+## Problem → Pattern Cross-References
+
+The problems list now mirrors the 7 patterns above (plus DLL and a Design section). Each problem has one home. Notes on the connections:
+
+| Problem | Home pattern | Why (and what else it touches) |
+|---------|--------------|-------------------------------|
+| Palindrome Linked List | Reversal | Find mid (fast/slow), reverse second half, compare — touches Fast & Slow too |
+| Reorder List | In-place Rearrangement | Find mid → reverse half → merge alternately (combines 3 patterns) |
+| Sort LL | Merge | Merge sort on a linked list |
+| Reverse Nodes in K-Group | Reversal | Iterative reversal applied per k-block |
+| Remove Nth Node From End | Dummy Node & Deletion | Fast starts N ahead (Fast & Slow), dummy handles head removal |
+| Delete the middle node | Fast & Slow | Slow lands on middle; dummy/prev handles the unlink |
+
+**Design section (HashMap + DLL):**
+
+- **LRU Cache** and **LFU Cache** live here, not in Stack/Queue. Their mechanism is a hash map for O(1) lookup plus a **doubly linked list** for O(1) move/evict — which is exactly the DLL use-case called out above. Keeping the pair together makes the shared technique obvious. (Moved out of `stackAndQueue.md`.)
+
+> **The recurring insight:** most "hard" linked-list problems are just **compositions** of the basic patterns — find-mid + reverse + merge. Master the six primitives and the hards fall out.

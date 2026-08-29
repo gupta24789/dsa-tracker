@@ -1,0 +1,74 @@
+{
+  "https://leetcode.com/problems/remove-outermost-parentheses/": {
+    "optimal": { "idea": "Track depth; append a char unless it's an outermost '(' (depth 0) or ')' (depth 1).", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/reverse-words-in-a-string/": {
+    "optimal": { "idea": "Split on whitespace, drop empties, reverse the word order, join with single spaces.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/largest-odd-number-in-string/": {
+    "optimal": { "idea": "Scan from the right for the last odd digit; the prefix up to it is the answer.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/": {
+    "optimal": { "idea": "Running counter: +1 on '(', -1 on ')'; track the maximum reached.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/count-and-say/": {
+    "optimal": { "idea": "Iteratively run-length-encode the previous term (count then digit).", "time": "O(total length)", "space": "O(length)" }
+  },
+  "https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/": {
+    "optimal": { "idea": "Track open count and needed additions; ')' with no open needs an add, leftover opens add too.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/rotate-string/": {
+    "brute": { "idea": "Try all n rotations of s and compare to goal.", "time": "O(n^2)", "space": "O(n)" },
+    "optimal": { "idea": "s is a rotation of goal iff same length and s appears within goal+goal.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/valid-anagram/description/": {
+    "brute": { "idea": "Sort both strings and compare.", "time": "O(n log n)", "space": "O(n)" },
+    "optimal": { "idea": "Compare 26-length character counts.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/isomorphic-strings/": {
+    "optimal": { "idea": "Maintain two consistent char→char mappings (s→t and t→s).", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/sort-characters-by-frequency/": {
+    "optimal": { "idea": "Count frequencies, then order characters by count (bucket or heap) and rebuild.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/longest-palindromic-substring/": {
+    "brute": { "idea": "Check every substring for palindrome-ness.", "time": "O(n^3)", "space": "O(1)" },
+    "better": { "idea": "DP table where dp[i][j] extends dp[i+1][j-1] when the ends match.", "time": "O(n^2)", "space": "O(n^2)" },
+    "optimal": { "idea": "Expand around each of the 2n-1 centers, tracking the longest palindrome.", "time": "O(n^2)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/number-substrings-string/": {
+    "optimal": { "idea": "Total substrings = n*(n+1)/2 (or count by first/last char rules for variants).", "time": "O(1)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/sum-of-beauty-of-all-substrings/": {
+    "optimal": { "idea": "For each start, extend right maintaining a freq map; add (maxFreq - minFreq) each step.", "time": "O(n^2 * 26)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/count-palindromic-subsequences/1": {
+    "optimal": { "idea": "Interval DP: dp[i][j] combines inner counts, adding 1 more when s[i]==s[j].", "time": "O(n^2)", "space": "O(n^2)" }
+  },
+  "https://leetcode.com/problems/roman-to-integer/": {
+    "optimal": { "idea": "Sum values; subtract when a smaller numeral precedes a larger one.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/string-to-integer-atoi/": {
+    "optimal": { "idea": "Skip spaces, read optional sign, parse digits, clamp to int range.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/longest-common-prefix/": {
+    "brute": { "idea": "Compare characters column by column across all strings until a mismatch.", "time": "O(n*L)", "space": "O(1)" },
+    "optimal": { "idea": "Sort and compare only the first vs last string; their common prefix covers all.", "time": "O(n*L)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/repeated-string-match/": {
+    "optimal": { "idea": "Repeat a until length covers b, try one extra copy; check b is a substring (Rabin-Karp/KMP).", "time": "O(n+m)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/implement-strstr/": {
+    "brute": { "idea": "Try matching the pattern at every text index.", "time": "O(n*m)", "space": "O(1)" },
+    "optimal": { "idea": "KMP: build the LPS array, then scan text without backtracking on mismatches.", "time": "O(n+m)", "space": "O(m)" }
+  },
+  "https://leetcode.com/problems/shortest-palindrome/": {
+    "optimal": { "idea": "Compute LPS of s + '#' + reverse(s); the unmatched suffix, reversed, is prepended.", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/longest-happy-prefix/": {
+    "optimal": { "idea": "The answer is the last value of the KMP LPS array (longest proper prefix = suffix).", "time": "O(n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/encode-and-decode-strings/": {
+    "optimal": { "idea": "Length-prefix each string as 'len#str'; decode by reading the length then that many chars.", "time": "O(total chars)", "space": "O(1)" }
+  }
+}

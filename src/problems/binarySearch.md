@@ -1,4 +1,4 @@
-﻿## Basic Binary Search
+﻿## Classic Binary Search
 
 1. [Binary Search to find X in sorted array](https://leetcode.com/problems/binary-search/) `new`
 
@@ -23,7 +23,7 @@
 
 1. [Find peak element](https://leetcode.com/problems/find-peak-element/description/) `medium`
 
-## Optimization Binary Search
+## Binary Search on Answer
 
 1. [Find square root of a number in log n](https://www.geeksforgeeks.org/problems/square-root/1) `new`
 2. [Find the Nth root of a number using binary search](https://www.geeksforgeeks.org/problems/find-nth-root-of-m5843/1) `medium`

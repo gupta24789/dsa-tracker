@@ -1,0 +1,213 @@
+{
+  "https://leetcode.com/problems/climbing-stairs/": {
+    "brute": { "idea": "Recurse ways(n) = ways(n-1) + ways(n-2) without caching.", "time": "O(2^n)", "space": "O(n)" },
+    "optimal": { "idea": "Fibonacci with two rolling variables.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/min-cost-climbing-stairs/": {
+    "brute": { "idea": "Recurse minCost(i) = cost[i] + min(next two) without caching.", "time": "O(2^n)", "space": "O(n)" },
+    "optimal": { "idea": "dp[i] = cost[i] + min(dp[i-1], dp[i-2]); roll two variables.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/geek-jump/1": {
+    "brute": { "idea": "Recurse min cost from each index without caching.", "time": "O(2^n)", "space": "O(n)" },
+    "optimal": { "idea": "dp[i] = min over jumps of dp[i-1]+|h[i]-h[i-1]| (and dp[i-2]); roll variables.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/house-robber/": {
+    "brute": { "idea": "Recurse pick/skip each house without caching.", "time": "O(2^n)", "space": "O(n)" },
+    "optimal": { "idea": "dp[i] = max(dp[i-1], dp[i-2] + nums[i]); roll two variables.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/house-robber-ii/": {
+    "brute": { "idea": "Recurse pick/skip on the two linear cases (drop first house, drop last) without caching.", "time": "O(2^n)", "space": "O(n)" },
+    "optimal": { "idea": "Houses are circular: run linear house-robber twice, excluding the first or last house.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/decode-ways/": {
+    "brute": { "idea": "Recurse from each index trying a 1-digit and 2-digit decode without caching.", "time": "O(2^n)", "space": "O(n)" },
+    "optimal": { "idea": "dp[i] adds dp[i-1] if the 1-digit is valid and dp[i-2] if the 2-digit (10-26) is valid.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/word-break/": {
+    "brute": { "idea": "Recurse trying every prefix as a dictionary word.", "time": "O(2^n)", "space": "O(n)" },
+    "optimal": { "idea": "dp[i] true if some j<i has dp[j] true and s[j:i] is in the dictionary.", "time": "O(n^2)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/partition-array-for-maximum-sum/": {
+    "optimal": { "idea": "dp[i] tries every partition length up to k ending at i, using that block's max*length.", "time": "O(n*k)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/geeks-training/1": {
+    "brute": { "idea": "Recurse over (day, lastActivity) without caching.", "time": "O(3^n)", "space": "O(n)" },
+    "optimal": { "idea": "dp[day][lastActivity] = max points, skipping the previous day's activity.", "time": "O(n*3)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/unique-paths/": {
+    "brute": { "idea": "Recurse paths(i,j) = paths(i-1,j)+paths(i,j-1) without caching.", "time": "O(2^(m+n))", "space": "O(m+n)" },
+    "optimal": { "idea": "dp[i][j] = dp[i-1][j] + dp[i][j-1]; roll a single row (or the combinatorial formula).", "time": "O(m*n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/unique-paths-ii/": {
+    "brute": { "idea": "Recurse paths(i,j) skipping obstacles, without caching.", "time": "O(2^(m+n))", "space": "O(m+n)" },
+    "optimal": { "idea": "Same grid DP but set blocked cells to 0 paths.", "time": "O(m*n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/minimum-path-sum/": {
+    "optimal": { "idea": "dp[i][j] = grid[i][j] + min(dp[i-1][j], dp[i][j-1]).", "time": "O(m*n)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/triangle/": {
+    "optimal": { "idea": "Bottom-up: dp[j] = triangle[i][j] + min(dp[j], dp[j+1]) working up from the last row.", "time": "O(n^2)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/minimum-falling-path-sum/": {
+    "optimal": { "idea": "dp[i][j] = a[i][j] + min of the three cells above (j-1, j, j+1).", "time": "O(n^2)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/count-square-submatrices-with-all-ones/": {
+    "optimal": { "idea": "dp[i][j] = 1 + min(top, left, top-left) when the cell is 1; sum all dp values.", "time": "O(m*n)", "space": "O(n)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/egg-dropping-puzzle-1587115620/1": {
+    "brute": { "idea": "Recurse over worst-case split at each trial floor without caching.", "time": "exponential", "space": "O(e*f)" },
+    "optimal": { "idea": "dp[eggs][floors] over the worst-case split (or the O(e*f) moves reformulation).", "time": "O(e*f^2)", "space": "O(e*f)" }
+  },
+  "https://leetcode.com/problems/cherry-pickup/description/": {
+    "optimal": { "idea": "Two robots move together row by row: dp over (row, col1, col2) summing picked cherries.", "time": "O(n^3)", "space": "O(n^2)" }
+  },
+  "https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1": {
+    "brute": { "idea": "Recurse take/skip each item without caching.", "time": "O(2^n)", "space": "O(n)" },
+    "better": { "idea": "2D dp[i][w] = max(skip, take) over items and capacities.", "time": "O(n*W)", "space": "O(n*W)" },
+    "optimal": { "idea": "1D dp[w] iterating weight downward so each item is used once.", "time": "O(n*W)", "space": "O(W)" }
+  },
+  "https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638/1": {
+    "optimal": { "idea": "Boolean dp[sum]; for each num mark dp[s] |= dp[s-num] iterating downward.", "time": "O(n*sum)", "space": "O(sum)" }
+  },
+  "https://leetcode.com/problems/partition-equal-subset-sum/": {
+    "brute": { "idea": "Recurse take/skip each element aiming for sum total/2, without caching.", "time": "O(2^n)", "space": "O(n)" },
+    "optimal": { "idea": "Subset-sum for total/2 (impossible if total is odd).", "time": "O(n*sum)", "space": "O(sum)" }
+  },
+  "https://leetcode.com/problems/partition-array-into-two-arrays-to-minimize-sum-difference/": {
+    "optimal": { "idea": "Find all reachable subset sums; minimize |total - 2*s| over achievable s.", "time": "O(n*sum)", "space": "O(sum)" }
+  },
+  "https://www.geeksforgeeks.org/problems/perfect-sum-problem5633/1": {
+    "optimal": { "idea": "Count dp[sum]: dp[s] += dp[s-num] per element (handle zeros carefully).", "time": "O(n*sum)", "space": "O(sum)" }
+  },
+  "https://www.geeksforgeeks.org/problems/partitions-with-given-difference/1": {
+    "optimal": { "idea": "Reduces to counting subsets with sum (total+diff)/2.", "time": "O(n*sum)", "space": "O(sum)" }
+  },
+  "https://leetcode.com/problems/target-sum/": {
+    "brute": { "idea": "Recurse assigning + or - to each element, counting those that hit target.", "time": "O(2^n)", "space": "O(n)" },
+    "optimal": { "idea": "+/- assignment reduces to counting subsets summing to (total+target)/2.", "time": "O(n*sum)", "space": "O(sum)" }
+  },
+  "https://www.geeksforgeeks.org/problems/knapsack-with-duplicate-items4201/1": {
+    "optimal": { "idea": "Unbounded: dp[w] = max(dp[w], dp[w-wt]+val) iterating weight upward (reuse allowed).", "time": "O(n*W)", "space": "O(W)" }
+  },
+  "https://www.geeksforgeeks.org/problems/rod-cutting0840/1": {
+    "optimal": { "idea": "Unbounded knapsack where piece length i has value price[i].", "time": "O(n^2)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/coin-change/": {
+    "brute": { "idea": "Recurse trying every coin at each amount without caching.", "time": "exponential", "space": "O(amount)" },
+    "optimal": { "idea": "dp[a] = min(dp[a], dp[a-coin]+1) over coins and amounts.", "time": "O(n*amount)", "space": "O(amount)" }
+  },
+  "https://leetcode.com/problems/coin-change-2/": {
+    "brute": { "idea": "Recurse over (coin index, remaining amount) counting combinations without caching.", "time": "exponential", "space": "O(amount)" },
+    "optimal": { "idea": "Count ways: for each coin, dp[a] += dp[a-coin] iterating amount upward.", "time": "O(n*amount)", "space": "O(amount)" }
+  },
+  "https://leetcode.com/problems/longest-common-subsequence/": {
+    "brute": { "idea": "Recurse on both indices, branching on match/mismatch without caching.", "time": "O(2^(n+m))", "space": "O(n+m)" },
+    "optimal": { "idea": "dp[i][j] = dp[i-1][j-1]+1 on match, else max(dp[i-1][j], dp[i][j-1]).", "time": "O(n*m)", "space": "O(m)" }
+  },
+  "https://www.geeksforgeeks.org/problems/print-all-lcs-sequences3413/1": {
+    "optimal": { "idea": "Build the LCS dp table, then backtrack from dp[n][m] to reconstruct the sequence.", "time": "O(n*m)", "space": "O(n*m)" }
+  },
+  "https://www.geeksforgeeks.org/problems/longest-common-substring1452/1": {
+    "optimal": { "idea": "dp[i][j] = dp[i-1][j-1]+1 on match else 0; track the max cell.", "time": "O(n*m)", "space": "O(m)" }
+  },
+  "https://leetcode.com/problems/longest-palindromic-subsequence/": {
+    "brute": { "idea": "Recurse on (i,j): if ends match 2+inner else max of dropping either end, without caching.", "time": "O(2^n)", "space": "O(n)" },
+    "optimal": { "idea": "LCS of s and reverse(s).", "time": "O(n^2)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/": {
+    "optimal": { "idea": "Answer = n - longest palindromic subsequence.", "time": "O(n^2)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/delete-operation-for-two-strings/": {
+    "optimal": { "idea": "Answer = n + m - 2*LCS(s1, s2).", "time": "O(n*m)", "space": "O(m)" }
+  },
+  "https://leetcode.com/problems/shortest-common-supersequence/": {
+    "optimal": { "idea": "Length = n + m - LCS; reconstruct by walking the LCS table merging both strings.", "time": "O(n*m)", "space": "O(n*m)" }
+  },
+  "https://leetcode.com/problems/distinct-subsequences/": {
+    "brute": { "idea": "Recurse on (i,j): on match branch take+skip, else skip; without caching.", "time": "O(2^n)", "space": "O(n)" },
+    "optimal": { "idea": "dp[i][j] counts ways; on match add dp[i-1][j-1], always add dp[i-1][j].", "time": "O(n*m)", "space": "O(m)" }
+  },
+  "https://leetcode.com/problems/edit-distance/": {
+    "brute": { "idea": "Recurse on both indices trying insert/delete/replace without caching.", "time": "O(3^(n+m))", "space": "O(n+m)" },
+    "optimal": { "idea": "dp[i][j] = match ? dp[i-1][j-1] : 1 + min(insert, delete, replace).", "time": "O(n*m)", "space": "O(m)" }
+  },
+  "https://leetcode.com/problems/wildcard-matching/": {
+    "optimal": { "idea": "dp[i][j]: '?' matches one char, '*' matches empty (dp[i][j-1]) or one more (dp[i-1][j]).", "time": "O(n*m)", "space": "O(m)" }
+  },
+  "https://leetcode.com/problems/regular-expression-matching/": {
+    "optimal": { "idea": "dp[i][j]: '*' means zero of prev (dp[i][j-2]) or one more if prev/'.' matches.", "time": "O(n*m)", "space": "O(n*m)" }
+  },
+  "https://leetcode.com/problems/interleaving-string/": {
+    "optimal": { "idea": "dp[i][j]: prefix formed if s1[i] extends dp[i-1][j] or s2[j] extends dp[i][j-1].", "time": "O(n*m)", "space": "O(m)" }
+  },
+  "https://leetcode.com/problems/palindromic-substrings/": {
+    "brute": { "idea": "Check every substring for palindrome-ness.", "time": "O(n^3)", "space": "O(1)" },
+    "optimal": { "idea": "Expand around each of the 2n-1 centers, counting palindromes.", "time": "O(n^2)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/longest-increasing-subsequence/": {
+    "brute": { "idea": "Recurse take/skip tracking the previous element without caching.", "time": "O(2^n)", "space": "O(n)" },
+    "better": { "idea": "dp[i] = 1 + max(dp[j]) for j<i with a[j]<a[i].", "time": "O(n^2)", "space": "O(n)" },
+    "optimal": { "idea": "Maintain a tails array; binary-search the position to replace/extend per element.", "time": "O(n log n)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/printing-longest-increasing-subsequence/1": {
+    "optimal": { "idea": "O(n^2) LIS dp with a parent[] array, then backtrack from the best index.", "time": "O(n^2)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/largest-divisible-subset/": {
+    "optimal": { "idea": "Sort, then LIS-style dp where a[i] extends a[j] if a[i]%a[j]==0; backtrack for the set.", "time": "O(n^2)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/longest-string-chain/": {
+    "optimal": { "idea": "Sort by length; dp[word] = max over predecessors formed by deleting one char.", "time": "O(n*L^2)", "space": "O(n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/longest-bitonic-subsequence0824/1": {
+    "optimal": { "idea": "LIS from the left + LIS from the right; combine at each peak (lis[i]+lds[i]-1).", "time": "O(n^2)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/number-of-longest-increasing-subsequence/": {
+    "optimal": { "idea": "LIS dp also tracking count[i]; accumulate counts of equal-length predecessors.", "time": "O(n^2)", "space": "O(n)" }
+  },
+  "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/": {
+    "brute": { "idea": "Try every buy/sell pair.", "time": "O(n^2)", "space": "O(1)" },
+    "optimal": { "idea": "Track the min price so far; best profit = max(price - minSoFar).", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/": {
+    "optimal": { "idea": "Sum every positive day-to-day gain (unlimited transactions).", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/description/": {
+    "optimal": { "idea": "State dp over (day, transactions<=2, holding); or track buy1/sell1/buy2/sell2.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/": {
+    "optimal": { "idea": "dp over (transactions<=k, holding); generalizes the two-transaction case.", "time": "O(n*k)", "space": "O(k)" }
+  },
+  "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/": {
+    "optimal": { "idea": "Three states hold/sold/rest; after selling you must rest one day.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/": {
+    "optimal": { "idea": "Track cash and hold states; subtract the fee when selling.", "time": "O(n)", "space": "O(1)" }
+  },
+  "https://www.geeksforgeeks.org/problems/matrix-chain-multiplication0303/1": {
+    "optimal": { "idea": "Interval dp[i][j] = min over split k of dp[i][k]+dp[k+1][j]+boundary multiply cost.", "time": "O(n^3)", "space": "O(n^2)" }
+  },
+  "https://leetcode.com/problems/minimum-cost-to-cut-a-stick/": {
+    "optimal": { "idea": "Sort cuts with sentinels; interval dp over cut ranges, cost = segment length + best split.", "time": "O(m^3)", "space": "O(m^2)" }
+  },
+  "https://leetcode.com/problems/burst-balloons/": {
+    "optimal": { "idea": "Interval dp where k is the LAST balloon burst in (i,j); add nums[i]*nums[k]*nums[j].", "time": "O(n^3)", "space": "O(n^2)" }
+  },
+  "https://leetcode.com/problems/parsing-a-boolean-expression/": {
+    "optimal": { "idea": "Interval dp counting ways a sub-expression evaluates true/false, split at each operator.", "time": "O(n^3)", "space": "O(n^2)" }
+  },
+  "https://leetcode.com/problems/palindrome-partitioning-ii/": {
+    "optimal": { "idea": "Precompute palindrome table; dp[i] = min cuts for prefix i using valid palindromic suffixes.", "time": "O(n^2)", "space": "O(n^2)" }
+  },
+  "https://leetcode.com/problems/partition-to-k-equal-sum-subsets/": {
+    "optimal": { "idea": "Bitmask dp over used elements tracking the running bucket sum mod target.", "time": "O(2^n * n)", "space": "O(2^n)" }
+  },
+  "https://leetcode.com/problems/shortest-path-visiting-all-nodes/": {
+    "optimal": { "idea": "BFS over states (node, visitedMask); goal is the all-visited mask.", "time": "O(2^n * n^2)", "space": "O(2^n * n)" }
+  },
+  "https://www.geeksforgeeks.org/problems/travelling-salesman-problem2732/1": {
+    "optimal": { "idea": "Bitmask dp[mask][i] = min cost visiting mask ending at i; extend to unused nodes.", "time": "O(2^n * n^2)", "space": "O(2^n * n)" }
+  },
+  "https://leetcode.com/problems/minimum-cost-to-connect-two-groups-of-points/": {
+    "optimal": { "idea": "dp over group-1 index and a bitmask of group-2 points covered; connect cheaply.", "time": "O(m * 2^n * n)", "space": "O(2^n)" }
+  }
+}
